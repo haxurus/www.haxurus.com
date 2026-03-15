@@ -13,7 +13,7 @@
     <div class="site-loader__inner">
       <div class="site-loader__ring"></div>
       <div class="site-loader__dot"></div>
-      <div class="site-loader__text">Loading Haxurus</div>
+      <div class="site-loader__text">Loading, please wait</div>
     </div>
   </div>
 
@@ -30,23 +30,24 @@
         <p class="hero-text">
           Hi! I'm Haxurus, nice to meet you. Here you can find my socials, communities,
           game profiles, VRChat links and a Spotify area with my playlists.
+		  Please report any fake account. Thanks for your help <3
         </p>
 
         <nav class="quick-links" aria-label="Collegamenti rapidi">
           <a href="mailto:haxurus@icloud.com" class="quick-link" aria-label="Mail">
-            <img src="hero_mail.svg" alt="" />
+            <img src="img/hero_mail.png" alt="Mail" />
           </a>
           <a href="https://discord.com/users/378959098164674560" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-            <img src="hero_discord.svg" alt="" />
+            <img src="img/hero_discord.png" alt="Discord" />
           </a>
           <a href="https://t.me/haxurus_official" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <img src="hero_telegram.svg" alt="" />
+            <img src="img/hero_telegram.png" alt="Telegram" />
           </a>
           <a href="https://open.spotify.com/user/3wxk0wosgrovu7kpsr7x6mh4a" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-            <img src="hero_spotify.svg" alt="" />
+            <img src="img/hero_spotify.png" alt="Spotify" />
           </a>
           <a href="https://www.instagram.com/haxurus.vrc" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="hero_instagram.svg" alt="" />
+            <img src="img/hero_instagram.png" alt="Instagram" />
           </a>
         </nav>
       </div>
@@ -144,18 +145,18 @@
       <section class="category">
         <h2>VR Chat</h2>
         <div class="links-grid">
-          <a class="link-card is-inactive" href="https://vrchat.com/home/user/usr_0358b1d2-44d8-4434-831b-8526f4a8750a" target="_blank" rel="noopener noreferrer" title="This profile/account is not active">
+          <a class="link-card" href="https://vrchat.com/home/user/usr_0358b1d2-44d8-4434-831b-8526f4a8750a" target="_blank" rel="noopener noreferrer" title="This profile/account is not active">
             <div class="card-icon thumb small-thumb"><img src="img/vrchat.png" alt="VRChat" /></div>
-            <div class="card-body centered"><span class="card-title">Add me 💤</span></div>
+            <div class="card-body centered"><span class="card-title">Add me</span></div>
             <div class="card-more">⋮</div>
           </a>
 
-          <a class="link-card link-card--banner is-inactive" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer" title="This profile/account is not active">
+          <a class="link-card link-card--banner" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer" title="This profile/account is not active">
             <div class="link-card-banner-media">
               <img src="img/vrchat_helixhorizon.png" alt="Explore Helix Horizon World" />
             </div>
             <div class="link-card-banner-body">
-              <span class="card-title">Explore Helix Horizon World 💤</span>
+              <span class="card-title">Explore Helix Horizon World</span>
               <div class="card-more">⋮</div>
             </div>
           </a>
@@ -219,7 +220,7 @@
             <div class="card-more">⋮</div>
           </a>
 
-          <a class="link-card is-inactive" href="https://www.roblox.com/users/3748963083/profile" target="_blank" rel="noopener noreferrer" title="This profile/account is not active">
+          <a class="link-card age-gated-link is-inactive" href="#" data-age-href="https://www.roblox.com/users/3748963083/profile" data-age-min="18" data-age-key="roblox-18" data-age-title="Roblox (only 18+)" data-age-message="With the latest Roblox update, this account can talk and interact with people who are at least 21. No point sending me friend requests if you're under 18. Use the other account if you need to." target="_blank" rel="noopener noreferrer">
             <div class="card-icon thumb small-thumb"><img src="img/games_roblox.png" alt="Roblox only 18+" /></div>
             <div class="card-body centered"><span class="card-title">Roblox (only 18+) 💤</span></div>
             <div class="card-more">⋮</div>
@@ -310,6 +311,25 @@
         </div>
       </section>
     </main>
+  </div>
+
+
+  <div class="age-gate-popover" id="age-gate-popover" hidden>
+    <div class="age-gate-popover__arrow" aria-hidden="true"></div>
+    <div class="age-gate-popover__panel">
+      <button class="age-gate-popover__close" type="button" aria-label="Close age verification">×</button>
+      <div class="age-gate-popover__lock" aria-hidden="true">🔒</div>
+      <h3 class="age-gate-popover__title">Unlock link with your Date of Birth</h3>
+      <p class="age-gate-popover__message"></p>
+      <div class="age-gate-popover__fields">
+        <input class="age-gate-input" data-part="day" inputmode="numeric" maxlength="2" placeholder="DD" aria-label="Day" />
+        <input class="age-gate-input" data-part="month" inputmode="numeric" maxlength="2" placeholder="MM" aria-label="Month" />
+        <input class="age-gate-input age-gate-input--year" data-part="year" inputmode="numeric" maxlength="4" placeholder="YYYY" aria-label="Year" />
+      </div>
+      <button class="age-gate-popover__unlock" type="button">Unlock</button>
+      <p class="age-gate-popover__status" aria-live="polite"></p>
+      <p class="age-gate-popover__privacy">Date of birth is checked in your browser and is not stored on a server.</p>
+    </div>
   </div>
 
   <div class="modal" id="about-modal" aria-hidden="true">
