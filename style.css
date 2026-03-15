@@ -74,7 +74,7 @@ button {
 
 .hero {
   position: relative;
-  min-height: 420px;
+  min-height: 500px;
   border-radius: 0 0 38px 38px;
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -381,6 +381,7 @@ body.modal-open {
 }
 
 .quick-link,
+.category h2,
 .link-card,
 .playlist-card {
   opacity: 0;
@@ -657,4 +658,458 @@ body.is-loading {
   .site-loader__text {
     animation: none;
   }
+}
+
+
+/* Age-gated links */
+.age-gated-link {
+  position: relative;
+}
+
+.age-gated-link::after {
+  content: "🔒";
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.72;
+}
+
+.age-gate-popover {
+  position: fixed;
+  z-index: 1200;
+  width: min(520px, calc(100vw - 24px));
+}
+
+.age-gate-popover[hidden] {
+  display: none !important;
+}
+
+.age-gate-popover__arrow {
+  position: absolute;
+  top: -10px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #f3f3f1;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  box-shadow: -4px -4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.age-gate-popover__panel {
+  position: relative;
+  background: #f3f3f1;
+  color: #181818;
+  border-radius: 18px;
+  padding: 26px 22px 18px;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.age-gate-popover__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  color: #181818;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.age-gate-popover__lock {
+  display: none;
+}
+
+.age-gate-popover__title {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.age-gate-popover__message {
+  margin: 0 auto 18px;
+  max-width: 430px;
+  text-align: center;
+  color: #626262;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.age-gate-popover__fields {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.age-gate-input {
+  width: 92px;
+  height: 44px;
+  border: 0;
+  border-radius: 10px;
+  background: #ecebe7;
+  color: #232323;
+  text-align: center;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.age-gate-input--year {
+  width: 108px;
+}
+
+.age-gate-input:focus {
+  box-shadow: 0 0 0 2px rgba(38, 255, 88, 0.35);
+}
+
+.age-gate-popover__unlock {
+  display: block;
+  width: min(100%, 300px);
+  margin: 0 auto 14px;
+  height: 48px;
+  border: 0;
+  border-radius: 14px;
+  background: #050505;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.age-gate-popover__unlock:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.age-gate-popover__status {
+  min-height: 1.3em;
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 0.94rem;
+  color: #7d1010;
+}
+
+.age-gate-popover__status.is-ok {
+  color: #0a7b36;
+}
+
+.age-gate-popover__privacy {
+  margin: 0;
+  text-align: center;
+  color: #6f6f6f;
+  font-size: 0.85rem;
+}
+
+body.theme-dark .age-gate-popover__panel {
+  background: #171717;
+  color: #f6f6f6;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark .age-gate-popover__arrow {
+  background: #171717;
+}
+
+body.theme-dark .age-gate-popover__close {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+body.theme-dark .age-gate-popover__message,
+body.theme-dark .age-gate-popover__privacy {
+  color: #b9b9b9;
+}
+
+body.theme-dark .age-gate-input {
+  background: #262626;
+  color: #fff;
+}
+
+body.theme-dark .age-gate-popover__unlock {
+  background: #fff;
+  color: #111;
+}
+
+@media (max-width: 640px) {
+  .age-gate-popover {
+    width: calc(100vw - 20px);
+  }
+
+  .age-gate-popover__panel {
+    padding: 22px 16px 16px;
+    border-radius: 16px;
+  }
+
+  .age-gate-popover__title {
+    font-size: 1.35rem;
+  }
+
+  .age-gate-popover__message {
+    font-size: 0.95rem;
+  }
+
+  .age-gate-input {
+    width: 82px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .age-gate-input--year {
+    width: 98px;
+  }
+}
+
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 10001;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  transform: translateY(-2px);
+}
+
+.theme-toggle__icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+body.theme-dark .theme-toggle {
+  background: rgba(18, 18, 18, 0.94);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+body.theme-dark .link-card,
+body.theme-dark .playlist-card,
+body.theme-dark .about-trigger {
+  background: rgba(18, 18, 18, 0.94) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.34) !important;
+}
+
+body.theme-dark .link-card .card-title,
+body.theme-dark .link-card .card-subtitle,
+body.theme-dark .link-card .card-more,
+body.theme-dark .playlist-card .playlist-title,
+body.theme-dark .playlist-card .playlist-subtitle {
+  color: #fff !important;
+}
+
+body.theme-dark .link-card.is-inactive {
+  background: rgba(34, 34, 34, 0.92) !important;
+  color: #f1f1f1 !important;
+}
+
+body.theme-dark .age-gate-popover__panel {
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* Thin border on buttons/cards */
+.link-card,
+.playlist-card,
+.quick-link,
+.about-trigger {
+  border: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+body.theme-dark .quick-link,
+body.theme-dark .hero .quick-link,
+body.theme-dark .link-card,
+body.theme-dark .playlist-card,
+body.theme-dark .about-trigger {
+  border-color: rgba(255, 255, 255, 0.34) !important;
+}
+
+/* Robust sequence */
+.hero,
+.quick-link,
+.block .link-card,
+.category h2,
+.category .link-card,
+.playlist-card {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.seq-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.42s ease, transform 0.42s ease;
+}
+
+
+
+/* Robust 18+ modal */
+.age-gate-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.age-gate-modal[hidden] {
+  display: none !important;
+}
+
+.age-gate-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(6px);
+}
+
+.age-gate-modal__panel {
+  position: relative;
+  width: min(560px, calc(100vw - 24px));
+  background: #f3f3f1;
+  color: #181818;
+  border-radius: 18px;
+  padding: 26px 22px 18px;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  z-index: 1;
+}
+
+.age-gate-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  color: #181818;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.age-gate-modal__title {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.age-gate-modal__message {
+  margin: 0 auto 18px;
+  max-width: 430px;
+  text-align: center;
+  color: #626262;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.age-gate-modal__fields {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.age-gate-modal .age-gate-input {
+  width: 92px;
+  height: 44px;
+  border: 0;
+  border-radius: 10px;
+  background: #ecebe7;
+  color: #232323;
+  text-align: center;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.age-gate-modal .age-gate-input--year {
+  width: 108px;
+}
+
+.age-gate-modal .age-gate-input:focus {
+  box-shadow: 0 0 0 2px rgba(38, 255, 88, 0.35);
+}
+
+.age-gate-modal__unlock {
+  display: block;
+  width: min(100%, 300px);
+  margin: 0 auto 14px;
+  height: 48px;
+  border: 0;
+  border-radius: 14px;
+  background: #050505;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.age-gate-modal__status {
+  min-height: 1.3em;
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 0.94rem;
+  color: #7d1010;
+}
+
+.age-gate-modal__status.is-ok {
+  color: #0a7b36;
+}
+
+.age-gate-modal__privacy {
+  margin: 0;
+  text-align: center;
+  color: #6f6f6f;
+  font-size: 0.85rem;
+}
+
+body.theme-dark .age-gate-modal__panel {
+  background: #171717;
+  color: #f6f6f6;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark .age-gate-modal__close {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+body.theme-dark .age-gate-modal__message,
+body.theme-dark .age-gate-modal__privacy {
+  color: #b9b9b9;
+}
+
+body.theme-dark .age-gate-modal .age-gate-input {
+  background: #262626;
+  color: #fff;
+}
+
+body.theme-dark .age-gate-modal__unlock {
+  background: #fff;
+  color: #111;
 }
