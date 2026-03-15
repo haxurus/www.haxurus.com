@@ -5,9 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haxurus | Link Hub</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="script_loader.js" defer></script>
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="is-loading">
+  <div id="site-loader" aria-hidden="true">
+    <div class="site-loader__inner">
+      <div class="site-loader__ring"></div>
+      <div class="site-loader__dot"></div>
+      <div class="site-loader__text">Loading Haxurus</div>
+    </div>
+  </div>
+
   <video class="background-video" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-hidden="true">
     <source src="img/background.mp4" type="video/mp4" />
   </video>
@@ -25,19 +34,19 @@
 
         <nav class="quick-links" aria-label="Collegamenti rapidi">
           <a href="mailto:haxurus@icloud.com" class="quick-link" aria-label="Mail">
-            <img src="img/hero_mail.svg" alt="" />
+            <img src="hero_mail.svg" alt="" />
           </a>
           <a href="https://discord.com/users/378959098164674560" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-            <img src="img/hero_discord.svg" alt="" />
+            <img src="hero_discord.svg" alt="" />
           </a>
           <a href="https://t.me/haxurus_official" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <img src="img/hero_telegram.svg" alt="" />
+            <img src="hero_telegram.svg" alt="" />
           </a>
           <a href="https://open.spotify.com/user/3wxk0wosgrovu7kpsr7x6mh4a" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-            <img src="img/hero_spotify.svg" alt="" />
+            <img src="hero_spotify.svg" alt="" />
           </a>
           <a href="https://www.instagram.com/haxurus.vrc" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="img/hero_instagram.svg" alt="" />
+            <img src="hero_instagram.svg" alt="" />
           </a>
         </nav>
       </div>
