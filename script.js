@@ -1,3 +1,49 @@
+
+/* responsive device detection */
+(() => {
+  const root = document.body;
+  if (!root) return;
+
+  const media = [
+    window.matchMedia('(max-width: 640px)'),
+    window.matchMedia('(max-width: 1024px)'),
+    window.matchMedia('(pointer: coarse)'),
+    window.matchMedia('(hover: none)'),
+  ];
+
+  function detectDevice() {
+    const width = window.innerWidth;
+    const touchLike = window.matchMedia('(pointer: coarse), (hover: none)').matches || (navigator.maxTouchPoints || 0) > 0;
+
+    if (width <= 640) return 'mobile';
+    if (width <= 1024 || (touchLike && width <= 1180)) return 'tablet';
+    return 'desktop';
+  }
+
+  function applyDevice() {
+    const device = detectDevice();
+    if (root.dataset.device === device) return;
+
+    root.dataset.device = device;
+    root.classList.toggle('is-desktop', device === 'desktop');
+    root.classList.toggle('is-touch', device !== 'desktop');
+    window.dispatchEvent(new CustomEvent('haxurus:devicechange', { detail: { device } }));
+  }
+
+  const requestApply = () => window.requestAnimationFrame(applyDevice);
+
+  media.forEach((query) => {
+    if (typeof query.addEventListener === 'function') {
+      query.addEventListener('change', requestApply);
+    }
+  });
+
+  window.addEventListener('resize', requestApply, { passive: true });
+  window.addEventListener('orientationchange', requestApply, { passive: true });
+
+  applyDevice();
+})();
+
 const modalTriggers = document.querySelectorAll('[data-modal-open]');
 const modalCloseTargets = document.querySelectorAll('[data-modal-close]');
 const modals = document.querySelectorAll('.modal');
@@ -67,16 +113,22 @@ document.addEventListener('keydown', (event) => {
   const canvas = document.getElementById('particle-bg');
   if (!canvas) return;
 
-  const isMobileLike = window.matchMedia('(max-width: 768px), (pointer: coarse), (hover: none)').matches;
-  if (isMobileLike) {
-    canvas.style.display = 'none';
-    return;
-  }
-
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
   const particles = [];
   const mouse = { x: -9999, y: -9999, active: false };
   const particleCount = 150;
+  let rafId = null;
+  let enabled = false;
+
+  function shouldEnableParticles() {
+    const device = document.body?.dataset?.device;
+    const touchLike = window.matchMedia('(pointer: coarse), (hover: none)').matches || (navigator.maxTouchPoints || 0) > 0;
+
+    if (device) return device === 'desktop' && !touchLike;
+    return window.innerWidth > 768 && !touchLike;
+  }
 
   function resize() {
     const dpr = window.devicePixelRatio || 1;
@@ -190,14 +242,44 @@ document.addEventListener('keydown', (event) => {
   }
 
   function render() {
+    if (!enabled) return;
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     drawLinks();
     for (const p of particles) drawParticle(p);
     updateParticles();
-    requestAnimationFrame(render);
+    rafId = window.requestAnimationFrame(render);
+  }
+
+  function start() {
+    if (enabled) return;
+    enabled = true;
+    canvas.style.display = 'block';
+    resize();
+    createParticles();
+    render();
+  }
+
+  function stop() {
+    enabled = false;
+    canvas.style.display = 'none';
+    mouse.active = false;
+    if (rafId) {
+      window.cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function syncParticles() {
+    if (shouldEnableParticles()) {
+      start();
+    } else {
+      stop();
+    }
   }
 
   window.addEventListener('mousemove', (event) => {
+    if (!enabled) return;
     mouse.x = event.clientX;
     mouse.y = event.clientY;
     mouse.active = true;
@@ -208,13 +290,24 @@ document.addEventListener('keydown', (event) => {
   });
 
   window.addEventListener('resize', () => {
-    resize();
-    createParticles();
+    if (enabled) {
+      resize();
+      createParticles();
+    }
+    syncParticles();
+  }, { passive: true });
+
+  window.addEventListener('haxurus:devicechange', syncParticles);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && enabled && rafId) {
+      window.cancelAnimationFrame(rafId);
+      rafId = null;
+    } else if (!document.hidden && enabled && !rafId) {
+      render();
+    }
   });
 
-  resize();
-  createParticles();
-  render();
+  syncParticles();
 })();
 
 /* theme toggle */
