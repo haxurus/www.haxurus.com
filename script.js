@@ -764,3 +764,10 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && !modal.hidden) closeModal();
   });
 })();
+
+/* current year in footer */
+(() => {
+  const yearTarget = document.getElementById('current-year');
+  if (!yearTarget) return;
+  yearTarget.textContent = String(new Date().getFullYear());
+})();
