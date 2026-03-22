@@ -47,28 +47,79 @@
 const modalTriggers = document.querySelectorAll('[data-modal-open]');
 const modalCloseTargets = document.querySelectorAll('[data-modal-close]');
 const modals = document.querySelectorAll('.modal');
+const FOCUSABLE_SELECTOR = 'a[href], area[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+let activeModal = null;
+let lastModalTrigger = null;
 
-function openModal(id) {
+function getFocusableElements(container) {
+  return [...container.querySelectorAll(FOCUSABLE_SELECTOR)].filter((element) => {
+    return !element.hasAttribute('hidden') && element.getAttribute('aria-hidden') !== 'true';
+  });
+}
+
+function trapModalFocus(event, modal) {
+  if (event.key !== 'Tab') return;
+
+  const panel = modal.querySelector('.modal-panel') || modal;
+  const focusable = getFocusableElements(panel);
+  if (!focusable.length) {
+    event.preventDefault();
+    panel.focus();
+    return;
+  }
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const active = document.activeElement;
+
+  if (event.shiftKey && (active === first || !panel.contains(active))) {
+    event.preventDefault();
+    last.focus();
+    return;
+  }
+
+  if (!event.shiftKey && (active === last || !panel.contains(active))) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function openModal(id, trigger = null) {
   const modal = document.getElementById(id);
   if (!modal) return;
+
+  lastModalTrigger = trigger || document.activeElement;
+  activeModal = modal;
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
+
+  const panel = modal.querySelector('.modal-panel') || modal;
+  const focusable = getFocusableElements(panel);
+  window.requestAnimationFrame(() => {
+    (focusable[0] || panel).focus();
+  });
 }
 
-function closeModal(modal) {
+function closeModal(modal, { restoreFocus = true } = {}) {
   if (!modal) return;
   modal.classList.remove('is-open');
   modal.setAttribute('aria-hidden', 'true');
 
-  const hasOpenModal = [...modals].some((item) => item.classList.contains('is-open'));
-  if (!hasOpenModal) {
+  const openModals = [...modals].filter((item) => item.classList.contains('is-open'));
+  activeModal = openModals[openModals.length - 1] || null;
+
+  if (!activeModal) {
     document.body.classList.remove('modal-open');
+  }
+
+  if (restoreFocus && lastModalTrigger && typeof lastModalTrigger.focus === 'function' && document.contains(lastModalTrigger)) {
+    window.requestAnimationFrame(() => lastModalTrigger.focus());
   }
 }
 
 modalTriggers.forEach((trigger) => {
-  trigger.addEventListener('click', () => openModal(trigger.dataset.modalOpen));
+  trigger.addEventListener('click', () => openModal(trigger.dataset.modalOpen, trigger));
 });
 
 modalCloseTargets.forEach((target) => {
@@ -76,10 +127,14 @@ modalCloseTargets.forEach((target) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key !== 'Escape') return;
-  modals.forEach((modal) => {
-    if (modal.classList.contains('is-open')) closeModal(modal);
-  });
+  if (event.key === 'Escape') {
+    if (activeModal) closeModal(activeModal);
+    return;
+  }
+
+  if (activeModal) {
+    trapModalFocus(event, activeModal);
+  }
 });
 
 (() => {
@@ -310,53 +365,6 @@ document.addEventListener('keydown', (event) => {
   syncParticles();
 })();
 
-/* theme toggle */
-(() => {
-  const STORAGE_KEY = 'haxurusTheme';
-
-  function applyTheme(theme) {
-    document.body.classList.toggle('theme-dark', theme === 'dark');
-    const icon = document.querySelector('.theme-toggle__icon');
-    if (icon) icon.textContent = theme === 'dark' ? '🌙' : '☀️';
-  }
-
-  function getInitialTheme() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === 'dark' || saved === 'light') return saved;
-    } catch (e) {}
-    return 'light';
-  }
-
-  function createToggle() {
-    if (document.querySelector('.theme-toggle')) return;
-
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'theme-toggle';
-    btn.setAttribute('aria-label', 'Toggle light and dark mode');
-    btn.innerHTML = '<span class="theme-toggle__icon" aria-hidden="true">☾</span>';
-    document.body.appendChild(btn);
-
-    btn.addEventListener('click', () => {
-      const next = document.body.classList.contains('theme-dark') ? 'light' : 'dark';
-      applyTheme(next);
-      try {
-        localStorage.setItem(STORAGE_KEY, next);
-      } catch (e) {}
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      createToggle();
-      applyTheme(getInitialTheme());
-    }, { once: true });
-  } else {
-    createToggle();
-    applyTheme(getInitialTheme());
-  }
-})();
 
 /* sequential reveal */
 (() => {
@@ -608,6 +616,7 @@ document.addEventListener('keydown', (event) => {
   }
 
   const panel = modal.querySelector('.age-gate-modal__panel');
+  panel.setAttribute('tabindex', '-1');
   const closeBtn = modal.querySelector('.age-gate-modal__close');
   const messageEl = modal.querySelector('.age-gate-modal__message');
   const statusEl = modal.querySelector('.age-gate-modal__status');
@@ -619,7 +628,9 @@ document.addEventListener('keydown', (event) => {
     year: modal.querySelector('[data-part="year"]'),
   };
 
+  const focusableSelector = 'a[href], area[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
   let activeLink = null;
+  let lastTrigger = null;
 
   function digitsOnly(value, max) {
     return value.replace(/\D+/g, '').slice(0, max);
@@ -661,6 +672,7 @@ document.addEventListener('keydown', (event) => {
 
   function openModal(link) {
     activeLink = link;
+    lastTrigger = link;
     messageEl.textContent = link.dataset.ageMessage || `Please confirm your date of birth to access this ${link.dataset.ageMin || '18'}+ link.`;
     inputs.day.value = '';
     inputs.month.value = '';
@@ -668,7 +680,9 @@ document.addEventListener('keydown', (event) => {
     clearStatus();
     modal.hidden = false;
     document.body.classList.add('modal-open');
-    inputs.day.focus();
+    window.requestAnimationFrame(() => {
+      inputs.day.focus();
+    });
   }
 
   function closeModal() {
@@ -676,9 +690,40 @@ document.addEventListener('keydown', (event) => {
     activeLink = null;
     clearStatus();
     document.body.classList.remove('modal-open');
+
+    if (lastTrigger && typeof lastTrigger.focus === 'function' && document.contains(lastTrigger)) {
+      window.requestAnimationFrame(() => lastTrigger.focus());
+    }
+  }
+
+  function trapFocus(event) {
+    if (event.key !== 'Tab' || modal.hidden) return;
+
+    const focusable = [...panel.querySelectorAll(focusableSelector)].filter((element) => !element.hasAttribute('hidden'));
+    if (!focusable.length) {
+      event.preventDefault();
+      panel.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+
+    if (event.shiftKey && (active === first || !panel.contains(active))) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!event.shiftKey && (active === last || !panel.contains(active))) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 
   function parseDate() {
+
     const day = Number(inputs.day.value);
     const month = Number(inputs.month.value);
     const year = Number(inputs.year.value);
@@ -761,7 +806,12 @@ document.addEventListener('keydown', (event) => {
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !modal.hidden) closeModal();
+    if (event.key === 'Escape' && !modal.hidden) {
+      closeModal();
+      return;
+    }
+
+    trapFocus(event);
   });
 })();
 
