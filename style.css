@@ -195,7 +195,7 @@ main {
 .playlist-card::before,
 .modal-panel::before,
 .age-gate-modal__panel::before,
-.site-footer__inner::before::before,
+.site-footer__inner::before,
 .site-loader__skip::before,
 .age-gate-popover__panel::before {
   content: "";
@@ -492,6 +492,15 @@ body.theme-dark .card-more {
   object-fit: cover;
   border-radius: 18px 18px 12px 12px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.32s ease;
+  will-change: transform;
+}
+
+.link-card--banner:hover .link-card-banner-media img,
+.link-card--banner:focus-visible .link-card-banner-media img {
+  transform: scale(1.04);
 }
 
 .link-card--banner .link-card-banner-body {
@@ -541,6 +550,15 @@ body.theme-dark .card-more {
 .playlist-card img {
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.32s ease;
+  will-change: transform;
+}
+
+.playlist-card:hover img,
+.playlist-card:focus-visible img {
+  transform: scale(1.04);
 }
 
 .playlist-info {
@@ -1382,6 +1400,3 @@ body[data-device="desktop"] .site-footer__inner {
 }
 
 
-.theme-toggle {
-  display: none !important;
-}
