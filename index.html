@@ -1,457 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haxurus | Link Hub</title>
-  <link rel="icon" type="image/png" href="img/favicon.jpeg" />
-  <link rel="apple-touch-icon" href="img/favicon.jpeg" />
-  
-  <meta name="description" content="Haxurus personal website: links, communities, playlists, projects, and social profiles." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0f1115" />
-
-  <link rel="canonical" href="https://haxurus.com/" />
-
-  <link rel="icon" type="image/png" href="https://haxurus.com/img/favicon.png" />
-  <link rel="apple-touch-icon" href="https://haxurus.com/img/favicon.png" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Haxurus" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="Haxurus" />
-  <meta property="og:description" content="Personal website with socials, communities, playlists, and projects by Haxurus." />
-  <meta property="og:url" content="https://haxurus.com/" />
-  <meta property="og:image" content="https://haxurus.com/img/social-preview.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Preview image for the Haxurus website" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Haxurus" />
-  <meta name="twitter:description" content="Personal website with socials, communities, playlists, and projects by Haxurus." />
-  <meta name="twitter:image" content="https://haxurus.com/img/social-preview.jpg" />
-  <meta name="twitter:site" content="@Haxurus" />
-  <meta name="twitter:creator" content="@Haxurus" />
-  
-  <link rel="stylesheet" href="style.css" />
-  <script src="script_loader.js" defer></script>
-  <script src="script.js" defer></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Haxurus | Link Hub</title>
+<meta content="Haxurus personal website: links, communities, playlists, projects, and social profiles." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#0f1115" name="theme-color"/>
+<link href="https://haxurus.com/" rel="canonical"/>
+<link href="https://haxurus.com/img/aboutme.png" rel="icon" type="image/png"/>
+<link href="https://haxurus.com/img/aboutme.png" rel="apple-touch-icon"/>
+<meta content="website" property="og:type"/>
+<meta content="Haxurus" property="og:site_name"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="Haxurus | Link Hub" property="og:title"/>
+<meta content="Personal website with socials, communities, playlists, and projects by Haxurus." property="og:description"/>
+<meta content="https://haxurus.com/" property="og:url"/>
+<meta content="https://haxurus.com/img/hero/banner.png" property="og:image"/>
+<meta content="Preview image for the Haxurus website" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Haxurus | Link Hub" name="twitter:title"/>
+<meta content="Personal website with socials, communities, playlists, and projects by Haxurus." name="twitter:description"/>
+<meta content="https://haxurus.com/img/hero/banner.png" name="twitter:image"/>
+<meta content="@Haxurus" name="twitter:site"/>
+<meta content="@Haxurus" name="twitter:creator"/>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="script_loader.js"></script>
+<script defer="" src="script.js"></script>
 </head>
 <body class="is-loading">
-  <div id="site-loader" aria-hidden="true">
-    <div class="site-loader__inner">
-      <div class="site-loader__logo" aria-hidden="true">
-        <div class="site-loader__ring"></div>
-        <div class="site-loader__dot"></div>
-      </div>
-      <div class="site-loader__text">Loading, please wait</div>
-      <button class="site-loader__skip" type="button" data-skip-loader>Skip animation</button>
-    </div>
-  </div>
-
-  <video class="background-video" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-hidden="true">
-    <source src="img/background.webm" type="video/webm" />
-  </video>
-  <canvas id="particle-bg" aria-hidden="true"></canvas>
-
-  <div class="page">
-    <header class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>Haxurus</h1>
-        <p class="hero-text">
+<div aria-hidden="true" id="site-loader">
+<div class="site-loader__inner">
+<div aria-hidden="true" class="site-loader__logo">
+<div class="site-loader__ring"></div>
+<div class="site-loader__dot"></div>
+</div>
+<div class="site-loader__text">Loading, please wait</div>
+<button class="site-loader__skip" data-skip-loader="" type="button">Skip animation</button>
+</div>
+</div>
+<video aria-hidden="true" autoplay="" class="background-video" loop="" muted="" playsinline="" preload="auto" webkit-playsinline="">
+<source src="img/background.webm" type="video/webm"/>
+</video>
+<canvas aria-hidden="true" id="particle-bg"></canvas>
+<div class="page">
+<header class="hero">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1>Haxurus</h1>
+<p class="hero-text">
           Hi! I'm Haxurus, nice to meet you. Here you can find my social links, communities,
           gaming profiles, groups, and much more! Please report any fake accounts. Thanks for your help &lt;3
         </p>
-
-        <nav class="quick-links" aria-label="Quick links">
-          <a href="mailto:haxurus@icloud.com" class="quick-link" aria-label="Email">
-            <img src="img/hero/mail.png" alt="Email" />
-          </a>
-          <a href="https://discord.com/users/378959098164674560" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-            <img src="img/hero/discord.png" alt="Discord" />
-          </a>
-          <a href="https://t.me/haxurus_official" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <img src="img/hero/telegram.png" alt="Telegram" />
-          </a>
-          <a href="https://open.spotify.com/user/3wxk0wosgrovu7kpsr7x6mh4a" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-            <img src="img/hero/spotify.png" alt="Spotify" />
-          </a>
-          <a href="https://www.instagram.com/haxurus.vrc" class="quick-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="img/hero/instagram.png" alt="Instagram" />
-          </a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="block">
-        <button class="link-card about-trigger" type="button" data-modal-open="about-modal">
-          <div class="card-icon thumb">
-            <img src="img/aboutme.png" alt="About me" />
-          </div>
-          <div class="card-body centered">
-            <span class="card-title fancy">✧༺ About me ༻✧</span>
-          </div>
-          <div class="card-more">⋮</div>
-        </button>
-      </section>
-
-      <section class="category">
-        <h2>Social</h2>
-        <div class="links-grid">
-          <a class="link-card" href="https://t.me/haxurus_official" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/telegram.png" alt="Telegram" /></div>
-            <div class="card-body centered"><span class="card-title">Telegram</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://t.me/limitati_haxbot" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/telegram_bot.png" alt="Telegram Chat Bot" /></div>
-            <div class="card-body centered"><span class="card-title">Telegram (Chat Bot)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/instagram.png" alt="Instagram" /></div>
-            <div class="card-body centered"><span class="card-title">Instagram</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://myanimelist.net/animelist/Haxurus?status=2&order=1&order2=0" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/myanimelist.png" alt="MyAnimeList" /></div>
-            <div class="card-body centered"><span class="card-title">MyAnimeList</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://open.spotify.com/user/3wxk0wosgrovu7kpsr7x6mh4a" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/spotify.png" alt="Spotify" /></div>
-            <div class="card-body centered"><span class="card-title">Spotify (Account)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://x.com/haxurus" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/twitter.png" alt="Twitter/X" /></div>
-            <div class="card-body centered"><span class="card-title">Twitter/X</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card is-inactive" href="https://www.duolingo.com/profile/haxurus?via=share_profile_qr" target="_blank" rel="noopener noreferrer" title="This account is inactive">
-            <div class="card-icon thumb small-thumb"><img src="img/social/duolingo.png" alt="Duolingo" /></div>
-            <div class="card-body centered"><span class="card-title">Duolingo 💤</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card is-inactive" href="https://www.twitch.tv/haxurus" target="_blank" rel="noopener noreferrer" title="This account is inactive">
-            <div class="card-icon thumb small-thumb"><img src="img/social/twitch.png" alt="Twitch" /></div>
-            <div class="card-body centered"><span class="card-title">Twitch 💤</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-        </div>
-      </section>
-
-      <section class="category" id="discord">
-        <h2>Discord</h2>
-        <div class="links-grid">
-          <a class="link-card" href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/discord.png" alt="Discord" /></div>
-            <div class="card-body centered"><span class="card-title">Add me</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://discord.gg/WdBsEJhy33" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/amethyst.png" alt="Amethyst" /></div>
-            <div class="card-body centered"><span class="card-title">Amethyst (Co-Owner)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://discord.gg/celestiaita" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/celestiaitavr.png" alt="Celestia ITA VR" /></div>
-            <div class="card-body centered"><span class="card-title">Celestia ITA VR (Admin)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-        </div>
-      </section>
-
-      <section class="category">
-        <h2>VR Chat</h2>
-        <div class="links-grid">
-          <a class="link-card" href="https://vrchat.com/home/user/usr_0358b1d2-44d8-4434-831b-8526f4a8750a" target="_blank" rel="noopener noreferrer" title="This account is inactive">
-            <div class="card-icon thumb small-thumb"><img src="img/games/vrchat.png" alt="VRChat" /></div>
-            <div class="card-body centered"><span class="card-title">Add me</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-          <a class="link-card" href="https://vrc.group/CELEST.7570" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/social/celestiaitavr.png" alt="Celestia Community" /></div>
-            <div class="card-body centered"><span class="card-title">Join Celestia's Community</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card is-inactive" href="https://vrc.group/GLASS.6778" target="_blank" rel="noopener noreferrer" title="This group is inactive">
-            <div class="card-icon thumb small-thumb"><img src="img/games/touchglasslater.png" alt="Touch Glass Later" /></div>
-            <div class="card-body centered"><span class="card-title">Join Touch Glass Later Group 💤</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-		  
-		  <a class="link-card link-card--banner" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">
-            <div class="link-card-banner-media">
-              <img src="img/games/helixhorizon.png" alt="Explore Helix Horizon World" />
-            </div>
-            <div class="link-card-banner-body">
-              <span class="card-title">Explore Helix Horizon World</span>
-              <div class="card-more">⋮</div>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section class="category">
-        <h2>Games</h2>
-        <div class="links-grid">
-          <a class="link-card" href="https://steam.haxurus.com/" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/games/steam.png" alt="Steam" /></div>
-            <div class="card-body centered"><span class="card-title">Steam</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://heartopia.xd.com/" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/games/heartopia.png" alt="Heartopia" /></div>
-            <div class="card-body centered"><span class="card-title">Heartopia (UID: z301x4c)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://op.gg/lol/summoners/euw/Haxurus-YANG" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/games/lol.png" alt="League of Legends" /></div>
-            <div class="card-body centered"><span class="card-title">LoL (Haxurus#YANG)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://www.fortnite.com/?lang=en-US" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/games/fortnite.png" alt="Fortnite" /></div>
-            <div class="card-body centered"><span class="card-title">Fortnite (Haxurus)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://www.chess.com/member/itshaxu" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/games/chesscom.png" alt="Chess.com" /></div>
-            <div class="card-body centered"><span class="card-title">Chess.com</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://r6.tracker.network/r6siege/profile/ubi/Haxurus/overview" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/games/r6s.png" alt="Rainbow Six Siege" /></div>
-            <div class="card-body centered"><span class="card-title">Rainbow Six Siege</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card" href="https://op.gg/valorant/profile/Haxurus-ITSME" target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/games/valorant.png" alt="Valorant" /></div>
-            <div class="card-body centered"><span class="card-title">Valorant (Haxurus#ITSME)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card age-gated-link" href="#" data-age-href="https://www.roblox.com/users/3748963083/profile" data-age-min="18" data-age-key="roblox-18" data-age-title="Roblox (only 18+)" data-age-message="With the latest Roblox update, this account can talk and interact with people who are at least 21. No point sending me friend requests if you're under 18. Use the other account if you need to." target="_blank" rel="noopener noreferrer">
-            <div class="card-icon thumb small-thumb"><img src="img/games/roblox.png" alt="Roblox 18+ only" /></div>
-            <div class="card-body centered"><span class="card-title">Roblox (18+ only)</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card is-inactive" href="https://www.roblox.com/users/10309314123/profile" target="_blank" rel="noopener noreferrer" title="This profile/account is not active">
-            <div class="card-icon thumb small-thumb"><img src="img/games/roblox.png" alt="Roblox free" /></div>
-            <div class="card-body centered"><span class="card-title">Roblox (free) 💤</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card is-inactive" href="https://deckstats.net/forum/index.php?action=profile;area=forumprofile;u=241157" target="_blank" rel="noopener noreferrer" title="This account is inactive">
-            <div class="card-icon thumb small-thumb"><img src="img/games/magictg.png" alt="Deckstats Magic TG" /></div>
-            <div class="card-body centered"><span class="card-title">Deckstats (Magic TG) 💤</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card is-inactive" href="https://www.bungie.net/7/en/User/Profile/3/4611686018517061557?bgn=Haxurus" target="_blank" rel="noopener noreferrer" title="This account is inactive">
-            <div class="card-icon thumb small-thumb"><img src="img/games/destiny.png" alt="Destiny 2" /></div>
-            <div class="card-body centered"><span class="card-title">Destiny 2 💤</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card is-inactive" href="https://playruneterra.com" target="_blank" rel="noopener noreferrer" title="This account is inactive">
-            <div class="card-icon thumb small-thumb"><img src="img/games/runeterra.png" alt="Runeterra" /></div>
-            <div class="card-body centered"><span class="card-title">Runeterra (Haxurus#YANG) 💤</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-
-          <a class="link-card is-inactive" href="https://www.supremacy1914.it" target="_blank" rel="noopener noreferrer" title="This account is inactive">
-            <div class="card-icon thumb small-thumb"><img src="img/games/supremacy.png" alt="Supremacy 1914" /></div>
-            <div class="card-body centered"><span class="card-title">Supremacy 1914 (xX_Haxurus_Xx) 💤</span></div>
-            <div class="card-more">⋮</div>
-          </a>
-        </div>
-      </section>
-
-      <section class="category" id="spotify">
-        <h2>Some of my playlists</h2>
-        <div class="playlist-grid">
-          <a class="playlist-card" href="https://open.spotify.com/playlist/6YGbleXslt7U4hgTexrMFZ" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/welcome to the cristo party.png" alt="Playlist cover for Cristo Party" />
-            <div class="playlist-info">
-              <span class="playlist-title">Cristo Party</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Party</span>
-                <span class="playlist-tag">Fun</span>
-                <span class="playlist-tag">Dance</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="playlist-card" href="https://open.spotify.com/playlist/2qxHsj6SM57ktlTgEC20zP" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/the hacker house.png" alt="Playlist cover for The Hacker House" />
-            <div class="playlist-info">
-              <span class="playlist-title">The Hacker House</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Coding</span>
-                <span class="playlist-tag">Studying</span>
-                <span class="playlist-tag">Hacking</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="playlist-card" href="https://open.spotify.com/playlist/70trrS8ER7MsiWFwxLZJkc" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/anime are just better.png" alt="Playlist cover for Anime are just better" />
-            <div class="playlist-info">
-              <span class="playlist-title">Anime are just better</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Anime</span>
-                <span class="playlist-tag">Japanese</span>
-                <span class="playlist-tag">Otaku</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="playlist-card" href="https://open.spotify.com/playlist/4dR4d0AP5YQOwGnkxZ9xA3" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/get the power.png" alt="Playlist cover for Get the power" />
-            <div class="playlist-info">
-              <span class="playlist-title">Get the power</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Gym</span>
-                <span class="playlist-tag">Fitness</span>
-                <span class="playlist-tag">Workout</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="playlist-card" href="https://open.spotify.com/playlist/2XKNNEZJZhjINIjOhaIUlY" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/nigthcore.png" alt="Playlist cover for Nightcore" />
-            <div class="playlist-info">
-              <span class="playlist-title">Nightcore</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Nightcore</span>
-                <span class="playlist-tag">Energy</span>
-                <span class="playlist-tag">Speed Up</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="playlist-card" href="https://open.spotify.com/playlist/6pteZ0GtckPNkgclp530ZQ" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/gaming but for pro.png" alt="Playlist cover for Gaming for PRO" />
-            <div class="playlist-info">
-              <span class="playlist-title">Gaming for PRO</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Gaming</span>
-                <span class="playlist-tag">Discord</span>
-                <span class="playlist-tag">Focus</span>
-              </div>
-            </div>
-          </a>
-		  
-		  <a class="playlist-card" href="https://open.spotify.com/playlist/3sVWKeDoE0vYXoWIGqWdpr" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/office pub.png" alt="Playlist cover for Office PUB" />
-            <div class="playlist-info">
-              <span class="playlist-title">Office PUB</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Office</span>
-                <span class="playlist-tag">Work</span>
-                <span class="playlist-tag">Productivity</span>
-              </div>
-            </div>
-          </a>
-		  
-		  <a class="playlist-card" href="https://open.spotify.com/playlist/0QeNseQfXBGE75xWZM7rYH" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/sad is my mood.png" alt="Playlist cover for Sad is my mood" />
-            <div class="playlist-info">
-              <span class="playlist-title">Sad is my mood</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Alone</span>
-                <span class="playlist-tag">Calm</span>
-                <span class="playlist-tag">Pain</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="playlist-card" href="https://open.spotify.com/playlist/3IsxNA1XpiMXdr9l2Pfopx" target="_blank" rel="noopener noreferrer">
-            <img src="img/spotify/keep calm dude.png" alt="Playlist cover for Keep calm dude" />
-            <div class="playlist-info">
-              <span class="playlist-title">Keep calm dude</span>
-              <div class="playlist-tags" aria-label="Playlist tags">
-                <span class="playlist-tag">Relax</span>
-                <span class="playlist-tag">Study</span>
-                <span class="playlist-tag">Cozy</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-      <footer class="site-footer" aria-label="Copyright and credits">
-        <div class="site-footer__inner">
-          <h2>Copyright &amp; Credits</h2>
-          <p>
+<nav aria-label="Quick links" class="quick-links">
+<a aria-label="Email" class="quick-link" href="mailto:haxurus@icloud.com">
+<img alt="Email" src="img/hero/mail.png"/>
+</a>
+<a aria-label="Discord" class="quick-link" href="https://discord.com/users/378959098164674560" rel="noopener noreferrer" target="_blank">
+<img alt="Discord" src="img/hero/discord.png"/>
+</a>
+<a aria-label="Telegram" class="quick-link" href="https://t.me/haxurus_official" rel="noopener noreferrer" target="_blank">
+<img alt="Telegram" src="img/hero/telegram.png"/>
+</a>
+<a aria-label="Spotify" class="quick-link" href="https://open.spotify.com/user/3wxk0wosgrovu7kpsr7x6mh4a" rel="noopener noreferrer" target="_blank">
+<img alt="Spotify" src="img/hero/spotify.png"/>
+</a>
+<a aria-label="Instagram" class="quick-link" href="https://www.instagram.com/haxurus.vrc" rel="noopener noreferrer" target="_blank">
+<img alt="Instagram" src="img/hero/instagram.png"/>
+</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="block">
+<button class="link-card about-trigger" data-modal-open="about-modal" type="button">
+<div class="card-icon thumb">
+<img alt="About me" src="img/aboutme.png"/>
+</div>
+<div class="card-body centered">
+<span class="card-title fancy">✧༺ About me ༻✧</span>
+</div>
+<div class="card-more">⋮</div>
+</button>
+</section>
+<section class="category">
+<h2>Social</h2>
+<div class="links-grid">
+<a class="link-card" href="https://t.me/haxurus_official" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Telegram" src="img/social/telegram.png"/></div>
+<div class="card-body centered"><span class="card-title">Telegram</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://t.me/limitati_haxbot" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Telegram Chat Bot" src="img/social/telegram_bot.png"/></div>
+<div class="card-body centered"><span class="card-title">Telegram (Chat Bot)</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://instagram.com/haxurus.vrc" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Instagram" src="img/social/instagram.png"/></div>
+<div class="card-body centered"><span class="card-title">Instagram</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://myanimelist.net/animelist/Haxurus?status=2&amp;order=1&amp;order2=0" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="MyAnimeList" src="img/social/myanimelist.png"/></div>
+<div class="card-body centered"><span class="card-title">MyAnimeList</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://open.spotify.com/user/3wxk0wosgrovu7kpsr7x6mh4a" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Spotify" src="img/social/spotify.png"/></div>
+<div class="card-body centered"><span class="card-title">Spotify (Account)</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://x.com/haxurus" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Twitter/X" src="img/social/twitter.png"/></div>
+<div class="card-body centered"><span class="card-title">Twitter/X</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a aria-label="Duolingo 💤 — inactive account" class="link-card is-inactive" href="https://www.duolingo.com/profile/haxurus?via=share_profile_qr" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Duolingo" src="img/social/duolingo.png"/></div>
+<div class="card-body centered"><span class="card-title">Duolingo 💤</span><span class="card-subtitle">Inactive account</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a aria-label="Twitch 💤 — inactive account" class="link-card is-inactive" href="https://www.twitch.tv/haxurus" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Twitch" src="img/social/twitch.png"/></div>
+<div class="card-body centered"><span class="card-title">Twitch 💤</span><span class="card-subtitle">Inactive account</span></div>
+<div class="card-more">⋮</div>
+</a>
+</div>
+</section>
+<section class="category" id="discord">
+<h2>Discord</h2>
+<div class="links-grid">
+<a class="link-card" href="https://discord.com/users/378959098164674560" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Discord" src="img/social/discord.png"/></div>
+<div class="card-body centered"><span class="card-title">Add me</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://discord.gg/WdBsEJhy33" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Amethyst" src="img/social/amethyst.png"/></div>
+<div class="card-body centered"><span class="card-title">Amethyst (Co-Owner)</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://discord.gg/celestiaita" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Celestia ITA VR" src="img/social/celestiaitavr.png"/></div>
+<div class="card-body centered"><span class="card-title">Celestia ITA VR (Admin)</span></div>
+<div class="card-more">⋮</div>
+</a>
+</div>
+</section>
+<section class="category">
+<h2>VRChat</h2>
+<div class="links-grid">
+<a aria-label="Add me — inactive account" class="link-card is-inactive" href="https://vrchat.com/home/user/usr_0358b1d2-44d8-4434-831b-8526f4a8750a" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="VRChat" src="img/games/vrchat.png"/></div>
+<div class="card-body centered"><span class="card-title">Add me</span><span class="card-subtitle">Inactive account</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://vrc.group/CELEST.7570" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Celestia Community" src="img/social/celestiaitavr.png"/></div>
+<div class="card-body centered"><span class="card-title">Join Celestia's Community</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a aria-label="Join Touch Glass Later Group 💤 — inactive group" class="link-card is-inactive" href="https://vrc.group/GLASS.6778" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Touch Glass Later" src="img/games/touchglasslater.png"/></div>
+<div class="card-body centered"><span class="card-title">Join Touch Glass Later Group 💤</span><span class="card-subtitle">Inactive group</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card link-card--banner" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" rel="noopener noreferrer" target="_blank">
+<div class="link-card-banner-media">
+<img alt="Explore Helix Horizon World" src="img/games/helixhorizon.png"/>
+</div>
+<div class="link-card-banner-body">
+<span class="card-title">Explore Helix Horizon World</span>
+<div class="card-more">⋮</div>
+</div>
+</a>
+</div>
+</section>
+<section class="category">
+<h2>Games</h2>
+<div class="links-grid">
+<a class="link-card" href="https://steam.haxurus.com/" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Steam" src="img/games/steam.png"/></div>
+<div class="card-body centered"><span class="card-title">Steam</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://heartopia.xd.com/" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Heartopia" src="img/games/heartopia.png"/></div>
+<div class="card-body centered"><span class="card-title">Heartopia (UID: z301x4c)</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://op.gg/lol/summoners/euw/Haxurus-YANG" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="League of Legends" src="img/games/lol.png"/></div>
+<div class="card-body centered"><span class="card-title">LoL (Haxurus#YANG)</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://www.fortnite.com/?lang=en-US" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Fortnite" src="img/games/fortnite.png"/></div>
+<div class="card-body centered"><span class="card-title">Fortnite (Haxurus)</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://www.chess.com/member/itshaxu" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Chess.com" src="img/games/chesscom.png"/></div>
+<div class="card-body centered"><span class="card-title">Chess.com</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://r6.tracker.network/r6siege/profile/ubi/Haxurus/overview" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Rainbow Six Siege" src="img/games/r6s.png"/></div>
+<div class="card-body centered"><span class="card-title">Rainbow Six Siege</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card" href="https://op.gg/valorant/profile/Haxurus-ITSME" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Valorant" src="img/games/valorant.png"/></div>
+<div class="card-body centered"><span class="card-title">Valorant (Haxurus#ITSME)</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a class="link-card age-gated-link" data-age-href="https://www.roblox.com/users/3748963083/profile" data-age-key="roblox-18" data-age-message="With the latest Roblox update, this account can talk and interact with people who are at least 21. No point sending me friend requests if you're under 18. Use the other account if you need to." data-age-min="18" data-age-title="Roblox (only 18+)" href="#" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Roblox 18+ only" src="img/games/roblox.png"/></div>
+<div class="card-body centered"><span class="card-title">Roblox (18+ only)</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a aria-label="Roblox (free) 💤 — inactive account" class="link-card is-inactive" href="https://www.roblox.com/users/10309314123/profile" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Roblox free" src="img/games/roblox.png"/></div>
+<div class="card-body centered"><span class="card-title">Roblox (free) 💤</span><span class="card-subtitle">Inactive account</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a aria-label="Deckstats (Magic TG) 💤 — inactive account" class="link-card is-inactive" href="https://deckstats.net/forum/index.php?action=profile;area=forumprofile;u=241157" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Deckstats Magic TG" src="img/games/magictg.png"/></div>
+<div class="card-body centered"><span class="card-title">Deckstats (Magic TG) 💤</span><span class="card-subtitle">Inactive account</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a aria-label="Destiny 2 💤 — inactive account" class="link-card is-inactive" href="https://www.bungie.net/7/en/User/Profile/3/4611686018517061557?bgn=Haxurus" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Destiny 2" src="img/games/destiny.png"/></div>
+<div class="card-body centered"><span class="card-title">Destiny 2 💤</span><span class="card-subtitle">Inactive account</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a aria-label="Runeterra (Haxurus#YANG) 💤 — inactive account" class="link-card is-inactive" href="https://playruneterra.com" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Runeterra" src="img/games/runeterra.png"/></div>
+<div class="card-body centered"><span class="card-title">Runeterra (Haxurus#YANG) 💤</span><span class="card-subtitle">Inactive account</span></div>
+<div class="card-more">⋮</div>
+</a>
+<a aria-label="Supremacy 1914 (xX_Haxurus_Xx) 💤 — inactive account" class="link-card is-inactive" href="https://www.supremacy1914.it" rel="noopener noreferrer" target="_blank">
+<div class="card-icon thumb small-thumb"><img alt="Supremacy 1914" src="img/games/supremacy.png"/></div>
+<div class="card-body centered"><span class="card-title">Supremacy 1914 (xX_Haxurus_Xx) 💤</span><span class="card-subtitle">Inactive account</span></div>
+<div class="card-more">⋮</div>
+</a>
+</div>
+</section>
+<section class="category" id="spotify">
+<h2>Some of my playlists</h2>
+<div class="playlist-grid">
+<a class="playlist-card" href="https://open.spotify.com/playlist/6YGbleXslt7U4hgTexrMFZ" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for Cristo Party" src="img/spotify/welcome to the cristo party.png"/>
+<div class="playlist-info">
+<span class="playlist-title">Cristo Party</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Party</span>
+<span class="playlist-tag">Fun</span>
+<span class="playlist-tag">Dance</span>
+</div>
+</div>
+</a>
+<a class="playlist-card" href="https://open.spotify.com/playlist/2qxHsj6SM57ktlTgEC20zP" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for The Hacker House" src="img/spotify/the hacker house.png"/>
+<div class="playlist-info">
+<span class="playlist-title">The Hacker House</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Coding</span>
+<span class="playlist-tag">Studying</span>
+<span class="playlist-tag">Hacking</span>
+</div>
+</div>
+</a>
+<a class="playlist-card" href="https://open.spotify.com/playlist/70trrS8ER7MsiWFwxLZJkc" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for Anime are just better" src="img/spotify/anime are just better.png"/>
+<div class="playlist-info">
+<span class="playlist-title">Anime are just better</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Anime</span>
+<span class="playlist-tag">Japanese</span>
+<span class="playlist-tag">Otaku</span>
+</div>
+</div>
+</a>
+<a class="playlist-card" href="https://open.spotify.com/playlist/4dR4d0AP5YQOwGnkxZ9xA3" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for Get the power" src="img/spotify/get the power.png"/>
+<div class="playlist-info">
+<span class="playlist-title">Get the power</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Gym</span>
+<span class="playlist-tag">Fitness</span>
+<span class="playlist-tag">Workout</span>
+</div>
+</div>
+</a>
+<a class="playlist-card" href="https://open.spotify.com/playlist/2XKNNEZJZhjINIjOhaIUlY" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for Nightcore" src="img/spotify/nigthcore.png"/>
+<div class="playlist-info">
+<span class="playlist-title">Nightcore</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Nightcore</span>
+<span class="playlist-tag">Energy</span>
+<span class="playlist-tag">Speed Up</span>
+</div>
+</div>
+</a>
+<a class="playlist-card" href="https://open.spotify.com/playlist/6pteZ0GtckPNkgclp530ZQ" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for Gaming for PRO" src="img/spotify/gaming but for pro.png"/>
+<div class="playlist-info">
+<span class="playlist-title">Gaming for PRO</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Gaming</span>
+<span class="playlist-tag">Discord</span>
+<span class="playlist-tag">Focus</span>
+</div>
+</div>
+</a>
+<a class="playlist-card" href="https://open.spotify.com/playlist/3sVWKeDoE0vYXoWIGqWdpr" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for Office PUB" src="img/spotify/office pub.png"/>
+<div class="playlist-info">
+<span class="playlist-title">Office PUB</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Office</span>
+<span class="playlist-tag">Work</span>
+<span class="playlist-tag">Productivity</span>
+</div>
+</div>
+</a>
+<a class="playlist-card" href="https://open.spotify.com/playlist/0QeNseQfXBGE75xWZM7rYH" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for Sad is my mood" src="img/spotify/sad is my mood.png"/>
+<div class="playlist-info">
+<span class="playlist-title">Sad is my mood</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Alone</span>
+<span class="playlist-tag">Calm</span>
+<span class="playlist-tag">Pain</span>
+</div>
+</div>
+</a>
+<a class="playlist-card" href="https://open.spotify.com/playlist/3IsxNA1XpiMXdr9l2Pfopx" rel="noopener noreferrer" target="_blank">
+<img alt="Playlist cover for Keep calm dude" src="img/spotify/keep calm dude.png"/>
+<div class="playlist-info">
+<span class="playlist-title">Keep calm dude</span>
+<div aria-label="Playlist tags" class="playlist-tags">
+<span class="playlist-tag">Relax</span>
+<span class="playlist-tag">Study</span>
+<span class="playlist-tag">Cozy</span>
+</div>
+</div>
+</a>
+</div>
+</section>
+<footer aria-label="Copyright and credits" class="site-footer">
+<div class="site-footer__inner">
+<h2>Copyright &amp; Credits</h2>
+<p>
             Haxurus © Copyright 2016-<span id="current-year"></span>. All Rights Reserved.
           </p>
-          <p>
+<p>
             This website was entirely created with <strong>love</strong> 💚 by <strong>@Haxurus</strong>.
             The graphics were created by <strong>@Haxurus</strong> with the help of ChatGPT.
           </p>
-          <p>
+<p>
             Third-party app and social media icons remain the property of their respective owners and are used only for identification and linking purposes.
             No ownership or endorsement is claimed.
           </p>
-          <p>
+<p>
             For any issue or request, please contact
             <a href="mailto:haxurus@icloud.com">haxurus@icloud.com</a>.
           </p>
-        </div>
-      </footer>
-    </main>
-  </div>
-
-  <div class="modal" id="about-modal" aria-hidden="true">
-    <div class="modal-backdrop" data-modal-close></div>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="about-title" tabindex="-1">
-      <button class="modal-close" type="button" aria-label="Close" data-modal-close>×</button>
-      <div class="modal-content">
-        <h3 id="about-title" class="fancy">✧༺ About me ༻✧</h3>
-
-        <h4 class="fancy small">ೃ⁀➷ About me</h4>
-        <p>
+</div>
+</footer>
+</main>
+</div>
+<div aria-hidden="true" class="modal" id="about-modal">
+<div class="modal-backdrop" data-modal-close=""></div>
+<div aria-labelledby="about-title" aria-modal="true" class="modal-panel" role="dialog" tabindex="-1">
+<button aria-label="Close" class="modal-close" data-modal-close="" type="button">×</button>
+<div class="modal-content">
+<h3 class="fancy" id="about-title">✧༺ About me ༻✧</h3>
+<h4 class="fancy small">ೃ⁀➷ About me</h4>
+<p>
           Hey, I’m Haxurus — a 24-year-old Italian guy based near Milan. I work in IT as a specialist and systems administrator, balancing logic, problem-solving, and a genuine love for the digital world. I speak Italian and English fluently, and I’m currently studying Japanese.
         </p>
-
-        <h4 class="fancy small">ೃ⁀➷ Personality</h4>
-        <p>
+<h4 class="fancy small">ೃ⁀➷ Personality</h4>
+<p>
           I’m a calm and laid-back introvert who enjoys quiet vibes and meaningful connections. I may seem a little reserved at first, but I’m always attentive, thoughtful, and open to genuine conversations.
         </p>
-
-        <h4 class="fancy small">ೃ⁀➷ Interests</h4>
-        <p>
-          My world mostly revolves around PC gaming, anime, fantasy, and tech. I spend my time playing games like League of Legends, Valorant, Minecraft, and Roblox, but I’m also into fantasy books, music, Dungeons & Dragons, cybersecurity, and building worlds and avatars in VRChat.
+<h4 class="fancy small">ೃ⁀➷ Interests</h4>
+<p>
+          My world mostly revolves around PC gaming, anime, fantasy, and tech. I spend my time playing games like League of Legends, Valorant, Minecraft, and Roblox, but I’m also into fantasy books, music, Dungeons &amp; Dragons, cybersecurity, and building worlds and avatars in VRChat.
 		</p>
-
-        <h4 class="fancy small">ೃ⁀➷ Contact</h4>
-        <p>
+<h4 class="fancy small">ೃ⁀➷ Contact</h4>
+<p>
           If you want to reach out, feel free to do so. Thanks for stopping by my little corner of the internet — and have a lovely day ✦
         </p>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </body>
 </html>
