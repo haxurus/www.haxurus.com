@@ -193,7 +193,7 @@
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   const touchQuery = window.matchMedia('(max-width: 720px), (pointer: coarse), (hover: none)');
   const SELECTOR = '.hero, .animated-sections .category, .site-footer';
-  const EDGE_TOLERANCE = 12;
+  const EDGE_TOLERANCE = 84;
   const DELTA_THRESHOLD = 90;
   let locked = false;
   let accumulatedDelta = 0;
@@ -206,15 +206,21 @@
     return !motionQuery.matches && !touchQuery.matches && getSections().length > 1;
   }
 
+  function visibleAmount(section) {
+    const rect = section.getBoundingClientRect();
+    const visibleTop = Math.max(rect.top, 0);
+    const visibleBottom = Math.min(rect.bottom, window.innerHeight);
+    return Math.max(0, visibleBottom - visibleTop);
+  }
+
   function currentIndex(sections) {
-    const viewportTop = window.scrollY;
     let bestIndex = 0;
-    let bestDistance = Infinity;
+    let bestVisible = -1;
 
     sections.forEach((section, index) => {
-      const distance = Math.abs(viewportTop - section.offsetTop);
-      if (distance < bestDistance) {
-        bestDistance = distance;
+      const amount = visibleAmount(section);
+      if (amount > bestVisible) {
+        bestVisible = amount;
         bestIndex = index;
       }
     });
@@ -223,14 +229,11 @@
   }
 
   function sectionState(section) {
-    const top = section.offsetTop;
-    const bottom = top + section.offsetHeight;
-    const viewportTop = window.scrollY;
-    const viewportBottom = viewportTop + window.innerHeight;
+    const rect = section.getBoundingClientRect();
 
     return {
-      atTop: viewportTop <= top + EDGE_TOLERANCE,
-      atBottom: viewportBottom >= bottom - EDGE_TOLERANCE,
+      atTop: rect.top >= -EDGE_TOLERANCE,
+      atBottom: rect.bottom <= window.innerHeight + EDGE_TOLERANCE,
     };
   }
 
