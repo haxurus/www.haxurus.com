@@ -114,7 +114,7 @@
 (() => {
   const css = `
     html {
-      scroll-snap-type: y mandatory;
+      scroll-snap-type: y proximity;
       scroll-padding-top: 0;
     }
 
@@ -126,7 +126,7 @@
     .animated-sections .category,
     .site-footer {
       scroll-snap-align: start;
-      scroll-snap-stop: always;
+      scroll-snap-stop: normal;
     }
 
     .animated-sections {
@@ -193,8 +193,9 @@
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
   const touchQuery = window.matchMedia('(max-width: 720px), (pointer: coarse), (hover: none)');
   const SELECTOR = '.hero, .animated-sections .category, .site-footer';
+  const EDGE_TOLERANCE = 12;
+  const DELTA_THRESHOLD = 90;
   let locked = false;
-  let lastTargetIndex = -1;
   let accumulatedDelta = 0;
 
   function getSections() {
@@ -206,13 +207,12 @@
   }
 
   function currentIndex(sections) {
-    const viewportMiddle = window.scrollY + window.innerHeight / 2;
+    const viewportTop = window.scrollY;
     let bestIndex = 0;
     let bestDistance = Infinity;
 
     sections.forEach((section, index) => {
-      const sectionMiddle = section.offsetTop + section.offsetHeight / 2;
-      const distance = Math.abs(viewportMiddle - sectionMiddle);
+      const distance = Math.abs(viewportTop - section.offsetTop);
       if (distance < bestDistance) {
         bestDistance = distance;
         bestIndex = index;
@@ -222,25 +222,51 @@
     return bestIndex;
   }
 
+  function sectionState(section) {
+    const top = section.offsetTop;
+    const bottom = top + section.offsetHeight;
+    const viewportTop = window.scrollY;
+    const viewportBottom = viewportTop + window.innerHeight;
+
+    return {
+      atTop: viewportTop <= top + EDGE_TOLERANCE,
+      atBottom: viewportBottom >= bottom - EDGE_TOLERANCE,
+    };
+  }
+
   function scrollToIndex(index) {
     const sections = getSections();
     const target = sections[index];
     if (!target) return;
 
     locked = true;
-    lastTargetIndex = index;
     accumulatedDelta = 0;
 
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     window.setTimeout(() => {
       locked = false;
-    }, 820);
+    }, 760);
   }
 
   function handleWheel(event) {
     if (!enabled()) return;
     if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+
+    const sections = getSections();
+    const index = currentIndex(sections);
+    const current = sections[index];
+    if (!current) return;
+
+    const direction = event.deltaY > 0 ? 1 : -1;
+    const { atTop, atBottom } = sectionState(current);
+    const canLeaveDown = direction > 0 && atBottom && index < sections.length - 1;
+    const canLeaveUp = direction < 0 && atTop && index > 0;
+
+    if (!canLeaveDown && !canLeaveUp) {
+      accumulatedDelta = 0;
+      return;
+    }
 
     event.preventDefault();
 
@@ -248,31 +274,27 @@
 
     accumulatedDelta += event.deltaY;
 
-    if (Math.abs(accumulatedDelta) < 42) return;
+    if (Math.abs(accumulatedDelta) < DELTA_THRESHOLD) return;
 
-    const sections = getSections();
-    const baseIndex = lastTargetIndex >= 0 ? currentIndex(sections) : currentIndex(sections);
-    const direction = accumulatedDelta > 0 ? 1 : -1;
-    const nextIndex = Math.max(0, Math.min(sections.length - 1, baseIndex + direction));
-
-    if (nextIndex !== baseIndex) {
-      scrollToIndex(nextIndex);
-    } else {
-      accumulatedDelta = 0;
-    }
+    scrollToIndex(index + direction);
   }
 
   function handleKeydown(event) {
     if (!enabled() || locked) return;
+
     const sections = getSections();
     const index = currentIndex(sections);
+    const current = sections[index];
+    if (!current) return;
 
-    if (['ArrowDown', 'PageDown', ' '].includes(event.key)) {
+    const { atTop, atBottom } = sectionState(current);
+
+    if (['ArrowDown', 'PageDown', ' '].includes(event.key) && atBottom) {
       event.preventDefault();
       scrollToIndex(Math.min(sections.length - 1, index + 1));
     }
 
-    if (['ArrowUp', 'PageUp'].includes(event.key)) {
+    if (['ArrowUp', 'PageUp'].includes(event.key) && atTop) {
       event.preventDefault();
       scrollToIndex(Math.max(0, index - 1));
     }
