@@ -25,6 +25,144 @@
 <meta content="@Haxurus" name="twitter:site"/>
 <meta content="@Haxurus" name="twitter:creator"/>
 <link href="style.css" rel="stylesheet"/>
+<style>
+.site-nav{
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  z-index: 1200;
+  width: min(calc(100% - 28px), 1120px);
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+  box-shadow: 0 18px 42px rgba(3, 14, 12, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+}
+
+.site-nav__inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 58px;
+  padding: 8px 12px 8px 20px;
+}
+
+.site-nav__brand{
+  flex: 0 0 auto;
+  color: var(--accent-2);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.site-nav__links{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-nav__links::-webkit-scrollbar{
+  display: none;
+}
+
+.site-nav__links a{
+  flex: 0 0 auto;
+  padding: 10px 13px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.site-nav__links a:hover,
+.site-nav__links a:focus-visible{
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.page{
+  width: 100%;
+  max-width: none;
+  padding: 0 0 72px;
+}
+
+.hero{
+  width: 100vw;
+  min-height: clamp(520px, 72vh, 760px);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+main{
+  width: min(100%, var(--maxw));
+  margin: 44px auto 0;
+  padding: 0 18px;
+}
+
+.category,
+.site-footer{
+  scroll-margin-top: 96px;
+}
+
+body[data-device="tablet"] .page,
+body[data-device="desktop"] .page,
+@media (max-width: 640px){
+  .page{
+    padding-inline: 0;
+  }
+}
+
+body[data-device="tablet"] .hero,
+body[data-device="desktop"] .hero{
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+body[data-device="tablet"] main,
+body[data-device="desktop"] main{
+  padding-inline: 26px;
+  padding-bottom: 86px;
+}
+
+@media (max-width: 720px){
+  .site-nav{
+    top: 10px;
+    width: min(calc(100% - 20px), 1120px);
+    border-radius: 24px;
+  }
+
+  .site-nav__inner{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .site-nav__links{
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .site-nav__links a{
+    padding: 9px 11px;
+    font-size: 0.84rem;
+  }
+
+  .hero{
+    min-height: 520px;
+  }
+}
+</style>
 <script defer="" src="script_loader.js"></script>
 <script defer="" src="script.js"></script>
 </head>
@@ -43,7 +181,20 @@
 <source src="img/background.webm" type="video/webm"/>
 </video>
 <canvas aria-hidden="true" id="particle-bg"></canvas>
-<div class="page">
+<nav aria-label="Main navigation" class="site-nav">
+<div class="site-nav__inner">
+<a class="site-nav__brand" href="#top">Haxurus</a>
+<div class="site-nav__links">
+<a href="#social">Social</a>
+<a href="#discord">Discord</a>
+<a href="#vrchat">VRChat</a>
+<a href="#games">Games</a>
+<a href="#spotify">Playlists</a>
+<a href="#credits">Credits</a>
+</div>
+</div>
+</nav>
+<div class="page" id="top">
 <header class="hero">
 <div class="hero-overlay"></div>
 <div class="hero-content">
@@ -72,7 +223,7 @@
 </div>
 </header>
 <main>
-<section class="category">
+<section class="category" id="social">
 <h2>Social</h2>
 <div class="links-grid">
 <a class="link-card" href="https://t.me/haxurus_official" rel="noopener noreferrer" target="_blank">
@@ -132,7 +283,7 @@
 </a>
 </div>
 </section>
-<section class="category">
+<section class="category" id="vrchat">
 <h2>VRChat</h2>
 <div class="links-grid">
 <a aria-label="Add me — inactive account" class="link-card is-inactive" href="https://vrchat.com/home/user/usr_0358b1d2-44d8-4434-831b-8526f4a8750a" rel="noopener noreferrer" target="_blank">
@@ -161,7 +312,7 @@
 </a>
 </div>
 </section>
-<section class="category">
+<section class="category" id="games">
 <h2>Games</h2>
 <div class="links-grid">
 <a class="link-card" href="https://steam.haxurus.com/" rel="noopener noreferrer" target="_blank">
@@ -363,7 +514,7 @@
 </a>
 </div>
 </section>
-<footer aria-label="Copyright and credits" class="site-footer">
+<footer aria-label="Copyright and credits" class="site-footer" id="credits">
 <div class="site-footer__inner">
 <h2>Copyright &amp; Credits</h2>
 <p>
