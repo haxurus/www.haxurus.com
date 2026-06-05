@@ -118,6 +118,10 @@
       scroll-padding-top: 0;
     }
 
+    body {
+      overscroll-behavior-y: contain;
+    }
+
     .hero,
     .animated-sections .category,
     .site-footer {
@@ -182,4 +186,98 @@
   style.setAttribute('data-full-section-snapping', '');
   style.textContent = css;
   document.head.appendChild(style);
+})();
+
+/* automatic section advance */
+(() => {
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const touchQuery = window.matchMedia('(max-width: 720px), (pointer: coarse), (hover: none)');
+  const SELECTOR = '.hero, .animated-sections .category, .site-footer';
+  let locked = false;
+  let lastTargetIndex = -1;
+  let accumulatedDelta = 0;
+
+  function getSections() {
+    return [...document.querySelectorAll(SELECTOR)].filter((section) => section.offsetParent !== null);
+  }
+
+  function enabled() {
+    return !motionQuery.matches && !touchQuery.matches && getSections().length > 1;
+  }
+
+  function currentIndex(sections) {
+    const viewportMiddle = window.scrollY + window.innerHeight / 2;
+    let bestIndex = 0;
+    let bestDistance = Infinity;
+
+    sections.forEach((section, index) => {
+      const sectionMiddle = section.offsetTop + section.offsetHeight / 2;
+      const distance = Math.abs(viewportMiddle - sectionMiddle);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestIndex = index;
+      }
+    });
+
+    return bestIndex;
+  }
+
+  function scrollToIndex(index) {
+    const sections = getSections();
+    const target = sections[index];
+    if (!target) return;
+
+    locked = true;
+    lastTargetIndex = index;
+    accumulatedDelta = 0;
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    window.setTimeout(() => {
+      locked = false;
+    }, 820);
+  }
+
+  function handleWheel(event) {
+    if (!enabled()) return;
+    if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+
+    event.preventDefault();
+
+    if (locked) return;
+
+    accumulatedDelta += event.deltaY;
+
+    if (Math.abs(accumulatedDelta) < 42) return;
+
+    const sections = getSections();
+    const baseIndex = lastTargetIndex >= 0 ? currentIndex(sections) : currentIndex(sections);
+    const direction = accumulatedDelta > 0 ? 1 : -1;
+    const nextIndex = Math.max(0, Math.min(sections.length - 1, baseIndex + direction));
+
+    if (nextIndex !== baseIndex) {
+      scrollToIndex(nextIndex);
+    } else {
+      accumulatedDelta = 0;
+    }
+  }
+
+  function handleKeydown(event) {
+    if (!enabled() || locked) return;
+    const sections = getSections();
+    const index = currentIndex(sections);
+
+    if (['ArrowDown', 'PageDown', ' '].includes(event.key)) {
+      event.preventDefault();
+      scrollToIndex(Math.min(sections.length - 1, index + 1));
+    }
+
+    if (['ArrowUp', 'PageUp'].includes(event.key)) {
+      event.preventDefault();
+      scrollToIndex(Math.max(0, index - 1));
+    }
+  }
+
+  window.addEventListener('wheel', handleWheel, { passive: false });
+  window.addEventListener('keydown', handleKeydown);
 })();
