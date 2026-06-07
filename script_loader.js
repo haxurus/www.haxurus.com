@@ -193,3 +193,15 @@
   style.textContent = css;
   document.head.appendChild(style);
 })();
+
+/* hero glitch title */
+(() => {
+  const title = document.querySelector('.hero-content > h1');
+  if (!title || title.classList.contains('glitch-logo')) return;
+
+  const text = 'Haxurus';
+  title.classList.add('glitch-logo');
+  title.dataset.text = text;
+  title.setAttribute('aria-label', text);
+  title.innerHTML = '<span aria-hidden="true">Haxurus</span><i class="scanlines" aria-hidden="true"></i><i class="noise" aria-hidden="true"></i>';
+})();
