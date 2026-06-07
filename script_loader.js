@@ -114,19 +114,19 @@
 (() => {
   const css = `
     html {
-      scroll-snap-type: y proximity;
+      scroll-snap-type: y mandatory;
       scroll-padding-top: 0;
     }
 
     body {
-      overscroll-behavior-y: contain;
+      overscroll-behavior-y: auto;
     }
 
     .hero,
     .animated-sections .category,
     .site-footer {
       scroll-snap-align: center;
-      scroll-snap-stop: normal;
+      scroll-snap-stop: always;
     }
 
     .animated-sections {
@@ -192,127 +192,4 @@
   style.setAttribute('data-full-section-snapping', '');
   style.textContent = css;
   document.head.appendChild(style);
-})();
-
-/* automatic section advance */
-(() => {
-  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const touchQuery = window.matchMedia('(max-width: 720px), (pointer: coarse), (hover: none)');
-  const SELECTOR = '.hero, .animated-sections .category, .site-footer';
-  const EDGE_TOLERANCE = 84;
-  const DELTA_THRESHOLD = 90;
-  let locked = false;
-  let accumulatedDelta = 0;
-
-  function getSections() {
-    return [...document.querySelectorAll(SELECTOR)].filter((section) => section.offsetParent !== null);
-  }
-
-  function enabled() {
-    return !motionQuery.matches && !touchQuery.matches && getSections().length > 1;
-  }
-
-  function visibleAmount(section) {
-    const rect = section.getBoundingClientRect();
-    const visibleTop = Math.max(rect.top, 0);
-    const visibleBottom = Math.min(rect.bottom, window.innerHeight);
-    return Math.max(0, visibleBottom - visibleTop);
-  }
-
-  function currentIndex(sections) {
-    let bestIndex = 0;
-    let bestVisible = -1;
-
-    sections.forEach((section, index) => {
-      const amount = visibleAmount(section);
-      if (amount > bestVisible) {
-        bestVisible = amount;
-        bestIndex = index;
-      }
-    });
-
-    return bestIndex;
-  }
-
-  function sectionState(section) {
-    const rect = section.getBoundingClientRect();
-
-    return {
-      atTop: rect.top >= -EDGE_TOLERANCE,
-      atBottom: rect.bottom <= window.innerHeight + EDGE_TOLERANCE,
-    };
-  }
-
-  function targetTop(section) {
-    return Math.max(0, section.offsetTop + (section.offsetHeight - window.innerHeight) / 2);
-  }
-
-  function scrollToIndex(index) {
-    const sections = getSections();
-    const target = sections[index];
-    if (!target) return;
-
-    locked = true;
-    accumulatedDelta = 0;
-
-    window.scrollTo({ top: targetTop(target), behavior: 'smooth' });
-
-    window.setTimeout(() => {
-      locked = false;
-    }, 760);
-  }
-
-  function handleWheel(event) {
-    if (!enabled()) return;
-    if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
-
-    const sections = getSections();
-    const index = currentIndex(sections);
-    const current = sections[index];
-    if (!current) return;
-
-    const direction = event.deltaY > 0 ? 1 : -1;
-    const { atTop, atBottom } = sectionState(current);
-    const canLeaveDown = direction > 0 && atBottom && index < sections.length - 1;
-    const canLeaveUp = direction < 0 && atTop && index > 0;
-
-    if (!canLeaveDown && !canLeaveUp) {
-      accumulatedDelta = 0;
-      return;
-    }
-
-    event.preventDefault();
-
-    if (locked) return;
-
-    accumulatedDelta += event.deltaY;
-
-    if (Math.abs(accumulatedDelta) < DELTA_THRESHOLD) return;
-
-    scrollToIndex(index + direction);
-  }
-
-  function handleKeydown(event) {
-    if (!enabled() || locked) return;
-
-    const sections = getSections();
-    const index = currentIndex(sections);
-    const current = sections[index];
-    if (!current) return;
-
-    const { atTop, atBottom } = sectionState(current);
-
-    if (['ArrowDown', 'PageDown', ' '].includes(event.key) && atBottom) {
-      event.preventDefault();
-      scrollToIndex(Math.min(sections.length - 1, index + 1));
-    }
-
-    if (['ArrowUp', 'PageUp'].includes(event.key) && atTop) {
-      event.preventDefault();
-      scrollToIndex(Math.max(0, index - 1));
-    }
-  }
-
-  window.addEventListener('wheel', handleWheel, { passive: false });
-  window.addEventListener('keydown', handleKeydown);
 })();
