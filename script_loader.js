@@ -125,7 +125,7 @@
     .hero,
     .animated-sections .category,
     .site-footer {
-      scroll-snap-align: start;
+      scroll-snap-align: center;
       scroll-snap-stop: normal;
     }
 
@@ -140,7 +140,7 @@
       min-height: 100svh !important;
       margin-inline: auto !important;
       box-sizing: border-box;
-      padding: 112px 26px 64px !important;
+      padding: 84px 26px !important;
       opacity: 1 !important;
       transform: none !important;
       filter: none !important;
@@ -166,6 +166,12 @@
     @media (max-width: 720px) {
       html {
         scroll-snap-type: none;
+      }
+
+      .hero,
+      .animated-sections .category,
+      .site-footer {
+        scroll-snap-align: start;
       }
 
       .animated-sections .category {
@@ -237,6 +243,10 @@
     };
   }
 
+  function targetTop(section) {
+    return Math.max(0, section.offsetTop + (section.offsetHeight - window.innerHeight) / 2);
+  }
+
   function scrollToIndex(index) {
     const sections = getSections();
     const target = sections[index];
@@ -245,7 +255,7 @@
     locked = true;
     accumulatedDelta = 0;
 
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({ top: targetTop(target), behavior: 'smooth' });
 
     window.setTimeout(() => {
       locked = false;
