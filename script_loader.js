@@ -194,6 +194,15 @@
   document.head.appendChild(style);
 })();
 
+/* hero glitch stylesheet */
+(() => {
+  if (document.querySelector('link[href="hero-glitch.css"]')) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'hero-glitch.css';
+  document.head.appendChild(link);
+})();
+
 /* hero glitch title */
 (() => {
   const title = document.querySelector('.hero-content > h1');
