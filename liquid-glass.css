@@ -1,0 +1,138 @@
+/* Liquid glass visual layer */
+:root{
+  --liquid-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.10) 48%, rgba(255, 255, 255, 0.055));
+  --liquid-glass-highlight: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.18) 36%, rgba(255, 255, 255, 0.02) 68%);
+  --liquid-glass-edge: rgba(255, 255, 255, 0.42);
+  --liquid-glass-edge-soft: rgba(255, 255, 255, 0.16);
+  --liquid-glass-shadow: 0 26px 72px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.58), inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.site-nav,
+.hero,
+.link-card,
+.playlist-card,
+.quick-link,
+.site-footer__inner,
+.site-loader__skip{
+  border-color: var(--liquid-glass-edge) !important;
+  background: var(--liquid-glass-bg) !important;
+  box-shadow: var(--liquid-glass-shadow) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(190%) brightness(1.08) !important;
+  backdrop-filter: blur(30px) saturate(190%) brightness(1.08) !important;
+}
+
+.hero{
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04) 42%, rgba(255, 255, 255, 0.12)),
+    linear-gradient(180deg, rgba(4, 14, 10, 0.08), rgba(4, 14, 10, 0.38) 58%, rgba(4, 14, 10, 0.72) 100%),
+    url("img/hero/banner.png") center/cover no-repeat !important;
+}
+
+.site-nav::before,
+.hero::before,
+.link-card::before,
+.playlist-card::before,
+.quick-link::before,
+.site-footer__inner::before,
+.site-loader__skip::before{
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.76), transparent 20%),
+    radial-gradient(circle at 78% 8%, rgba(185, 255, 227, 0.28), transparent 24%),
+    var(--liquid-glass-highlight);
+  opacity: 0.86;
+  mix-blend-mode: screen;
+}
+
+.site-nav::after,
+.hero::after,
+.link-card::after,
+.playlist-card::after,
+.site-footer__inner::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(255, 255, 255, 0.42), transparent 34%),
+    radial-gradient(ellipse at 82% 100%, rgba(140, 255, 179, 0.16), transparent 36%),
+    linear-gradient(115deg, transparent 0 28%, rgba(255, 255, 255, 0.20) 38%, transparent 48% 100%);
+  opacity: 0.42;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.link-card:hover::after,
+.playlist-card:hover::after,
+.quick-link:hover::after,
+.site-nav:hover::after{
+  opacity: 0.68;
+  transform: translateX(4px) translateY(-2px);
+}
+
+.link-card,
+.playlist-card,
+.quick-link,
+.site-nav,
+.site-footer__inner{
+  overflow: hidden;
+}
+
+.link-card > *,
+.playlist-card > *,
+.quick-link > *,
+.site-nav > *,
+.site-footer__inner > *{
+  position: relative;
+  z-index: 2;
+}
+
+.card-icon,
+.playlist-card img,
+.site-nav__brand img{
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.46) !important;
+}
+
+.link-card:hover,
+.playlist-card:hover,
+.quick-link:hover{
+  border-color: rgba(255, 255, 255, 0.58) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.13) 48%, rgba(255, 255, 255, 0.07)) !important;
+}
+
+.link-card.is-inactive{
+  background: linear-gradient(135deg, rgba(88, 102, 96, 0.62), rgba(50, 61, 57, 0.46) 52%, rgba(255, 255, 255, 0.05)) !important;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+  .site-nav,
+  .hero,
+  .link-card,
+  .playlist-card,
+  .quick-link,
+  .site-footer__inner,
+  .site-loader__skip{
+    background: rgba(18, 38, 31, 0.82) !important;
+  }
+}
+
+@media (max-width: 720px){
+  .site-nav,
+  .hero,
+  .link-card,
+  .playlist-card,
+  .quick-link,
+  .site-footer__inner{
+    -webkit-backdrop-filter: blur(22px) saturate(170%) brightness(1.04) !important;
+    backdrop-filter: blur(22px) saturate(170%) brightness(1.04) !important;
+  }
+}
