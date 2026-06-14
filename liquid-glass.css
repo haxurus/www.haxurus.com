@@ -24,13 +24,40 @@
 }
 
 .hero{
+  position: relative !important;
+  overflow: hidden !important;
   border-color: rgba(255, 255, 255, 0.18) !important;
   box-shadow: none !important;
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
-  background:
-    linear-gradient(180deg, rgba(4, 14, 10, 0.08), rgba(4, 14, 10, 0.34) 100%),
-    url("img/hero/banner.png") center/cover no-repeat !important;
+  background: #020805 !important;
+}
+
+.hero::before{
+  content: "" !important;
+  position: absolute !important;
+  inset: -18px !important;
+  display: block !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  background: url("img/hero/banner.png") center/cover no-repeat !important;
+  filter: blur(6px) saturate(1.04) brightness(0.96) !important;
+  transform: scale(1.035) !important;
+}
+
+.hero::after{
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  background: linear-gradient(180deg, rgba(4, 14, 10, 0.10), rgba(4, 14, 10, 0.34) 100%) !important;
+}
+
+.hero > *{
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 .site-nav::before,
@@ -72,11 +99,6 @@
     linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 15% 82%, rgba(255, 255, 255, 0.20));
   opacity: 0.24;
   transition: opacity 0.18s ease, transform 0.18s ease;
-}
-
-.hero::before,
-.hero::after{
-  display: none !important;
 }
 
 .link-card,
