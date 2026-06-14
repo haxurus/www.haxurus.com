@@ -122,7 +122,22 @@
       overscroll-behavior-y: auto;
     }
 
-    .hero,
+    .hero {
+      width: 100vw !important;
+      min-height: 100svh !important;
+      height: 100svh !important;
+      border-radius: 0 !important;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    @supports (height: 100dvh) {
+      .hero {
+        min-height: 100dvh !important;
+        height: 100dvh !important;
+      }
+    }
+
     .animated-sections .category,
     .site-footer {
       scroll-snap-align: center;
@@ -168,7 +183,12 @@
         scroll-snap-type: none;
       }
 
-      .hero,
+      .hero {
+        min-height: 100svh !important;
+        height: 100svh !important;
+        scroll-snap-align: start;
+      }
+
       .animated-sections .category,
       .site-footer {
         scroll-snap-align: start;
