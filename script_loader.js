@@ -214,15 +214,14 @@
   document.head.appendChild(style);
 })();
 
-/* extra stylesheets */
+/* combined effects stylesheet */
 (() => {
-  ['hero-glitch.css', 'liquid-glass.css'].forEach((href) => {
-    if (document.querySelector(`link[href="${href}"]`)) return;
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    document.head.appendChild(link);
-  });
+  const href = 'site-effects.css';
+  if (document.querySelector(`link[href="${href}"]`)) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = href;
+  document.head.appendChild(link);
 })();
 
 /* reactive liquid glass */
