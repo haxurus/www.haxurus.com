@@ -3,7 +3,7 @@
   position: relative;
   display: inline-block;
   color: #39ff14;
-  font-size: clamp(4rem, 14vw, 11rem);
+  font-size: clamp(5.4rem, 18vw, 14rem);
   font-weight: 900;
   letter-spacing: -0.08em;
   line-height: 0.9;
@@ -202,7 +202,7 @@
 
 @media (max-width: 720px){
   .hero .glitch-logo{
-    font-size: clamp(3.2rem, 18vw, 6.5rem);
+    font-size: clamp(4rem, 22vw, 8rem);
   }
 }
 
