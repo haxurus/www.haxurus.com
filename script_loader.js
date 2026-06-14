@@ -225,6 +225,52 @@
   });
 })();
 
+/* reactive liquid glass */
+(() => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const touchLike = window.matchMedia('(pointer: coarse), (hover: none)');
+  const selector = '.link-card, .playlist-card, .quick-link';
+
+  if (reduceMotion.matches || touchLike.matches) return;
+
+  function updateGlass(event) {
+    const target = event.currentTarget;
+    const rect = target.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    const tiltY = ((x - 50) / 50) * 5;
+    const tiltX = -((y - 50) / 50) * 4;
+
+    target.style.setProperty('--liquid-x', `${x}%`);
+    target.style.setProperty('--liquid-y', `${y}%`);
+    target.style.setProperty('--liquid-tilt-x', `${tiltX}deg`);
+    target.style.setProperty('--liquid-tilt-y', `${tiltY}deg`);
+  }
+
+  function resetGlass(event) {
+    const target = event.currentTarget;
+    target.style.setProperty('--liquid-x', '50%');
+    target.style.setProperty('--liquid-y', '50%');
+    target.style.setProperty('--liquid-tilt-x', '0deg');
+    target.style.setProperty('--liquid-tilt-y', '0deg');
+  }
+
+  function bind() {
+    document.querySelectorAll(selector).forEach((element) => {
+      if (element.dataset.liquidGlassBound === 'true') return;
+      element.dataset.liquidGlassBound = 'true';
+      element.addEventListener('pointermove', updateGlass);
+      element.addEventListener('pointerleave', resetGlass);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bind, { once: true });
+  } else {
+    bind();
+  }
+})();
+
 /* hero glitch title */
 (() => {
   const title = document.querySelector('.hero-content > h1');
