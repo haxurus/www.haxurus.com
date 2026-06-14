@@ -1,11 +1,9 @@
 /* Liquid glass visual layer */
 :root{
-  --liquid-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.115), rgba(255, 255, 255, 0.045) 48%, rgba(255, 255, 255, 0.018));
-  --liquid-glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.065) 48%, rgba(255, 255, 255, 0.025));
-  --liquid-glass-highlight: linear-gradient(135deg, rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.095) 34%, rgba(255, 255, 255, 0.01) 68%);
-  --liquid-glass-edge: rgba(255, 255, 255, 0.34);
-  --liquid-glass-edge-soft: rgba(255, 255, 255, 0.11);
-  --liquid-glass-shadow: 0 18px 44px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.36), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+  --liquid-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018) 46%, rgba(255, 255, 255, 0.006));
+  --liquid-glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.028) 48%, rgba(255, 255, 255, 0.010));
+  --liquid-glass-edge: rgba(255, 255, 255, 0.58);
+  --liquid-glass-shadow: 0 18px 42px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.72), inset 0 -1px 0 rgba(255, 255, 255, 0.22);
   --liquid-x: 50%;
   --liquid-y: 50%;
   --liquid-tilt-x: 0deg;
@@ -13,29 +11,29 @@
 }
 
 .site-nav,
-.hero,
 .link-card,
 .playlist-card,
 .quick-link,
 .site-footer__inner,
 .site-loader__skip{
-  border-color: var(--liquid-glass-edge) !important;
+  border: 1px solid var(--liquid-glass-edge) !important;
   background: var(--liquid-glass-bg) !important;
   box-shadow: var(--liquid-glass-shadow) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(155%) brightness(1.02) !important;
-  backdrop-filter: blur(12px) saturate(155%) brightness(1.02) !important;
+  -webkit-backdrop-filter: blur(5px) saturate(132%) brightness(1.08) !important;
+  backdrop-filter: blur(5px) saturate(132%) brightness(1.08) !important;
 }
 
 .hero{
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.012)),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.012) 42%, rgba(255, 255, 255, 0.04)),
-    linear-gradient(180deg, rgba(4, 14, 10, 0.04), rgba(4, 14, 10, 0.22) 58%, rgba(4, 14, 10, 0.46) 100%),
+    linear-gradient(180deg, rgba(4, 14, 10, 0.08), rgba(4, 14, 10, 0.34) 100%),
     url("img/hero/banner.png") center/cover no-repeat !important;
 }
 
 .site-nav::before,
-.hero::before,
 .link-card::before,
 .playlist-card::before,
 .quick-link::before,
@@ -43,38 +41,42 @@
 .site-loader__skip::before{
   content: "";
   position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: -1;
-  background:
-    radial-gradient(circle at var(--liquid-x) var(--liquid-y), rgba(255, 255, 255, 0.48), transparent 18%),
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.30), transparent 22%),
-    radial-gradient(circle at 78% 8%, rgba(185, 255, 227, 0.14), transparent 24%),
-    var(--liquid-glass-highlight);
-  opacity: 0.48;
-  mix-blend-mode: screen;
-  transition: opacity 0.18s ease;
-}
-
-.site-nav::after,
-.hero::after,
-.link-card::after,
-.playlist-card::after,
-.site-footer__inner::after{
-  content: "";
-  position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
   z-index: 1;
   background:
-    radial-gradient(circle at var(--liquid-x) var(--liquid-y), rgba(255, 255, 255, 0.32), transparent 19%),
-    radial-gradient(ellipse at 18% 0%, rgba(255, 255, 255, 0.22), transparent 34%),
-    radial-gradient(ellipse at 82% 100%, rgba(140, 255, 179, 0.10), transparent 36%),
-    linear-gradient(115deg, transparent 0 32%, rgba(255, 255, 255, 0.12) 42%, transparent 52% 100%);
-  opacity: 0.25;
+    radial-gradient(circle at var(--liquid-x) var(--liquid-y), rgba(255, 255, 255, 0.44), transparent 16%),
+    radial-gradient(ellipse at 16% 12%, rgba(255, 255, 255, 0.38), transparent 23%),
+    radial-gradient(ellipse at 86% 95%, rgba(255, 255, 255, 0.22), transparent 24%),
+    linear-gradient(118deg, rgba(255, 255, 255, 0.28), transparent 16% 58%, rgba(255, 255, 255, 0.16));
+  opacity: 0.42;
+  mix-blend-mode: screen;
   transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.site-nav::after,
+.link-card::after,
+.playlist-card::after,
+.quick-link::after,
+.site-footer__inner::after{
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 28% 28%, rgba(255, 255, 255, 0.20), transparent 9%),
+    radial-gradient(circle at 72% 68%, rgba(255, 255, 255, 0.13), transparent 12%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 15% 82%, rgba(255, 255, 255, 0.20));
+  opacity: 0.24;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.hero::before,
+.hero::after{
+  display: none !important;
 }
 
 .link-card,
@@ -83,6 +85,7 @@
 .site-nav,
 .site-footer__inner{
   overflow: hidden;
+  isolation: isolate;
 }
 
 .link-card,
@@ -95,10 +98,10 @@
 .link-card:hover,
 .playlist-card:hover,
 .quick-link:hover{
-  border-color: rgba(255, 255, 255, 0.52) !important;
+  border-color: rgba(255, 255, 255, 0.78) !important;
   background: var(--liquid-glass-bg-hover) !important;
-  -webkit-backdrop-filter: blur(9px) saturate(175%) brightness(1.08) !important;
-  backdrop-filter: blur(9px) saturate(175%) brightness(1.08) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(145%) brightness(1.16) !important;
+  backdrop-filter: blur(3px) saturate(145%) brightness(1.16) !important;
 }
 
 .link-card:hover::before,
@@ -112,8 +115,8 @@
 .playlist-card:hover::after,
 .quick-link:hover::after,
 .site-nav:hover::after{
-  opacity: 0.58;
-  transform: translateX(4px) translateY(-2px);
+  opacity: 0.42;
+  transform: translateX(3px) translateY(-2px);
 }
 
 .link-card > *,
@@ -125,39 +128,50 @@
   z-index: 2;
 }
 
+.card-title,
+.card-subtitle,
+.playlist-title,
+.playlist-tag,
+.site-nav a,
+.site-footer__inner{
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.70), 0 1px 2px rgba(0, 0, 0, 0.85) !important;
+}
+
 .card-icon,
 .playlist-card img,
 .site-nav__brand img{
   box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.42) !important;
+    0 10px 22px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.56) !important;
 }
 
 .link-card.is-inactive{
-  background: linear-gradient(135deg, rgba(88, 102, 96, 0.34), rgba(50, 61, 57, 0.24) 52%, rgba(255, 255, 255, 0.018)) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.014) 48%, rgba(255, 255, 255, 0.006)) !important;
+}
+
+.link-card.is-inactive::before{
+  opacity: 0.30;
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
   .site-nav,
-  .hero,
   .link-card,
   .playlist-card,
   .quick-link,
   .site-footer__inner,
   .site-loader__skip{
-    background: rgba(18, 38, 31, 0.50) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
   }
 }
 
 @media (max-width: 720px){
   .site-nav,
-  .hero,
   .link-card,
   .playlist-card,
   .quick-link,
   .site-footer__inner{
-    -webkit-backdrop-filter: blur(10px) saturate(145%) brightness(1.02) !important;
-    backdrop-filter: blur(10px) saturate(145%) brightness(1.02) !important;
+    -webkit-backdrop-filter: blur(4px) saturate(125%) brightness(1.08) !important;
+    backdrop-filter: blur(4px) saturate(125%) brightness(1.08) !important;
   }
 
   .link-card,
