@@ -194,13 +194,15 @@
   document.head.appendChild(style);
 })();
 
-/* hero glitch stylesheet */
+/* extra stylesheets */
 (() => {
-  if (document.querySelector('link[href="hero-glitch.css"]')) return;
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = 'hero-glitch.css';
-  document.head.appendChild(link);
+  ['hero-glitch.css', 'liquid-glass.css'].forEach((href) => {
+    if (document.querySelector(`link[href="${href}"]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  });
 })();
 
 /* hero glitch title */
