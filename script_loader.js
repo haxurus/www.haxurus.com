@@ -1,3 +1,84 @@
+/* early reveal guard */
+(() => {
+  const css = `
+    body:not(.skip-intro) .hero,
+    body:not(.skip-intro) .quick-link,
+    body:not(.skip-intro) .block .link-card,
+    body:not(.skip-intro) .category h2,
+    body:not(.skip-intro) .category .link-card,
+    body:not(.skip-intro) .playlist-card {
+      opacity: 0;
+      transform: translateY(22px) scale(0.985);
+    }
+
+    body:not(.skip-intro) .hero h1,
+    body:not(.skip-intro) .hero-text,
+    body:not(.skip-intro) .card-title,
+    body:not(.skip-intro) .card-subtitle,
+    body:not(.skip-intro) .playlist-title,
+    body:not(.skip-intro) .playlist-subtitle {
+      visibility: hidden;
+    }
+
+    body.skip-intro .hero,
+    body.skip-intro .quick-link,
+    body.skip-intro .block .link-card,
+    body.skip-intro .category h2,
+    body.skip-intro .category .link-card,
+    body.skip-intro .playlist-card,
+    .hero.seq-visible,
+    .quick-link.seq-visible,
+    .block .link-card.seq-visible,
+    .category h2.seq-visible,
+    .category .link-card.seq-visible,
+    .playlist-card.seq-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    body.skip-intro .hero h1,
+    body.skip-intro .hero-text,
+    body.skip-intro .card-title,
+    body.skip-intro .card-subtitle,
+    body.skip-intro .playlist-title,
+    body.skip-intro .playlist-subtitle,
+    .seq-visible .card-title,
+    .seq-visible .card-subtitle,
+    .seq-visible .playlist-title,
+    .seq-visible .playlist-subtitle,
+    .hero.seq-visible h1,
+    .hero.seq-visible .hero-text {
+      visibility: visible;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body:not(.skip-intro) .hero,
+      body:not(.skip-intro) .quick-link,
+      body:not(.skip-intro) .block .link-card,
+      body:not(.skip-intro) .category h2,
+      body:not(.skip-intro) .category .link-card,
+      body:not(.skip-intro) .playlist-card {
+        opacity: 1;
+        transform: none;
+      }
+
+      body:not(.skip-intro) .hero h1,
+      body:not(.skip-intro) .hero-text,
+      body:not(.skip-intro) .card-title,
+      body:not(.skip-intro) .card-subtitle,
+      body:not(.skip-intro) .playlist-title,
+      body:not(.skip-intro) .playlist-subtitle {
+        visibility: visible;
+      }
+    }
+  `;
+
+  const style = document.createElement('style');
+  style.setAttribute('data-reveal-guard', '');
+  style.textContent = css;
+  document.head.prepend(style);
+})();
+
 (() => {
   const MIN_LOADER_TIME = 1100;
   const MAX_WAIT_TIME = 4500;
