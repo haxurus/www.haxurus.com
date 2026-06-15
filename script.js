@@ -394,7 +394,7 @@ document.addEventListener('keydown', (event) => {
 
   function revealEverything() {
     const allAnimated = document.querySelectorAll('.hero, .quick-link, .block .link-card, .category h2, .category .link-card, .playlist-card');
-    const allText = document.querySelectorAll('.hero h1, .hero-text, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle');
+    const allText = document.querySelectorAll('.hero h1, .hero-text, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag');
 
     allText.forEach((el) => restoreText(el));
 
@@ -431,7 +431,7 @@ document.addEventListener('keydown', (event) => {
   function prepareTextTargets(container) {
     const textTargets = container.matches('h2, .hero h1, .hero-text')
       ? [container]
-      : [...container.querySelectorAll('.card-title, .card-subtitle, .playlist-title, .playlist-subtitle')];
+      : [...container.querySelectorAll('.card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag')];
 
     textTargets.forEach((el) => {
       rememberText(el);
@@ -507,7 +507,7 @@ document.addEventListener('keydown', (event) => {
     await wait(item.matches('.quick-link') ? 90 : item.matches('h2') ? 130 : 150);
 
     for (const el of textTargets) {
-      const textSpeed = el.matches('.card-subtitle, .playlist-subtitle') ? 10 : speed;
+      const textSpeed = el.matches('.card-subtitle, .playlist-subtitle, .playlist-tag') ? 10 : speed;
       await typeText(el, textSpeed);
       if (shouldSkip()) {
         revealEverything();
@@ -530,7 +530,7 @@ document.addEventListener('keydown', (event) => {
     const aboutCard = document.querySelector('.block .link-card');
     const sections = [...document.querySelectorAll('main .category')];
 
-    document.querySelectorAll('.hero h1, .hero-text, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle').forEach((el) => rememberText(el));
+    document.querySelectorAll('.hero h1, .hero-text, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag').forEach((el) => rememberText(el));
 
     if (prefersReducedMotion || shouldSkip()) {
       revealEverything();
