@@ -1,74 +1,73 @@
 /* early reveal guard */
 (() => {
   const css = `
-    body:not(.skip-intro) .hero,
-    body:not(.skip-intro) .quick-link,
-    body:not(.skip-intro) .block .link-card,
-    body:not(.skip-intro) .category h2,
-    body:not(.skip-intro) .category .link-card,
-    body:not(.skip-intro) .playlist-card {
-      opacity: 0;
-      transform: translateY(22px) scale(0.985);
+    body:not(.skip-intro) .hero:not(.seq-visible),
+    body:not(.skip-intro) .quick-link:not(.seq-visible),
+    body:not(.skip-intro) .link-card:not(.seq-visible),
+    body:not(.skip-intro) .playlist-card:not(.seq-visible),
+    body:not(.skip-intro) .category h2:not(.seq-visible) {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transform: translateY(22px) scale(0.985) !important;
+      animation: none !important;
+      pointer-events: none !important;
     }
 
-    body:not(.skip-intro) .hero h1,
-    body:not(.skip-intro) .hero-text,
-    body:not(.skip-intro) .card-title,
-    body:not(.skip-intro) .card-subtitle,
-    body:not(.skip-intro) .playlist-title,
-    body:not(.skip-intro) .playlist-subtitle {
-      visibility: hidden;
+    body:not(.skip-intro) .hero:not(.seq-visible) *,
+    body:not(.skip-intro) .quick-link:not(.seq-visible) *,
+    body:not(.skip-intro) .link-card:not(.seq-visible) *,
+    body:not(.skip-intro) .playlist-card:not(.seq-visible) *,
+    body:not(.skip-intro) .category h2:not(.seq-visible) * {
+      visibility: hidden !important;
     }
 
     body.skip-intro .hero,
     body.skip-intro .quick-link,
-    body.skip-intro .block .link-card,
-    body.skip-intro .category h2,
-    body.skip-intro .category .link-card,
+    body.skip-intro .link-card,
     body.skip-intro .playlist-card,
-    .hero.seq-visible,
-    .quick-link.seq-visible,
-    .block .link-card.seq-visible,
-    .category h2.seq-visible,
-    .category .link-card.seq-visible,
-    .playlist-card.seq-visible {
-      opacity: 1;
-      transform: none;
+    body.skip-intro .category h2,
+    body:not(.skip-intro) .hero.seq-visible,
+    body:not(.skip-intro) .quick-link.seq-visible,
+    body:not(.skip-intro) .link-card.seq-visible,
+    body:not(.skip-intro) .playlist-card.seq-visible,
+    body:not(.skip-intro) .category h2.seq-visible {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      pointer-events: auto !important;
     }
 
-    body.skip-intro .hero h1,
-    body.skip-intro .hero-text,
-    body.skip-intro .card-title,
-    body.skip-intro .card-subtitle,
-    body.skip-intro .playlist-title,
-    body.skip-intro .playlist-subtitle,
-    .seq-visible .card-title,
-    .seq-visible .card-subtitle,
-    .seq-visible .playlist-title,
-    .seq-visible .playlist-subtitle,
-    .hero.seq-visible h1,
-    .hero.seq-visible .hero-text {
-      visibility: visible;
+    body.skip-intro .hero *,
+    body.skip-intro .quick-link *,
+    body.skip-intro .link-card *,
+    body.skip-intro .playlist-card *,
+    body.skip-intro .category h2 *,
+    body:not(.skip-intro) .hero.seq-visible *,
+    body:not(.skip-intro) .quick-link.seq-visible *,
+    body:not(.skip-intro) .link-card.seq-visible *,
+    body:not(.skip-intro) .playlist-card.seq-visible *,
+    body:not(.skip-intro) .category h2.seq-visible * {
+      visibility: visible !important;
     }
 
     @media (prefers-reduced-motion: reduce) {
       body:not(.skip-intro) .hero,
       body:not(.skip-intro) .quick-link,
-      body:not(.skip-intro) .block .link-card,
-      body:not(.skip-intro) .category h2,
-      body:not(.skip-intro) .category .link-card,
-      body:not(.skip-intro) .playlist-card {
-        opacity: 1;
-        transform: none;
+      body:not(.skip-intro) .link-card,
+      body:not(.skip-intro) .playlist-card,
+      body:not(.skip-intro) .category h2 {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        pointer-events: auto !important;
       }
 
-      body:not(.skip-intro) .hero h1,
-      body:not(.skip-intro) .hero-text,
-      body:not(.skip-intro) .card-title,
-      body:not(.skip-intro) .card-subtitle,
-      body:not(.skip-intro) .playlist-title,
-      body:not(.skip-intro) .playlist-subtitle {
-        visibility: visible;
+      body:not(.skip-intro) .hero *,
+      body:not(.skip-intro) .quick-link *,
+      body:not(.skip-intro) .link-card *,
+      body:not(.skip-intro) .playlist-card *,
+      body:not(.skip-intro) .category h2 * {
+        visibility: visible !important;
       }
     }
   `;
