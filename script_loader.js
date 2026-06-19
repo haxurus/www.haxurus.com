@@ -1,20 +1,10 @@
 /* early reveal guard */
 (() => {
   const css = `
-    body:not(.skip-intro) .hero:not(.seq-visible),
-    body:not(.skip-intro) .quick-link:not(.seq-visible),
-    body:not(.skip-intro) .link-card:not(.seq-visible),
-    body:not(.skip-intro) .playlist-card:not(.seq-visible),
-    body:not(.skip-intro) .category h2:not(.seq-visible){opacity:0!important;visibility:hidden!important;transform:translateY(22px) scale(.985)!important;animation:none!important;pointer-events:none!important}
-    body:not(.skip-intro) .hero:not(.seq-visible) *,
-    body:not(.skip-intro) .quick-link:not(.seq-visible) *,
-    body:not(.skip-intro) .link-card:not(.seq-visible) *,
-    body:not(.skip-intro) .playlist-card:not(.seq-visible) *,
-    body:not(.skip-intro) .category h2:not(.seq-visible) *{visibility:hidden!important}
-    body.skip-intro .hero,body.skip-intro .quick-link,body.skip-intro .link-card,body.skip-intro .playlist-card,body.skip-intro .category h2,
-    body:not(.skip-intro) .hero.seq-visible,body:not(.skip-intro) .quick-link.seq-visible,body:not(.skip-intro) .link-card.seq-visible,body:not(.skip-intro) .playlist-card.seq-visible,body:not(.skip-intro) .category h2.seq-visible{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important}
-    body.skip-intro .hero *,body.skip-intro .quick-link *,body.skip-intro .link-card *,body.skip-intro .playlist-card *,body.skip-intro .category h2 *,
-    body:not(.skip-intro) .hero.seq-visible *,body:not(.skip-intro) .quick-link.seq-visible *,body:not(.skip-intro) .link-card.seq-visible *,body:not(.skip-intro) .playlist-card.seq-visible *,body:not(.skip-intro) .category h2.seq-visible *{visibility:visible!important}
+    body:not(.skip-intro) .hero:not(.seq-visible),body:not(.skip-intro) .quick-link:not(.seq-visible),body:not(.skip-intro) .link-card:not(.seq-visible),body:not(.skip-intro) .playlist-card:not(.seq-visible),body:not(.skip-intro) .category h2:not(.seq-visible){opacity:0!important;visibility:hidden!important;transform:translateY(22px) scale(.985)!important;animation:none!important;pointer-events:none!important}
+    body:not(.skip-intro) .hero:not(.seq-visible) *,body:not(.skip-intro) .quick-link:not(.seq-visible) *,body:not(.skip-intro) .link-card:not(.seq-visible) *,body:not(.skip-intro) .playlist-card:not(.seq-visible) *,body:not(.skip-intro) .category h2:not(.seq-visible) *{visibility:hidden!important}
+    body.skip-intro .hero,body.skip-intro .quick-link,body.skip-intro .link-card,body.skip-intro .playlist-card,body.skip-intro .category h2,body:not(.skip-intro) .hero.seq-visible,body:not(.skip-intro) .quick-link.seq-visible,body:not(.skip-intro) .link-card.seq-visible,body:not(.skip-intro) .playlist-card.seq-visible,body:not(.skip-intro) .category h2.seq-visible{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important}
+    body.skip-intro .hero *,body.skip-intro .quick-link *,body.skip-intro .link-card *,body.skip-intro .playlist-card *,body.skip-intro .category h2 *,body:not(.skip-intro) .hero.seq-visible *,body:not(.skip-intro) .quick-link.seq-visible *,body:not(.skip-intro) .link-card.seq-visible *,body:not(.skip-intro) .playlist-card.seq-visible *,body:not(.skip-intro) .category h2.seq-visible *{visibility:visible!important}
     @media (prefers-reduced-motion:reduce){body:not(.skip-intro) .hero,body:not(.skip-intro) .quick-link,body:not(.skip-intro) .link-card,body:not(.skip-intro) .playlist-card,body:not(.skip-intro) .category h2{opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important}body:not(.skip-intro) .hero *,body:not(.skip-intro) .quick-link *,body:not(.skip-intro) .link-card *,body:not(.skip-intro) .playlist-card *,body:not(.skip-intro) .category h2 *{visibility:visible!important}}
   `;
   const style = document.createElement('style');
@@ -204,6 +194,63 @@
   title.innerHTML = '<span aria-hidden="true">Haxurus</span><i class="scanlines" aria-hidden="true"></i><i class="noise" aria-hidden="true"></i>';
 })();
 
+/* card status badges */
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    .card-badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;margin-top:8px}.link-card-banner-body .card-badges{justify-content:flex-start}.card-badge{display:inline-flex;align-items:center;min-height:20px;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:3px 8px;background:rgba(255,255,255,.065);color:rgba(255,255,255,.86);font-size:.68rem;font-weight:900;letter-spacing:.055em;text-transform:uppercase;line-height:1;box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 6px 14px rgba(0,0,0,.16)}.card-badge--inactive{border-color:rgba(190,199,195,.24);background:rgba(150,160,156,.10);color:rgba(224,230,227,.72)}.card-badge--bot{border-color:rgba(190,120,255,.38);background:rgba(160,80,255,.14);color:#efdfff}.card-badge--community{border-color:rgba(0,234,255,.34);background:rgba(0,234,255,.10);color:#d7fbff}.link-card.has-card-badges .card-subtitle:empty{display:none}
+  `;
+  document.head.appendChild(style);
+
+  function getCardBody(card) {
+    return card.querySelector('.card-body, .link-card-banner-body, .playlist-info') || card;
+  }
+
+  function addBadge(card, type, label) {
+    const body = getCardBody(card);
+    let badges = body.querySelector('.card-badges');
+    if (!badges) {
+      badges = document.createElement('div');
+      badges.className = 'card-badges';
+      body.appendChild(badges);
+    }
+    if (badges.querySelector(`[data-badge-type="${type}"]`)) return;
+    const badge = document.createElement('span');
+    badge.className = `card-badge card-badge--${type}`;
+    badge.dataset.badgeType = type;
+    badge.textContent = label;
+    badges.appendChild(badge);
+    card.classList.add('has-card-badges');
+  }
+
+  function cleanText(value) {
+    return value.replace(/\s*💤\s*/g, ' ').replace(/\s+—\s+inactive\s+(account|group)/gi, '').replace(/\s+/g, ' ').trim();
+  }
+
+  function markInactive(card) {
+    const title = card.querySelector('.card-title, .playlist-title');
+    if (title) title.textContent = cleanText(title.textContent || '');
+    card.querySelectorAll('.card-subtitle, .playlist-subtitle').forEach((subtitle) => {
+      if (/inactive/i.test(subtitle.textContent || '')) subtitle.remove();
+    });
+    const label = card.getAttribute('aria-label');
+    if (label) card.setAttribute('aria-label', cleanText(label));
+    addBadge(card, 'inactive', 'Inactive');
+  }
+
+  const cards = [...document.querySelectorAll('.link-card, .playlist-card')];
+  cards.forEach((card) => {
+    const text = card.textContent || '';
+    const aria = card.getAttribute('aria-label') || '';
+    if (card.classList.contains('is-inactive') || /💤|inactive/i.test(text) || /💤|inactive/i.test(aria)) markInactive(card);
+  });
+
+  const botCard = cards.find((card) => /Telegram\s*\(Chat Bot\)/i.test(card.textContent || ''));
+  if (botCard) addBadge(botCard, 'bot', 'Bot');
+
+  document.querySelectorAll('#discord .link-card, #vrchat a[href*="vrc.group"]').forEach((card) => addBadge(card, 'community', 'Community'));
+})();
+
 /* League of Legends profile modal */
 (() => {
   const opggUrl = 'https://op.gg/lol/summoners/euw/Haxurus-YANG';
@@ -228,24 +275,10 @@
   modal.innerHTML = `
     <div class="lol-modal__panel" tabindex="-1">
       <button class="lol-modal__close" type="button" aria-label="Close League of Legends profile">×</button>
-      <div class="lol-modal__header">
-        <h2 class="lol-modal__title" id="lol-modal-title">League of Legends</h2>
-        <a class="lol-modal__username" href="${opggUrl}" target="_blank" rel="noopener noreferrer">Username: Haxurus#YANG ↗</a>
-      </div>
+      <div class="lol-modal__header"><h2 class="lol-modal__title" id="lol-modal-title">League of Legends</h2><a class="lol-modal__username" href="${opggUrl}" target="_blank" rel="noopener noreferrer">Username: Haxurus#YANG ↗</a></div>
       <div class="lol-modal__body">
-        <div class="lol-modal__box">
-          <h3>Ranked queues</h3>
-          <span class="lol-server">🌍 Server: EUW</span>
-          <div class="lol-rank"><img src="img/games/lol/emerald.png" alt="Emerald rank"><div><strong>SOLO/DUO queue: Emerald 3 - 7 LP</strong><span>23V 8S · 74% WR</span></div></div>
-          <div class="lol-rank"><img src="img/games/lol/silver.png" alt="Silver rank"><div><strong>Flex queue: Silver 4 - 61 LP</strong><span>18V 16S · 53% WR</span></div></div>
-          <div class="lol-clash"><img src="img/games/lol/clash.png" alt="Clash"><div><strong>Clash queue: Tier 2</strong><span class="lol-meta">Tournament profile</span></div></div>
-          <div class="lol-modal__actions"><a class="lol-button" href="${opggUrl}" target="_blank" rel="noopener noreferrer">Open OP.GG</a></div>
-        </div>
-        <div class="lol-modal__box">
-          <h3>Roles & champion pool</h3>
-          <div class="lol-role"><img src="img/games/lol/adc.png" alt="ADC role"><div><strong>Main role: ADC</strong><span>Champion pool</span><div class="lol-chipline"><span class="lol-chip">Caitlyn</span><span class="lol-chip">Jhin</span><span class="lol-chip">Varus</span><span class="lol-chip">Xayah</span></div></div></div>
-          <div class="lol-role"><img src="img/games/lol/support.png" alt="Support role"><div><strong>Secondary role: Support</strong><span>Champion pool</span><div class="lol-chipline"><span class="lol-chip">Rakan</span><span class="lol-chip">Leona</span><span class="lol-chip">Tahm Kench</span><span class="lol-chip">Seraphine</span></div></div></div>
-        </div>
+        <div class="lol-modal__box"><h3>Ranked queues</h3><span class="lol-server">🌍 Server: EUW</span><div class="lol-rank"><img src="img/games/lol/emerald.png" alt="Emerald rank"><div><strong>SOLO/DUO queue: Emerald 3 - 7 LP</strong><span>23V 8S · 74% WR</span></div></div><div class="lol-rank"><img src="img/games/lol/silver.png" alt="Silver rank"><div><strong>Flex queue: Silver 4 - 61 LP</strong><span>18V 16S · 53% WR</span></div></div><div class="lol-clash"><img src="img/games/lol/clash.png" alt="Clash"><div><strong>Clash queue: Tier 2</strong><span class="lol-meta">Tournament profile</span></div></div><div class="lol-modal__actions"><a class="lol-button" href="${opggUrl}" target="_blank" rel="noopener noreferrer">Open OP.GG</a></div></div>
+        <div class="lol-modal__box"><h3>Roles & champion pool</h3><div class="lol-role"><img src="img/games/lol/adc.png" alt="ADC role"><div><strong>Main role: ADC</strong><span>Champion pool</span><div class="lol-chipline"><span class="lol-chip">Caitlyn</span><span class="lol-chip">Jhin</span><span class="lol-chip">Varus</span><span class="lol-chip">Xayah</span></div></div></div><div class="lol-role"><img src="img/games/lol/support.png" alt="Support role"><div><strong>Secondary role: Support</strong><span>Champion pool</span><div class="lol-chipline"><span class="lol-chip">Rakan</span><span class="lol-chip">Leona</span><span class="lol-chip">Tahm Kench</span><span class="lol-chip">Seraphine</span></div></div></div></div>
       </div>
     </div>
   `;
