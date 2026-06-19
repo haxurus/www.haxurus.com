@@ -194,6 +194,36 @@
   title.innerHTML = '<span aria-hidden="true">Haxurus</span><i class="scanlines" aria-hidden="true"></i><i class="noise" aria-hidden="true"></i>';
 })();
 
+/* about section */
+(() => {
+  const hero = document.querySelector('.hero');
+  const main = document.querySelector('main.animated-sections');
+  if (!hero || !main || document.querySelector('.about-haxurus')) return;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .about-haxurus{width:min(100% - 36px,var(--maxw,1120px));margin:34px auto 42px;scroll-margin-top:110px}.about-haxurus__card{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:28px;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.045));box-shadow:0 22px 60px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.18);padding:clamp(22px,4vw,36px);-webkit-backdrop-filter:blur(22px) saturate(165%);backdrop-filter:blur(22px) saturate(165%)}.about-haxurus__card::before{content:"";position:absolute;inset:-40% auto auto -18%;width:320px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(57,255,20,.18),transparent 68%);filter:blur(4px);pointer-events:none}.about-haxurus__eyebrow{display:inline-flex;margin-bottom:12px;border:1px solid rgba(57,255,20,.30);border-radius:999px;background:rgba(57,255,20,.08);padding:6px 10px;color:#c9ffd4;font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.about-haxurus h2{position:relative;margin:0 0 14px;color:#f7fff9;font-size:clamp(2.1rem,6vw,4.8rem);line-height:.92;letter-spacing:-.065em}.about-haxurus p{position:relative;max-width:940px;margin:0;color:rgba(244,255,247,.82);font-size:clamp(1rem,2vw,1.16rem);line-height:1.75}.about-haxurus__cta{position:relative;display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.about-haxurus__button{display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(57,255,20,.34);border-radius:999px;background:rgba(57,255,20,.105);padding:10px 14px;color:#dfffe7;font-weight:900;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}.about-haxurus__button:hover{background:rgba(57,255,20,.18);color:#fff}.about-haxurus__button--ghost{border-color:rgba(255,255,255,.20);background:rgba(255,255,255,.07)}@media (max-width:720px){.about-haxurus{width:min(100% - 24px,var(--maxw,1120px));margin:24px auto 34px}.about-haxurus__cta{flex-direction:column}.about-haxurus__button{width:100%}}
+  `;
+  document.head.appendChild(style);
+
+  const section = document.createElement('section');
+  section.className = 'about-haxurus';
+  section.id = 'about';
+  section.innerHTML = `
+    <div class="about-haxurus__card">
+      <span class="about-haxurus__eyebrow">Personal hub</span>
+      <h2>About me</h2>
+      <p>I’m Haxurus — a gaming, tech and online-culture focused identity. This site collects my profiles, communities, playlists, gaming accounts and projects in one place. I enjoy videogames, anime, manga, music, social platforms and digital spaces, with a strong interest in web development, system administration, networking and cybersecurity. Feel free to explore, follow the profiles that interest you, join the communities, listen to a playlist, or reach out if you want to interact with me.</p>
+      <div class="about-haxurus__cta" aria-label="Ways to interact with Haxurus">
+        <a class="about-haxurus__button" href="mailto:inviati-49-armonia@icloud.com">Contact me</a>
+        <a class="about-haxurus__button about-haxurus__button--ghost" href="#social">Explore my profiles</a>
+        <a class="about-haxurus__button about-haxurus__button--ghost" href="#discord">Join a community</a>
+      </div>
+    </div>
+  `;
+  hero.insertAdjacentElement('afterend', section);
+})();
+
 /* card status badges */
 (() => {
   const style = document.createElement('style');
