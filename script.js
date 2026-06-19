@@ -35,6 +35,17 @@
   applyDevice();
 })();
 
+/* about final visual fixes */
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (min-width:721px){.about-haxurus__card{padding-left:clamp(330px,34vw,450px)!important}.about-haxurus__card::after{left:clamp(40px,6vw,86px)!important;top:50%!important;width:clamp(230px,24vw,330px)!important;height:clamp(230px,24vw,330px)!important;transform:translateY(-50%)!important;background-position:center center!important;background-size:contain!important;opacity:.94!important}.about-haxurus__cta{opacity:0!important;transform:translateY(18px)!important;transition:opacity .48s ease,transform .48s cubic-bezier(.2,.8,.2,1)!important}.about-haxurus.about-actions-ready .about-haxurus__cta{opacity:1!important;transform:none!important}}
+    @media (max-width:720px){.about-haxurus__card::after{left:50%!important;top:28px!important;transform:translateX(-50%)!important;background-position:center center!important;background-size:contain!important}.about-haxurus__cta{opacity:0!important;transform:translateY(16px)!important;transition:opacity .42s ease,transform .42s cubic-bezier(.2,.8,.2,1)!important}.about-haxurus.about-actions-ready .about-haxurus__cta{opacity:1!important;transform:none!important}}
+    body.skip-intro .about-haxurus__cta{opacity:1!important;transform:none!important}
+  `;
+  document.head.appendChild(style);
+})();
+
 /* modal handling */
 (() => {
   const triggers = document.querySelectorAll('[data-modal-open]');
@@ -126,7 +137,6 @@
     const touchLike = window.matchMedia('(pointer: coarse), (hover: none)').matches || (navigator.maxTouchPoints || 0) > 0;
     return device ? device === 'desktop' && !touchLike : window.innerWidth > 768 && !touchLike;
   }
-
   function resize() {
     const dpr = window.devicePixelRatio || 1;
     canvas.width = Math.floor(window.innerWidth * dpr);
@@ -135,26 +145,13 @@
     canvas.style.height = `${window.innerHeight}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
-
   function randomBetween(min, max) { return Math.random() * (max - min) + min; }
-
   function createParticles() {
     particles.length = 0;
     for (let i = 0; i < 150; i += 1) {
-      particles.push({
-        x: randomBetween(0, window.innerWidth),
-        y: randomBetween(0, window.innerHeight),
-        vx: randomBetween(-0.12, 0.12),
-        vy: randomBetween(-0.12, 0.12),
-        size: randomBetween(1.2, 3.1),
-        glow: randomBetween(8, 18),
-        hue: [120, 135, 145][Math.floor(Math.random() * 3)],
-        phase: randomBetween(0, Math.PI * 2),
-        drift: randomBetween(0.0015, 0.0035),
-      });
+      particles.push({ x: randomBetween(0, window.innerWidth), y: randomBetween(0, window.innerHeight), vx: randomBetween(-0.12, 0.12), vy: randomBetween(-0.12, 0.12), size: randomBetween(1.2, 3.1), glow: randomBetween(8, 18), hue: [120, 135, 145][Math.floor(Math.random() * 3)], phase: randomBetween(0, Math.PI * 2), drift: randomBetween(0.0015, 0.0035) });
     }
   }
-
   function drawParticle(p) {
     ctx.beginPath();
     ctx.fillStyle = `hsla(${p.hue}, 85%, 68%, 0.78)`;
@@ -164,36 +161,20 @@
     ctx.fill();
     ctx.shadowBlur = 0;
   }
-
   function drawLinks() {
     for (let i = 0; i < particles.length; i += 1) {
       const a = particles[i];
       for (let j = i + 1; j < particles.length; j += 1) {
         const b = particles[j];
         const dist = Math.hypot(a.x - b.x, a.y - b.y);
-        if (dist < 135) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(120, 255, 170, ${0.12 * (1 - dist / 135)})`;
-          ctx.lineWidth = 1;
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
+        if (dist < 135) { ctx.beginPath(); ctx.strokeStyle = `rgba(120, 255, 170, ${0.12 * (1 - dist / 135)})`; ctx.lineWidth = 1; ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
       }
       if (mouse.active) {
         const dist = Math.hypot(a.x - mouse.x, a.y - mouse.y);
-        if (dist < 150) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(187, 247, 208, ${0.18 * (1 - dist / 150)})`;
-          ctx.lineWidth = 1;
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.stroke();
-        }
+        if (dist < 150) { ctx.beginPath(); ctx.strokeStyle = `rgba(187, 247, 208, ${0.18 * (1 - dist / 150)})`; ctx.lineWidth = 1; ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke(); }
       }
     }
   }
-
   function updateParticles() {
     const time = performance.now();
     for (const p of particles) {
@@ -203,59 +184,24 @@
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.hypot(dx, dy);
-        if (dist < 140 && dist > 0.1) {
-          const force = (140 - dist) / 140;
-          p.vx -= (dx / dist) * force * 0.03;
-          p.vy -= (dy / dist) * force * 0.03;
-        }
+        if (dist < 140 && dist > 0.1) { const force = (140 - dist) / 140; p.vx -= (dx / dist) * force * 0.03; p.vy -= (dy / dist) * force * 0.03; }
       }
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vx *= 0.996;
-      p.vy *= 0.996;
+      p.x += p.vx; p.y += p.vy; p.vx *= 0.996; p.vy *= 0.996;
       if (p.x < -20) p.x = window.innerWidth + 20;
       if (p.x > window.innerWidth + 20) p.x = -20;
       if (p.y < -20) p.y = window.innerHeight + 20;
       if (p.y > window.innerHeight + 20) p.y = -20;
     }
   }
-
-  function render() {
-    if (!enabled) return;
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    drawLinks();
-    particles.forEach(drawParticle);
-    updateParticles();
-    rafId = window.requestAnimationFrame(render);
-  }
-
-  function start() {
-    if (enabled) return;
-    enabled = true;
-    canvas.style.display = 'block';
-    resize();
-    createParticles();
-    render();
-  }
-
-  function stop() {
-    enabled = false;
-    canvas.style.display = 'none';
-    mouse.active = false;
-    if (rafId) window.cancelAnimationFrame(rafId);
-    rafId = null;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }
-
+  function render() { if (!enabled) return; ctx.clearRect(0, 0, window.innerWidth, window.innerHeight); drawLinks(); particles.forEach(drawParticle); updateParticles(); rafId = window.requestAnimationFrame(render); }
+  function start() { if (enabled) return; enabled = true; canvas.style.display = 'block'; resize(); createParticles(); render(); }
+  function stop() { enabled = false; canvas.style.display = 'none'; mouse.active = false; if (rafId) window.cancelAnimationFrame(rafId); rafId = null; ctx.clearRect(0, 0, canvas.width, canvas.height); }
   function sync() { shouldEnable() ? start() : stop(); }
   window.addEventListener('mousemove', (event) => { if (!enabled) return; mouse.x = event.clientX; mouse.y = event.clientY; mouse.active = true; });
   window.addEventListener('mouseleave', () => { mouse.active = false; });
   window.addEventListener('resize', () => { if (enabled) { resize(); createParticles(); } sync(); }, { passive: true });
   window.addEventListener('haxurus:devicechange', sync);
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && enabled && rafId) { window.cancelAnimationFrame(rafId); rafId = null; }
-    else if (!document.hidden && enabled && !rafId) render();
-  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && enabled && rafId) { window.cancelAnimationFrame(rafId); rafId = null; } else if (!document.hidden && enabled && !rafId) render(); });
   sync();
 })();
 
@@ -266,138 +212,89 @@
   const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
   let skipRequested = window.__skipIntro === true;
   let sequenceStarted = false;
-
   function shouldSkip() { return skipRequested || window.__skipIntro === true; }
   function rememberText(el) { if (el && !el.dataset.originalText) el.dataset.originalText = (el.textContent || '').trim(); }
   function restoreText(el) { if (!el) return; rememberText(el); el.textContent = el.dataset.originalText || ''; el.classList.remove('type-caret'); }
-
   function revealEverything() {
     const allAnimated = document.querySelectorAll('.hero, .quick-link, .block .link-card, .about-haxurus, .category h2, .category .link-card, .playlist-card');
     const allText = document.querySelectorAll('.hero h1, .hero-text, .about-haxurus h2, .about-haxurus p, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag');
     allText.forEach((el) => restoreText(el));
-    allAnimated.forEach((el) => {
-      el.classList.add('seq-visible');
-      if (el.classList.contains('about-haxurus')) el.classList.add('about-ready');
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-      el.style.transition = 'none';
-    });
+    allAnimated.forEach((el) => { el.classList.add('seq-visible'); if (el.classList.contains('about-haxurus')) el.classList.add('about-ready', 'about-actions-ready'); el.style.opacity = '1'; el.style.transform = 'none'; el.style.transition = 'none'; });
   }
-
   function waitForLoader() {
     if (!document.body.classList.contains('is-loading')) return Promise.resolve();
     return new Promise((resolve) => {
       let done = false;
-      const finish = () => {
-        if (done) return;
-        done = true;
-        observer.disconnect();
-        window.setTimeout(resolve, 90);
-      };
-      const observer = new MutationObserver(() => {
-        if (!document.body.classList.contains('is-loading')) finish();
-      });
+      const finish = () => { if (done) return; done = true; observer.disconnect(); window.setTimeout(resolve, 90); };
+      const observer = new MutationObserver(() => { if (!document.body.classList.contains('is-loading')) finish(); });
       observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
       window.addEventListener(SKIP_EVENT, finish, { once: true });
       window.setTimeout(() => { if (!document.body.classList.contains('is-loading')) finish(); }, 5000);
     });
   }
-
   async function typeText(el, speed) {
     const fullText = el.dataset.originalText || '';
     if (!fullText) return;
     if (shouldSkip()) { el.textContent = fullText; el.classList.remove('type-caret'); return; }
     el.classList.add('type-caret');
-    for (let i = 1; i <= fullText.length; i += 1) {
-      if (shouldSkip()) { el.textContent = fullText; break; }
-      el.textContent = fullText.slice(0, i);
-      await wait(speed);
-    }
+    for (let i = 1; i <= fullText.length; i += 1) { if (shouldSkip()) { el.textContent = fullText; break; } el.textContent = fullText.slice(0, i); await wait(speed); }
     el.classList.remove('type-caret');
   }
-
   function prepareTextTargets(container) {
-    const textTargets = container.matches('h2, .hero h1, .hero-text, .about-haxurus h2, .about-haxurus p')
-      ? [container]
-      : [...container.querySelectorAll('.card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag')];
+    const textTargets = container.matches('h2, .hero h1, .hero-text, .about-haxurus h2, .about-haxurus p') ? [container] : [...container.querySelectorAll('.card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag')];
     textTargets.forEach((el) => { rememberText(el); if (!shouldSkip()) el.textContent = ''; });
     return textTargets;
   }
-
-  function setupHero(hero, heroTitle, heroText) {
-    if (!hero) return;
-    hero.style.opacity = '0';
-    hero.style.transform = 'translateY(26px) scale(0.985)';
-    hero.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
-    [heroTitle, heroText].forEach((el) => { if (el) { rememberText(el); el.textContent = ''; } });
-  }
-
+  function setupHero(hero, heroTitle, heroText) { if (!hero) return; hero.style.opacity = '0'; hero.style.transform = 'translateY(26px) scale(0.985)'; hero.style.transition = 'opacity 0.65s ease, transform 0.65s ease'; [heroTitle, heroText].forEach((el) => { if (el) { rememberText(el); el.textContent = ''; } }); }
   async function revealHero(hero, heroTitle, heroText) {
     if (!hero) return;
-    hero.classList.add('seq-visible');
-    hero.style.opacity = '1';
-    hero.style.transform = 'translateY(0) scale(1)';
+    hero.classList.add('seq-visible'); hero.style.opacity = '1'; hero.style.transform = 'translateY(0) scale(1)';
     if (shouldSkip()) { revealEverything(); return; }
     await wait(380);
     if (heroTitle) { await typeText(heroTitle, 28); if (shouldSkip()) { revealEverything(); return; } await wait(90); }
     if (heroText) { await typeText(heroText, 12); if (shouldSkip()) { revealEverything(); return; } await wait(120); }
   }
-
   async function revealItem(item, speed = 16) {
     const textTargets = prepareTextTargets(item);
     item.classList.add('seq-visible');
     if (shouldSkip()) { textTargets.forEach((el) => restoreText(el)); item.style.opacity = '1'; item.style.transform = 'none'; item.style.transition = 'none'; return; }
     await wait(item.matches('.quick-link') ? 90 : item.matches('h2') ? 130 : 150);
-    for (const el of textTargets) {
-      const textSpeed = el.matches('.card-subtitle, .playlist-subtitle, .playlist-tag') ? 10 : speed;
-      await typeText(el, textSpeed);
-      if (shouldSkip()) { revealEverything(); return; }
-      await wait(35);
-    }
+    for (const el of textTargets) { const textSpeed = el.matches('.card-subtitle, .playlist-subtitle, .playlist-tag') ? 10 : speed; await typeText(el, textSpeed); if (shouldSkip()) { revealEverything(); return; } await wait(35); }
     await wait(item.matches('h2') ? 110 : 75);
   }
-
   async function revealAbout(about) {
     if (!about) return;
     const title = about.querySelector('h2');
     const text = about.querySelector('p');
+    about.classList.remove('about-actions-ready');
     [title, text].forEach((el) => { if (el) { rememberText(el); if (!shouldSkip()) el.textContent = ''; } });
     about.classList.add('about-ready', 'seq-visible');
     await wait(260);
     if (title) await typeText(title, 20);
     await wait(70);
     if (text) await typeText(text, 8);
+    await wait(120);
+    about.classList.add('about-actions-ready');
     await wait(160);
   }
-
   async function runSequence() {
     if (sequenceStarted) return;
     sequenceStarted = true;
     await waitForLoader();
-
     const hero = document.querySelector('.hero');
     const heroTitle = document.querySelector('.hero h1');
     const heroText = document.querySelector('.hero-text');
     const quickLinks = [...document.querySelectorAll('.quick-links .quick-link')];
     const about = document.querySelector('.about-haxurus');
     const sections = [...document.querySelectorAll('main .category')];
-
     document.querySelectorAll('.hero h1, .hero-text, .about-haxurus h2, .about-haxurus p, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag').forEach((el) => rememberText(el));
     if (prefersReducedMotion || shouldSkip()) { revealEverything(); return; }
-
     setupHero(hero, heroTitle, heroText);
     await revealHero(hero, heroTitle, heroText);
     if (shouldSkip()) { revealEverything(); return; }
-
-    for (const link of quickLinks) {
-      link.classList.add('seq-visible');
-      if (shouldSkip()) { revealEverything(); return; }
-      await wait(80);
-    }
-
+    for (const link of quickLinks) { link.classList.add('seq-visible'); if (shouldSkip()) { revealEverything(); return; } await wait(80); }
     await revealAbout(about);
     if (shouldSkip()) { revealEverything(); return; }
-
     for (const section of sections) {
       const heading = section.querySelector('h2');
       if (heading) { await revealItem(heading, 22); if (shouldSkip()) return; }
@@ -405,7 +302,6 @@
       for (const item of items) { await revealItem(item); if (shouldSkip()) return; }
     }
   }
-
   window.addEventListener(SKIP_EVENT, () => { skipRequested = true; revealEverything(); });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runSequence, { once: true });
   else runSequence();
