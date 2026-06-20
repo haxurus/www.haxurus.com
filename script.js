@@ -228,6 +228,12 @@
   function shouldSkip() { return skipRequested || window.__skipIntro === true; }
   function rememberText(el) { if (el && !el.dataset.originalText) el.dataset.originalText = (el.textContent || '').trim(); }
   function restoreText(el) { if (!el) return; rememberText(el); el.textContent = el.dataset.originalText || ''; el.classList.remove('type-caret'); }
+  function primeAbout(about) {
+    if (!about || shouldSkip() || prefersReducedMotion) return;
+    const targets = [about.querySelector('.about-haxurus__eyebrow'), about.querySelector('h2'), about.querySelector('p'), ...about.querySelectorAll('.about-haxurus__button')];
+    targets.forEach((el) => { if (!el) return; rememberText(el); el.textContent = ''; el.classList.remove('type-caret'); });
+    about.classList.remove('about-ready', 'about-actions-ready');
+  }
   function revealEverything() {
     const allAnimated = document.querySelectorAll('.hero, .quick-link, .block .link-card, .about-haxurus, .category h2, .category .link-card, .playlist-card');
     const allText = document.querySelectorAll('.hero h1, .hero-text, .about-haxurus__eyebrow, .about-haxurus h2, .about-haxurus p, .about-haxurus__button, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag');
@@ -301,12 +307,13 @@
   async function runSequence() {
     if (sequenceStarted) return;
     sequenceStarted = true;
+    const about = document.querySelector('.about-haxurus');
+    primeAbout(about);
     await waitForLoader();
     const hero = document.querySelector('.hero');
     const heroTitle = document.querySelector('.hero h1');
     const heroText = document.querySelector('.hero-text');
     const quickLinks = [...document.querySelectorAll('.quick-links .quick-link')];
-    const about = document.querySelector('.about-haxurus');
     const sections = [...document.querySelectorAll('main .category')];
     document.querySelectorAll('.hero h1, .hero-text, .about-haxurus__eyebrow, .about-haxurus h2, .about-haxurus p, .about-haxurus__button, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag').forEach((el) => rememberText(el));
     if (prefersReducedMotion || shouldSkip()) { revealEverything(); return; }
