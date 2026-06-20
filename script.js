@@ -230,7 +230,7 @@
   function restoreText(el) { if (!el) return; rememberText(el); el.textContent = el.dataset.originalText || ''; el.classList.remove('type-caret'); }
   function revealEverything() {
     const allAnimated = document.querySelectorAll('.hero, .quick-link, .block .link-card, .about-haxurus, .category h2, .category .link-card, .playlist-card');
-    const allText = document.querySelectorAll('.hero h1, .hero-text, .about-haxurus h2, .about-haxurus p, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag');
+    const allText = document.querySelectorAll('.hero h1, .hero-text, .about-haxurus__eyebrow, .about-haxurus h2, .about-haxurus p, .about-haxurus__button, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag');
     allText.forEach((el) => restoreText(el));
     allAnimated.forEach((el) => { el.classList.add('seq-visible'); if (el.classList.contains('about-haxurus')) el.classList.add('about-ready', 'about-actions-ready'); el.style.opacity = '1'; el.style.transform = 'none'; el.style.transition = 'none'; });
   }
@@ -254,7 +254,7 @@
     el.classList.remove('type-caret');
   }
   function prepareTextTargets(container) {
-    const textTargets = container.matches('h2, .hero h1, .hero-text, .about-haxurus h2, .about-haxurus p') ? [container] : [...container.querySelectorAll('.card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag')];
+    const textTargets = container.matches('h2, .hero h1, .hero-text, .about-haxurus__eyebrow, .about-haxurus h2, .about-haxurus p, .about-haxurus__button') ? [container] : [...container.querySelectorAll('.card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag')];
     textTargets.forEach((el) => { rememberText(el); if (!shouldSkip()) el.textContent = ''; });
     return textTargets;
   }
@@ -277,18 +277,26 @@
   }
   async function revealAbout(about) {
     if (!about) return;
+    const eyebrow = about.querySelector('.about-haxurus__eyebrow');
     const title = about.querySelector('h2');
     const text = about.querySelector('p');
+    const buttons = [...about.querySelectorAll('.about-haxurus__button')];
     about.classList.remove('about-actions-ready');
-    [title, text].forEach((el) => { if (el) { rememberText(el); if (!shouldSkip()) el.textContent = ''; } });
+    [eyebrow, title, text, ...buttons].forEach((el) => { if (el) { rememberText(el); if (!shouldSkip()) el.textContent = ''; } });
     about.classList.add('about-ready', 'seq-visible');
     await wait(260);
+    if (eyebrow) await typeText(eyebrow, 18);
+    await wait(70);
     if (title) await typeText(title, 20);
     await wait(70);
     if (text) await typeText(text, 8);
     await wait(120);
     about.classList.add('about-actions-ready');
-    await wait(220);
+    for (const button of buttons) {
+      await typeText(button, 12);
+      await wait(90);
+    }
+    await wait(180);
   }
   async function runSequence() {
     if (sequenceStarted) return;
@@ -300,7 +308,7 @@
     const quickLinks = [...document.querySelectorAll('.quick-links .quick-link')];
     const about = document.querySelector('.about-haxurus');
     const sections = [...document.querySelectorAll('main .category')];
-    document.querySelectorAll('.hero h1, .hero-text, .about-haxurus h2, .about-haxurus p, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag').forEach((el) => rememberText(el));
+    document.querySelectorAll('.hero h1, .hero-text, .about-haxurus__eyebrow, .about-haxurus h2, .about-haxurus p, .about-haxurus__button, .card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag').forEach((el) => rememberText(el));
     if (prefersReducedMotion || shouldSkip()) { revealEverything(); return; }
     setupHero(hero, heroTitle, heroText);
     await revealHero(hero, heroTitle, heroText);
