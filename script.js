@@ -61,6 +61,75 @@
   else normalizeAbout();
 })();
 
+/* navigation and contact badges */
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `.card-badge--contact{border-color:rgba(57,255,20,.38)!important;background:rgba(57,255,20,.12)!important;color:#dfffe7!important}`;
+  document.head.appendChild(style);
+
+  function addAboutToNav() {
+    const navLinks = document.querySelector('.site-nav__links');
+    if (!navLinks || navLinks.querySelector('a[href="#about"]')) return;
+    const link = document.createElement('a');
+    link.href = '#about';
+    link.textContent = 'About';
+    navLinks.insertBefore(link, navLinks.firstElementChild);
+  }
+
+  function getCardBody(card) {
+    return card.querySelector('.card-body, .link-card-banner-body, .playlist-info') || card;
+  }
+
+  function addBadge(card, type, label) {
+    const body = getCardBody(card);
+    let badges = body.querySelector('.card-badges');
+    if (!badges) {
+      badges = document.createElement('div');
+      badges.className = 'card-badges';
+      body.appendChild(badges);
+    }
+    if (badges.querySelector(`[data-badge-type="${type}"]`)) return;
+    const badge = document.createElement('span');
+    badge.className = `card-badge card-badge--${type}`;
+    badge.dataset.badgeType = type;
+    badge.textContent = label;
+    badges.appendChild(badge);
+    card.classList.add('has-card-badges');
+  }
+
+  function addContactBadges() {
+    const contactPatterns = [
+      /^mailto:/i,
+      /discord\.com\/users\//i,
+      /t\.me\/(haxurus_official|limitati_haxbot)/i,
+      /instagram\.com\/haxurus/i,
+      /open\.spotify\.com\/user\//i,
+      /x\.com\/haxurus/i,
+      /duolingo\.com\/profile\/haxurus/i,
+      /twitch\.tv\/haxurus/i,
+      /vrchat\.com\/home\/user\//i,
+      /op\.gg\/lol\/summoners\/euw\/Haxurus/i,
+      /myanimelist\.net\/animelist\/Haxurus/i,
+      /steamcommunity\.com\/(id|profiles)\/haxurus/i,
+      /github\.com\/Haxurus/i,
+      /youtube\.com\/@haxurus/i,
+      /tiktok\.com\/@haxurus/i
+    ];
+    document.querySelectorAll('.link-card[href]').forEach((card) => {
+      const href = card.getAttribute('href') || '';
+      if (contactPatterns.some((pattern) => pattern.test(href))) addBadge(card, 'contact', 'Contact');
+    });
+  }
+
+  function apply() {
+    addAboutToNav();
+    addContactBadges();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, { once: true });
+  else apply();
+})();
+
 /* modal handling */
 (() => {
   const triggers = document.querySelectorAll('[data-modal-open]');
