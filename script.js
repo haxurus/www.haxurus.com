@@ -403,3 +403,53 @@
   if (!yearTarget) return;
   yearTarget.textContent = String(new Date().getFullYear());
 })();
+
+/* custom cyber cursor */
+(() => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const touchLike = window.matchMedia('(pointer: coarse), (hover: none)').matches || (navigator.maxTouchPoints || 0) > 0;
+  if (reduceMotion || touchLike || window.innerWidth <= 900) return;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    body.custom-cursor-enabled,body.custom-cursor-enabled *{cursor:none!important}.cyber-cursor{position:fixed;left:0;top:0;z-index:10000;width:12px;height:12px;border-radius:50%;background:#8cffb3;box-shadow:0 0 12px rgba(140,255,179,.9),0 0 28px rgba(57,255,20,.34);pointer-events:none;transform:translate3d(-50%,-50%,0);transition:opacity .18s ease,background .18s ease,box-shadow .18s ease}.cyber-cursor-ring{position:fixed;left:0;top:0;z-index:9999;width:34px;height:34px;border:1px solid rgba(140,255,179,.76);border-radius:50%;box-shadow:0 0 18px rgba(140,255,179,.35),inset 0 0 18px rgba(140,255,179,.12);pointer-events:none;transform:translate3d(-50%,-50%,0);transition:width .18s ease,height .18s ease,border-color .18s ease,opacity .18s ease,box-shadow .18s ease}.cyber-cursor-ring::before,.cyber-cursor-ring::after{content:"";position:absolute;background:rgba(140,255,179,.82);box-shadow:0 0 10px rgba(140,255,179,.7)}.cyber-cursor-ring::before{left:50%;top:-5px;width:1px;height:10px;transform:translateX(-50%)}.cyber-cursor-ring::after{top:50%;left:-5px;width:10px;height:1px;transform:translateY(-50%)}body.cursor-idle .cyber-cursor,body.cursor-idle .cyber-cursor-ring{opacity:0}body.cursor-target .cyber-cursor{width:6px;height:6px;background:#fff;box-shadow:0 0 10px rgba(255,255,255,.8),0 0 24px rgba(140,255,179,.6)}body.cursor-target .cyber-cursor-ring{width:52px;height:52px;border-color:rgba(140,255,179,.95);box-shadow:0 0 24px rgba(140,255,179,.55),inset 0 0 20px rgba(140,255,179,.18)}body.cursor-down .cyber-cursor-ring{width:44px;height:44px}body.cursor-down .cyber-cursor{transform:translate3d(-50%,-50%,0) scale(.85)}
+  `;
+  document.head.appendChild(style);
+
+  const dot = document.createElement('div');
+  dot.className = 'cyber-cursor';
+  const ring = document.createElement('div');
+  ring.className = 'cyber-cursor-ring';
+  document.body.append(dot, ring);
+  document.body.classList.add('custom-cursor-enabled', 'cursor-idle');
+
+  const clickableSelector = 'a,button,[role="button"],input,textarea,select,.link-card,.playlist-card,.quick-link,.about-haxurus__button,.site-loader__skip,.modal-close,.lol-button';
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
+
+  function move(event) {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+    document.body.classList.remove('cursor-idle');
+    document.body.classList.toggle('cursor-target', Boolean(event.target.closest(clickableSelector)));
+  }
+
+  function animate() {
+    ringX += (mouseX - ringX) * 0.22;
+    ringY += (mouseY - ringY) * 0.22;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    window.requestAnimationFrame(animate);
+  }
+
+  document.addEventListener('mousemove', move, { passive: true });
+  document.addEventListener('mouseleave', () => document.body.classList.add('cursor-idle'));
+  document.addEventListener('mouseenter', () => document.body.classList.remove('cursor-idle'));
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
+  animate();
+})();
