@@ -72,7 +72,7 @@
     if (window.__skipIntro === true) { await hideLoader({ instant: true }); return; }
     const bgVideo = document.querySelector('.background-video');
     await Promise.race([
-      Promise.all([whenImageReady('img/banner.png'), whenVideoReady(bgVideo)]),
+      Promise.all([whenImageReady('img/hero/banner_summer.png'), whenVideoReady(bgVideo)]),
       wait(MAX_WAIT_TIME),
     ]);
     if (window.__skipIntro === true) { await hideLoader({ instant: true }); return; }
@@ -118,11 +118,18 @@
 /* combined effects stylesheet */
 (() => {
   const href = 'site-effects.css';
-  if (document.querySelector(`link[href="${href}"]`)) return;
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = href;
-  document.head.appendChild(link);
+  if (!document.querySelector(`link[href="${href}"]`)) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+  if (!document.querySelector('style[data-hero-summer-banner]')) {
+    const override = document.createElement('style');
+    override.setAttribute('data-hero-summer-banner', '');
+    override.textContent = '.hero{background:#020805!important}.hero::before{background:url("img/hero/banner_summer.png") center/cover no-repeat!important}';
+    document.head.appendChild(override);
+  }
 })();
 
 /* reactive liquid glass */
