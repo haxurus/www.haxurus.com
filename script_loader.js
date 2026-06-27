@@ -132,6 +132,29 @@
   }
 })();
 
+/* support panel fixes */
+(() => {
+  const freeText = 'You can join for FREE to see extra content.';
+  const css = `
+    .support-card{cursor:default!important;pointer-events:none!important}
+    .support-card,.support-card *{cursor:default!important}
+    .support-button{pointer-events:auto!important;cursor:pointer!important}
+    .support-button *{cursor:pointer!important}
+  `;
+  const style = document.createElement('style');
+  style.setAttribute('data-support-panel-fixes', '');
+  style.textContent = css;
+  document.head.appendChild(style);
+  function applySupportText() {
+    const note = document.querySelector('.support-note');
+    if (!note) return;
+    note.dataset.originalText = freeText;
+    note.textContent = freeText;
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applySupportText, { once: true });
+  else applySupportText();
+})();
+
 /* reactive liquid glass */
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
