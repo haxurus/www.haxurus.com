@@ -15,7 +15,7 @@
 
 /* loader */
 (() => {
-  const MIN_LOADER_TIME = 1100;
+  const MIN_LOADER_TIME = 7000;
   const MAX_WAIT_TIME = 4500;
   const SKIP_EVENT = 'haxurus:skip-intro';
   const loader = document.getElementById('site-loader');
