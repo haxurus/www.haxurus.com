@@ -302,3 +302,57 @@
   modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
 })();
+
+/* animated browser tab title */
+(() => {
+  const titles = [
+    'Haxurus • Link Hub',
+    'Haxurus • Socials',
+    'Haxurus • VRChat',
+    'Haxurus • Projects',
+    'Haxurus • Playlists',
+    'Haxurus • Support'
+  ];
+  const awayTitle = 'Come back to Haxurus';
+  const intervalMs = 2800;
+  let index = 0;
+  let intervalId = null;
+
+  function setTitle(value) {
+    document.title = value;
+  }
+
+  function stop() {
+    if (!intervalId) return;
+    window.clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  function tick() {
+    index = (index + 1) % titles.length;
+    setTitle(titles[index]);
+  }
+
+  function start() {
+    stop();
+    if (document.hidden) {
+      setTitle(awayTitle);
+      return;
+    }
+    setTitle(titles[index]);
+    intervalId = window.setInterval(tick, intervalMs);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stop();
+      setTitle(awayTitle);
+      return;
+    }
+    index = 0;
+    start();
+  });
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
+  else start();
+})();
