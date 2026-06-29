@@ -35,6 +35,18 @@
   applyDevice();
 })();
 
+/* section spacing overrides */
+(() => {
+  const style = document.createElement('style');
+  style.setAttribute('data-section-spacing-overrides', '');
+  style.textContent = `
+    .hero + .about-haxurus{margin-top:clamp(92px,12vh,150px)!important;margin-bottom:clamp(96px,12vh,160px)!important}
+    #support.support-category{padding-top:clamp(110px,14vh,180px)!important}
+    @media (max-width:720px){.hero + .about-haxurus{margin-top:58px!important;margin-bottom:72px!important}#support.support-category{padding-top:86px!important}}
+  `;
+  document.head.appendChild(style);
+})();
+
 /* about final visual fixes */
 (() => {
   const style = document.createElement('style');
