@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Egirl Quiz</title>
+
+  <link rel="stylesheet" href="/css/bemyegirl.css" />
+</head>
+<body>
+  <main class="quiz-page">
+    <section class="quiz-card" id="quizCard">
+      <div class="quiz-header">
+        <p class="quiz-kicker">Haxurus Compatibility System</p>
+        <h1>Be My Egirl Quiz</h1>
+        <p class="quiz-subtitle">
+          Test scientificamente discutibile per misurare l’affinità.
+        </p>
+
+        <div class="progress-wrap" aria-label="Avanzamento quiz">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <section id="questionArea" class="question-area"></section>
+
+      <div class="quiz-actions">
+        <button id="backBtn" class="btn btn-secondary" type="button">Indietro</button>
+        <button id="nextBtn" class="btn btn-primary" type="button">Avanti</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="specialOverlay" class="special-overlay hidden" aria-hidden="true"></div>
+
+  <audio id="policeAudio" src="/audio/polizia.mp3" preload="auto"></audio>
+  <audio id="cowAudio" src="/audio/versomucca.mp3" preload="auto"></audio>
+  <audio id="exorcistAudio" src="/audio/esorcista.mp3" preload="auto"></audio>
+
+  <script src="/scripts/bemyegirl.js"></script>
+</body>
+</html>
