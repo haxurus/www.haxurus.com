@@ -22,12 +22,12 @@ const questions = [
   {
   id: "tronchetto",
   type: "choice",
-  question: "Choose your starter item:",
+  question: "Were you born with Clash Royale's Log or with the cave?",
   answers: [
     { label: "The Log", action: "preferenceBlock" },
-    { label: "I'm a transformer", action: "preferenceBlock" },
+    { label: "I'm a trans(former)", action: "preferenceBlock" },
     { label: "I'm confused", value: 0, action: "starterPopup" },
-    { label: "The Flower", value: 2 }
+    { label: "The cave", value: 2 }
   ]
   },
   {
@@ -479,7 +479,7 @@ function renderPreferenceBlocked() {
 }
 
 function showStarterPopup() {
-  window.alert("Check your starter item!");
+  window.alert("Check in your pants!");
 }
 
 function restartQuiz() {
