@@ -73,6 +73,47 @@ function ensurePineappleVerseStyles() {
   document.head.appendChild(style);
 }
 
+function ensureFinalRouteStyles() {
+  if (document.getElementById("finalRouteStyles")) return;
+
+  const style = document.createElement("style");
+  style.id = "finalRouteStyles";
+  style.textContent = `
+    .result-box.route-result{
+      text-align:center;
+    }
+
+    .route-label{
+      display:inline-flex;
+      margin:8px 0 12px;
+      border:1px solid rgba(57,255,20,.40);
+      border-radius:999px;
+      padding:8px 13px;
+      color:#c9ffd4;
+      background:rgba(57,255,20,.10);
+      font-size:.74rem;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .route-name{
+      margin:0 0 14px;
+      color:#f7fff9;
+      font-size:clamp(1.75rem,5vw,3.6rem);
+      line-height:.98;
+      letter-spacing:-.055em;
+      text-shadow:0 0 18px rgba(57,255,20,.26),0 14px 34px rgba(0,0,0,.38);
+    }
+
+    .route-name.wedding-route{
+      color:#fff2c8;
+      text-shadow:0 0 12px rgba(255,242,200,.46),0 0 34px rgba(57,255,20,.28),0 14px 34px rgba(0,0,0,.40);
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 function runPineappleVerseEvent() {
   ensurePineappleVerseStyles();
   playAudio(bellsAudioPatch);
@@ -99,6 +140,85 @@ function runPineappleVerseEvent() {
   closeButton?.focus();
   closeButton?.addEventListener("click", hideOverlay);
 }
+
+function getRouteResult(percentage) {
+  if (percentage === 100) {
+    return {
+      route: "Wedding Route",
+      title: "Perfect ending unlocked",
+      text: "100% compatibility. The system is already looking for rings, matching Discord icons and a suspiciously cute Minecraft house.",
+      specialClass: "wedding-route"
+    };
+  }
+
+  if (percentage <= 25) {
+    return {
+      route: "Emotional Damage Route",
+      title: "Incompatibility detected",
+      text: "The system recommends Discord friendship and emotional safety distance."
+    };
+  }
+
+  if (percentage <= 50) {
+    return {
+      route: "Discord Friend Route",
+      title: "Maybe Discord friends",
+      text: "There is something here, but we need at least three memes, one pizza, and manual verification."
+    };
+  }
+
+  if (percentage <= 70) {
+    return {
+      route: "Soft Match Route",
+      title: "Interesting compatibility",
+      text: "The situation looks promising. The system approves a conversation longer than expected."
+    };
+  }
+
+  if (percentage <= 85) {
+    return {
+      route: "Possible Egirl Route",
+      title: "Possible match",
+      text: "Good compatibility. Proceed with spritz, gossip, and a Minecraft session."
+    };
+  }
+
+  if (percentage <= 95) {
+    return {
+      route: "High Compatibility Route",
+      title: "Very high compatibility",
+      text: "Suspicious compatibility level. High risk of shared memes and nerdy evenings."
+    };
+  }
+
+  return {
+    route: "Legendary Egirl Route",
+    title: "Legendary route unlocked",
+    text: "The system has detected a final-boss candidate. Immediate human verification required."
+  };
+}
+
+getResultMessage = getRouteResult;
+
+renderResult = function() {
+  const { percentage, result } = calculateResult();
+  const routeClass = result.specialClass || "";
+
+  ensureFinalRouteStyles();
+  progressBar.style.width = "100%";
+  setRestartScreen();
+
+  questionArea.innerHTML = `
+    <div class="result-box route-result">
+      <p class="quiz-kicker">Final result</p>
+      <div class="result-score">${percentage}%</div>
+      <p class="route-label">Route unlocked</p>
+      <h2 class="route-name ${routeClass}">${result.route}</h2>
+      <h3 class="result-title">${result.title}</h3>
+      <p class="result-text">${result.text}</p>
+    </div>
+  `;
+};
 
 runPineappleEvent = runPineappleVerseEvent;
 runExorcistEvent = runPineappleVerseEvent;
