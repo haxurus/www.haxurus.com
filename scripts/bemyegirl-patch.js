@@ -1,6 +1,91 @@
 const bellsAudioPatch = new Audio("audio/campane.mp3");
 bellsAudioPatch.preload = "auto";
 
+function addProfileQuestions() {
+  if (questions.some((question) => question.id === "origine")) return;
+
+  questions.push(
+    {
+      id: "origine",
+      type: "choice",
+      question: "Dove sei stata spawnata?",
+      answers: [
+        { label: "Nord Italia", value: 2 },
+        { label: "Centro Italia", value: 1 },
+        { label: "Sud Italia / Isole", value: 1 },
+        { label: "Europa", value: 0 },
+        { label: "Fuori Europa", value: 0 },
+        { label: "Non lo so, sono stata spawnata", value: 2 }
+      ]
+    },
+    {
+      id: "dove_abiti_ora",
+      type: "choice",
+      question: "Dove abiti ora?",
+      answers: [
+        { label: "Vicino a Milano", value: 2 },
+        { label: "Lombardia", value: 1 },
+        { label: "Nord Italia", value: 0 },
+        { label: "Italia, ma lontano", value: -1 },
+        { label: "Estero", value: -2 },
+        { label: "Nel tuo cuore", value: 2 }
+      ]
+    },
+    {
+      id: "colore_occhi",
+      type: "choice",
+      question: "Che colore hanno i tuoi occhi?",
+      answers: [
+        { label: "Azzurri", value: 2 },
+        { label: "Verdi", value: 2 },
+        { label: "Marroni", value: 1 },
+        { label: "Nocciola", value: 1 },
+        { label: "Grigi", value: 1 },
+        { label: "Neri / molto scuri", value: 0 },
+        { label: "Cambiano colore in base all'umore", value: 2 }
+      ]
+    },
+    {
+      id: "colore_capelli",
+      type: "choice",
+      question: "Che colore hanno i tuoi capelli nella lore attuale?",
+      answers: [
+        { label: "Biondi", value: 2 },
+        { label: "Castani", value: 1 },
+        { label: "Neri", value: 1 },
+        { label: "Rossi / ramati", value: 2 },
+        { label: "Colorati / tinti", value: 2 },
+        { label: "Bianchi / silver", value: 1 },
+        { label: "Dipende dal mio ultimo breakdown", value: 2 }
+      ]
+    },
+    {
+      id: "segni_particolari",
+      type: "multiChoice",
+      question: "Quali sono i tuoi dettagli da personaggio principale?",
+      minValue: -2,
+      maxValue: 2,
+      answers: [
+        { label: "Piercing", value: 2 },
+        { label: "Tatuaggi", value: 1 },
+        { label: "Cicatrici", value: 1 },
+        { label: "Apparecchio per i denti", value: 2 },
+        { label: "Lentiggini", value: 2 },
+        { label: "Nei particolari", value: 1 },
+        { label: "Capelli colorati", value: 2 },
+        { label: "Occhiali", value: 1 },
+        { label: "Fossette", value: 2 },
+        { label: "Nessuno", value: 0 },
+        { label: "Sono io il dettaglio raro", value: 2 }
+      ]
+    }
+  );
+
+  if (!state.restartMode && typeof renderQuestion === "function") {
+    renderQuestion();
+  }
+}
+
 function ensurePineappleVerseStyles() {
   if (document.getElementById("pineappleVerseStyles")) return;
 
@@ -227,6 +312,7 @@ function getRouteResult(percentage) {
   };
 }
 
+addProfileQuestions();
 getResultMessage = getRouteResult;
 
 renderResult = function() {
