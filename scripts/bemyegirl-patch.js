@@ -16,6 +16,14 @@ function setQuestionText(questionId, questionText, answers) {
   }
 }
 
+function setQuestionAnswers(questionId, questionText, answers) {
+  const question = questions.find((item) => item.id === questionId);
+  if (!question) return;
+
+  question.question = questionText;
+  question.answers = answers;
+}
+
 function translateQuizToEnglish() {
   setQuestionText("principessa_disney", "Which Disney princess represents you the most?", [
     "Rapunzel",
@@ -44,23 +52,53 @@ function translateQuizToEnglish() {
     "No, serious movies only"
   ]);
 
-  setQuestionText("red_flags", "Choose your personal red flags", [
-    "I get attached too quickly",
-    "I need reassurance",
-    "I am jealous but pretend I am not",
-    "I get offended and then get over it",
-    "I want attention but do not ask for it",
-    "I take screenshots to analyze everything",
-    "I create mental movies from tiny clues",
-    "I say 'nothing' when it is not nothing",
-    "I send memes instead of talking seriously",
-    "I like being checked on",
-    "I am moody but funny",
-    "I cry over fictional characters",
-    "I need reassurance",
-    "If I like someone, I become an investigator",
-    "I leave people on read and then forget",
-    "I disappear without explaining"
+  setQuestionAnswers("red_flags", "Choose your emotional bugs", [
+    { label: "Attachment speedrun", value: 2 },
+    { label: "Reassurance required", value: 2 },
+    { label: "Jealousy.exe running in background", value: 2 },
+    { label: "Overthinking every tiny detail", value: 2 },
+    { label: "Screenshot evidence folder", value: 2 },
+    { label: "Fake scenarios generator", value: 1 },
+    { label: "Nothing means everything", value: 1 },
+    { label: "Attention needed, request denied", value: 1 },
+    { label: "Memes instead of communication", value: 1 },
+    { label: "Emotional cooldown needed", value: 0 },
+    { label: "Slow trust process", value: 0 },
+    { label: "Moody but self-aware", value: 0 },
+    { label: "Reply.exe sometimes crashes", value: -1 },
+    { label: "Mind reading expected", value: -1 },
+    { label: "Arguments for attention", value: -2 },
+    { label: "Ghost mode without warning", value: -2 },
+    { label: "I analyze tone changes like forensic evidence", value: 2 },
+    { label: "I reread old messages for emotional damage", value: 1 },
+    { label: "I need daily proof that you still like me", value: 2 },
+    { label: "I get quiet when I care too much", value: 1 },
+    { label: "I say 'it's fine' when it is absolutely not fine", value: 1 },
+    { label: "I create entire relationship arcs from one interaction", value: 2 },
+    { label: "I pretend not to care and then care aggressively", value: 1 },
+    { label: "I test people without telling them there is a test", value: -1 },
+    { label: "I want to be chased but act unavailable", value: 1 },
+    { label: "I need attention but act independent", value: 1 },
+    { label: "I get jealous of people I have never met", value: 2 },
+    { label: "I remember tiny details and use them as evidence", value: 1 },
+    { label: "I disappear to see if you notice", value: -2 },
+    { label: "I communicate better through reposts", value: 1 },
+    { label: "I need a loading screen before talking about feelings", value: 0 },
+    { label: "I am self-aware but still problematic", value: 0 },
+    { label: "I apologize and then overthink the apology", value: 1 },
+    { label: "I turn small problems into season finales", value: 1 },
+    { label: "I expect princess treatment but deny it", value: 2 },
+    { label: "I stalk your playlists for emotional clues", value: 1 },
+    { label: "I check your online status like it owes me money", value: 2 },
+    { label: "I write the message, delete it, then act normal", value: 1 },
+    { label: "I need reassurance after my own overthinking", value: 2 },
+    { label: "I forgive fast but remember everything", value: 0 },
+    { label: "I go offline instead of explaining what is wrong", value: -1 },
+    { label: "I win arguments in my head before they happen", value: 1 },
+    { label: "I say I am low maintenance, then require lore updates", value: 1 },
+    { label: "I panic when someone is too nice to me", value: 0 },
+    { label: "I need affection but get embarrassed receiving it", value: 1 },
+    { label: "I can be dramatic, but at least I am funny", value: 0 }
   ]);
 
   setQuestionText("gelosia", "How jealous are you?");
