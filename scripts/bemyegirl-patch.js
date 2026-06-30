@@ -128,6 +128,10 @@ function translateQuizToEnglish() {
     redFlags.fullAnswers = emotionalBugAnswers;
     redFlags.shortAnswers = getShortEmotionalBugAnswers(emotionalBugAnswers);
     redFlags.answers = redFlags.fullAnswers;
+    redFlags.shortMinValue = -2;
+    redFlags.shortMaxValue = 4;
+    redFlags.fullMinValue = -16;
+    redFlags.fullMaxValue = 28;
   }
 
   setQuestionText("gelosia", "How jealous are you?");
@@ -713,6 +717,24 @@ renderMultiChoiceQuestion = function(question, selected, questionNumber) {
       renderQuestion();
     });
   });
+};
+
+const baseGetQuestionValuePatch = getQuestionValue;
+getQuestionValue = function(question, answer) {
+  if (question.id === "red_flags" && answer) {
+    const mode = answer.mode === "short" ? "short" : "full";
+    const answerPool = mode === "short" ? question.shortAnswers : question.fullAnswers;
+    const selectedIndexes = answer.answerIndexes || [];
+    const rawValue = selectedIndexes.reduce((total, answerIndex) => {
+      return total + (answerPool[answerIndex]?.value ?? 0);
+    }, 0);
+    const minValue = mode === "short" ? question.shortMinValue : question.fullMinValue;
+    const maxValue = mode === "short" ? question.shortMaxValue : question.fullMaxValue;
+
+    return clamp(rawValue, minValue, maxValue);
+  }
+
+  return baseGetQuestionValuePatch(question, answer);
 };
 
 translateQuizToEnglish();
