@@ -20,15 +20,15 @@ const questions = [
     ]
   },
   {
-    id: "tronchetto",
-    type: "choice",
-    question: "Were you born with Clash Royale's Log or with a pussy?",
-    answers: [
-      { label: "The Log", value: -2 },
-      { label: "SAO?", value: -1 },
-      { label: "I’m confused", value: 0 },
-      { label: "With a pussy", value: 2 }
-    ]
+  id: "tronchetto",
+  type: "choice",
+  question: "Choose your starter item:",
+  answers: [
+    { label: "The Log", action: "preferenceBlock" },
+    { label: "I'm a transformer", action: "preferenceBlock" },
+    { label: "I'm confused", value: 0, action: "starterPopup" },
+    { label: "The Flower", value: 2 }
+  ]
   },
   {
     id: "eta",
@@ -260,6 +260,15 @@ function renderQuestion() {
           return;
         }
 
+        if (answer.action === "preferenceBlock") {
+          renderPreferenceBlocked();
+          return;
+        }
+        
+        if (answer.action === "starterPopup") {
+          showStarterPopup();
+        }
+
         if (answer.action === "police") {
           runPoliceEvent();
           return;
@@ -450,6 +459,27 @@ function renderBlocked() {
       </p>
     </div>
   `;
+}
+
+function renderPreferenceBlocked() {
+  progressBar.style.width = "100%";
+  backBtn.disabled = true;
+  nextBtn.textContent = "Restart";
+  nextBtn.disabled = false;
+  nextBtn.onclick = restartQuiz;
+
+  questionArea.innerHTML = `
+    <div class="blocked-card">
+      <h2>Route not available</h2>
+      <p>
+        This answer does not match the route this quiz is looking for.
+      </p>
+    </div>
+  `;
+}
+
+function showStarterPopup() {
+  window.alert("Check your starter item!");
 }
 
 function restartQuiz() {
