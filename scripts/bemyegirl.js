@@ -504,7 +504,7 @@ function runPoliceEvent() {
 
   overlay.className = "special-overlay";
   overlay.innerHTML = `
-    <img class="overlay-photo" src="/images/incarcerato.png" alt="Jailed" />
+    <img class="overlay-photo" src="/img/incarcerato.png" alt="Jailed" />
     <div class="bars"></div>
     <div class="overlay-message">
       🚨 ERROR 113: MINOR DETECTED. Try again when you’re 18 ;)
@@ -520,7 +520,7 @@ function runExorcistEvent() {
 
   overlay.className = "special-overlay";
   overlay.innerHTML = `
-    <img class="exorcist-gif" src="/images/esorcista.gif" alt="Exorcist event" />
+    <img class="exorcist-gif" src="/img/esorcista.gif" alt="Exorcist event" />
   `;
 
   window.setTimeout(() => {
