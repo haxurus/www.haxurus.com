@@ -248,13 +248,13 @@ function addProfileQuestions() {
       type: "choice",
       question: "What color are your eyes?",
       answers: [
-        { label: "Blue", value: 2 },
+        { label: "Blue", value: 1 },
         { label: "Green", value: 2 },
-        { label: "Brown", value: 1 },
-        { label: "Hazel", value: 1 },
+        { label: "Brown", value: 0 },
+        { label: "Hazel", value: 0 },
         { label: "Gray", value: 1 },
         { label: "Black / very dark", value: 0 },
-        { label: "They change color depending on my mood", value: 2 }
+        { label: "They change color depending on my mood", value: -2 }
       ]
     },
     {
@@ -265,10 +265,10 @@ function addProfileQuestions() {
         { label: "Blonde", value: 2 },
         { label: "Brown", value: 1 },
         { label: "Black", value: 1 },
-        { label: "Red / copper", value: 2 },
-        { label: "Colored / dyed", value: 2 },
-        { label: "White / silver", value: 1 },
-        { label: "Depends on my latest breakdown", value: 2 }
+        { label: "Red / copper", value: -2 },
+        { label: "Colored / dyed", value: 0 },
+        { label: "White / silver", value: -1 },
+        { label: "Depends on my latest breakdown", value: 0 }
       ]
     },
     {
