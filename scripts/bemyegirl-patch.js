@@ -1,6 +1,147 @@
 const bellsAudioPatch = new Audio("audio/campane.mp3");
 bellsAudioPatch.preload = "auto";
 
+function setQuestionText(questionId, questionText, answers) {
+  const question = questions.find((item) => item.id === questionId);
+  if (!question) return;
+
+  question.question = questionText;
+
+  if (answers) {
+    answers.forEach((label, index) => {
+      if (question.answers[index]) {
+        question.answers[index].label = label;
+      }
+    });
+  }
+}
+
+function translateQuizToEnglish() {
+  setQuestionText("principessa_disney", "Which Disney princess represents you the most?", [
+    "Rapunzel",
+    "Belle",
+    "Ariel",
+    "Mulan",
+    "Elsa",
+    "Cinderella",
+    "Snow White",
+    "Merida"
+  ]);
+
+  setQuestionText("appiccicosa", "How clingy are you?", [
+    "Emotional koala mode",
+    "Quite a bit, but with dignity",
+    "Normal",
+    "Very independent",
+    "We talk once a week"
+  ]);
+
+  setQuestionText("film_brutto", "If I ask you to watch a bad movie", [
+    "I watch it and we roast it together",
+    "Only if there is food",
+    "Depends on the movie",
+    "I fall asleep after 10 minutes",
+    "No, serious movies only"
+  ]);
+
+  setQuestionText("red_flags", "Choose your personal red flags", [
+    "I get attached too quickly",
+    "I need reassurance",
+    "I am jealous but pretend I am not",
+    "I get offended and then get over it",
+    "I want attention but do not ask for it",
+    "I take screenshots to analyze everything",
+    "I create mental movies from tiny clues",
+    "I say 'nothing' when it is not nothing",
+    "I send memes instead of talking seriously",
+    "I like being checked on",
+    "I am moody but funny",
+    "I cry over fictional characters",
+    "I need reassurance",
+    "If I like someone, I become an investigator",
+    "I leave people on read and then forget",
+    "I disappear without explaining"
+  ]);
+
+  setQuestionText("gelosia", "How jealous are you?");
+  const jealousy = questions.find((item) => item.id === "gelosia");
+  if (jealousy?.ranges) {
+    jealousy.ranges[0].label = "Do whatever you want";
+    jealousy.ranges[1].label = "Healthy jealousy";
+    jealousy.ranges[2].label = "Who is this?";
+    jealousy.ranges[3].label = "I analyze Instagram stories";
+    jealousy.ranges[4].label = "Give me your phone";
+  }
+
+  setQuestionText("buonanotte", "If I texted you 'Goodnight', how would you reply?", [
+    "Goodnight ❤️",
+    "Nighttt",
+    "Disturbing meme before sleeping",
+    "Left on read",
+    "night"
+  ]);
+
+  setQuestionText("litigio", "If we argue over something stupid", [
+    "We talk about it and then make peace",
+    "First I get offended, then I come back",
+    "I send you a meme to break the ice",
+    "Radio silence",
+    "I pretend nothing happened for 3 days"
+  ]);
+
+  setQuestionText("abbracci", "How much do you like hugs?");
+  const hugs = questions.find((item) => item.id === "abbracci");
+  if (hugs?.ranges) {
+    hugs.ranges[0].label = "Do not touch me";
+    hugs.ranges[1].label = "Sometimes";
+    hugs.ranges[2].label = "I like them";
+    hugs.ranges[3].label = "A lot";
+    hugs.ranges[4].label = "Permanent koala mode";
+  }
+
+  setQuestionText("serata_ideale", "Choose an ideal evening", [
+    "Movie, pizza and cuddles",
+    "Gaming together",
+    "Quiet pub",
+    "Chaotic club night",
+    "Everyone at their own home"
+  ]);
+
+  setQuestionText("discord", "What is your relationship with Discord?", [
+    "I live there",
+    "I use it sometimes",
+    "I know it but do not use it",
+    "I do not know what it is",
+    "I only associate it with toxic gamers"
+  ]);
+
+  setQuestionText("dolce", "Choose a dessert", [
+    "Tiramisu",
+    "Cheesecake",
+    "Ice cream",
+    "Fruit",
+    "I do not like desserts"
+  ]);
+
+  setQuestionText("foto_insieme", "How willing are you to take photos together?");
+  const photos = questions.find((item) => item.id === "foto_insieme");
+  if (photos?.ranges) {
+    photos.ranges[0].label = "No photos";
+    photos.ranges[1].label = "Only if I look good";
+    photos.ranges[2].label = "Sometimes";
+    photos.ranges[3].label = "Cute photos together";
+    photos.ranges[4].label = "Couple photoshoot";
+  }
+
+  setQuestionText("cosa_cerchi", "What are you actually looking for?", [
+    "Someone to laugh and feel good with",
+    "A sweet but also stupid relationship",
+    "Someone present",
+    "I do not know, let us see",
+    "Just passing time"
+  ]);
+}
+
 function addProfileQuestions() {
   if (questions.some((question) => question.id === "origine")) return;
 
@@ -8,82 +149,78 @@ function addProfileQuestions() {
     {
       id: "origine",
       type: "choice",
-      question: "Dove sei stata spawnata?",
+      question: "Where were you spawned?",
       answers: [
-        { label: "Nord Italia", value: 2 },
-        { label: "Centro Italia", value: 1 },
-        { label: "Sud Italia / Isole", value: 1 },
-        { label: "Europa", value: 0 },
-        { label: "Fuori Europa", value: 0 },
-        { label: "Non lo so, sono stata spawnata", value: 2 }
+        { label: "Northern Italy", value: 2 },
+        { label: "Central Italy", value: 1 },
+        { label: "Southern Italy / Islands", value: 1 },
+        { label: "Europe", value: 0 },
+        { label: "Outside Europe", value: 0 },
+        { label: "I do not know, I was just spawned", value: 2 }
       ]
     },
     {
       id: "dove_abiti_ora",
       type: "choice",
-      question: "Dove abiti ora?",
+      question: "Where do you live now?",
       answers: [
-        { label: "Vicino a Milano", value: 2 },
-        { label: "Lombardia", value: 1 },
-        { label: "Nord Italia", value: 0 },
-        { label: "Italia, ma lontano", value: -1 },
-        { label: "Estero", value: -2 },
-        { label: "Nel tuo cuore", value: 2 }
+        { label: "Near Milan", value: 2 },
+        { label: "Lombardy", value: 1 },
+        { label: "Northern Italy", value: 0 },
+        { label: "Italy, but far away", value: -1 },
+        { label: "Abroad", value: -2 },
+        { label: "In your heart", value: 2 }
       ]
     },
     {
       id: "colore_occhi",
       type: "choice",
-      question: "Che colore hanno i tuoi occhi?",
+      question: "What color are your eyes?",
       answers: [
-        { label: "Azzurri", value: 2 },
-        { label: "Verdi", value: 2 },
-        { label: "Marroni", value: 1 },
-        { label: "Nocciola", value: 1 },
-        { label: "Grigi", value: 1 },
-        { label: "Neri / molto scuri", value: 0 },
-        { label: "Cambiano colore in base all'umore", value: 2 }
+        { label: "Blue", value: 2 },
+        { label: "Green", value: 2 },
+        { label: "Brown", value: 1 },
+        { label: "Hazel", value: 1 },
+        { label: "Gray", value: 1 },
+        { label: "Black / very dark", value: 0 },
+        { label: "They change color depending on my mood", value: 2 }
       ]
     },
     {
       id: "colore_capelli",
       type: "choice",
-      question: "Che colore hanno i tuoi capelli nella lore attuale?",
+      question: "What color is your hair in the current lore?",
       answers: [
-        { label: "Biondi", value: 2 },
-        { label: "Castani", value: 1 },
-        { label: "Neri", value: 1 },
-        { label: "Rossi / ramati", value: 2 },
-        { label: "Colorati / tinti", value: 2 },
-        { label: "Bianchi / silver", value: 1 },
-        { label: "Dipende dal mio ultimo breakdown", value: 2 }
+        { label: "Blonde", value: 2 },
+        { label: "Brown", value: 1 },
+        { label: "Black", value: 1 },
+        { label: "Red / copper", value: 2 },
+        { label: "Colored / dyed", value: 2 },
+        { label: "White / silver", value: 1 },
+        { label: "Depends on my latest breakdown", value: 2 }
       ]
     },
     {
       id: "segni_particolari",
       type: "multiChoice",
-      question: "Quali sono i tuoi dettagli da personaggio principale?",
+      question: "What are your main-character details?",
       minValue: -2,
       maxValue: 2,
       answers: [
-        { label: "Piercing", value: 2 },
-        { label: "Tatuaggi", value: 1 },
-        { label: "Cicatrici", value: 1 },
-        { label: "Apparecchio per i denti", value: 2 },
-        { label: "Lentiggini", value: 2 },
-        { label: "Nei particolari", value: 1 },
-        { label: "Capelli colorati", value: 2 },
-        { label: "Occhiali", value: 1 },
-        { label: "Fossette", value: 2 },
-        { label: "Nessuno", value: 0 },
-        { label: "Sono io il dettaglio raro", value: 2 }
+        { label: "Piercings", value: 2 },
+        { label: "Tattoos", value: 1 },
+        { label: "Scars", value: 1 },
+        { label: "Braces", value: 2 },
+        { label: "Freckles", value: 2 },
+        { label: "Distinctive beauty marks", value: 1 },
+        { label: "Colored hair", value: 2 },
+        { label: "Glasses", value: 1 },
+        { label: "Dimples", value: 2 },
+        { label: "None", value: 0 },
+        { label: "I am the rare detail", value: 2 }
       ]
     }
   );
-
-  if (!state.restartMode && typeof renderQuestion === "function") {
-    renderQuestion();
-  }
 }
 
 function ensurePineappleVerseStyles() {
@@ -227,18 +364,18 @@ function runPineappleVerseEvent() {
 
   overlay.className = "special-overlay pineapple-overlay";
   overlay.innerHTML = `
-    <div class="overlay-message pineapple-verse" role="dialog" aria-modal="true" aria-label="Giudizio sulla pizza all'ananas">
-      <p class="verse-ref">Libro della Pizza 3:14</p>
+    <div class="overlay-message pineapple-verse" role="dialog" aria-modal="true" aria-label="Judgment on pineapple pizza">
+      <p class="verse-ref">Book of Pizza 3:14</p>
       <p>
-        O cieli, abbiate pietà di chi posò l'ananas sulla pizza,
-        perché grande fu il peccato e tremante la mozzarella.
+        O heavens, have mercy on the one who placed pineapple upon pizza,
+        for great was the sin and trembling was the mozzarella.
       </p>
       <p>
-        Che le campane suonino, che il forno perdoni,
-        e che nessuna rucola testimoni contro di lei.
+        Let the bells ring, let the oven forgive,
+        and let no arugula testify against her.
       </p>
       <button class="verse-close" type="button" id="closePineappleVerse">
-        Chiedo perdono
+        I ask forgiveness
       </button>
     </div>
   `;
@@ -312,6 +449,42 @@ function getRouteResult(percentage) {
   };
 }
 
+renderMultiChoiceQuestion = function(question, selected, questionNumber) {
+  const selectedIndexes = selected?.answerIndexes || [];
+
+  questionArea.innerHTML = `
+    <p class="question-number">Question ${questionNumber}</p>
+    <h2 class="question-title">${question.question}</h2>
+    <p class="question-hint">You can select multiple answers.</p>
+    <div class="answers-grid multi-choice-grid">
+      ${question.answers.map((answer, index) => `
+        <button class="answer-btn multi-choice-btn ${selectedIndexes.includes(index) ? "selected" : ""}" type="button" data-index="${index}">
+          ${answer.label}
+        </button>
+      `).join("")}
+    </div>
+  `;
+
+  document.querySelectorAll(".multi-choice-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const answerIndex = Number(button.dataset.index);
+      const current = state.answers[question.id]?.answerIndexes || [];
+      const next = current.includes(answerIndex)
+        ? current.filter((index) => index !== answerIndex)
+        : [...current, answerIndex];
+
+      if (next.length === 0) {
+        delete state.answers[question.id];
+      } else {
+        state.answers[question.id] = { answerIndexes: next };
+      }
+
+      renderQuestion();
+    });
+  });
+};
+
+translateQuizToEnglish();
 addProfileQuestions();
 getResultMessage = getRouteResult;
 
@@ -341,3 +514,7 @@ renderResult = function() {
 
 runPineappleEvent = runPineappleVerseEvent;
 runExorcistEvent = runPineappleVerseEvent;
+
+if (!state.restartMode && typeof renderQuestion === "function") {
+  renderQuestion();
+}
