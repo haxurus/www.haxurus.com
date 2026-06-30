@@ -223,6 +223,51 @@ function addProfileQuestions() {
   );
 }
 
+function reorderQuestions() {
+  const orderedIds = [
+    "ironia",
+    "tronchetto",
+    "eta",
+    "origine",
+    "dove_abiti_ora",
+    "altezza",
+    "cioccolato",
+    "colore_occhi",
+    "colore_capelli",
+    "segni_particolari",
+    "principessa_disney",
+    "appiccicosa",
+    "gelosia",
+    "red_flags",
+    "assenza",
+    "buonanotte",
+    "litigio",
+    "abbracci",
+    "foto_insieme",
+    "cosa_cerchi",
+    "reel",
+    "gossip",
+    "nerd",
+    "videogiochi",
+    "minecraft",
+    "discord",
+    "anime",
+    "pizza",
+    "drink",
+    "dolce",
+    "film_brutto",
+    "serata_ideale"
+  ];
+
+  const byId = new Map(questions.map((question) => [question.id, question]));
+  const orderedQuestions = orderedIds
+    .map((id) => byId.get(id))
+    .filter(Boolean);
+  const remainingQuestions = questions.filter((question) => !orderedIds.includes(question.id));
+
+  questions.splice(0, questions.length, ...orderedQuestions, ...remainingQuestions);
+}
+
 function ensurePineappleVerseStyles() {
   if (document.getElementById("pineappleVerseStyles")) return;
 
@@ -486,6 +531,7 @@ renderMultiChoiceQuestion = function(question, selected, questionNumber) {
 
 translateQuizToEnglish();
 addProfileQuestions();
+reorderQuestions();
 getResultMessage = getRouteResult;
 
 renderResult = function() {
