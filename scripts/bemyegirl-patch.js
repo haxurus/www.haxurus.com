@@ -275,8 +275,8 @@ function addProfileQuestions() {
       id: "segni_particolari",
       type: "multiChoice",
       question: "What are your main-character details?",
-      minValue: -2,
-      maxValue: 2,
+      minValue: -5,
+      maxValue: 15,
       answers: [
         { label: "Small side nose stud", value: 2 },
         { label: "Septum piercing", value: -2 },
