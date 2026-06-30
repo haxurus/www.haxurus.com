@@ -11,179 +11,179 @@ const questions = [
   {
     id: "ironia",
     type: "choice",
-    question: "Sai cos’è l’ironia e accetti il black humor?",
+    question: "Do you understand irony and accept dark humor?",
     blocking: true,
     answers: [
-      { label: "Sì", action: "continue" },
+      { label: "Yes", action: "continue" },
       { label: "No", action: "block" },
-      { label: "Black humor?", action: "block" }
+      { label: "Dark humor?", action: "block" }
     ]
   },
   {
     id: "tronchetto",
     type: "choice",
-    question: "Sei nato/a con il Tronchetto di Clash Royale o con la passera?",
+    question: "Were you born with Clash Royale's Log or with a pussy?",
     answers: [
-      { label: "Tronchetto", value: -2 },
+      { label: "The Log", value: -2 },
       { label: "SAO?", value: -1 },
-      { label: "Sono confuso/a", value: 0 },
-      { label: "Con la passera", value: 2 }
+      { label: "I’m confused", value: 0 },
+      { label: "With a pussy", value: 2 }
     ]
   },
   {
     id: "eta",
     type: "choice",
-    question: "Quanti anni hai?",
+    question: "How old are you?",
     answers: [
-      { label: "Meno di 18", action: "police" },
-      { label: "Tra 18 e 22", value: 1 },
-      { label: "Tra 23 e 25", value: 2 },
-      { label: "Tra 26 e 30", value: -1 },
-      { label: "31 o più", value: -2 }
+      { label: "Under 18", action: "police" },
+      { label: "Between 18 and 22", value: 1 },
+      { label: "Between 23 and 25", value: 2 },
+      { label: "Between 26 and 30", value: -1 },
+      { label: "31 or older", value: -2 }
     ]
   },
   {
     id: "cioccolato",
     type: "slider",
-    question: "Scegli il tuo livello di cioccolatosità estetica",
+    question: "Choose your aesthetic chocolate level",
     min: 0,
     max: 100,
     defaultValue: 20,
     ranges: [
-      { min: 0, max: 20, label: "Cioccolato bianco", value: 2 },
-      { min: 21, max: 40, label: "Cioccolato al latte", value: 0 },
-      { min: 41, max: 60, label: "Fondente 50%", value: -1 },
-      { min: 61, max: 80, label: "Fondente 75%", value: -2 },
-      { min: 81, max: 100, label: "Cacao puro boss finale", value: -3 }
+      { min: 0, max: 20, label: "White chocolate", value: 2 },
+      { min: 21, max: 40, label: "Milk chocolate", value: 0 },
+      { min: 41, max: 60, label: "50% dark chocolate", value: -1 },
+      { min: 61, max: 80, label: "75% dark chocolate", value: -2 },
+      { min: 81, max: 100, label: "Pure cocoa final boss", value: -3 }
     ]
   },
   {
     id: "altezza",
     type: "choice",
-    question: "Quanto sei alta?",
+    question: "How tall are you?",
     answers: [
-      { label: "Meno di 1.55", value: 1 },
-      { label: "1.55 - 1.65", value: 2 },
-      { label: "1.66 - 1.75", value: 1 },
-      { label: "1.76 - 1.85", value: 0 },
-      { label: "Più di 1.85", value: -1 }
+      { label: "Under 1.55 m", value: 1 },
+      { label: "1.55 - 1.65 m", value: 2 },
+      { label: "1.66 - 1.75 m", value: 1 },
+      { label: "1.76 - 1.85 m", value: 0 },
+      { label: "Over 1.85 m", value: -1 }
     ]
   },
   {
     id: "reel",
     type: "choice",
-    question: "Se ti mando 12 reel in 5 minuti?",
+    question: "If I send you 12 reels in 5 minutes?",
     answers: [
-      { label: "Li guardo tutti e commento", value: 2 },
-      { label: "Ne guardo qualcuno e faccio finta di aver capito", value: 1 },
-      { label: "Rispondo solo “ahah”", value: 0 },
-      { label: "Ti silenzio", value: -1 },
-      { label: "Ti blocco e cambio identità", value: -2 }
+      { label: "I watch them all and comment", value: 2 },
+      { label: "I watch a few and pretend I understood", value: 1 },
+      { label: "I only reply “haha”", value: 0 },
+      { label: "I mute you", value: -1 },
+      { label: "I block you and change identity", value: -2 }
     ]
   },
   {
     id: "pizza",
     type: "choice",
-    question: "Scegli una pizza",
+    question: "Choose a pizza",
     answers: [
-      { label: "Bufala e patatine", value: 2 },
-      { label: "Wurstel e patatine", value: 0 },
+      { label: "Buffalo mozzarella and fries", value: 2 },
+      { label: "Wurstel and fries", value: 0 },
       { label: "Margherica", value: 1 },
-      { label: "Con la rucola", value: -1, action: "cowSound" },
-      { label: "Ananas", value: -3, action: "exorcistEvent" }
+      { label: "With arugula", value: -1, action: "cowSound" },
+      { label: "Pineapple", value: -3, action: "exorcistEvent" }
     ]
   },
   {
     id: "videogiochi",
     type: "slider",
-    question: "Quanto sopporti i videogiochi?",
+    question: "How much can you tolerate video games?",
     min: 0,
     max: 100,
     defaultValue: 60,
     ranges: [
-      { min: 0, max: 20, label: "Sono una perdita di tempo", value: -2 },
-      { min: 21, max: 40, label: "Ti guardo ma non capisco", value: -1 },
-      { min: 41, max: 60, label: "Ogni tanto ci sta", value: 0 },
-      { min: 61, max: 80, label: "Gaming serale approvato", value: 1 },
-      { min: 81, max: 100, label: "Duo queue immediata", value: 2 }
+      { min: 0, max: 20, label: "They’re a waste of time", value: -2 },
+      { min: 21, max: 40, label: "I watch but I don’t understand", value: -1 },
+      { min: 41, max: 60, label: "Sometimes it’s fine", value: 0 },
+      { min: 61, max: 80, label: "Evening gaming approved", value: 1 },
+      { min: 81, max: 100, label: "Duo queue immediately", value: 2 }
     ]
   },
   {
     id: "minecraft",
     type: "choice",
-    question: "Se dico “stasera Minecraft”?",
+    question: "If I say “Minecraft tonight”?",
     answers: [
-      { label: "Creo la casa, tu mina", value: 2 },
-      { label: "Vengo ma mi perdo dopo 3 minuti", value: 1 },
-      { label: "Solo se poi guardiamo un film", value: 1 },
-      { label: "Minecraft è per bambini", value: -2 },
-      { label: "Faccio esplodere tutto con la TNT", value: 0 }
+      { label: "I build the house, you mine", value: 2 },
+      { label: "I’ll join but get lost after 3 minutes", value: 1 },
+      { label: "Only if we watch a movie after", value: 1 },
+      { label: "Minecraft is for kids", value: -2 },
+      { label: "I blow everything up with TNT", value: 0 }
     ]
   },
   {
     id: "drink",
     type: "choice",
-    question: "Scegli un drink",
+    question: "Choose a drink",
     answers: [
-      { label: "Spritz Aperol", value: 2 },
+      { label: "Aperol Spritz", value: 2 },
       { label: "Coca-Cola", value: 1 },
-      { label: "Acqua naturale", value: 0 },
-      { label: "Monster alle 23:00", value: 1 },
-      { label: "Non bevo niente", value: -1 }
+      { label: "Still water", value: 0 },
+      { label: "Monster at 11 PM", value: 1 },
+      { label: "I don’t drink anything", value: -1 }
     ]
   },
   {
     id: "gossip",
     type: "slider",
-    question: "Quanto sei pronta a fare gossip inutile ma fondamentale?",
+    question: "How ready are you to do useless but essential gossip?",
     min: 0,
     max: 100,
     defaultValue: 80,
     ranges: [
-      { min: 0, max: 20, label: "Non mi interessa la vita degli altri", value: -2 },
-      { min: 21, max: 40, label: "Ascolto, ma non partecipo", value: -1 },
-      { min: 41, max: 60, label: "Ogni tanto ci sta", value: 0 },
-      { min: 61, max: 80, label: "Analisi completa di ogni dettaglio", value: 1 },
-      { min: 81, max: 100, label: "Creo teorie, timeline e prove fotografiche", value: 2 }
+      { min: 0, max: 20, label: "I don’t care about other people’s lives", value: -2 },
+      { min: 21, max: 40, label: "I listen, but I don’t participate", value: -1 },
+      { min: 41, max: 60, label: "Sometimes it’s fine", value: 0 },
+      { min: 61, max: 80, label: "Full analysis of every detail", value: 1 },
+      { min: 81, max: 100, label: "I create theories, timelines and photo evidence", value: 2 }
     ]
   },
   {
     id: "anime",
     type: "choice",
-    question: "Anime preferito?",
+    question: "Favorite anime?",
     answers: [
       { label: "Frieren", value: 2 },
       { label: "Sword Art Online", value: 1 },
       { label: "Death Note", value: 1 },
-      { label: "Non so decidere", value: 0 },
-      { label: "Non guardo anime", value: -3 }
+      { label: "I can’t decide", value: 0 },
+      { label: "I don’t watch anime", value: -3 }
     ]
   },
   {
     id: "nerd",
     type: "slider",
-    question: "Quanto sei nerd?",
+    question: "How nerdy are you?",
     min: 0,
     max: 100,
     defaultValue: 60,
     ranges: [
-      { min: 0, max: 20, label: "Tocco l’erba ogni giorno", value: -1 },
-      { min: 21, max: 40, label: "Nerd occasionale", value: 0 },
-      { min: 41, max: 60, label: "So cos’è Discord", value: 1 },
-      { min: 61, max: 80, label: "Ho almeno un trauma da gioco online", value: 2 },
-      { min: 81, max: 100, label: "Il mio habitat naturale è davanti al PC", value: 2 }
+      { min: 0, max: 20, label: "I touch grass every day", value: -1 },
+      { min: 21, max: 40, label: "Occasional nerd", value: 0 },
+      { min: 41, max: 60, label: "I know what Discord is", value: 1 },
+      { min: 61, max: 80, label: "I have at least one online game trauma", value: 2 },
+      { min: 81, max: 100, label: "My natural habitat is in front of the PC", value: 2 }
     ]
   },
   {
     id: "assenza",
     type: "choice",
-    question: "Se non ti rispondo per qualche ora, tu cosa fai?",
+    question: "If I don’t reply for a few hours, what do you do?",
     answers: [
-      { label: "Mi cerchi perché vuoi sapere se sono vivo", value: 2 },
-      { label: "Ti mando un meme per attirare la tua attenzione", value: 2 },
-      { label: "Ti scrivo “tutto ok?”", value: 1 },
-      { label: "Aspetto senza dire nulla", value: 0 },
-      { label: "Sparisco anche io per principio", value: -2 }
+      { label: "I check on you because I want to know if you’re alive", value: 2 },
+      { label: "I send you a meme to get your attention", value: 2 },
+      { label: "I text you “everything okay?”", value: 1 },
+      { label: "I wait without saying anything", value: 0 },
+      { label: "I disappear too out of principle", value: -2 }
     ]
   }
 ];
@@ -226,14 +226,14 @@ function renderQuestion() {
   updateProgress();
 
   backBtn.disabled = state.currentIndex === 0;
-  nextBtn.textContent = state.currentIndex === questions.length - 1 ? "Risultato" : "Avanti";
+  nextBtn.textContent = state.currentIndex === questions.length - 1 ? "Result" : "Next";
   nextBtn.disabled = !selected && question.type !== "slider";
 
   const questionNumber = `${state.currentIndex + 1} / ${questions.length}`;
 
   if (question.type === "choice") {
     questionArea.innerHTML = `
-      <p class="question-number">Domanda ${questionNumber}</p>
+      <p class="question-number">Question ${questionNumber}</p>
       <h2 class="question-title">${question.question}</h2>
       <div class="answers-grid">
         ${question.answers.map((answer, index) => `
@@ -290,12 +290,12 @@ function renderQuestion() {
     }
 
     questionArea.innerHTML = `
-      <p class="question-number">Domanda ${questionNumber}</p>
+      <p class="question-number">Question ${questionNumber}</p>
       <h2 class="question-title">${question.question}</h2>
       <div class="slider-box">
         <input id="sliderInput" type="range" min="${question.min}" max="${question.max}" value="${rawValue}" />
         <div class="slider-value">
-          <span>Valore: <strong id="sliderNumber">${rawValue}</strong></span>
+          <span>Value: <strong id="sliderNumber">${rawValue}</strong></span>
           <span class="slider-label" id="sliderLabel">${activeRange.label}</span>
         </div>
       </div>
@@ -376,42 +376,42 @@ function calculateResult() {
 function getResultMessage(percentage) {
   if (percentage <= 25) {
     return {
-      title: "Incompatibilità rilevata",
-      text: "Il sistema consiglia amicizia su Discord e distanza di sicurezza emotiva."
+      title: "Incompatibility detected",
+      text: "The system recommends Discord friendship and emotional safety distance."
     };
   }
 
   if (percentage <= 50) {
     return {
-      title: "Forse come amici su Discord",
-      text: "Qualche punto c’è, ma servono almeno tre meme, una pizza e una verifica manuale."
+      title: "Maybe Discord friends",
+      text: "There is something here, but we need at least three memes, one pizza, and manual verification."
     };
   }
 
   if (percentage <= 70) {
     return {
-      title: "Compatibilità interessante",
-      text: "La situazione è promettente. Il sistema approva una conversazione più lunga del previsto."
+      title: "Interesting compatibility",
+      text: "The situation looks promising. The system approves a conversation longer than expected."
     };
   }
 
   if (percentage <= 85) {
     return {
-      title: "Possibile match",
-      text: "Buona affinità. Procedere con spritz, gossip e sessione Minecraft."
+      title: "Possible match",
+      text: "Good compatibility. Proceed with spritz, gossip, and a Minecraft session."
     };
   }
 
   if (percentage <= 95) {
     return {
-      title: "Altissima affinità",
-      text: "Livello compatibilità sospetto. Probabile rischio di meme condivisi e serate nerd."
+      title: "Very high compatibility",
+      text: "Suspicious compatibility level. High risk of shared memes and nerdy evenings."
     };
   }
 
   return {
-    title: "Route leggendaria sbloccata",
-    text: "Il sistema ha rilevato una candidata da boss finale. Richiesta verifica umana immediata."
+    title: "Legendary route unlocked",
+    text: "The system has detected a final-boss candidate. Immediate human verification required."
   };
 }
 
@@ -420,13 +420,13 @@ function renderResult() {
 
   progressBar.style.width = "100%";
   backBtn.disabled = true;
-  nextBtn.textContent = "Ricomincia";
+  nextBtn.textContent = "Restart";
   nextBtn.disabled = false;
   nextBtn.onclick = restartQuiz;
 
   questionArea.innerHTML = `
     <div class="result-box">
-      <p class="quiz-kicker">Risultato finale</p>
+      <p class="quiz-kicker">Final result</p>
       <div class="result-score">${percentage}%</div>
       <h2 class="result-title">${result.title}</h2>
       <p class="result-text">${result.text}</p>
@@ -437,16 +437,16 @@ function renderResult() {
 function renderBlocked() {
   progressBar.style.width = "100%";
   backBtn.disabled = true;
-  nextBtn.textContent = "Ricomincia";
+  nextBtn.textContent = "Restart";
   nextBtn.disabled = false;
   nextBtn.onclick = restartQuiz;
 
   questionArea.innerHTML = `
     <div class="blocked-card">
-      <h2>Accesso negato</h2>
+      <h2>Access denied</h2>
       <p>
-        Questo quiz contiene ironia discutibile. Per la tua sicurezza emotiva,
-        il sistema ti accompagna gentilmente all’uscita.
+        This quiz contains questionable irony. For your emotional safety,
+        the system is kindly escorting you to the exit.
       </p>
     </div>
   `;
@@ -465,7 +465,7 @@ function playAudio(audioElement) {
 
   audioElement.currentTime = 0;
   audioElement.play().catch(() => {
-    // Alcuni browser bloccano l'audio automatico se non c'è stata interazione.
+    // Some browsers block automatic audio if there was no interaction.
   });
 }
 
@@ -474,10 +474,10 @@ function runPoliceEvent() {
 
   overlay.className = "special-overlay";
   overlay.innerHTML = `
-    <img class="overlay-photo" src="/images/incarcerato.png" alt="Incarcerato" />
+    <img class="overlay-photo" src="/images/incarcerato.png" alt="Jailed" />
     <div class="bars"></div>
     <div class="overlay-message">
-      🚨 ERRORE 113: MINORENNE RILEVATO. Riprova quando avrai 18 anni ;)
+      🚨 ERROR 113: MINOR DETECTED. Try again when you’re 18 ;)
     </div>
   `;
 
@@ -490,7 +490,7 @@ function runExorcistEvent() {
 
   overlay.className = "special-overlay";
   overlay.innerHTML = `
-    <img class="exorcist-gif" src="/images/esorcista.gif" alt="Evento esorcista" />
+    <img class="exorcist-gif" src="/images/esorcista.gif" alt="Exorcist event" />
   `;
 
   window.setTimeout(() => {
