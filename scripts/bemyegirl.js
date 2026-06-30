@@ -485,7 +485,7 @@ function showStarterPopup() {
 function restartQuiz() {
   state.currentIndex = 0;
   state.answers = {};
-  nextBtn.onclick = goNext;
+  nextBtn.onclick = null;
   hideOverlay();
   renderQuestion();
 }
