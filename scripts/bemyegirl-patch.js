@@ -286,8 +286,12 @@ function addProfileQuestions() {
         { label: "Multiple ear piercings", value: 1 },
         { label: "Other piercings", value: 0 },
         { label: "Tattoos", value: -2 },
+        { label: "Scars", value: 0 },
+        { label: "Braces", value: 2 },
+        { label: "Freckles", value: 2 },
         { label: "Distinctive beauty marks", value: 0 },
         { label: "Glasses", value: 2 },
+        { label: "Dimples", value: 2 },
         { label: "None", value: 0 },
         { label: "I am the rare detail", value: 2 }
       ]
