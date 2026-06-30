@@ -13,6 +13,16 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/site-effects.css" />
   <link rel="stylesheet" href="css/bemyegirl.css" />
+  <style>
+    .bemyegirl-body .site-nav__inner{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:58px;padding:8px 12px 8px 20px}
+    .bemyegirl-body .site-nav__brand{display:inline-flex;align-items:center;gap:9px;color:var(--accent-2);font-size:1rem;font-weight:800;letter-spacing:-.02em;text-shadow:0 8px 18px rgba(0,0,0,.18);white-space:nowrap}
+    .bemyegirl-body .site-nav__brand img{display:block!important;width:24px!important;height:24px!important;min-width:24px!important;max-width:24px!important;border-radius:50%;object-fit:cover;box-shadow:0 6px 14px rgba(0,0,0,.20)!important}
+    .bemyegirl-body .site-nav__links{display:flex;align-items:center;justify-content:flex-end;gap:6px;overflow-x:auto;scrollbar-width:none}
+    .bemyegirl-body .site-nav__links::-webkit-scrollbar{display:none}
+    .bemyegirl-body .site-nav__links a{flex:0 0 auto;padding:10px 13px;border-radius:999px;color:rgba(255,255,255,.92);font-size:.9rem;font-weight:700;line-height:1;transition:background .2s ease,color .2s ease,transform .2s ease}
+    .bemyegirl-body .site-nav__links a:hover,.bemyegirl-body .site-nav__links a:focus-visible{transform:translateY(-1px);background:rgba(255,255,255,.16);color:#fff}
+    @media (max-width:720px){.bemyegirl-body .site-nav__inner{align-items:flex-start;flex-direction:column;gap:8px;padding:12px}.bemyegirl-body .site-nav__brand{align-self:center;justify-content:center;width:100%}.bemyegirl-body .site-nav__links{width:100%;justify-content:center;flex-wrap:wrap}.bemyegirl-body .site-nav__links a{padding:9px 11px;font-size:.84rem}}
+  </style>
 </head>
 <body class="bemyegirl-body skip-intro">
   <video aria-hidden="true" autoplay class="background-video" loop muted playsinline preload="auto" webkit-playsinline>
