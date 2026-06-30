@@ -93,15 +93,15 @@ function getShortEmotionalBugAnswers(fullAnswers) {
 }
 
 function translateQuizToEnglish() {
-  setQuestionText("principessa_disney", "Which Disney princess represents you the most?", [
-    "Rapunzel",
-    "Belle",
-    "Ariel",
-    "Mulan",
-    "Elsa",
-    "Cinderella",
-    "Snow White",
-    "Merida"
+  setQuestionAnswers("principessa_disney", "Which anime girl represents you the most?", [
+    { label: "Frieren", image: "/img/bemyegirl/frieren.png", value: 2 },
+    { label: "Asuna Yuuki", image: "/img/bemyegirl/asuna.png", value: 1 },
+    { label: "Misa Amane", image: "/img/bemyegirl/misaamane.png", value: 1 },
+    { label: "Mao Mao", image: "/img/bemyegirl/maomao.png", value: 2 },
+    { label: "Ai Hoshino", image: "/img/bemyegirl/aihoshino.png", value: 1 },
+    { label: "Nana Osaki", image: "/img/bemyegirl/nanaosaki.png", value: 0 },
+    { label: "Alya", image: "/img/bemyegirl/alya.png", value: 1 },
+    { label: "Taiga Aisaka", image: "/img/bemyegirl/taigaaisaka.png", value: 0 }
   ]);
 
   setQuestionText("appiccicosa", "How clingy are you?", [
