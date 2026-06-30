@@ -3,16 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Be My Egirl Quiz</title>
+  <title>Be My Egirl Quiz | Haxurus</title>
+  <meta name="description" content="Quiz ironico di compatibilita con Haxurus." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#0f1115" />
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="img/favicon.png" />
 
-  <link rel="stylesheet" href="/css/bemyegirl.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/site-effects.css" />
+  <link rel="stylesheet" href="css/bemyegirl.css" />
 </head>
-<body>
+<body class="bemyegirl-body skip-intro">
+  <video aria-hidden="true" autoplay class="background-video" loop muted playsinline preload="auto" webkit-playsinline>
+    <source src="img/background.webm" type="video/webm" />
+  </video>
+  <canvas aria-hidden="true" id="particle-bg"></canvas>
+
+  <nav aria-label="Main navigation" class="site-nav">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="/">
+        <img alt="" aria-hidden="true" src="img/favicon.png" />
+        Haxurus
+      </a>
+      <div class="site-nav__links">
+        <a href="/">Home</a>
+        <a href="/#social">Social</a>
+        <a href="/#discord">Discord</a>
+        <a href="/#vrchat">VRChat</a>
+        <a href="/#games">Games</a>
+      </div>
+    </div>
+  </nav>
+
   <main class="quiz-page">
-    <section class="quiz-card" id="quizCard">
+    <section class="quiz-card link-card" id="quizCard">
       <div class="quiz-header">
         <p class="quiz-kicker">Haxurus Compatibility System</p>
-        <h1>Be My Egirl Quiz</h1>
+        <h1 class="glitch-lite" data-text="Be My Egirl Quiz">Be My Egirl Quiz</h1>
         <p class="quiz-subtitle">
           Test scientificamente discutibile per misurare l’affinità.
         </p>
@@ -33,10 +61,11 @@
 
   <div id="specialOverlay" class="special-overlay hidden" aria-hidden="true"></div>
 
-  <audio id="policeAudio" src="/audio/polizia.mp3" preload="auto"></audio>
-  <audio id="cowAudio" src="/audio/versomucca.mp3" preload="auto"></audio>
-  <audio id="exorcistAudio" src="/audio/esorcista.mp3" preload="auto"></audio>
+  <audio id="policeAudio" src="audio/polizia.mp3" preload="auto"></audio>
+  <audio id="cowAudio" src="audio/versomucca.mp3" preload="auto"></audio>
+  <audio id="exorcistAudio" src="audio/esorcista.mp3" preload="auto"></audio>
 
-  <script src="/scripts/bemyegirl.js"></script>
+  <script defer src="scripts/script.js"></script>
+  <script defer src="scripts/bemyegirl.js"></script>
 </body>
 </html>
