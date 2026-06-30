@@ -477,8 +477,7 @@ function runPoliceEvent() {
     <img class="overlay-photo" src="/images/incarcerato.png" alt="Incarcerato" />
     <div class="bars"></div>
     <div class="overlay-message">
-      🚨 ERRORE 113: MINORENNE RILEVATO.<br />
-      Il sistema ha avvisato le autorità competenti del meme.
+      🚨 ERRORE 113: MINORENNE RILEVATO. Riprova quando avrai 18 anni ;)
     </div>
   `;
 
