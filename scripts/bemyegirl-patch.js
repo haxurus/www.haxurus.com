@@ -79,12 +79,12 @@ function getShortEmotionalBugAnswers(fullAnswers) {
   const shortLabels = [
     "Attachment speedrun",
     "Reassurance required",
-    "Jealousy.exe running in background",
-    "Overthinking every tiny detail",
     "Screenshot evidence folder",
-    "Fake scenarios generator",
-    "I need daily proof that you still like me",
-    "I need affection but get embarrassed receiving it"
+    "Emotional cooldown needed",
+    "I panic when someone is too nice to me",
+    "Reply.exe sometimes crashes",
+    "Mind reading expected",
+    "Ghost mode without warning"
   ];
 
   return shortLabels
