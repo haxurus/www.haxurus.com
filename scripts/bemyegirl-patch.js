@@ -24,35 +24,8 @@ function setQuestionAnswers(questionId, questionText, answers) {
   question.answers = answers;
 }
 
-function translateQuizToEnglish() {
-  setQuestionText("principessa_disney", "Which Disney princess represents you the most?", [
-    "Rapunzel",
-    "Belle",
-    "Ariel",
-    "Mulan",
-    "Elsa",
-    "Cinderella",
-    "Snow White",
-    "Merida"
-  ]);
-
-  setQuestionText("appiccicosa", "How clingy are you?", [
-    "Emotional koala mode",
-    "Quite a bit, but with dignity",
-    "Normal",
-    "Very independent",
-    "We talk once a week"
-  ]);
-
-  setQuestionText("film_brutto", "If I ask you to watch a bad movie", [
-    "I watch it and we roast it together",
-    "Only if there is food",
-    "Depends on the movie",
-    "I fall asleep after 10 minutes",
-    "No, serious movies only"
-  ]);
-
-  setQuestionAnswers("red_flags", "Choose your emotional bugs", [
+function getEmotionalBugAnswers() {
+  return [
     { label: "Attachment speedrun", value: 2 },
     { label: "Reassurance required", value: 2 },
     { label: "Jealousy.exe running in background", value: 2 },
@@ -99,7 +72,63 @@ function translateQuizToEnglish() {
     { label: "I panic when someone is too nice to me", value: 0 },
     { label: "I need affection but get embarrassed receiving it", value: 1 },
     { label: "I can be dramatic, but at least I am funny", value: 0 }
+  ];
+}
+
+function getShortEmotionalBugAnswers(fullAnswers) {
+  const shortLabels = [
+    "Attachment speedrun",
+    "Reassurance required",
+    "Jealousy.exe running in background",
+    "Overthinking every tiny detail",
+    "Screenshot evidence folder",
+    "Fake scenarios generator",
+    "I need daily proof that you still like me",
+    "I need affection but get embarrassed receiving it"
+  ];
+
+  return shortLabels
+    .map((label) => fullAnswers.find((answer) => answer.label === label))
+    .filter(Boolean);
+}
+
+function translateQuizToEnglish() {
+  setQuestionText("principessa_disney", "Which Disney princess represents you the most?", [
+    "Rapunzel",
+    "Belle",
+    "Ariel",
+    "Mulan",
+    "Elsa",
+    "Cinderella",
+    "Snow White",
+    "Merida"
   ]);
+
+  setQuestionText("appiccicosa", "How clingy are you?", [
+    "Emotional koala mode",
+    "Quite a bit, but with dignity",
+    "Normal",
+    "Very independent",
+    "We talk once a week"
+  ]);
+
+  setQuestionText("film_brutto", "If I ask you to watch a bad movie", [
+    "I watch it and we roast it together",
+    "Only if there is food",
+    "Depends on the movie",
+    "I fall asleep after 10 minutes",
+    "No, serious movies only"
+  ]);
+
+  const emotionalBugAnswers = getEmotionalBugAnswers();
+  setQuestionAnswers("red_flags", "Choose your emotional bugs", emotionalBugAnswers);
+
+  const redFlags = questions.find((item) => item.id === "red_flags");
+  if (redFlags) {
+    redFlags.fullAnswers = emotionalBugAnswers;
+    redFlags.shortAnswers = getShortEmotionalBugAnswers(emotionalBugAnswers);
+    redFlags.answers = redFlags.fullAnswers;
+  }
 
   setQuestionText("gelosia", "How jealous are you?");
   const jealousy = questions.find((item) => item.id === "gelosia");
@@ -374,6 +403,66 @@ function ensurePineappleVerseStyles() {
       filter:brightness(1.06);
       outline:none;
     }
+
+    .bug-version-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .bug-version-card{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:22px;
+      padding:20px;
+      color:#f8fff9;
+      background:rgba(255,255,255,.08);
+      box-shadow:0 18px 46px rgba(0,0,0,.24);
+      cursor:pointer;
+      text-align:left;
+      transition:transform .16s ease,border-color .16s ease,background .16s ease;
+    }
+
+    .bug-version-card:hover,
+    .bug-version-card:focus-visible{
+      transform:translateY(-2px);
+      border-color:rgba(57,255,20,.45);
+      background:rgba(57,255,20,.10);
+      outline:none;
+    }
+
+    .bug-version-card strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:1.02rem;
+    }
+
+    .bug-version-card span{
+      display:block;
+      color:rgba(248,255,249,.72);
+      font-size:.92rem;
+      line-height:1.5;
+    }
+
+    .bug-version-change{
+      margin:0 0 16px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      padding:8px 13px;
+      color:#d7ffbc;
+      background:rgba(255,255,255,.07);
+      cursor:pointer;
+      font-size:.76rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    @media (min-width:720px){
+      .bug-version-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
   `;
   document.head.appendChild(style);
 }
@@ -532,12 +621,56 @@ function getRouteResult(percentage) {
   };
 }
 
-renderMultiChoiceQuestion = function(question, selected, questionNumber) {
-  const selectedIndexes = selected?.answerIndexes || [];
+function renderEmotionalBugsVersionSelector(question, questionNumber) {
+  ensurePineappleVerseStyles();
+  nextBtn.disabled = true;
 
   questionArea.innerHTML = `
     <p class="question-number">Question ${questionNumber}</p>
     <h2 class="question-title">${question.question}</h2>
+    <p class="question-hint">Choose how many options you want to see.</p>
+    <div class="bug-version-grid">
+      <button class="bug-version-card" type="button" data-mode="short">
+        <strong>Short version</strong>
+        <span>8 selected options. Faster and cleaner.</span>
+      </button>
+      <button class="bug-version-card" type="button" data-mode="full">
+        <strong>Full version</strong>
+        <span>All emotional bugs. Full chaos mode.</span>
+      </button>
+    </div>
+  `;
+
+  document.querySelectorAll(".bug-version-card").forEach((button) => {
+    button.addEventListener("click", () => {
+      const mode = button.dataset.mode;
+      question.answers = mode === "short" ? question.shortAnswers : question.fullAnswers;
+      state.answers[question.id] = {
+        mode,
+        answerIndexes: []
+      };
+      renderQuestion();
+    });
+  });
+}
+
+renderMultiChoiceQuestion = function(question, selected, questionNumber) {
+  if (question.id === "red_flags" && !selected?.mode) {
+    renderEmotionalBugsVersionSelector(question, questionNumber);
+    return;
+  }
+
+  if (question.id === "red_flags" && selected?.mode) {
+    question.answers = selected.mode === "short" ? question.shortAnswers : question.fullAnswers;
+  }
+
+  const selectedIndexes = selected?.answerIndexes || [];
+  nextBtn.disabled = selectedIndexes.length === 0;
+
+  questionArea.innerHTML = `
+    <p class="question-number">Question ${questionNumber}</p>
+    <h2 class="question-title">${question.question}</h2>
+    ${question.id === "red_flags" ? `<button class="bug-version-change" type="button" id="changeBugVersion">Change version</button>` : ""}
     <p class="question-hint">You can select multiple answers.</p>
     <div class="answers-grid multi-choice-grid">
       ${question.answers.map((answer, index) => `
@@ -548,6 +681,12 @@ renderMultiChoiceQuestion = function(question, selected, questionNumber) {
     </div>
   `;
 
+  document.getElementById("changeBugVersion")?.addEventListener("click", () => {
+    delete state.answers[question.id];
+    question.answers = question.fullAnswers;
+    renderQuestion();
+  });
+
   document.querySelectorAll(".multi-choice-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const answerIndex = Number(button.dataset.index);
@@ -557,9 +696,18 @@ renderMultiChoiceQuestion = function(question, selected, questionNumber) {
         : [...current, answerIndex];
 
       if (next.length === 0) {
-        delete state.answers[question.id];
+        state.answers[question.id] = question.id === "red_flags"
+          ? { mode: selected?.mode || "full", answerIndexes: [] }
+          : undefined;
+
+        if (question.id !== "red_flags") {
+          delete state.answers[question.id];
+        }
       } else {
-        state.answers[question.id] = { answerIndexes: next };
+        state.answers[question.id] = {
+          mode: selected?.mode,
+          answerIndexes: next
+        };
       }
 
       renderQuestion();
