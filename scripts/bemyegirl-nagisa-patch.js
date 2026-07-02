@@ -67,6 +67,39 @@ function addCuddleBuildQuestionPatch() {
   }
 }
 
+function rebalanceCharacterDetailsPatch() {
+  const question = questions.find((item) => item.id === "segni_particolari");
+  if (!question) return;
+
+  question.minValue = -4;
+  question.maxValue = 8;
+
+  const values = {
+    "Small side nose stud": 1,
+    "Septum piercing": -1,
+    "Tongue piercing": -1,
+    "Belly button piercing": 1,
+    "Earrings": 1,
+    "Multiple ear piercings": 0,
+    "Other piercings": -1,
+    "Tattoos": -1,
+    "Scars": 0,
+    "Braces": 1,
+    "Freckles": 1,
+    "Distinctive beauty marks": 0,
+    "Glasses": 1,
+    "Dimples": 1,
+    "None": 0,
+    "I am the rare detail": 1
+  };
+
+  question.answers.forEach((answer) => {
+    if (Object.prototype.hasOwnProperty.call(values, answer.label)) {
+      answer.value = values[answer.label];
+    }
+  });
+}
+
 const nagisaBaseHandleSingleAnswer = handleSingleAnswer;
 handleSingleAnswer = function(question, answerIndex) {
   const answer = question.answers[answerIndex];
@@ -188,6 +221,7 @@ function applyProportionalScoringPatch() {
 
 addLgbtqTopicQuestionPatch();
 addCuddleBuildQuestionPatch();
+rebalanceCharacterDetailsPatch();
 addNagisaChoicePatch();
 addHeightKawaiiPatch();
 applyProportionalScoringPatch();
