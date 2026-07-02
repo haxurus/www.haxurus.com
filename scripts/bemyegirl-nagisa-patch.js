@@ -158,10 +158,39 @@ function addLgbtqTopicQuestionPatch() {
   }
 }
 
+function applyProportionalScoringPatch() {
+  calculateResult = function() {
+    const questionPercentages = questions
+      .map((question) => {
+        if (question.blocking) return null;
+
+        const answer = state.answers[question.id];
+        const value = getQuestionValue(question, answer);
+        return normalizeQuestionPercentage(question, value);
+      })
+      .filter((percentage) => percentage !== null && percentage !== undefined);
+
+    const total = questionPercentages.reduce((sum, percentage) => sum + percentage, 0);
+    const max = questionPercentages.length * 100;
+    const percentage = questionPercentages.length
+      ? Math.round(total / questionPercentages.length)
+      : 0;
+
+    return {
+      total,
+      max,
+      percentage,
+      result: getResultMessage(percentage),
+      categories: calculateCategoryBreakdown()
+    };
+  };
+}
+
 addLgbtqTopicQuestionPatch();
 addCuddleBuildQuestionPatch();
 addNagisaChoicePatch();
 addHeightKawaiiPatch();
+applyProportionalScoringPatch();
 
 if (!state.restartMode && typeof renderQuestion === "function") {
   renderQuestion();
