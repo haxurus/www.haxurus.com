@@ -2,7 +2,14 @@ const baseApplyQuizLanguage = applyQuizLanguage;
 const baseRenderQuestionAfterLanguage = renderQuestion;
 const baseGoNextAfterLanguage = goNext;
 const baseGoBackAfterLanguage = goBack;
-const baseRestartQuizAfterLanguage = restartQuiz;
+
+function showQuizControls() {
+  const actions = document.querySelector(".quiz-actions");
+  if (actions) {
+    actions.style.display = "";
+    actions.hidden = false;
+  }
+}
 
 function insertLanguageStep() {
   if (questions.some((question) => question.id === "language_select")) return;
@@ -44,6 +51,7 @@ function renderLanguageStep() {
       selectedQuizLanguage = language;
       baseApplyQuizLanguage(language);
       if (language === "it") getResultMessage = getRouteResult;
+      showQuizControls();
       state.answers.language_select = { answerIndex: language === "it" ? 0 : 1, value: 0, language };
       state.currentIndex = 1;
       baseRenderQuestionAfterLanguage();
@@ -55,6 +63,7 @@ applyQuizLanguage = function(language) {
   selectedQuizLanguage = language;
   baseApplyQuizLanguage(language);
   if (language === "it") getResultMessage = getRouteResult;
+  showQuizControls();
 };
 
 renderQuestion = function() {
@@ -65,6 +74,7 @@ renderQuestion = function() {
     return;
   }
 
+  showQuizControls();
   baseRenderQuestionAfterLanguage();
 };
 
