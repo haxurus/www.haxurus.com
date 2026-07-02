@@ -1,6 +1,9 @@
 const susAudioPatch = new Audio("audio/sus.mp3");
 susAudioPatch.preload = "auto";
 
+const kawaiiAudioPatch = new Audio("audio/kawaii.mp3");
+kawaiiAudioPatch.preload = "auto";
+
 function addNagisaChoicePatch() {
   const question = questions.find((item) => item.id === "principessa_disney");
   if (!question) return;
@@ -14,9 +17,32 @@ function addNagisaChoicePatch() {
   });
 }
 
+function addHeightKawaiiPatch() {
+  const question = questions.find((item) => item.id === "altezza");
+  if (!question) return;
+
+  question.answers.forEach((answer, index) => {
+    if (index === 0 || index === 1) {
+      answer.action = "kawaiiSound";
+    }
+  });
+}
+
 const nagisaBaseHandleSingleAnswer = handleSingleAnswer;
 handleSingleAnswer = function(question, answerIndex) {
   const answer = question.answers[answerIndex];
+
+  if (answer?.action === "kawaiiSound") {
+    state.answers[question.id] = {
+      answerIndex,
+      value: answer.value ?? null,
+      action: answer.action ?? null
+    };
+
+    playAudio(kawaiiAudioPatch);
+    renderQuestion();
+    return;
+  }
 
   if (answer?.action !== "susSound") {
     nagisaBaseHandleSingleAnswer(question, answerIndex);
@@ -40,10 +66,11 @@ handleSingleAnswer = function(question, answerIndex) {
     }
 
     renderResult();
-  }, 850);
+  }, 1000);
 };
 
 addNagisaChoicePatch();
+addHeightKawaiiPatch();
 
 if (!state.restartMode && typeof renderQuestion === "function") {
   renderQuestion();
