@@ -3,14 +3,14 @@ function applyPizzaRealImagePatch() {
   if (!pizza) return;
 
   const pizzaImages = {
-    "Buffalo mozzarella & fries": "img/bemyegirl/pizzas/buffalo-mozzarella-fries.jpg",
-    "Wurstel & fries": "img/bemyegirl/pizzas/wurstel-fries.jpg",
-    "Margherita": "img/bemyegirl/pizzas/margherita.jpg",
-    "Diavola": "img/bemyegirl/pizzas/diavola.jpg",
-    "Capricciosa": "img/bemyegirl/pizzas/capricciosa.jpg",
-    "Four cheese": "img/bemyegirl/pizzas/four-cheese.jpg",
-    "With arugula": "img/bemyegirl/pizzas/arugula.jpg",
-    "Pineapple": "img/bemyegirl/pizzas/pineapple.jpg"
+    "Buffalo mozzarella & fries": "img/bemyegirl/pizzas/buffalo-mozzarella-fries.png",
+    "Wurstel & fries": "img/bemyegirl/pizzas/wurstel-fries.png",
+    "Margherita": "img/bemyegirl/pizzas/margherita.png",
+    "Diavola": "img/bemyegirl/pizzas/diavola.png",
+    "Capricciosa": "img/bemyegirl/pizzas/capricciosa.png",
+    "Four cheese": "img/bemyegirl/pizzas/four-cheese.png",
+    "With arugula": "img/bemyegirl/pizzas/arugula.png",
+    "Pineapple": "img/bemyegirl/pizzas/pineapple.png"
   };
 
   pizza.answers.forEach((answer) => {
