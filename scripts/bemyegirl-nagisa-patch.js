@@ -45,7 +45,7 @@ function addCuddleBuildQuestionPatch() {
         { label: "Plus-size cuddle boss", value: -1 },
         { label: "Very soft final boss", value: -2 },
         { label: "Gym arc unlocked", value: 0 },
-        { label: "I refuse to be perceived", value: 1 }
+        { label: "I refuse to be perceived", value: -2 }
       ]
     };
 
