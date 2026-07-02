@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Be My Egirl Quiz | Haxurus</title>
-  <meta name="description" content="An ironic compatibility quiz with Haxurus." />
+  <meta name="description" content="A compatibility quiz with Haxurus." />
   <meta name="robots" content="noindex, follow" />
   <meta name="theme-color" content="#0f1115" />
   <link rel="icon" href="img/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="img/favicon.png" />
-
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/site-effects.css" />
   <link rel="stylesheet" href="css/bemyegirl.css" />
@@ -29,46 +28,26 @@
     <source src="img/background.webm" type="video/webm" />
   </video>
   <canvas aria-hidden="true" id="particle-bg"></canvas>
-
   <nav aria-label="Main navigation" class="site-nav">
     <div class="site-nav__inner">
-      <a class="site-nav__brand" href="/">
-        <img alt="" aria-hidden="true" src="img/favicon.png" />
-        Haxurus
-      </a>
+      <a class="site-nav__brand" href="/"><img alt="" aria-hidden="true" src="img/favicon.png" />Haxurus</a>
       <div class="site-nav__links">
-        <a href="/">Home</a>
-        <a href="/#social">Social</a>
-        <a href="/#discord">Discord</a>
-        <a href="/#vrchat">VRChat</a>
-        <a href="/#games">Games</a>
+        <a href="/">Home</a><a href="/#social">Social</a><a href="/#discord">Discord</a><a href="/#vrchat">VRChat</a><a href="/#games">Games</a>
       </div>
     </div>
   </nav>
-
   <main class="quiz-page">
     <section class="quiz-card" id="quizCard">
       <div class="quiz-header">
         <p class="quiz-kicker">Haxurus Compatibility System</p>
         <h1 class="glitch-lite" data-text="Be My Egirl Quiz">Be My Egirl Quiz</h1>
-        <p class="quiz-subtitle">
-          A scientifically questionable test to measure compatibility.
-        </p>
-
-        <div class="progress-wrap" aria-label="Quiz progress">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
+        <p class="quiz-subtitle">A scientifically questionable test to measure compatibility.</p>
+        <div class="progress-wrap" aria-label="Quiz progress"><div class="progress-bar" id="progressBar"></div></div>
       </div>
-
       <section id="questionArea" class="question-area"></section>
-
-      <div class="quiz-actions">
-        <button id="backBtn" class="btn btn-secondary" type="button">Back</button>
-        <button id="nextBtn" class="btn btn-primary" type="button">Next</button>
-      </div>
+      <div class="quiz-actions"><button id="backBtn" class="btn btn-secondary" type="button">Back</button><button id="nextBtn" class="btn btn-primary" type="button">Next</button></div>
     </section>
   </main>
-
   <footer aria-label="Copyright and credits" class="site-footer" id="credits">
     <div class="site-footer__inner">
       <h2>Copyright &amp; Credits</h2>
@@ -78,21 +57,13 @@
       <p>For any issue or request, please contact <a href="mailto:inviati-49-armonia@icloud.com">by e-mail</a>.</p>
     </div>
   </footer>
-
   <div id="specialOverlay" class="special-overlay hidden" aria-hidden="true"></div>
-
   <audio id="policeAudio" src="audio/polizia.mp3" preload="auto"></audio>
   <audio id="cowAudio" src="audio/versomucca.mp3" preload="auto"></audio>
-  <audio id="exorcistAudio" src="audio/esorcista.mp3" preload="auto"></audio>
-
-  <script>
-    (() => {
-      const year = document.getElementById("current-year");
-      if (year) year.textContent = new Date().getFullYear();
-    })();
-  </script>
+  <script>(()=>{const year=document.getElementById("current-year");if(year)year.textContent=new Date().getFullYear();})();</script>
   <script defer src="scripts/bemyegirl.js"></script>
   <script defer src="scripts/bemyegirl-patch.js"></script>
   <script defer src="scripts/bemyegirl-result-patch.js"></script>
+  <script defer src="scripts/bemyegirl-cleanup-patch.js"></script>
 </body>
 </html>
