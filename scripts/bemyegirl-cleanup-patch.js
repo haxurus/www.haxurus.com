@@ -39,9 +39,43 @@ function ensurePizzaImagePatchStyles() {
     .question-area .image-choice-card img[src^="data:image/svg+xml"]{
       object-fit:contain;
     }
+
+    .question-area .multi-choice-grid.emotional-bugs-full-grid{
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .question-area .multi-choice-grid.emotional-bugs-full-grid .answer-btn{
+      min-height:54px;
+      padding:12px 14px;
+      font-size:.86rem;
+      line-height:1.22;
+    }
+
+    @media (min-width:1180px){
+      .question-area .multi-choice-grid.emotional-bugs-full-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+    }
+
+    @media (min-width:1480px){
+      .question-area .multi-choice-grid.emotional-bugs-full-grid{
+        grid-template-columns:repeat(4,minmax(0,1fr));
+      }
+    }
   `;
   document.head.appendChild(style);
 }
+
+const cleanupRenderMultiChoiceQuestion = renderMultiChoiceQuestion;
+renderMultiChoiceQuestion = function(question, selected, questionNumber) {
+  cleanupRenderMultiChoiceQuestion(question, selected, questionNumber);
+
+  if (question.id !== "red_flags" || selected?.mode !== "full") return;
+
+  const grid = questionArea.querySelector(".multi-choice-grid");
+  grid?.classList.add("emotional-bugs-full-grid");
+};
 
 applyPizzaRealImagePatch();
 
