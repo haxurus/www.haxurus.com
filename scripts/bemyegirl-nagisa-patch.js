@@ -28,6 +28,45 @@ function addHeightKawaiiPatch() {
   });
 }
 
+function addCuddleBuildQuestionPatch() {
+  if (!questions.some((item) => item.id === "cuddle_build")) {
+    const insertIndex = questions.findIndex((item) => item.id === "altezza");
+
+    const question = {
+      id: "cuddle_build",
+      type: "choice",
+      question: "What is your cuddle build?",
+      answers: [
+        { label: "Small plushie edition", value: 2 },
+        { label: "Slim / petite", value: 2 },
+        { label: "Average and cute enough", value: 1 },
+        { label: "Soft and cuddly", value: 1 },
+        { label: "Curvy", value: 0 },
+        { label: "Plus-size cuddle boss", value: -1 },
+        { label: "Very soft final boss", value: -2 },
+        { label: "Gym arc unlocked", value: 0 },
+        { label: "I refuse to be perceived", value: 1 }
+      ]
+    };
+
+    if (insertIndex >= 0) {
+      questions.splice(insertIndex + 1, 0, question);
+    } else {
+      questions.push(question);
+    }
+  }
+
+  const appearance = categoryDefinitions?.find((category) => category.id === "appearance");
+  if (appearance && !appearance.questionIds.includes("cuddle_build")) {
+    const heightIndex = appearance.questionIds.indexOf("altezza");
+    if (heightIndex >= 0) {
+      appearance.questionIds.splice(heightIndex + 1, 0, "cuddle_build");
+    } else {
+      appearance.questionIds.push("cuddle_build");
+    }
+  }
+}
+
 const nagisaBaseHandleSingleAnswer = handleSingleAnswer;
 handleSingleAnswer = function(question, answerIndex) {
   const answer = question.answers[answerIndex];
@@ -120,6 +159,7 @@ function addLgbtqTopicQuestionPatch() {
 }
 
 addLgbtqTopicQuestionPatch();
+addCuddleBuildQuestionPatch();
 addNagisaChoicePatch();
 addHeightKawaiiPatch();
 
