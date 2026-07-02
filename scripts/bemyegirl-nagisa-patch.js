@@ -69,6 +69,57 @@ handleSingleAnswer = function(question, answerIndex) {
   }, 1000);
 };
 
+function addLgbtqTopicQuestionPatch() {
+  if (!questions.some((item) => item.id === "lgbtq_topics")) {
+    const insertIndex = questions.findIndex((item) => item.id === "ironia");
+
+    const question = {
+      id: "lgbtq_topics",
+      type: "choice",
+      question: "How do you approach LGBTQ+ topics?",
+      answers: [
+        {
+          label: "I respect everyone, but I can also take a joke",
+          value: 2
+        },
+        {
+          label: "I do not know much, but I am chill",
+          value: 1
+        },
+        {
+          label: "I support the community very actively",
+          value: -2
+        },
+        {
+          label: "I am fine with people doing what they want, just do not force opinions on me",
+          value: 0
+        },
+        {
+          label: "I prefer avoiding the topic",
+          value: 0
+        },
+        {
+          label: "I get uncomfortable with edgy jokes about these topics",
+          value: -2
+        }
+      ]
+    };
+
+    if (insertIndex >= 0) {
+      questions.splice(insertIndex + 1, 0, question);
+    } else {
+      questions.push(question);
+    }
+  }
+
+  const personality = categoryDefinitions?.find((category) => category.id === "personality");
+
+  if (personality && !personality.questionIds.includes("lgbtq_topics")) {
+    personality.questionIds.push("lgbtq_topics");
+  }
+}
+
+addLgbtqTopicQuestionPatch();
 addNagisaChoicePatch();
 addHeightKawaiiPatch();
 
