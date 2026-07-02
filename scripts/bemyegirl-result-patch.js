@@ -15,7 +15,7 @@ const categoryDefinitions = [
   {
     id: "relationship",
     label: "Relationship vibe",
-    questionIds: ["abbracci", "foto_insieme", "cosa_cerchi", "serata_ideale"]
+    questionIds: ["origine", "dove_abiti_ora", "abbracci", "foto_insieme", "cosa_cerchi", "serata_ideale"]
   },
   {
     id: "nerd",
@@ -26,11 +26,6 @@ const categoryDefinitions = [
     id: "lifestyle",
     label: "Lifestyle / Taste",
     questionIds: ["pizza", "drink", "dolce", "film_brutto", "gossip"]
-  },
-  {
-    id: "profile",
-    label: "Profile / Distance",
-    questionIds: ["origine", "dove_abiti_ora"]
   }
 ];
 
