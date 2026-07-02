@@ -1,3 +1,6 @@
+scoreMap[3] = 12;
+scoreMap["-4"] = -10;
+
 function makePizzaPlaceholder(title, emoji, accent = "#39ff14") {
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -29,16 +32,18 @@ function applyPizzaImageQuestionPatch() {
 
   pizza.type = "imageChoice";
   pizza.question = "Choose a pizza";
+  delete pizza.minValue;
+  delete pizza.maxValue;
   pizza.answers = [
     {
       label: "Buffalo mozzarella & fries",
       image: makePizzaPlaceholder("Buffalo & fries", "🍕", "#39ff14"),
-      value: 2
+      value: 3
     },
     {
       label: "Wurstel & fries",
       image: makePizzaPlaceholder("Wurstel & fries", "🍟", "#d7ffbc"),
-      value: 0
+      value: 2
     },
     {
       label: "Margherita",
@@ -48,7 +53,7 @@ function applyPizzaImageQuestionPatch() {
     {
       label: "Diavola",
       image: makePizzaPlaceholder("Diavola", "🌶️", "#ff4d4d"),
-      value: 1
+      value: 0
     },
     {
       label: "Capricciosa",
@@ -75,7 +80,7 @@ function applyPizzaImageQuestionPatch() {
     {
       label: "I don't eat pizza",
       image: makePizzaPlaceholder("No pizza", "🚫", "#9aa4b2"),
-      value: -2
+      value: -4
     }
   ];
 }
