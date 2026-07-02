@@ -1,3 +1,85 @@
+function makePizzaPlaceholder(title, emoji, accent = "#39ff14") {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="38%" r="62%">
+          <stop offset="0%" stop-color="${accent}" stop-opacity="0.34"/>
+          <stop offset="58%" stop-color="#0f2a1e" stop-opacity="0.88"/>
+          <stop offset="100%" stop-color="#06100c" stop-opacity="1"/>
+        </radialGradient>
+        <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#1a3328"/>
+          <stop offset="100%" stop-color="#07100d"/>
+        </linearGradient>
+      </defs>
+      <rect width="640" height="640" rx="54" fill="url(#card)"/>
+      <rect x="22" y="22" width="596" height="596" rx="42" fill="url(#glow)" stroke="rgba(255,255,255,.22)" stroke-width="3"/>
+      <circle cx="320" cy="266" r="158" fill="rgba(255,255,255,.08)"/>
+      <text x="320" y="318" text-anchor="middle" font-size="150" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">${emoji}</text>
+      <text x="320" y="500" text-anchor="middle" fill="#f7fff9" font-size="38" font-weight="800" font-family="Inter, Arial, sans-serif">${title}</text>
+    </svg>
+  `;
+
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+function applyPizzaImageQuestionPatch() {
+  const pizza = questions.find((item) => item.id === "pizza");
+  if (!pizza) return;
+
+  pizza.type = "imageChoice";
+  pizza.question = "Choose a pizza";
+  pizza.answers = [
+    {
+      label: "Buffalo mozzarella & fries",
+      image: makePizzaPlaceholder("Buffalo & fries", "🍕", "#39ff14"),
+      value: 2
+    },
+    {
+      label: "Wurstel & fries",
+      image: makePizzaPlaceholder("Wurstel & fries", "🍟", "#d7ffbc"),
+      value: 0
+    },
+    {
+      label: "Margherita",
+      image: makePizzaPlaceholder("Margherita", "🍅", "#ff6b6b"),
+      value: 1
+    },
+    {
+      label: "Diavola",
+      image: makePizzaPlaceholder("Diavola", "🌶️", "#ff4d4d"),
+      value: 1
+    },
+    {
+      label: "Capricciosa",
+      image: makePizzaPlaceholder("Capricciosa", "🍄", "#f0d28a"),
+      value: 0
+    },
+    {
+      label: "Four cheese",
+      image: makePizzaPlaceholder("Four cheese", "🧀", "#ffe066"),
+      value: 0
+    },
+    {
+      label: "With arugula",
+      image: makePizzaPlaceholder("Arugula", "🥬", "#7CFF9B"),
+      value: -1,
+      action: "cowSound"
+    },
+    {
+      label: "Pineapple",
+      image: makePizzaPlaceholder("Pineapple", "🍍", "#ffd166"),
+      value: -3,
+      action: "pineappleEvent"
+    },
+    {
+      label: "I don't eat pizza",
+      image: makePizzaPlaceholder("No pizza", "🚫", "#9aa4b2"),
+      value: -2
+    }
+  ];
+}
+
 function ensureFinalResultLayoutPatchStyles() {
   if (document.getElementById("finalResultLayoutPatchStyles")) return;
 
@@ -11,9 +93,17 @@ function ensureFinalResultLayoutPatchStyles() {
     .result-box.route-result .route-image-wrap{
       margin:0 auto 0;
     }
+
+    @media (min-width:1024px){
+      .question-area .image-choice-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+    }
   `;
   document.head.appendChild(style);
 }
+
+applyPizzaImageQuestionPatch();
 
 renderResult = function() {
   const { percentage, result } = calculateResult();
@@ -37,3 +127,8 @@ renderResult = function() {
     </div>
   `;
 };
+
+if (!state.restartMode && typeof renderQuestion === "function") {
+  ensureFinalResultLayoutPatchStyles();
+  renderQuestion();
+}
