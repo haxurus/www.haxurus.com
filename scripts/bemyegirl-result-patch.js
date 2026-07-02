@@ -85,6 +85,61 @@ function applyPizzaImageQuestionPatch() {
   ];
 }
 
+function getRouteResult(percentage) {
+  if (percentage === 100) {
+    return {
+      route: "Wedding Route",
+      title: "Perfect ending unlocked",
+      text: "100% compatibility. The system is already looking for rings, matching Discord icons and a suspiciously cute Minecraft house.",
+      specialClass: "wedding-route",
+      image: "img/bemyegirl/routes/wedding-route.png"
+    };
+  }
+
+  if (percentage <= 25) {
+    return {
+      route: "Emotional Damage Route",
+      title: "Incompatibility detected",
+      text: "The system recommends Discord friendship and emotional safety distance.",
+      image: "img/bemyegirl/routes/emotional-damage-route.png"
+    };
+  }
+
+  if (percentage <= 50) {
+    return {
+      route: "Discord Friend Route",
+      title: "Maybe Discord friends",
+      text: "There is something here, but we need at least three memes, one pizza, and manual verification.",
+      image: "img/bemyegirl/routes/discord-friend-route.png"
+    };
+  }
+
+  if (percentage <= 70) {
+    return {
+      route: "Soft Match Route",
+      title: "Interesting compatibility",
+      text: "The situation looks promising. The system approves a conversation longer than expected.",
+      image: "img/bemyegirl/routes/soft-match-route.png"
+    };
+  }
+
+  if (percentage <= 90) {
+    return {
+      route: "Possible Egirl Route",
+      title: "Possible match",
+      text: "Good compatibility. Proceed with spritz, gossip, and a Minecraft session.",
+      image: "img/bemyegirl/routes/possible-egirl-route.png"
+    };
+  }
+
+  return {
+    route: "Legendary Egirl Route",
+    title: "Legendary route unlocked",
+    text: "The system has detected a final-boss candidate. Immediate human verification required.",
+    image: "img/bemyegirl/routes/legendary-egirl-route.png"
+  };
+}
+
 function ensureFinalResultLayoutPatchStyles() {
   if (document.getElementById("finalResultLayoutPatchStyles")) return;
 
@@ -109,6 +164,7 @@ function ensureFinalResultLayoutPatchStyles() {
 }
 
 applyPizzaImageQuestionPatch();
+getResultMessage = getRouteResult;
 
 renderResult = function() {
   const { percentage, result } = calculateResult();
