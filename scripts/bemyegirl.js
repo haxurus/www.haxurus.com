@@ -11,7 +11,7 @@
     .then((source) => {
       const patched = source.replace(
         `{label:it?"Il Tronchetto":"The Log",action:"preferenceBlock"},{label:it?"Sono un transformer":"I'm a transformer",action:"preferenceBlock"}`,
-        `{label:it?"Il Tronchetto":"The Log",value:-15},{label:it?"Sono un transformer":"I'm a transformer",value:-15}`
+        `{label:it?"Il Tronchetto":"The Log",value:-15},{label:it?"Sono un transformer":"I'm a transformer",value:-10}`
       );
 
       if (patched === source) {
