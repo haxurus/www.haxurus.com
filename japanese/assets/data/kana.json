@@ -1,0 +1,26 @@
+{
+  "hiragana": [
+    {"kana":"あ","romaji":"a","esempio":"あめ / ame / pioggia"},
+    {"kana":"い","romaji":"i","esempio":"いぬ / inu / cane"},
+    {"kana":"う","romaji":"u","esempio":"うみ / umi / mare"},
+    {"kana":"え","romaji":"e","esempio":"えき / eki / stazione"},
+    {"kana":"お","romaji":"o","esempio":"おちゃ / ocha / tè"},
+    {"kana":"か","romaji":"ka","esempio":"かさ / kasa / ombrello"},
+    {"kana":"き","romaji":"ki","esempio":"き / ki / albero"},
+    {"kana":"く","romaji":"ku","esempio":"くるま / kuruma / auto"},
+    {"kana":"け","romaji":"ke","esempio":"けむり / kemuri / fumo"},
+    {"kana":"こ","romaji":"ko","esempio":"こえ / koe / voce"}
+  ],
+  "katakana": [
+    {"kana":"ア","romaji":"a","esempio":"アイス / aisu / gelato"},
+    {"kana":"イ","romaji":"i","esempio":"イタリア / itaria / Italia"},
+    {"kana":"ウ","romaji":"u","esempio":"ウイスキー / uisukii / whisky"},
+    {"kana":"エ","romaji":"e","esempio":"エレベーター / erebeetaa / ascensore"},
+    {"kana":"オ","romaji":"o","esempio":"オレンジ / orenji / arancia"},
+    {"kana":"カ","romaji":"ka","esempio":"カメラ / kamera / camera"},
+    {"kana":"キ","romaji":"ki","esempio":"キロ / kiro / chilo"},
+    {"kana":"ク","romaji":"ku","esempio":"クラス / kurasu / classe"},
+    {"kana":"ケ","romaji":"ke","esempio":"ケーキ / keeki / torta"},
+    {"kana":"コ","romaji":"ko","esempio":"コーヒー / koohii / caffè"}
+  ]
+}
