@@ -1,6 +1,6 @@
 [
   {
-    "id": "saluti-001",
+    "id": "saluti-base-001",
     "categoria": "Saluti",
     "tipo": "Espressione",
     "livello": "Base",
@@ -9,7 +9,7 @@
     "kana": "こんにちは",
     "kanji": "",
     "pronuncia": "kon-ni-ci-wa",
-    "note": "Saluto usato soprattutto durante il giorno.",
+    "note": "Saluto generico usato soprattutto durante il giorno.",
     "esempi": [
       {
         "giapponese": "こんにちは、元気ですか？",
@@ -19,11 +19,30 @@
     ]
   },
   {
-    "id": "saluti-002",
+    "id": "saluti-base-002",
     "categoria": "Saluti",
     "tipo": "Espressione",
     "livello": "Base",
     "italiano": "Buongiorno",
+    "romaji": "ohayou",
+    "kana": "おはよう",
+    "kanji": "",
+    "pronuncia": "o-ha-yo",
+    "note": "Forma informale usata al mattino.",
+    "esempi": [
+      {
+        "giapponese": "おはよう、アレッシオ。",
+        "romaji": "Ohayou, Aresshio.",
+        "italiano": "Buongiorno, Alessio."
+      }
+    ]
+  },
+  {
+    "id": "saluti-base-003",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Buongiorno formale",
     "romaji": "ohayou gozaimasu",
     "kana": "おはようございます",
     "kanji": "",
@@ -38,8 +57,65 @@
     ]
   },
   {
-    "id": "presentazioni-001",
-    "categoria": "Presentazioni",
+    "id": "saluti-base-004",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Buonasera",
+    "romaji": "konbanwa",
+    "kana": "こんばんは",
+    "kanji": "",
+    "pronuncia": "kon-ban-wa",
+    "note": "Saluto usato la sera.",
+    "esempi": [
+      {
+        "giapponese": "こんばんは、元気ですか？",
+        "romaji": "Konbanwa, genki desu ka?",
+        "italiano": "Buonasera, come stai?"
+      }
+    ]
+  },
+  {
+    "id": "saluti-base-005",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Buonanotte",
+    "romaji": "oyasumi",
+    "kana": "おやすみ",
+    "kanji": "",
+    "pronuncia": "o-ya-su-mi",
+    "note": "Forma informale per salutare prima di dormire.",
+    "esempi": [
+      {
+        "giapponese": "おやすみ、また明日。",
+        "romaji": "Oyasumi, mata ashita.",
+        "italiano": "Buonanotte, ci vediamo domani."
+      }
+    ]
+  },
+  {
+    "id": "saluti-base-006",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Buonanotte formale",
+    "romaji": "oyasumi nasai",
+    "kana": "おやすみなさい",
+    "kanji": "",
+    "pronuncia": "o-ya-su-mi na-sa-i",
+    "note": "Forma cortese per salutare prima di dormire.",
+    "esempi": [
+      {
+        "giapponese": "おやすみなさい、先生。",
+        "romaji": "Oyasumi nasai, sensei.",
+        "italiano": "Buonanotte, professore."
+      }
+    ]
+  },
+  {
+    "id": "saluti-incontro-001",
+    "categoria": "Saluti",
     "tipo": "Espressione",
     "livello": "Base",
     "italiano": "Piacere di conoscerti",
@@ -51,8 +127,331 @@
     "esempi": [
       {
         "giapponese": "はじめまして。私はアレッシオです。",
-        "romaji": "Hajimemashite. Watashi wa Alessio desu.",
+        "romaji": "Hajimemashite. Watashi wa Aresshio desu.",
         "italiano": "Piacere. Io sono Alessio."
+      }
+    ]
+  },
+  {
+    "id": "saluti-incontro-002",
+    "categoria": "Saluti",
+    "tipo": "Frase completa",
+    "livello": "Base",
+    "italiano": "Come stai? informale",
+    "romaji": "genki?",
+    "kana": "げんき？",
+    "kanji": "元気？",
+    "pronuncia": "gen-ki",
+    "note": "Domanda informale tra persone in confidenza.",
+    "esempi": [
+      {
+        "giapponese": "アレッシオ、元気？",
+        "romaji": "Aresshio, genki?",
+        "italiano": "Alessio, come stai?"
+      }
+    ]
+  },
+  {
+    "id": "saluti-incontro-003",
+    "categoria": "Saluti",
+    "tipo": "Frase completa",
+    "livello": "Base",
+    "italiano": "Come stai? neutro",
+    "romaji": "genki desu ka?",
+    "kana": "げんきですか？",
+    "kanji": "元気ですか？",
+    "pronuncia": "gen-ki des ka",
+    "note": "Domanda neutra/cortese per chiedere come sta una persona.",
+    "esempi": [
+      {
+        "giapponese": "お元気ですか？",
+        "romaji": "Ogenki desu ka?",
+        "italiano": "Come sta?"
+      }
+    ]
+  },
+  {
+    "id": "saluti-entrata-001",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Permesso entrando",
+    "romaji": "shitsurei shimasu",
+    "kana": "しつれいします",
+    "kanji": "失礼します",
+    "pronuncia": "shi-tsu-rei shi-mas",
+    "note": "Si usa entrando in una stanza, interrompendo o prendendo congedo in modo educato.",
+    "esempi": [
+      {
+        "giapponese": "失礼します。",
+        "romaji": "Shitsurei shimasu.",
+        "italiano": "Permesso."
+      }
+    ]
+  },
+  {
+    "id": "saluti-entrata-002",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Scusa / permesso",
+    "romaji": "sumimasen",
+    "kana": "すみません",
+    "kanji": "",
+    "pronuncia": "su-mi-ma-sen",
+    "note": "Può significare scusa, permesso o mi scusi.",
+    "esempi": [
+      {
+        "giapponese": "すみません、水をください。",
+        "romaji": "Sumimasen, mizu o kudasai.",
+        "italiano": "Mi scusi, acqua per favore."
+      }
+    ]
+  },
+  {
+    "id": "saluti-entrata-003",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Grazie informale",
+    "romaji": "arigatou",
+    "kana": "ありがとう",
+    "kanji": "",
+    "pronuncia": "a-ri-ga-to",
+    "note": "Forma informale per ringraziare.",
+    "esempi": [
+      {
+        "giapponese": "ありがとう、助かった。",
+        "romaji": "Arigatou, tasukatta.",
+        "italiano": "Grazie, mi hai aiutato."
+      }
+    ]
+  },
+  {
+    "id": "saluti-entrata-004",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Grazie formale",
+    "romaji": "arigatou gozaimasu",
+    "kana": "ありがとうございます",
+    "kanji": "",
+    "pronuncia": "a-ri-ga-to go-za-i-mas",
+    "note": "Forma cortese per ringraziare.",
+    "esempi": [
+      {
+        "giapponese": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "italiano": "Grazie mille."
+      }
+    ]
+  },
+  {
+    "id": "saluti-uscita-001",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Arrivederci generico",
+    "romaji": "sayounara",
+    "kana": "さようなら",
+    "kanji": "",
+    "pronuncia": "sa-yo-na-ra",
+    "note": "Saluto di congedo, spesso percepito come abbastanza definitivo.",
+    "esempi": [
+      {
+        "giapponese": "さようなら、また会いましょう。",
+        "romaji": "Sayounara, mata aimashou.",
+        "italiano": "Arrivederci, rivediamoci."
+      }
+    ]
+  },
+  {
+    "id": "saluti-uscita-002",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "A dopo / ci vediamo",
+    "romaji": "mata ne",
+    "kana": "またね",
+    "kanji": "",
+    "pronuncia": "ma-ta ne",
+    "note": "Saluto informale per dire ci vediamo.",
+    "esempi": [
+      {
+        "giapponese": "またね、アレッシオ。",
+        "romaji": "Mata ne, Aresshio.",
+        "italiano": "A dopo, Alessio."
+      }
+    ]
+  },
+  {
+    "id": "saluti-uscita-003",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "A dopo più formale",
+    "romaji": "mata aimashou",
+    "kana": "またあいましょう",
+    "kanji": "また会いましょう",
+    "pronuncia": "ma-ta a-i-ma-sho",
+    "note": "Forma più cortese per dire rivediamoci.",
+    "esempi": [
+      {
+        "giapponese": "また会いましょう。",
+        "romaji": "Mata aimashou.",
+        "italiano": "Rivediamoci."
+      }
+    ]
+  },
+  {
+    "id": "saluti-uscita-004",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Ci vediamo domani",
+    "romaji": "mata ashita",
+    "kana": "またあした",
+    "kanji": "また明日",
+    "pronuncia": "ma-ta a-shi-ta",
+    "note": "Saluto usato quando ci si rivede il giorno dopo.",
+    "esempi": [
+      {
+        "giapponese": "また明日。",
+        "romaji": "Mata ashita.",
+        "italiano": "Ci vediamo domani."
+      }
+    ]
+  },
+  {
+    "id": "saluti-lavoro-001",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Buon lavoro andando via prima degli altri",
+    "romaji": "osaki ni shitsurei shimasu",
+    "kana": "おさきにしつれいします",
+    "kanji": "お先に失礼します",
+    "pronuncia": "o-sa-ki ni shi-tsu-rei shi-mas",
+    "note": "Si usa quando si lascia il posto di lavoro prima degli altri.",
+    "esempi": [
+      {
+        "giapponese": "お先に失礼します。",
+        "romaji": "Osaki ni shitsurei shimasu.",
+        "italiano": "Vado via prima, permesso."
+      }
+    ]
+  },
+  {
+    "id": "saluti-lavoro-002",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Grazie per il lavoro svolto",
+    "romaji": "otsukaresama desu",
+    "kana": "おつかれさまです",
+    "kanji": "お疲れ様です",
+    "pronuncia": "o-tsu-ka-re-sa-ma des",
+    "note": "Espressione molto comune in contesti di lavoro o studio per riconoscere l’impegno altrui.",
+    "esempi": [
+      {
+        "giapponese": "お疲れ様です、また明日。",
+        "romaji": "Otsukaresama desu, mata ashita.",
+        "italiano": "Grazie per il lavoro, a domani."
+      }
+    ]
+  },
+  {
+    "id": "saluti-casa-001",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Sono tornato",
+    "romaji": "tadaima",
+    "kana": "ただいま",
+    "kanji": "",
+    "pronuncia": "ta-da-i-ma",
+    "note": "Si dice entrando in casa quando si torna.",
+    "esempi": [
+      {
+        "giapponese": "ただいま。",
+        "romaji": "Tadaima.",
+        "italiano": "Sono tornato."
+      }
+    ]
+  },
+  {
+    "id": "saluti-casa-002",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Bentornato",
+    "romaji": "okaeri",
+    "kana": "おかえり",
+    "kanji": "お帰り",
+    "pronuncia": "o-ka-e-ri",
+    "note": "Risposta informale a tadaima.",
+    "esempi": [
+      {
+        "giapponese": "おかえり。",
+        "romaji": "Okaeri.",
+        "italiano": "Bentornato."
+      }
+    ]
+  },
+  {
+    "id": "saluti-casa-003",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Bentornato formale",
+    "romaji": "okaerinasai",
+    "kana": "おかえりなさい",
+    "kanji": "お帰りなさい",
+    "pronuncia": "o-ka-e-ri-na-sa-i",
+    "note": "Risposta più cortese a tadaima.",
+    "esempi": [
+      {
+        "giapponese": "お帰りなさい。",
+        "romaji": "Okaerinasai.",
+        "italiano": "Bentornato."
+      }
+    ]
+  },
+  {
+    "id": "saluti-casa-004",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Vado e torno",
+    "romaji": "ittekimasu",
+    "kana": "いってきます",
+    "kanji": "行ってきます",
+    "pronuncia": "it-te-ki-mas",
+    "note": "Si dice uscendo di casa, con l’idea di tornare.",
+    "esempi": [
+      {
+        "giapponese": "行ってきます。",
+        "romaji": "Ittekimasu.",
+        "italiano": "Vado e torno."
+      }
+    ]
+  },
+  {
+    "id": "saluti-casa-005",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Vai e torna",
+    "romaji": "itterasshai",
+    "kana": "いってらっしゃい",
+    "kanji": "行ってらっしゃい",
+    "pronuncia": "it-te-ras-shai",
+    "note": "Risposta a ittekimasu; si dice a chi sta uscendo.",
+    "esempi": [
+      {
+        "giapponese": "行ってらっしゃい。",
+        "romaji": "Itterasshai.",
+        "italiano": "Vai e torna."
       }
     ]
   },
