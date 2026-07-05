@@ -1,26 +1,1156 @@
 {
   "hiragana": [
-    {"kana":"あ","romaji":"a","esempio":"あめ / ame / pioggia"},
-    {"kana":"い","romaji":"i","esempio":"いぬ / inu / cane"},
-    {"kana":"う","romaji":"u","esempio":"うみ / umi / mare"},
-    {"kana":"え","romaji":"e","esempio":"えき / eki / stazione"},
-    {"kana":"お","romaji":"o","esempio":"おちゃ / ocha / tè"},
-    {"kana":"か","romaji":"ka","esempio":"かさ / kasa / ombrello"},
-    {"kana":"き","romaji":"ki","esempio":"き / ki / albero"},
-    {"kana":"く","romaji":"ku","esempio":"くるま / kuruma / auto"},
-    {"kana":"け","romaji":"ke","esempio":"けむり / kemuri / fumo"},
-    {"kana":"こ","romaji":"ko","esempio":"こえ / koe / voce"}
+    {
+      "kana": "あ",
+      "romaji": "a",
+      "esempio": "あめ / ame / pioggia"
+    },
+    {
+      "kana": "い",
+      "romaji": "i",
+      "esempio": "いぬ / inu / cane"
+    },
+    {
+      "kana": "う",
+      "romaji": "u",
+      "esempio": "うみ / umi / mare"
+    },
+    {
+      "kana": "え",
+      "romaji": "e",
+      "esempio": "えき / eki / stazione"
+    },
+    {
+      "kana": "お",
+      "romaji": "o",
+      "esempio": "おちゃ / ocha / tè"
+    },
+    {
+      "kana": "か",
+      "romaji": "ka",
+      "esempio": "かさ / kasa / ombrello"
+    },
+    {
+      "kana": "き",
+      "romaji": "ki",
+      "esempio": "き / ki / albero"
+    },
+    {
+      "kana": "く",
+      "romaji": "ku",
+      "esempio": "くるま / kuruma / auto"
+    },
+    {
+      "kana": "け",
+      "romaji": "ke",
+      "esempio": "けむり / kemuri / fumo"
+    },
+    {
+      "kana": "こ",
+      "romaji": "ko",
+      "esempio": "こえ / koe / voce"
+    },
+    {
+      "kana": "さ",
+      "romaji": "sa",
+      "esempio": "さかな / sakana / pesce"
+    },
+    {
+      "kana": "し",
+      "romaji": "shi",
+      "esempio": "しごと / shigoto / lavoro"
+    },
+    {
+      "kana": "す",
+      "romaji": "su",
+      "esempio": "すし / sushi / sushi"
+    },
+    {
+      "kana": "せ",
+      "romaji": "se",
+      "esempio": "せんせい / sensei / insegnante"
+    },
+    {
+      "kana": "そ",
+      "romaji": "so",
+      "esempio": "そら / sora / cielo"
+    },
+    {
+      "kana": "た",
+      "romaji": "ta",
+      "esempio": "たべます / tabemasu / mangiare"
+    },
+    {
+      "kana": "ち",
+      "romaji": "chi",
+      "esempio": "ちいさい / chiisai / piccolo"
+    },
+    {
+      "kana": "つ",
+      "romaji": "tsu",
+      "esempio": "つき / tsuki / luna"
+    },
+    {
+      "kana": "て",
+      "romaji": "te",
+      "esempio": "て / te / mano"
+    },
+    {
+      "kana": "と",
+      "romaji": "to",
+      "esempio": "ともだち / tomodachi / amico"
+    },
+    {
+      "kana": "な",
+      "romaji": "na",
+      "esempio": "なまえ / namae / nome"
+    },
+    {
+      "kana": "に",
+      "romaji": "ni",
+      "esempio": "にほん / nihon / Giappone"
+    },
+    {
+      "kana": "ぬ",
+      "romaji": "nu",
+      "esempio": "ぬの / nuno / stoffa"
+    },
+    {
+      "kana": "ね",
+      "romaji": "ne",
+      "esempio": "ねこ / neko / gatto"
+    },
+    {
+      "kana": "の",
+      "romaji": "no",
+      "esempio": "の / no / particella possessiva"
+    },
+    {
+      "kana": "は",
+      "romaji": "ha",
+      "esempio": "はな / hana / fiore"
+    },
+    {
+      "kana": "ひ",
+      "romaji": "hi",
+      "esempio": "ひと / hito / persona"
+    },
+    {
+      "kana": "ふ",
+      "romaji": "fu",
+      "esempio": "ふゆ / fuyu / inverno"
+    },
+    {
+      "kana": "へ",
+      "romaji": "he",
+      "esempio": "へや / heya / stanza"
+    },
+    {
+      "kana": "ほ",
+      "romaji": "ho",
+      "esempio": "ほん / hon / libro"
+    },
+    {
+      "kana": "ま",
+      "romaji": "ma",
+      "esempio": "まち / machi / città"
+    },
+    {
+      "kana": "み",
+      "romaji": "mi",
+      "esempio": "みず / mizu / acqua"
+    },
+    {
+      "kana": "む",
+      "romaji": "mu",
+      "esempio": "むすめ / musume / figlia"
+    },
+    {
+      "kana": "め",
+      "romaji": "me",
+      "esempio": "め / me / occhio"
+    },
+    {
+      "kana": "も",
+      "romaji": "mo",
+      "esempio": "もり / mori / foresta"
+    },
+    {
+      "kana": "や",
+      "romaji": "ya",
+      "esempio": "やま / yama / montagna"
+    },
+    {
+      "kana": "ゆ",
+      "romaji": "yu",
+      "esempio": "ゆき / yuki / neve"
+    },
+    {
+      "kana": "よ",
+      "romaji": "yo",
+      "esempio": "よる / yoru / notte"
+    },
+    {
+      "kana": "ら",
+      "romaji": "ra",
+      "esempio": "らいねん / rainen / anno prossimo"
+    },
+    {
+      "kana": "り",
+      "romaji": "ri",
+      "esempio": "りんご / ringo / mela"
+    },
+    {
+      "kana": "る",
+      "romaji": "ru",
+      "esempio": "るす / rusu / assenza"
+    },
+    {
+      "kana": "れ",
+      "romaji": "re",
+      "esempio": "れきし / rekishi / storia"
+    },
+    {
+      "kana": "ろ",
+      "romaji": "ro",
+      "esempio": "ろく / roku / sei"
+    },
+    {
+      "kana": "わ",
+      "romaji": "wa",
+      "esempio": "わたし / watashi / io"
+    },
+    {
+      "kana": "を",
+      "romaji": "o",
+      "esempio": "を / o / particella oggetto"
+    },
+    {
+      "kana": "ん",
+      "romaji": "n",
+      "esempio": "ほん / hon / libro"
+    },
+    {
+      "kana": "が",
+      "romaji": "ga",
+      "esempio": "がっこう / gakkou / scuola"
+    },
+    {
+      "kana": "ぎ",
+      "romaji": "gi",
+      "esempio": "ぎんこう / ginkou / banca"
+    },
+    {
+      "kana": "ぐ",
+      "romaji": "gu",
+      "esempio": "ぐあい / guai / condizione"
+    },
+    {
+      "kana": "げ",
+      "romaji": "ge",
+      "esempio": "げんき / genki / energico"
+    },
+    {
+      "kana": "ご",
+      "romaji": "go",
+      "esempio": "ごはん / gohan / riso/pasto"
+    },
+    {
+      "kana": "ざ",
+      "romaji": "za",
+      "esempio": "ざっし / zasshi / rivista"
+    },
+    {
+      "kana": "じ",
+      "romaji": "ji",
+      "esempio": "じかん / jikan / tempo"
+    },
+    {
+      "kana": "ず",
+      "romaji": "zu",
+      "esempio": "ずつう / zutsuu / mal di testa"
+    },
+    {
+      "kana": "ぜ",
+      "romaji": "ze",
+      "esempio": "ぜんぶ / zenbu / tutto"
+    },
+    {
+      "kana": "ぞ",
+      "romaji": "zo",
+      "esempio": "ぞう / zou / elefante"
+    },
+    {
+      "kana": "だ",
+      "romaji": "da",
+      "esempio": "だいがく / daigaku / università"
+    },
+    {
+      "kana": "ぢ",
+      "romaji": "ji",
+      "esempio": "ぢ / ji / uso raro"
+    },
+    {
+      "kana": "づ",
+      "romaji": "zu",
+      "esempio": "づ / zu / uso raro"
+    },
+    {
+      "kana": "で",
+      "romaji": "de",
+      "esempio": "でんしゃ / densha / treno"
+    },
+    {
+      "kana": "ど",
+      "romaji": "do",
+      "esempio": "どようび / doyoubi / sabato"
+    },
+    {
+      "kana": "ば",
+      "romaji": "ba",
+      "esempio": "ばん / ban / sera"
+    },
+    {
+      "kana": "び",
+      "romaji": "bi",
+      "esempio": "びょういん / byouin / ospedale"
+    },
+    {
+      "kana": "ぶ",
+      "romaji": "bu",
+      "esempio": "ぶた / buta / maiale"
+    },
+    {
+      "kana": "べ",
+      "romaji": "be",
+      "esempio": "べんり / benri / comodo"
+    },
+    {
+      "kana": "ぼ",
+      "romaji": "bo",
+      "esempio": "ぼうし / boushi / cappello"
+    },
+    {
+      "kana": "ぱ",
+      "romaji": "pa",
+      "esempio": "ぱん / pan / pane"
+    },
+    {
+      "kana": "ぴ",
+      "romaji": "pi",
+      "esempio": "ぴかぴか / pikapika / luccicante"
+    },
+    {
+      "kana": "ぷ",
+      "romaji": "pu",
+      "esempio": "ぷにぷに / punipuni / morbido"
+    },
+    {
+      "kana": "ぺ",
+      "romaji": "pe",
+      "esempio": "ぺらぺら / perapera / fluentemente"
+    },
+    {
+      "kana": "ぽ",
+      "romaji": "po",
+      "esempio": "ぽつぽつ / potsupotsu / gocce sparse"
+    },
+    {
+      "kana": "きゃ",
+      "romaji": "kya",
+      "esempio": "きゃく / kyaku / cliente"
+    },
+    {
+      "kana": "きゅ",
+      "romaji": "kyu",
+      "esempio": "きゅう / kyuu / nove"
+    },
+    {
+      "kana": "きょ",
+      "romaji": "kyo",
+      "esempio": "きょう / kyou / oggi"
+    },
+    {
+      "kana": "しゃ",
+      "romaji": "sha",
+      "esempio": "しゃしん / shashin / foto"
+    },
+    {
+      "kana": "しゅ",
+      "romaji": "shu",
+      "esempio": "しゅくだい / shukudai / compiti"
+    },
+    {
+      "kana": "しょ",
+      "romaji": "sho",
+      "esempio": "しょうがっこう / shougakkou / scuola elementare"
+    },
+    {
+      "kana": "ちゃ",
+      "romaji": "cha",
+      "esempio": "ちゃ / cha / tè"
+    },
+    {
+      "kana": "ちゅ",
+      "romaji": "chu",
+      "esempio": "ちゅうがっこう / chuugakkou / scuola media"
+    },
+    {
+      "kana": "ちょ",
+      "romaji": "cho",
+      "esempio": "ちょっと / chotto / un po'"
+    },
+    {
+      "kana": "にゃ",
+      "romaji": "nya",
+      "esempio": "にゃん / nyan / miao"
+    },
+    {
+      "kana": "にゅ",
+      "romaji": "nyu",
+      "esempio": "にゅうがく / nyuugaku / ingresso a scuola"
+    },
+    {
+      "kana": "にょ",
+      "romaji": "nyo",
+      "esempio": "にょろにょろ / nyoronyoro / serpeggiante"
+    },
+    {
+      "kana": "ひゃ",
+      "romaji": "hya",
+      "esempio": "ひゃく / hyaku / cento"
+    },
+    {
+      "kana": "ひゅ",
+      "romaji": "hyu",
+      "esempio": "ひゅう / hyuu / sibilo"
+    },
+    {
+      "kana": "ひょ",
+      "romaji": "hyo",
+      "esempio": "ひょう / hyou / tabella"
+    },
+    {
+      "kana": "みゃ",
+      "romaji": "mya",
+      "esempio": "みゃく / myaku / polso"
+    },
+    {
+      "kana": "みゅ",
+      "romaji": "myu",
+      "esempio": "みゅう / myuu / suono myu"
+    },
+    {
+      "kana": "みょ",
+      "romaji": "myo",
+      "esempio": "みょうじ / myouji / cognome"
+    },
+    {
+      "kana": "りゃ",
+      "romaji": "rya",
+      "esempio": "りゃく / ryaku / abbreviazione"
+    },
+    {
+      "kana": "りゅ",
+      "romaji": "ryu",
+      "esempio": "りゅう / ryuu / drago"
+    },
+    {
+      "kana": "りょ",
+      "romaji": "ryo",
+      "esempio": "りょうしん / ryoushin / genitori"
+    },
+    {
+      "kana": "ぎゃ",
+      "romaji": "gya",
+      "esempio": "ぎゃく / gyaku / contrario"
+    },
+    {
+      "kana": "ぎゅ",
+      "romaji": "gyu",
+      "esempio": "ぎゅうにゅう / gyuunyuu / latte"
+    },
+    {
+      "kana": "ぎょ",
+      "romaji": "gyo",
+      "esempio": "ぎょうざ / gyouza / gyoza"
+    },
+    {
+      "kana": "じゃ",
+      "romaji": "ja",
+      "esempio": "じゃあ / jaa / allora"
+    },
+    {
+      "kana": "じゅ",
+      "romaji": "ju",
+      "esempio": "じゅぎょう / jugyou / lezione"
+    },
+    {
+      "kana": "じょ",
+      "romaji": "jo",
+      "esempio": "じょうぶ / joubu / robusto"
+    },
+    {
+      "kana": "ぢゃ",
+      "romaji": "ja",
+      "esempio": "ぢゃ / ja / uso raro"
+    },
+    {
+      "kana": "ぢゅ",
+      "romaji": "ju",
+      "esempio": "ぢゅ / ju / uso raro"
+    },
+    {
+      "kana": "ぢょ",
+      "romaji": "jo",
+      "esempio": "ぢょ / jo / uso raro"
+    },
+    {
+      "kana": "びゃ",
+      "romaji": "bya",
+      "esempio": "びゃく / byaku / lettura in composti"
+    },
+    {
+      "kana": "びゅ",
+      "romaji": "byu",
+      "esempio": "びゅう / byuu / suono byu"
+    },
+    {
+      "kana": "びょ",
+      "romaji": "byo",
+      "esempio": "びょういん / byouin / ospedale"
+    },
+    {
+      "kana": "ぴゃ",
+      "romaji": "pya",
+      "esempio": "ぴゃ / pya / suono pya"
+    },
+    {
+      "kana": "ぴゅ",
+      "romaji": "pyu",
+      "esempio": "ぴゅう / pyuu / fischio"
+    },
+    {
+      "kana": "ぴょ",
+      "romaji": "pyo",
+      "esempio": "ぴょん / pyon / salto"
+    }
   ],
   "katakana": [
-    {"kana":"ア","romaji":"a","esempio":"アイス / aisu / gelato"},
-    {"kana":"イ","romaji":"i","esempio":"イタリア / itaria / Italia"},
-    {"kana":"ウ","romaji":"u","esempio":"ウイスキー / uisukii / whisky"},
-    {"kana":"エ","romaji":"e","esempio":"エレベーター / erebeetaa / ascensore"},
-    {"kana":"オ","romaji":"o","esempio":"オレンジ / orenji / arancia"},
-    {"kana":"カ","romaji":"ka","esempio":"カメラ / kamera / camera"},
-    {"kana":"キ","romaji":"ki","esempio":"キロ / kiro / chilo"},
-    {"kana":"ク","romaji":"ku","esempio":"クラス / kurasu / classe"},
-    {"kana":"ケ","romaji":"ke","esempio":"ケーキ / keeki / torta"},
-    {"kana":"コ","romaji":"ko","esempio":"コーヒー / koohii / caffè"}
+    {
+      "kana": "ア",
+      "romaji": "a",
+      "esempio": "アイス / aisu / gelato"
+    },
+    {
+      "kana": "イ",
+      "romaji": "i",
+      "esempio": "イタリア / itaria / Italia"
+    },
+    {
+      "kana": "ウ",
+      "romaji": "u",
+      "esempio": "ウイスキー / uisukii / whisky"
+    },
+    {
+      "kana": "エ",
+      "romaji": "e",
+      "esempio": "エレベーター / erebeetaa / ascensore"
+    },
+    {
+      "kana": "オ",
+      "romaji": "o",
+      "esempio": "オレンジ / orenji / arancia"
+    },
+    {
+      "kana": "カ",
+      "romaji": "ka",
+      "esempio": "カメラ / kamera / camera"
+    },
+    {
+      "kana": "キ",
+      "romaji": "ki",
+      "esempio": "キロ / kiro / chilo"
+    },
+    {
+      "kana": "ク",
+      "romaji": "ku",
+      "esempio": "クラス / kurasu / classe"
+    },
+    {
+      "kana": "ケ",
+      "romaji": "ke",
+      "esempio": "ケーキ / keeki / torta"
+    },
+    {
+      "kana": "コ",
+      "romaji": "ko",
+      "esempio": "コーヒー / koohii / caffè"
+    },
+    {
+      "kana": "サ",
+      "romaji": "sa",
+      "esempio": "サラダ / sarada / insalata"
+    },
+    {
+      "kana": "シ",
+      "romaji": "shi",
+      "esempio": "シャツ / shatsu / camicia"
+    },
+    {
+      "kana": "ス",
+      "romaji": "su",
+      "esempio": "スーパー / suupaa / supermercato"
+    },
+    {
+      "kana": "セ",
+      "romaji": "se",
+      "esempio": "セーター / seetaa / maglione"
+    },
+    {
+      "kana": "ソ",
+      "romaji": "so",
+      "esempio": "ソファ / sofa / divano"
+    },
+    {
+      "kana": "タ",
+      "romaji": "ta",
+      "esempio": "タクシー / takushii / taxi"
+    },
+    {
+      "kana": "チ",
+      "romaji": "chi",
+      "esempio": "チーズ / chiizu / formaggio"
+    },
+    {
+      "kana": "ツ",
+      "romaji": "tsu",
+      "esempio": "ツアー / tsuaa / tour"
+    },
+    {
+      "kana": "テ",
+      "romaji": "te",
+      "esempio": "テレビ / terebi / televisione"
+    },
+    {
+      "kana": "ト",
+      "romaji": "to",
+      "esempio": "トマト / tomato / pomodoro"
+    },
+    {
+      "kana": "ナ",
+      "romaji": "na",
+      "esempio": "ナイフ / naifu / coltello"
+    },
+    {
+      "kana": "ニ",
+      "romaji": "ni",
+      "esempio": "ニュース / nyuusu / notizie"
+    },
+    {
+      "kana": "ヌ",
+      "romaji": "nu",
+      "esempio": "ヌードル / nuudoru / noodle"
+    },
+    {
+      "kana": "ネ",
+      "romaji": "ne",
+      "esempio": "ネクタイ / nekutai / cravatta"
+    },
+    {
+      "kana": "ノ",
+      "romaji": "no",
+      "esempio": "ノート / nooto / quaderno"
+    },
+    {
+      "kana": "ハ",
+      "romaji": "ha",
+      "esempio": "ハンバーガー / hanbaagaa / hamburger"
+    },
+    {
+      "kana": "ヒ",
+      "romaji": "hi",
+      "esempio": "ヒーロー / hiiroo / eroe"
+    },
+    {
+      "kana": "フ",
+      "romaji": "fu",
+      "esempio": "ファイル / fairu / file"
+    },
+    {
+      "kana": "ヘ",
+      "romaji": "he",
+      "esempio": "ヘルメット / herumetto / casco"
+    },
+    {
+      "kana": "ホ",
+      "romaji": "ho",
+      "esempio": "ホテル / hoteru / hotel"
+    },
+    {
+      "kana": "マ",
+      "romaji": "ma",
+      "esempio": "マンガ / manga / manga"
+    },
+    {
+      "kana": "ミ",
+      "romaji": "mi",
+      "esempio": "ミルク / miruku / latte"
+    },
+    {
+      "kana": "ム",
+      "romaji": "mu",
+      "esempio": "ムービー / muubii / film"
+    },
+    {
+      "kana": "メ",
+      "romaji": "me",
+      "esempio": "メール / meeru / email"
+    },
+    {
+      "kana": "モ",
+      "romaji": "mo",
+      "esempio": "モデル / moderu / modello"
+    },
+    {
+      "kana": "ヤ",
+      "romaji": "ya",
+      "esempio": "ヤード / yaado / yard"
+    },
+    {
+      "kana": "ユ",
+      "romaji": "yu",
+      "esempio": "ユーロ / yuuro / euro"
+    },
+    {
+      "kana": "ヨ",
+      "romaji": "yo",
+      "esempio": "ヨガ / yoga / yoga"
+    },
+    {
+      "kana": "ラ",
+      "romaji": "ra",
+      "esempio": "ラーメン / raamen / ramen"
+    },
+    {
+      "kana": "リ",
+      "romaji": "ri",
+      "esempio": "リモコン / rimokon / telecomando"
+    },
+    {
+      "kana": "ル",
+      "romaji": "ru",
+      "esempio": "ルール / ruuru / regola"
+    },
+    {
+      "kana": "レ",
+      "romaji": "re",
+      "esempio": "レストラン / resutoran / ristorante"
+    },
+    {
+      "kana": "ロ",
+      "romaji": "ro",
+      "esempio": "ロボット / robotto / robot"
+    },
+    {
+      "kana": "ワ",
+      "romaji": "wa",
+      "esempio": "ワイン / wain / vino"
+    },
+    {
+      "kana": "ヲ",
+      "romaji": "o",
+      "esempio": "ヲ / o / uso raro"
+    },
+    {
+      "kana": "ン",
+      "romaji": "n",
+      "esempio": "パン / pan / pane"
+    },
+    {
+      "kana": "ガ",
+      "romaji": "ga",
+      "esempio": "ガラス / garasu / vetro"
+    },
+    {
+      "kana": "ギ",
+      "romaji": "gi",
+      "esempio": "ギター / gitaa / chitarra"
+    },
+    {
+      "kana": "グ",
+      "romaji": "gu",
+      "esempio": "グループ / guruupu / gruppo"
+    },
+    {
+      "kana": "ゲ",
+      "romaji": "ge",
+      "esempio": "ゲーム / geemu / gioco"
+    },
+    {
+      "kana": "ゴ",
+      "romaji": "go",
+      "esempio": "ゴルフ / gorufu / golf"
+    },
+    {
+      "kana": "ザ",
+      "romaji": "za",
+      "esempio": "ザクロ / zakuro / melograno"
+    },
+    {
+      "kana": "ジ",
+      "romaji": "ji",
+      "esempio": "ジュース / juusu / succo"
+    },
+    {
+      "kana": "ズ",
+      "romaji": "zu",
+      "esempio": "ズボン / zubon / pantaloni"
+    },
+    {
+      "kana": "ゼ",
+      "romaji": "ze",
+      "esempio": "ゼロ / zero / zero"
+    },
+    {
+      "kana": "ゾ",
+      "romaji": "zo",
+      "esempio": "ゾーン / zoon / zona"
+    },
+    {
+      "kana": "ダ",
+      "romaji": "da",
+      "esempio": "ダンス / dansu / danza"
+    },
+    {
+      "kana": "ヂ",
+      "romaji": "ji",
+      "esempio": "ヂ / ji / uso raro"
+    },
+    {
+      "kana": "ヅ",
+      "romaji": "zu",
+      "esempio": "ヅ / zu / uso raro"
+    },
+    {
+      "kana": "デ",
+      "romaji": "de",
+      "esempio": "データ / deeta / dati"
+    },
+    {
+      "kana": "ド",
+      "romaji": "do",
+      "esempio": "ドア / doa / porta"
+    },
+    {
+      "kana": "バ",
+      "romaji": "ba",
+      "esempio": "バス / basu / bus"
+    },
+    {
+      "kana": "ビ",
+      "romaji": "bi",
+      "esempio": "ビール / biiru / birra"
+    },
+    {
+      "kana": "ブ",
+      "romaji": "bu",
+      "esempio": "ブログ / burogu / blog"
+    },
+    {
+      "kana": "ベ",
+      "romaji": "be",
+      "esempio": "ベッド / beddo / letto"
+    },
+    {
+      "kana": "ボ",
+      "romaji": "bo",
+      "esempio": "ボタン / botan / pulsante"
+    },
+    {
+      "kana": "パ",
+      "romaji": "pa",
+      "esempio": "パソコン / pasokon / computer"
+    },
+    {
+      "kana": "ピ",
+      "romaji": "pi",
+      "esempio": "ピザ / piza / pizza"
+    },
+    {
+      "kana": "プ",
+      "romaji": "pu",
+      "esempio": "プリン / purin / budino"
+    },
+    {
+      "kana": "ペ",
+      "romaji": "pe",
+      "esempio": "ペン / pen / penna"
+    },
+    {
+      "kana": "ポ",
+      "romaji": "po",
+      "esempio": "ポスト / posuto / posta"
+    },
+    {
+      "kana": "キャ",
+      "romaji": "kya",
+      "esempio": "キャラクター / kyarakutaa / personaggio"
+    },
+    {
+      "kana": "キュ",
+      "romaji": "kyu",
+      "esempio": "キュート / kyuuto / carino"
+    },
+    {
+      "kana": "キョ",
+      "romaji": "kyo",
+      "esempio": "キョウト / kyouto / Kyoto"
+    },
+    {
+      "kana": "シャ",
+      "romaji": "sha",
+      "esempio": "シャワー / shawaa / doccia"
+    },
+    {
+      "kana": "シュ",
+      "romaji": "shu",
+      "esempio": "シューズ / shuuzu / scarpe"
+    },
+    {
+      "kana": "ショ",
+      "romaji": "sho",
+      "esempio": "ショップ / shoppu / negozio"
+    },
+    {
+      "kana": "チャ",
+      "romaji": "cha",
+      "esempio": "チャンス / chansu / occasione"
+    },
+    {
+      "kana": "チュ",
+      "romaji": "chu",
+      "esempio": "チュートリアル / chuutoriaru / tutorial"
+    },
+    {
+      "kana": "チョ",
+      "romaji": "cho",
+      "esempio": "チョコ / choko / cioccolato"
+    },
+    {
+      "kana": "ニャ",
+      "romaji": "nya",
+      "esempio": "ニャー / nyaa / miao"
+    },
+    {
+      "kana": "ニュ",
+      "romaji": "nyu",
+      "esempio": "ニュース / nyuusu / notizie"
+    },
+    {
+      "kana": "ニョ",
+      "romaji": "nyo",
+      "esempio": "ニョッキ / nyokki / gnocchi"
+    },
+    {
+      "kana": "ヒャ",
+      "romaji": "hya",
+      "esempio": "ヒャ / hya / suono hya"
+    },
+    {
+      "kana": "ヒュ",
+      "romaji": "hyu",
+      "esempio": "ヒューマン / hyuuman / umano"
+    },
+    {
+      "kana": "ヒョ",
+      "romaji": "hyo",
+      "esempio": "ヒョウ / hyou / leopardo/nevischio"
+    },
+    {
+      "kana": "ミャ",
+      "romaji": "mya",
+      "esempio": "ミャンマー / myanmaa / Myanmar"
+    },
+    {
+      "kana": "ミュ",
+      "romaji": "myu",
+      "esempio": "ミュージック / myuujikku / musica"
+    },
+    {
+      "kana": "ミョ",
+      "romaji": "myo",
+      "esempio": "ミョウガ / myouga / zenzero giapponese"
+    },
+    {
+      "kana": "リャ",
+      "romaji": "rya",
+      "esempio": "リャ / rya / suono rya"
+    },
+    {
+      "kana": "リュ",
+      "romaji": "ryu",
+      "esempio": "リュック / ryukku / zaino"
+    },
+    {
+      "kana": "リョ",
+      "romaji": "ryo",
+      "esempio": "リョウ / ryou / nome proprio"
+    },
+    {
+      "kana": "ギャ",
+      "romaji": "gya",
+      "esempio": "ギャラリー / gyararii / galleria"
+    },
+    {
+      "kana": "ギュ",
+      "romaji": "gyu",
+      "esempio": "ギュウニュウ / gyuunyuu / latte"
+    },
+    {
+      "kana": "ギョ",
+      "romaji": "gyo",
+      "esempio": "ギョーザ / gyouza / gyoza"
+    },
+    {
+      "kana": "ジャ",
+      "romaji": "ja",
+      "esempio": "ジャケット / jaketto / giacca"
+    },
+    {
+      "kana": "ジュ",
+      "romaji": "ju",
+      "esempio": "ジュース / juusu / succo"
+    },
+    {
+      "kana": "ジョ",
+      "romaji": "jo",
+      "esempio": "ジョギング / jogingu / jogging"
+    },
+    {
+      "kana": "ヂャ",
+      "romaji": "ja",
+      "esempio": "ヂャ / ja / uso raro"
+    },
+    {
+      "kana": "ヂュ",
+      "romaji": "ju",
+      "esempio": "ヂュ / ju / uso raro"
+    },
+    {
+      "kana": "ヂョ",
+      "romaji": "jo",
+      "esempio": "ヂョ / jo / uso raro"
+    },
+    {
+      "kana": "ビャ",
+      "romaji": "bya",
+      "esempio": "ビャ / bya / suono bya"
+    },
+    {
+      "kana": "ビュ",
+      "romaji": "byu",
+      "esempio": "ビュー / byuu / vista"
+    },
+    {
+      "kana": "ビョ",
+      "romaji": "byo",
+      "esempio": "ビョ / byo / suono byo"
+    },
+    {
+      "kana": "ピャ",
+      "romaji": "pya",
+      "esempio": "ピャ / pya / suono pya"
+    },
+    {
+      "kana": "ピュ",
+      "romaji": "pyu",
+      "esempio": "ピュア / pyua / puro"
+    },
+    {
+      "kana": "ピョ",
+      "romaji": "pyo",
+      "esempio": "ピョン / pyon / salto"
+    },
+    {
+      "kana": "ファ",
+      "romaji": "fa",
+      "esempio": "ファイル / fairu / file"
+    },
+    {
+      "kana": "フィ",
+      "romaji": "fi",
+      "esempio": "フィルム / firumu / pellicola"
+    },
+    {
+      "kana": "フェ",
+      "romaji": "fe",
+      "esempio": "フェス / fesu / festival"
+    },
+    {
+      "kana": "フォ",
+      "romaji": "fo",
+      "esempio": "フォーク / fooku / forchetta"
+    },
+    {
+      "kana": "ウィ",
+      "romaji": "wi",
+      "esempio": "ウィンドウ / windou / finestra"
+    },
+    {
+      "kana": "ウェ",
+      "romaji": "we",
+      "esempio": "ウェブ / webu / web"
+    },
+    {
+      "kana": "ウォ",
+      "romaji": "wo",
+      "esempio": "ウォーター / wootaa / acqua"
+    },
+    {
+      "kana": "ティ",
+      "romaji": "ti",
+      "esempio": "ティー / tii / tè"
+    },
+    {
+      "kana": "ディ",
+      "romaji": "di",
+      "esempio": "ディナー / dinaa / cena"
+    },
+    {
+      "kana": "チェ",
+      "romaji": "che",
+      "esempio": "チェス / chesu / scacchi"
+    },
+    {
+      "kana": "シェ",
+      "romaji": "she",
+      "esempio": "シェア / shea / condividere"
+    },
+    {
+      "kana": "ジェ",
+      "romaji": "je",
+      "esempio": "ジェラート / jeraato / gelato"
+    },
+    {
+      "kana": "ツァ",
+      "romaji": "tsa",
+      "esempio": "ツァー / tsaa / zar"
+    },
+    {
+      "kana": "ツィ",
+      "romaji": "tsi",
+      "esempio": "ツィ / tsi / suono tsi"
+    },
+    {
+      "kana": "ツェ",
+      "romaji": "tse",
+      "esempio": "ツェ / tse / suono tse"
+    },
+    {
+      "kana": "ツォ",
+      "romaji": "tso",
+      "esempio": "ツォ / tso / suono tso"
+    }
   ]
 }
