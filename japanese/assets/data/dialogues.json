@@ -3,78 +3,183 @@
     "titolo": "Presentarsi",
     "categoria": "Presentazioni",
     "righe": [
-      {
-        "speaker": "A",
-        "giapponese": "はじめまして。",
-        "romaji": "Hajimemashite.",
-        "italiano": "Piacere di conoscerti."
-      },
-      {
-        "speaker": "B",
-        "giapponese": "はじめまして。私はアレッシオです。",
-        "romaji": "Hajimemashite. Watashi wa Alessio desu.",
-        "italiano": "Piacere. Io sono Alessio."
-      },
-      {
-        "speaker": "A",
-        "giapponese": "イタリア人ですか？",
-        "romaji": "Itariajin desu ka?",
-        "italiano": "Sei italiano?"
-      },
-      {
-        "speaker": "B",
-        "giapponese": "はい、イタリア人です。",
-        "romaji": "Hai, itariajin desu.",
-        "italiano": "Sì, sono italiano."
-      }
+      {"speaker":"A","giapponese":"はじめまして。","romaji":"Hajimemashite.","italiano":"Piacere di conoscerti."},
+      {"speaker":"B","giapponese":"はじめまして。私はアレッシオです。","romaji":"Hajimemashite. Watashi wa Alessio desu.","italiano":"Piacere. Io sono Alessio."},
+      {"speaker":"A","giapponese":"イタリア人ですか？","romaji":"Itariajin desu ka?","italiano":"Sei italiano?"},
+      {"speaker":"B","giapponese":"はい、イタリア人です。","romaji":"Hai, itariajin desu.","italiano":"Sì, sono italiano."}
     ]
   },
   {
     "titolo": "Al bar",
     "categoria": "Cibo e bevande",
     "righe": [
-      {
-        "speaker": "A",
-        "giapponese": "すみません、水をください。",
-        "romaji": "Sumimasen, mizu o kudasai.",
-        "italiano": "Mi scusi, acqua per favore."
-      },
-      {
-        "speaker": "B",
-        "giapponese": "はい、どうぞ。",
-        "romaji": "Hai, douzo.",
-        "italiano": "Sì, ecco a lei."
-      },
-      {
-        "speaker": "A",
-        "giapponese": "ありがとうございます。",
-        "romaji": "Arigatou gozaimasu.",
-        "italiano": "Grazie mille."
-      }
+      {"speaker":"A","giapponese":"すみません、水をください。","romaji":"Sumimasen, mizu o kudasai.","italiano":"Mi scusi, acqua per favore."},
+      {"speaker":"B","giapponese":"はい、どうぞ。","romaji":"Hai, douzo.","italiano":"Sì, ecco a lei."},
+      {"speaker":"A","giapponese":"ありがとうございます。","romaji":"Arigatou gozaimasu.","italiano":"Grazie mille."}
     ]
   },
   {
     "titolo": "Parlare di hobby",
     "categoria": "Hobby",
     "righe": [
-      {
-        "speaker": "A",
-        "giapponese": "趣味は何ですか？",
-        "romaji": "Shumi wa nan desu ka?",
-        "italiano": "Qual è il tuo hobby?"
-      },
-      {
-        "speaker": "B",
-        "giapponese": "ゲームが好きです。",
-        "romaji": "Geemu ga suki desu.",
-        "italiano": "Mi piacciono i videogiochi."
-      },
-      {
-        "speaker": "A",
-        "giapponese": "私もゲームが好きです。",
-        "romaji": "Watashi mo geemu ga suki desu.",
-        "italiano": "Anche a me piacciono i videogiochi."
-      }
+      {"speaker":"A","giapponese":"趣味は何ですか？","romaji":"Shumi wa nan desu ka?","italiano":"Qual è il tuo hobby?"},
+      {"speaker":"B","giapponese":"ゲームが好きです。","romaji":"Geemu ga suki desu.","italiano":"Mi piacciono i videogiochi."},
+      {"speaker":"A","giapponese":"私もゲームが好きです。","romaji":"Watashi mo geemu ga suki desu.","italiano":"Anche a me piacciono i videogiochi."}
+    ]
+  },
+  {
+    "titolo": "Saluti al mattino",
+    "categoria": "Saluti",
+    "righe": [
+      {"speaker":"A","giapponese":"おはよう。元気？","romaji":"Ohayou. Genki?","italiano":"Buongiorno. Come stai?"},
+      {"speaker":"B","giapponese":"元気です。あなたは？","romaji":"Genki desu. Anata wa?","italiano":"Sto bene. E tu?"},
+      {"speaker":"A","giapponese":"私も元気です。","romaji":"Watashi mo genki desu.","italiano":"Anche io sto bene."}
+    ]
+  },
+  {
+    "titolo": "Saluto formale a scuola",
+    "categoria": "Scuola",
+    "righe": [
+      {"speaker":"A","giapponese":"おはようございます、先生。","romaji":"Ohayou gozaimasu, sensei.","italiano":"Buongiorno, professore."},
+      {"speaker":"B","giapponese":"おはようございます。元気ですか？","romaji":"Ohayou gozaimasu. Genki desu ka?","italiano":"Buongiorno. Come stai?"},
+      {"speaker":"A","giapponese":"はい、元気です。","romaji":"Hai, genki desu.","italiano":"Sì, sto bene."}
+    ]
+  },
+  {
+    "titolo": "Entrare in una stanza",
+    "categoria": "Saluti",
+    "righe": [
+      {"speaker":"A","giapponese":"失礼します。","romaji":"Shitsurei shimasu.","italiano":"Permesso."},
+      {"speaker":"B","giapponese":"どうぞ。","romaji":"Douzo.","italiano":"Prego."},
+      {"speaker":"A","giapponese":"ありがとうございます。","romaji":"Arigatou gozaimasu.","italiano":"Grazie mille."}
+    ]
+  },
+  {
+    "titolo": "Andare via dal lavoro",
+    "categoria": "Lavoro",
+    "righe": [
+      {"speaker":"A","giapponese":"お先に失礼します。","romaji":"Osaki ni shitsurei shimasu.","italiano":"Vado via prima, permesso."},
+      {"speaker":"B","giapponese":"お疲れ様です。","romaji":"Otsukaresama desu.","italiano":"Grazie per il lavoro svolto."},
+      {"speaker":"A","giapponese":"また明日。","romaji":"Mata ashita.","italiano":"Ci vediamo domani."}
+    ]
+  },
+  {
+    "titolo": "Tornare a casa",
+    "categoria": "Casa",
+    "righe": [
+      {"speaker":"A","giapponese":"ただいま。","romaji":"Tadaima.","italiano":"Sono tornato."},
+      {"speaker":"B","giapponese":"おかえり。","romaji":"Okaeri.","italiano":"Bentornato."},
+      {"speaker":"A","giapponese":"今日は寒いです。","romaji":"Kyou wa samui desu.","italiano":"Oggi fa freddo."}
+    ]
+  },
+  {
+    "titolo": "Uscire di casa",
+    "categoria": "Casa",
+    "righe": [
+      {"speaker":"A","giapponese":"行ってきます。","romaji":"Ittekimasu.","italiano":"Vado e torno."},
+      {"speaker":"B","giapponese":"行ってらっしゃい。","romaji":"Itterasshai.","italiano":"Vai e torna."},
+      {"speaker":"A","giapponese":"またね。","romaji":"Mata ne.","italiano":"A dopo."}
+    ]
+  },
+  {
+    "titolo": "Parlare della famiglia",
+    "categoria": "Famiglia",
+    "righe": [
+      {"speaker":"A","giapponese":"兄弟がいますか？","romaji":"Kyoudai ga imasu ka?","italiano":"Hai fratelli o sorelle?"},
+      {"speaker":"B","giapponese":"はい、弟がいます。","romaji":"Hai, otouto ga imasu.","italiano":"Sì, ho un fratello minore."},
+      {"speaker":"A","giapponese":"弟さんは元気ですか？","romaji":"Otoutosan wa genki desu ka?","italiano":"Tuo fratello minore sta bene?"},
+      {"speaker":"B","giapponese":"はい、元気です。","romaji":"Hai, genki desu.","italiano":"Sì, sta bene."}
+    ]
+  },
+  {
+    "titolo": "Chiedere dei genitori",
+    "categoria": "Famiglia",
+    "righe": [
+      {"speaker":"A","giapponese":"ご家族は何人ですか？","romaji":"Gokazoku wa nannin desu ka?","italiano":"Quante persone ci sono nella tua famiglia?"},
+      {"speaker":"B","giapponese":"四人です。父、母、弟、私です。","romaji":"Yonin desu. Chichi, haha, otouto, watashi desu.","italiano":"Siamo in quattro. Mio padre, mia madre, mio fratello minore e io."},
+      {"speaker":"A","giapponese":"いいですね。","romaji":"Ii desu ne.","italiano":"Bello."}
+    ]
+  },
+  {
+    "titolo": "Numeri al negozio",
+    "categoria": "Numeri",
+    "righe": [
+      {"speaker":"A","giapponese":"りんごを三つください。","romaji":"Ringo o mittsu kudasai.","italiano":"Tre mele, per favore."},
+      {"speaker":"B","giapponese":"はい、三つですね。","romaji":"Hai, mittsu desu ne.","italiano":"Sì, tre, giusto."},
+      {"speaker":"A","giapponese":"ありがとうございます。","romaji":"Arigatou gozaimasu.","italiano":"Grazie mille."}
+    ]
+  },
+  {
+    "titolo": "Dire l’età",
+    "categoria": "Numeri",
+    "righe": [
+      {"speaker":"A","giapponese":"何歳ですか？","romaji":"Nansai desu ka?","italiano":"Quanti anni hai?"},
+      {"speaker":"B","giapponese":"二十五歳です。","romaji":"Nijuu go sai desu.","italiano":"Ho venticinque anni."},
+      {"speaker":"A","giapponese":"若いですね。","romaji":"Wakai desu ne.","italiano":"Sei giovane."}
+    ]
+  },
+  {
+    "titolo": "Descrivere una città",
+    "categoria": "Aggettivi",
+    "righe": [
+      {"speaker":"A","giapponese":"この町はどうですか？","romaji":"Kono machi wa dou desu ka?","italiano":"Com’è questa città?"},
+      {"speaker":"B","giapponese":"静かです。そして綺麗です。","romaji":"Shizuka desu. Soshite kirei desu.","italiano":"È tranquilla. Ed è bella/pulita."},
+      {"speaker":"A","giapponese":"いい町ですね。","romaji":"Ii machi desu ne.","italiano":"È una bella città."}
+    ]
+  },
+  {
+    "titolo": "Descrivere una casa",
+    "categoria": "Aggettivi",
+    "righe": [
+      {"speaker":"A","giapponese":"この家は大きいですか？","romaji":"Kono ie wa ookii desu ka?","italiano":"Questa casa è grande?"},
+      {"speaker":"B","giapponese":"はい、大きいです。でも古いです。","romaji":"Hai, ookii desu. Demo furui desu.","italiano":"Sì, è grande. Però è vecchia."},
+      {"speaker":"A","giapponese":"面白いですね。","romaji":"Omoshiroi desu ne.","italiano":"Interessante."}
+    ]
+  },
+  {
+    "titolo": "Parlare del giapponese",
+    "categoria": "Studio",
+    "righe": [
+      {"speaker":"A","giapponese":"日本語は難しいですか？","romaji":"Nihongo wa muzukashii desu ka?","italiano":"Il giapponese è difficile?"},
+      {"speaker":"B","giapponese":"はい、難しいです。でも面白いです。","romaji":"Hai, muzukashii desu. Demo omoshiroi desu.","italiano":"Sì, è difficile. Però è interessante."},
+      {"speaker":"A","giapponese":"私も勉強しています。","romaji":"Watashi mo benkyou shiteimasu.","italiano":"Anche io lo sto studiando."}
+    ]
+  },
+  {
+    "titolo": "Ordinare tè",
+    "categoria": "Cibo e bevande",
+    "righe": [
+      {"speaker":"A","giapponese":"すみません、お茶をください。","romaji":"Sumimasen, ocha o kudasai.","italiano":"Mi scusi, tè per favore."},
+      {"speaker":"B","giapponese":"はい、どうぞ。熱いです。","romaji":"Hai, douzo. Atsui desu.","italiano":"Sì, ecco. È caldo."},
+      {"speaker":"A","giapponese":"ありがとうございます。","romaji":"Arigatou gozaimasu.","italiano":"Grazie mille."}
+    ]
+  },
+  {
+    "titolo": "Chiedere se una cosa piace",
+    "categoria": "Conversazione",
+    "righe": [
+      {"speaker":"A","giapponese":"ゲームが好きですか？","romaji":"Geemu ga suki desu ka?","italiano":"Ti piacciono i videogiochi?"},
+      {"speaker":"B","giapponese":"はい、とても好きです。","romaji":"Hai, totemo suki desu.","italiano":"Sì, mi piacciono molto."},
+      {"speaker":"A","giapponese":"私も好きです。","romaji":"Watashi mo suki desu.","italiano":"Piacciono anche a me."}
+    ]
+  },
+  {
+    "titolo": "Chiedere come va",
+    "categoria": "Conversazione",
+    "righe": [
+      {"speaker":"A","giapponese":"こんばんは。元気ですか？","romaji":"Konbanwa. Genki desu ka?","italiano":"Buonasera. Come stai?"},
+      {"speaker":"B","giapponese":"少し疲れています。","romaji":"Sukoshi tsukareteimasu.","italiano":"Sono un po’ stanco."},
+      {"speaker":"A","giapponese":"お疲れ様です。","romaji":"Otsukaresama desu.","italiano":"Grazie per il lavoro / Hai fatto fatica, bravo."}
+    ]
+  },
+  {
+    "titolo": "Salutarsi informalmente",
+    "categoria": "Saluti",
+    "righe": [
+      {"speaker":"A","giapponese":"今日はありがとう。","romaji":"Kyou wa arigatou.","italiano":"Grazie per oggi."},
+      {"speaker":"B","giapponese":"こちらこそ。","romaji":"Kochira koso.","italiano":"Grazie a te."},
+      {"speaker":"A","giapponese":"またね。","romaji":"Mata ne.","italiano":"Ci vediamo."},
+      {"speaker":"B","giapponese":"また明日。","romaji":"Mata ashita.","italiano":"A domani."}
     ]
   }
 ]
