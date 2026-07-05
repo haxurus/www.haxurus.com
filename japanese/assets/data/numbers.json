@@ -1,0 +1,17 @@
+{
+  "type": "number-generator",
+  "description": "Numeri cardinali giapponesi da 1 a 100. Il file JS genera automaticamente tutte le voci del dizionario.",
+  "base": {
+    "1": {"romaji":"ichi","kana":"いち","kanji":"一","pronuncia":"i-chi"},
+    "2": {"romaji":"ni","kana":"に","kanji":"二","pronuncia":"ni"},
+    "3": {"romaji":"san","kana":"さん","kanji":"三","pronuncia":"san"},
+    "4": {"romaji":"yon","kana":"よん","kanji":"四","pronuncia":"yon"},
+    "5": {"romaji":"go","kana":"ご","kanji":"五","pronuncia":"go"},
+    "6": {"romaji":"roku","kana":"ろく","kanji":"六","pronuncia":"ro-ku"},
+    "7": {"romaji":"nana","kana":"なな","kanji":"七","pronuncia":"na-na"},
+    "8": {"romaji":"hachi","kana":"はち","kanji":"八","pronuncia":"ha-chi"},
+    "9": {"romaji":"kyuu","kana":"きゅう","kanji":"九","pronuncia":"kyu-u"},
+    "10": {"romaji":"juu","kana":"じゅう","kanji":"十","pronuncia":"ju-u"}
+  },
+  "hundred": {"romaji":"hyaku","kana":"ひゃく","kanji":"百","pronuncia":"hya-ku"}
+}
