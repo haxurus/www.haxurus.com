@@ -1,0 +1,57 @@
+[
+  {
+    "titolo": "Struttura base della frase",
+    "categoria": "Frasi",
+    "spiegazione": "In giapponese il verbo tende ad andare alla fine della frase. La struttura base è tema + complemento + verbo.",
+    "schema": "私は = io/tema · 寿司を = sushi/oggetto · 食べます = mangio",
+    "esempio": {
+      "giapponese": "私は寿司を食べます。",
+      "romaji": "Watashi wa sushi o tabemasu.",
+      "italiano": "Io mangio sushi."
+    }
+  },
+  {
+    "titolo": "Particella は",
+    "categoria": "Particelle",
+    "spiegazione": "は si legge wa e indica il tema della frase, cioè ciò di cui stai parlando.",
+    "schema": "[tema] は [informazione] です",
+    "esempio": {
+      "giapponese": "私はイタリア人です。",
+      "romaji": "Watashi wa itariajin desu.",
+      "italiano": "Io sono italiano."
+    }
+  },
+  {
+    "titolo": "Particella を",
+    "categoria": "Particelle",
+    "spiegazione": "を si legge o e indica l’oggetto diretto dell’azione.",
+    "schema": "[oggetto] を [verbo]",
+    "esempio": {
+      "giapponese": "水を飲みます。",
+      "romaji": "Mizu o nomimasu.",
+      "italiano": "Bevo acqua."
+    }
+  },
+  {
+    "titolo": "Particella が con 好き",
+    "categoria": "Particelle",
+    "spiegazione": "Con 好きです, la cosa che piace viene marcata con が.",
+    "schema": "[cosa] が好きです",
+    "esempio": {
+      "giapponese": "ゲームが好きです。",
+      "romaji": "Geemu ga suki desu.",
+      "italiano": "Mi piacciono i videogiochi."
+    }
+  },
+  {
+    "titolo": "Domande con か",
+    "categoria": "Domande",
+    "spiegazione": "Per trasformare una frase cortese in domanda, si aggiunge か alla fine.",
+    "schema": "[frase] + か",
+    "esempio": {
+      "giapponese": "イタリア人ですか？",
+      "romaji": "Itariajin desu ka?",
+      "italiano": "Sei italiano?"
+    }
+  }
+]
