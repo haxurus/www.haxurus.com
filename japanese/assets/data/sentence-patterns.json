@@ -1,0 +1,37 @@
+[
+  {
+    "titolo": "Io sono [nome]",
+    "giapponese": "私は [nome] です。",
+    "romaji": "Watashi wa [nome] desu.",
+    "italiano": "Io sono [nome].",
+    "uso": "Presentarsi in modo semplice e cortese."
+  },
+  {
+    "titolo": "Io mangio [cibo]",
+    "giapponese": "私は [cibo] を食べます。",
+    "romaji": "Watashi wa [cibo] o tabemasu.",
+    "italiano": "Io mangio [cibo].",
+    "uso": "Dire cosa mangi."
+  },
+  {
+    "titolo": "Io vado a [luogo]",
+    "giapponese": "私は [luogo] に行きます。",
+    "romaji": "Watashi wa [luogo] ni ikimasu.",
+    "italiano": "Io vado a [luogo].",
+    "uso": "Parlare di destinazioni."
+  },
+  {
+    "titolo": "Mi piace [cosa]",
+    "giapponese": "私は [cosa] が好きです。",
+    "romaji": "Watashi wa [cosa] ga suki desu.",
+    "italiano": "Mi piace [cosa].",
+    "uso": "Esprimere gusti personali."
+  },
+  {
+    "titolo": "[cosa] per favore",
+    "giapponese": "[cosa] をください。",
+    "romaji": "[cosa] o kudasai.",
+    "italiano": "[cosa] per favore.",
+    "uso": "Ordinare o chiedere qualcosa."
+  }
+]
