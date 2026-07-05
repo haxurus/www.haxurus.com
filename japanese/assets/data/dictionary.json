@@ -1,0 +1,192 @@
+[
+  {
+    "id": "saluti-001",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Ciao / Buongiorno",
+    "romaji": "konnichiwa",
+    "kana": "こんにちは",
+    "kanji": "",
+    "pronuncia": "kon-ni-ci-wa",
+    "note": "Saluto usato soprattutto durante il giorno.",
+    "esempi": [
+      {
+        "giapponese": "こんにちは、元気ですか？",
+        "romaji": "Konnichiwa, genki desu ka?",
+        "italiano": "Ciao, come stai?"
+      }
+    ]
+  },
+  {
+    "id": "saluti-002",
+    "categoria": "Saluti",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Buongiorno",
+    "romaji": "ohayou gozaimasu",
+    "kana": "おはようございます",
+    "kanji": "",
+    "pronuncia": "o-ha-yo go-za-i-mas",
+    "note": "Forma cortese usata al mattino.",
+    "esempi": [
+      {
+        "giapponese": "おはようございます、先生。",
+        "romaji": "Ohayou gozaimasu, sensei.",
+        "italiano": "Buongiorno, professore."
+      }
+    ]
+  },
+  {
+    "id": "presentazioni-001",
+    "categoria": "Presentazioni",
+    "tipo": "Espressione",
+    "livello": "Base",
+    "italiano": "Piacere di conoscerti",
+    "romaji": "hajimemashite",
+    "kana": "はじめまして",
+    "kanji": "初めまして",
+    "pronuncia": "ha-ji-me-ma-shi-te",
+    "note": "Si usa quando si incontra qualcuno per la prima volta.",
+    "esempi": [
+      {
+        "giapponese": "はじめまして。私はアレッシオです。",
+        "romaji": "Hajimemashite. Watashi wa Alessio desu.",
+        "italiano": "Piacere. Io sono Alessio."
+      }
+    ]
+  },
+  {
+    "id": "presentazioni-002",
+    "categoria": "Presentazioni",
+    "tipo": "Frase completa",
+    "livello": "Base",
+    "italiano": "Io sono Alessio",
+    "romaji": "watashi wa Aresshio desu",
+    "kana": "わたしはアレッシオです",
+    "kanji": "私はアレッシオです",
+    "pronuncia": "wa-ta-shi wa a-res-shi-o des",
+    "note": "Frase base per presentarsi.",
+    "esempi": [
+      {
+        "giapponese": "私はアレッシオです。よろしくお願いします。",
+        "romaji": "Watashi wa Aresshio desu. Yoroshiku onegaishimasu.",
+        "italiano": "Sono Alessio. Piacere."
+      }
+    ]
+  },
+  {
+    "id": "cibo-001",
+    "categoria": "Cibo e bevande",
+    "tipo": "Sostantivo",
+    "livello": "Base",
+    "italiano": "Acqua",
+    "romaji": "mizu",
+    "kana": "みず",
+    "kanji": "水",
+    "pronuncia": "mi-zu",
+    "note": "Si usa per indicare l’acqua in generale.",
+    "esempi": [
+      {
+        "giapponese": "水をください。",
+        "romaji": "Mizu o kudasai.",
+        "italiano": "Acqua per favore."
+      }
+    ]
+  },
+  {
+    "id": "cibo-002",
+    "categoria": "Cibo e bevande",
+    "tipo": "Sostantivo",
+    "livello": "Base",
+    "italiano": "Tè",
+    "romaji": "ocha",
+    "kana": "おちゃ",
+    "kanji": "お茶",
+    "pronuncia": "o-cha",
+    "note": "Il prefisso お rende la parola più cortese.",
+    "esempi": [
+      {
+        "giapponese": "お茶が好きです。",
+        "romaji": "Ocha ga suki desu.",
+        "italiano": "Mi piace il tè."
+      }
+    ]
+  },
+  {
+    "id": "verbi-001",
+    "categoria": "Verbi comuni",
+    "tipo": "Verbo",
+    "livello": "Base",
+    "italiano": "Mangiare",
+    "romaji": "tabemasu",
+    "kana": "たべます",
+    "kanji": "食べます",
+    "pronuncia": "ta-be-mas",
+    "note": "Forma cortese del verbo mangiare.",
+    "esempi": [
+      {
+        "giapponese": "寿司を食べます。",
+        "romaji": "Sushi o tabemasu.",
+        "italiano": "Mangio sushi."
+      }
+    ]
+  },
+  {
+    "id": "verbi-002",
+    "categoria": "Verbi comuni",
+    "tipo": "Verbo",
+    "livello": "Base",
+    "italiano": "Andare",
+    "romaji": "ikimasu",
+    "kana": "いきます",
+    "kanji": "行きます",
+    "pronuncia": "i-ki-mas",
+    "note": "Verbo usato per indicare movimento verso un luogo.",
+    "esempi": [
+      {
+        "giapponese": "東京に行きます。",
+        "romaji": "Toukyou ni ikimasu.",
+        "italiano": "Vado a Tokyo."
+      }
+    ]
+  },
+  {
+    "id": "emozioni-001",
+    "categoria": "Emozioni",
+    "tipo": "Aggettivo",
+    "livello": "Base",
+    "italiano": "Felice / Divertente",
+    "romaji": "tanoshii",
+    "kana": "たのしい",
+    "kanji": "楽しい",
+    "pronuncia": "ta-no-shii",
+    "note": "Aggettivo in -i.",
+    "esempi": [
+      {
+        "giapponese": "日本語は楽しいです。",
+        "romaji": "Nihongo wa tanoshii desu.",
+        "italiano": "Il giapponese è divertente."
+      }
+    ]
+  },
+  {
+    "id": "hobby-001",
+    "categoria": "Hobby",
+    "tipo": "Sostantivo",
+    "livello": "Base",
+    "italiano": "Videogioco",
+    "romaji": "geemu",
+    "kana": "ゲーム",
+    "kanji": "",
+    "pronuncia": "gee-mu",
+    "note": "Parola presa dall’inglese, scritta in katakana.",
+    "esempi": [
+      {
+        "giapponese": "ゲームが好きです。",
+        "romaji": "Geemu ga suki desu.",
+        "italiano": "Mi piacciono i videogiochi."
+      }
+    ]
+  }
+]
