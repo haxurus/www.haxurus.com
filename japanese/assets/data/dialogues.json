@@ -1,0 +1,80 @@
+[
+  {
+    "titolo": "Presentarsi",
+    "categoria": "Presentazioni",
+    "righe": [
+      {
+        "speaker": "A",
+        "giapponese": "はじめまして。",
+        "romaji": "Hajimemashite.",
+        "italiano": "Piacere di conoscerti."
+      },
+      {
+        "speaker": "B",
+        "giapponese": "はじめまして。私はアレッシオです。",
+        "romaji": "Hajimemashite. Watashi wa Alessio desu.",
+        "italiano": "Piacere. Io sono Alessio."
+      },
+      {
+        "speaker": "A",
+        "giapponese": "イタリア人ですか？",
+        "romaji": "Itariajin desu ka?",
+        "italiano": "Sei italiano?"
+      },
+      {
+        "speaker": "B",
+        "giapponese": "はい、イタリア人です。",
+        "romaji": "Hai, itariajin desu.",
+        "italiano": "Sì, sono italiano."
+      }
+    ]
+  },
+  {
+    "titolo": "Al bar",
+    "categoria": "Cibo e bevande",
+    "righe": [
+      {
+        "speaker": "A",
+        "giapponese": "すみません、水をください。",
+        "romaji": "Sumimasen, mizu o kudasai.",
+        "italiano": "Mi scusi, acqua per favore."
+      },
+      {
+        "speaker": "B",
+        "giapponese": "はい、どうぞ。",
+        "romaji": "Hai, douzo.",
+        "italiano": "Sì, ecco a lei."
+      },
+      {
+        "speaker": "A",
+        "giapponese": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "italiano": "Grazie mille."
+      }
+    ]
+  },
+  {
+    "titolo": "Parlare di hobby",
+    "categoria": "Hobby",
+    "righe": [
+      {
+        "speaker": "A",
+        "giapponese": "趣味は何ですか？",
+        "romaji": "Shumi wa nan desu ka?",
+        "italiano": "Qual è il tuo hobby?"
+      },
+      {
+        "speaker": "B",
+        "giapponese": "ゲームが好きです。",
+        "romaji": "Geemu ga suki desu.",
+        "italiano": "Mi piacciono i videogiochi."
+      },
+      {
+        "speaker": "A",
+        "giapponese": "私もゲームが好きです。",
+        "romaji": "Watashi mo geemu ga suki desu.",
+        "italiano": "Anche a me piacciono i videogiochi."
+      }
+    ]
+  }
+]
