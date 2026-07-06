@@ -1,9 +1,9 @@
 [
   {
-    "titolo": "Struttura base della frase",
-    "categoria": "Frasi",
-    "spiegazione": "In giapponese il verbo tende ad andare alla fine della frase. La struttura base è tema + complemento + verbo.",
-    "schema": "私は = io/tema · 寿司を = sushi/oggetto · 食べます = mangio",
+    "titolo": "01. Ordine base della frase",
+    "categoria": "Struttura frase",
+    "spiegazione": "In giapponese il verbo tende ad andare alla fine della frase. La struttura più semplice è tema + complemento + verbo.",
+    "schema": "[tema] は [oggetto] を [verbo]",
     "esempio": {
       "giapponese": "私は寿司を食べます。",
       "romaji": "Watashi wa sushi o tabemasu.",
@@ -11,9 +11,9 @@
     }
   },
   {
-    "titolo": "Particella は",
+    "titolo": "02. Particella は",
     "categoria": "Particelle",
-    "spiegazione": "は si legge wa e indica il tema della frase, cioè ciò di cui stai parlando.",
+    "spiegazione": "は si scrive ha ma si legge wa quando è particella. Indica il tema della frase, cioè ciò di cui si sta parlando.",
     "schema": "[tema] は [informazione] です",
     "esempio": {
       "giapponese": "私はイタリア人です。",
@@ -22,9 +22,20 @@
     }
   },
   {
-    "titolo": "Particella を",
+    "titolo": "03. Particella が",
     "categoria": "Particelle",
-    "spiegazione": "を si legge o e indica l’oggetto diretto dell’azione.",
+    "spiegazione": "が indica spesso il soggetto o una nuova informazione. È molto usata anche con 好きです per indicare ciò che piace.",
+    "schema": "[soggetto / cosa] が [informazione]",
+    "esempio": {
+      "giapponese": "猫がいます。",
+      "romaji": "Neko ga imasu.",
+      "italiano": "C’è un gatto."
+    }
+  },
+  {
+    "titolo": "04. Particella を",
+    "categoria": "Particelle",
+    "spiegazione": "を si scrive wo ma normalmente si legge o. Indica l’oggetto diretto dell’azione.",
     "schema": "[oggetto] を [verbo]",
     "esempio": {
       "giapponese": "水を飲みます。",
@@ -33,25 +44,135 @@
     }
   },
   {
-    "titolo": "Particella が con 好き",
+    "titolo": "05. Particelle に e で",
     "categoria": "Particelle",
-    "spiegazione": "Con 好きです, la cosa che piace viene marcata con が.",
-    "schema": "[cosa] が好きです",
+    "spiegazione": "に indica spesso destinazione, tempo specifico o luogo di esistenza. で indica il luogo in cui avviene un’azione o il mezzo usato.",
+    "schema": "[luogo] に行きます / [luogo] で [azione]",
     "esempio": {
-      "giapponese": "ゲームが好きです。",
-      "romaji": "Geemu ga suki desu.",
-      "italiano": "Mi piacciono i videogiochi."
+      "giapponese": "学校で勉強します。",
+      "romaji": "Gakkou de benkyou shimasu.",
+      "italiano": "Studio a scuola."
     }
   },
   {
-    "titolo": "Domande con か",
+    "titolo": "06. Frasi con です",
+    "categoria": "Frasi cortesi",
+    "spiegazione": "です è la forma cortese usata con nomi e aggettivi. Può corrispondere a è, sono, sei, siamo in base al contesto.",
+    "schema": "[nome / aggettivo] です",
+    "esempio": {
+      "giapponese": "この町は静かです。",
+      "romaji": "Kono machi wa shizuka desu.",
+      "italiano": "Questa città è tranquilla."
+    }
+  },
+  {
+    "titolo": "07. Frasi con verbi in ます",
+    "categoria": "Verbi",
+    "spiegazione": "ます è la forma cortese dei verbi. Si usa spesso quando si parla in modo neutro o educato.",
+    "schema": "[verbo forma cortese] + ます",
+    "esempio": {
+      "giapponese": "日本語を勉強します。",
+      "romaji": "Nihongo o benkyou shimasu.",
+      "italiano": "Studio giapponese."
+    }
+  },
+  {
+    "titolo": "08. Domande con か",
     "categoria": "Domande",
-    "spiegazione": "Per trasformare una frase cortese in domanda, si aggiunge か alla fine.",
-    "schema": "[frase] + か",
+    "spiegazione": "Per trasformare una frase cortese in domanda, si aggiunge か alla fine. Nello scritto moderno si può usare anche il punto interrogativo.",
+    "schema": "[frase cortese] + か",
     "esempio": {
       "giapponese": "イタリア人ですか？",
       "romaji": "Itariajin desu ka?",
       "italiano": "Sei italiano?"
+    }
+  },
+  {
+    "titolo": "09. Negazione cortese",
+    "categoria": "Negazione",
+    "spiegazione": "Per negare una frase con です si usa ではありません. Per negare un verbo in ます si usa ません.",
+    "schema": "です → ではありません / ます → ません",
+    "esempio": {
+      "giapponese": "私は学生ではありません。水を飲みません。",
+      "romaji": "Watashi wa gakusei dewa arimasen. Mizu o nomimasen.",
+      "italiano": "Io non sono studente. Non bevo acqua."
+    }
+  },
+  {
+    "titolo": "10. Passato cortese",
+    "categoria": "Tempo verbale",
+    "spiegazione": "Con i verbi cortesi, ます diventa ました al passato. La forma negativa passata è ませんでした.",
+    "schema": "食べます → 食べました / 食べませんでした",
+    "esempio": {
+      "giapponese": "昨日、寿司を食べました。",
+      "romaji": "Kinou, sushi o tabemashita.",
+      "italiano": "Ieri ho mangiato sushi."
+    }
+  },
+  {
+    "titolo": "11. Aggettivi in -i",
+    "categoria": "Aggettivi",
+    "spiegazione": "Gli aggettivi in -i si collegano direttamente al nome e possono stare anche a fine frase con です.",
+    "schema": "[aggettivo in -i] + [nome] / [tema] は [aggettivo in -i] です",
+    "esempio": {
+      "giapponese": "大きい家です。この家は大きいです。",
+      "romaji": "Ookii ie desu. Kono ie wa ookii desu.",
+      "italiano": "È una casa grande. Questa casa è grande."
+    }
+  },
+  {
+    "titolo": "12. Aggettivi in -na",
+    "categoria": "Aggettivi",
+    "spiegazione": "Gli aggettivi in -na richiedono な prima del nome. A fine frase, invece, perdono な e prendono です.",
+    "schema": "[aggettivo] な [nome] / [tema] は [aggettivo] です",
+    "esempio": {
+      "giapponese": "静かな町です。この町は静かです。",
+      "romaji": "Shizuka na machi desu. Kono machi wa shizuka desu.",
+      "italiano": "È una città tranquilla. Questa città è tranquilla."
+    }
+  },
+  {
+    "titolo": "13. Questo e quello: これ / それ / あれ",
+    "categoria": "Dimostrativi",
+    "spiegazione": "これ indica qualcosa vicino a chi parla, それ qualcosa vicino a chi ascolta, あれ qualcosa lontano da entrambi.",
+    "schema": "これ = questo / それ = quello lì / あれ = quello laggiù",
+    "esempio": {
+      "giapponese": "これは本です。",
+      "romaji": "Kore wa hon desu.",
+      "italiano": "Questo è un libro."
+    }
+  },
+  {
+    "titolo": "14. Questo + nome: この / その / あの",
+    "categoria": "Dimostrativi",
+    "spiegazione": "この, その e あの si usano prima di un nome. Non possono stare da soli.",
+    "schema": "この + nome / その + nome / あの + nome",
+    "esempio": {
+      "giapponese": "この本は面白いです。",
+      "romaji": "Kono hon wa omoshiroi desu.",
+      "italiano": "Questo libro è interessante."
+    }
+  },
+  {
+    "titolo": "15. Esistenza: あります e います",
+    "categoria": "Esistenza",
+    "spiegazione": "あります si usa per cose e oggetti. います si usa per persone e animali.",
+    "schema": "[cosa] があります / [persona o animale] がいます",
+    "esempio": {
+      "giapponese": "机があります。猫がいます。",
+      "romaji": "Tsukue ga arimasu. Neko ga imasu.",
+      "italiano": "C’è una scrivania. C’è un gatto."
+    }
+  },
+  {
+    "titolo": "16. Richieste con ください",
+    "categoria": "Richieste",
+    "spiegazione": "ください si usa per chiedere qualcosa in modo semplice e cortese. Con un nome spesso si usa la struttura oggetto + を + ください.",
+    "schema": "[oggetto] をください",
+    "esempio": {
+      "giapponese": "水をください。",
+      "romaji": "Mizu o kudasai.",
+      "italiano": "Acqua, per favore."
     }
   }
 ]
