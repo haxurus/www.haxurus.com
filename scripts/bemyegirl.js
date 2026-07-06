@@ -9,13 +9,30 @@
       return response.text();
     })
     .then((source) => {
-      const patched = source.replace(
-        `{label:it?"Il Tronchetto":"The Log",action:"preferenceBlock"},{label:it?"Sono un transformer":"I'm a transformer",action:"preferenceBlock"}`,
-        `{label:it?"Il Tronchetto":"The Log",value:-15},{label:it?"Sono un transformer":"I'm a transformer",value:-10}`
-      );
+      const patched = source
+        .replace(
+          `{label:it?"Il Tronchetto":"The Log",action:"preferenceBlock"},{label:it?"Sono un transformer":"I'm a transformer",action:"preferenceBlock"}`,
+          `{label:it?"Il Tronchetto":"The Log",value:-15},{label:it?"Sono un transformer":"I'm a transformer",value:-10}`
+        )
+        .replace(
+          `shortText: "18 domande. Più veloce, ma ancora abbastanza completa.",`,
+          `shortText: "18 domande. Più veloce, ma meno affidabile.",`
+        )
+        .replace(
+          `fullText: "Tutte le domande. Full compatibility scan.",`,
+          `fullText: "Quiz completo. Più lungo, ma preciso.",`
+        )
+        .replace(
+          `Capisci l'ironia e accetti l'umorismo nero?`,
+          `Capisci l'ironia e accetti il black humor?`
+        )
+        .replace(
+          `Il Fiore":"The Flower",value:2`,
+          `La fessa":"The Flower",value:2`
+        );
 
       if (patched === source) {
-        throw new Error("Starter item patch was not applied.");
+        throw new Error("Quiz patch was not applied.");
       }
 
       Function(patched)();
