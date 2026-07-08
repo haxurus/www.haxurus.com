@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Helix Horizon | Luxury Virtual Penthouse by Haxurus</title>
-  <meta name="description" content="Helix Horizon is presented as a luxury virtual penthouse showroom: skyline views, private lounge areas, wellness spaces, media systems and premium social amenities inside VRChat." />
+  <meta name="description" content="Helix Horizon is a luxury virtual penthouse showroom: skyline views, private lounge areas, wellness spaces, media systems and premium social amenities inside VRChat." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#090d0b" />
   <link rel="canonical" href="https://haxurus.com/vrchat/" />
@@ -15,13 +15,13 @@
   <meta property="og:site_name" content="Haxurus" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Helix Horizon | Luxury Virtual Penthouse" />
-  <meta property="og:description" content="A premium virtual penthouse showroom above the city skyline, designed for social visits, private evenings, media nights and luxury VRChat experiences." />
+  <meta property="og:description" content="A premium virtual penthouse above the skyline, designed for private evenings, media nights and immersive social visits." />
   <meta property="og:url" content="https://haxurus.com/vrchat/" />
   <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png" />
   <meta property="og:image:alt" content="Helix Horizon luxury virtual penthouse preview" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Helix Horizon | Luxury Virtual Penthouse" />
-  <meta name="twitter:description" content="A premium virtual penthouse showroom above the city skyline, designed for social visits, private evenings, media nights and luxury VRChat experiences." />
+  <meta name="twitter:description" content="A premium virtual penthouse above the skyline, designed for private evenings, media nights and immersive social visits." />
   <meta name="twitter:image" content="https://haxurus.com/img/games/helixhorizon.png" />
   <meta name="twitter:site" content="@Haxurus" />
   <meta name="twitter:creator" content="@Haxurus" />
@@ -31,15 +31,13 @@
       --maxw: 1180px;
       --cream: #f5efe4;
       --champagne: #d6bf8c;
-      --champagne-soft: rgba(214, 191, 140, .78);
       --sage: #8cffb3;
       --ink: #090d0b;
-      --ink-2: #111713;
       --text: rgba(250, 246, 237, .94);
-      --muted: rgba(250, 246, 237, .68);
+      --muted: rgba(250, 246, 237, .66);
       --line: rgba(245, 239, 228, .18);
-      --line-strong: rgba(214, 191, 140, .34);
-      --glass: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.055) 54%, rgba(255,255,255,.03));
+      --line-gold: rgba(214, 191, 140, .38);
+      --glass: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.055) 54%, rgba(255,255,255,.028));
       --shadow: 0 34px 90px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.16);
       --radius-xl: 42px;
       --radius-lg: 32px;
@@ -56,10 +54,16 @@
       overflow-x: hidden;
       color: var(--text);
       background:
-        radial-gradient(circle at 14% 18%, rgba(214, 191, 140, .13), transparent 26%),
-        radial-gradient(circle at 82% 12%, rgba(140, 255, 179, .09), transparent 22%),
+        radial-gradient(circle at var(--aurora-x, 16%) 16%, rgba(214, 191, 140, .15), transparent 28%),
+        radial-gradient(circle at 82% var(--aurora-y, 14%), rgba(140, 255, 179, .10), transparent 24%),
         linear-gradient(180deg, #101611 0%, #050806 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      animation: ambientShift 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambientShift {
+      0% { --aurora-x: 12%; --aurora-y: 12%; }
+      100% { --aurora-x: 26%; --aurora-y: 24%; }
     }
 
     body::before {
@@ -73,6 +77,7 @@
         linear-gradient(180deg, rgba(245,239,228,.022) 1px, transparent 1px);
       background-size: 72px 72px;
       mask-image: linear-gradient(180deg, rgba(0,0,0,.72), transparent 74%);
+      animation: gridDrift 22s linear infinite;
     }
 
     body::after {
@@ -81,8 +86,14 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      background: linear-gradient(180deg, rgba(4,7,5,.10), rgba(4,7,5,.70));
+      background:
+        linear-gradient(115deg, transparent 0%, rgba(214,191,140,.055) 36%, transparent 52%),
+        linear-gradient(180deg, rgba(4,7,5,.10), rgba(4,7,5,.72));
+      animation: lightSweep 9s ease-in-out infinite alternate;
     }
+
+    @keyframes gridDrift { to { background-position: 72px 72px; } }
+    @keyframes lightSweep { from { opacity: .72; transform: translateX(-2%); } to { opacity: 1; transform: translateX(2%); } }
 
     a { color: inherit; text-decoration: none; }
     img { display: block; width: 100%; }
@@ -96,9 +107,12 @@
       object-fit: cover;
       z-index: 0;
       pointer-events: none;
-      opacity: .25;
+      opacity: .24;
       filter: saturate(.92) contrast(1.03) brightness(.38);
+      animation: videoBreath 16s ease-in-out infinite alternate;
     }
+
+    @keyframes videoBreath { from { transform: scale(1); opacity: .20; } to { transform: scale(1.035); opacity: .30; } }
 
     .site-loader {
       position: fixed;
@@ -115,9 +129,11 @@
     .site-loader.is-hidden { opacity: 0; visibility: hidden; }
     .site-loader__inner { display: grid; place-items: center; gap: 16px; text-align: center; }
     .site-loader__ring { width: 106px; height: 106px; border-radius: 50%; border: 1.5px solid rgba(245,239,228,.20); border-top-color: var(--champagne); border-right-color: rgba(140,255,179,.68); box-shadow: 0 0 34px rgba(214,191,140,.18), inset 0 0 24px rgba(255,255,255,.05); animation: spin 1.1s linear infinite; }
-    .site-loader__text { color: rgba(245,239,228,.92); font-size: .84rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    .site-loader__skip { border: 1px solid rgba(245,239,228,.20); border-radius: 999px; background: rgba(255,255,255,.10); color: #fff; padding: 10px 16px; font: inherit; font-weight: 800; cursor: pointer; }
+    .site-loader__text { color: rgba(245,239,228,.92); font-size: .84rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; animation: softPulse 1.8s ease-in-out infinite; }
+    .site-loader__skip { border: 1px solid rgba(245,239,228,.20); border-radius: 999px; background: rgba(255,255,255,.10); color: #fff; padding: 10px 16px; font: inherit; font-weight: 800; cursor: pointer; transition: transform .2s ease, background .2s ease; }
+    .site-loader__skip:hover { transform: translateY(-2px); background: rgba(214,191,140,.18); }
     @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes softPulse { 50% { opacity: .58; } }
 
     .site-nav {
       position: fixed;
@@ -132,21 +148,25 @@
       box-shadow: 0 18px 48px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.16);
       -webkit-backdrop-filter: var(--blur);
       backdrop-filter: var(--blur);
+      animation: navDrop .65s cubic-bezier(.2,.8,.2,1) both;
     }
+
+    @keyframes navDrop { from { opacity: 0; transform: translate(-50%, -18px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
     .site-nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 62px; padding: 9px 14px 9px 20px; }
     .site-nav__brand { display: inline-flex; align-items: center; gap: 10px; color: var(--cream); font-size: 1rem; font-weight: 900; letter-spacing: -.02em; white-space: nowrap; }
-    .site-nav__brand img { width: 25px; height: 25px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(214,191,140,.26); }
+    .site-nav__brand img { width: 25px; height: 25px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(214,191,140,.26), 0 0 18px rgba(214,191,140,.16); animation: logoGlow 3.5s ease-in-out infinite; }
+    @keyframes logoGlow { 50% { box-shadow: 0 0 0 1px rgba(214,191,140,.46), 0 0 26px rgba(214,191,140,.30); } }
     .site-nav__links { display: flex; align-items: center; justify-content: flex-end; gap: 4px; overflow-x: auto; scrollbar-width: none; }
     .site-nav__links::-webkit-scrollbar { display: none; }
     .site-nav__links a { flex: 0 0 auto; padding: 10px 13px; border-radius: 999px; color: rgba(245,239,228,.82); font-size: .86rem; font-weight: 800; line-height: 1; transition: background .2s ease, color .2s ease, transform .2s ease; }
-    .site-nav__links a:hover, .site-nav__links a:focus-visible { background: rgba(214,191,140,.13); color: var(--cream); transform: translateY(-1px); }
+    .site-nav__links a:hover, .site-nav__links a:focus-visible { background: rgba(214,191,140,.13); color: var(--cream); transform: translateY(-2px); }
 
-    .page { position: relative; z-index: 2; width: min(100%, var(--maxw)); margin: 0 auto; padding: 104px 18px 74px; }
+    .page { position: relative; z-index: 2; width: min(100%, var(--maxw)); margin: 0 auto; padding: 112px 18px 86px; }
 
     .hero {
       position: relative;
-      min-height: clamp(690px, 86vh, 920px);
+      min-height: clamp(700px, 86vh, 940px);
       display: grid;
       grid-template-columns: minmax(0, 1.06fr) minmax(340px, .94fr);
       overflow: hidden;
@@ -179,16 +199,22 @@
       filter: blur(4px);
       z-index: 2;
       pointer-events: none;
+      animation: orbFloat 8s ease-in-out infinite alternate;
     }
+
+    @keyframes orbFloat { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(-46px,-38px,0) scale(1.15); } }
 
     .hero-media {
       position: absolute;
       inset: 0;
       background: url("../img/games/helixhorizon.png") center/cover no-repeat;
-      transform: scale(1.02);
+      transform: scale(1.04);
       filter: saturate(.95) contrast(1.05) brightness(.82);
       z-index: 0;
+      animation: heroKenBurns 18s ease-in-out infinite alternate;
     }
+
+    @keyframes heroKenBurns { from { transform: scale(1.035) translateX(0); } to { transform: scale(1.105) translateX(-1.5%); } }
 
     .hero-content {
       position: relative;
@@ -196,7 +222,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: clamp(32px, 6vw, 70px);
+      padding: clamp(34px, 6vw, 72px);
     }
 
     .eyebrow {
@@ -212,7 +238,10 @@
       font-weight: 950;
       letter-spacing: .12em;
       text-transform: uppercase;
+      animation: pillGlow 3.2s ease-in-out infinite;
     }
+
+    @keyframes pillGlow { 50% { border-color: rgba(214,191,140,.58); box-shadow: 0 0 24px rgba(214,191,140,.13); } }
 
     h1, h2, h3 { margin: 0; }
 
@@ -220,24 +249,31 @@
       max-width: 680px;
       color: var(--cream);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(4.2rem, 10vw, 9rem);
+      font-size: clamp(4.3rem, 10vw, 9rem);
       font-weight: 500;
       line-height: .82;
       letter-spacing: -.085em;
       text-shadow: 0 24px 54px rgba(0,0,0,.50);
+      animation: titleIn 1s cubic-bezier(.2,.8,.2,1) both, titleGlow 5s ease-in-out 1s infinite;
     }
+
+    @keyframes titleIn { from { opacity: 0; transform: translateY(34px) scale(.96); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    @keyframes titleGlow { 50% { text-shadow: 0 24px 54px rgba(0,0,0,.50), 0 0 28px rgba(214,191,140,.16); } }
 
     .hero-subtitle {
-      max-width: 610px;
-      margin-top: 24px;
-      color: rgba(245,239,228,.82);
-      font-size: clamp(1.04rem, 1.9vw, 1.22rem);
-      line-height: 1.78;
+      max-width: 570px;
+      margin-top: 26px;
+      color: rgba(245,239,228,.80);
+      font-size: clamp(1.04rem, 1.9vw, 1.18rem);
+      line-height: 1.72;
+      animation: fadeRise .85s .16s cubic-bezier(.2,.8,.2,1) both;
     }
 
-    .hero-actions, .section-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-actions, .section-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; animation: fadeRise .85s .28s cubic-bezier(.2,.8,.2,1) both; }
 
     .button {
+      position: relative;
+      overflow: hidden;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -249,10 +285,21 @@
       color: var(--cream);
       font-weight: 900;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 14px 28px rgba(0,0,0,.18);
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
     }
 
-    .button:hover, .button:focus-visible { transform: translateY(-2px); border-color: rgba(245,239,228,.46); background: linear-gradient(180deg, rgba(214,191,140,.34), rgba(214,191,140,.18)); }
+    .button::after {
+      content: "";
+      position: absolute;
+      inset: -40% auto -40% -45%;
+      width: 38%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
+      transform: skewX(-18deg);
+      animation: buttonSheen 4.8s ease-in-out infinite;
+    }
+
+    @keyframes buttonSheen { 0%, 58% { left: -45%; } 82%, 100% { left: 125%; } }
+    .button:hover, .button:focus-visible { transform: translateY(-3px); border-color: rgba(245,239,228,.48); background: linear-gradient(180deg, rgba(214,191,140,.34), rgba(214,191,140,.18)); }
     .button--ghost { border-color: rgba(245,239,228,.22); background: rgba(255,255,255,.07); }
 
     .hero-showroom {
@@ -261,7 +308,7 @@
       align-self: end;
       display: grid;
       gap: 12px;
-      padding: clamp(24px, 4vw, 46px);
+      padding: clamp(28px, 4vw, 50px);
     }
 
     .listing-card {
@@ -272,153 +319,112 @@
       padding: 22px;
       -webkit-backdrop-filter: var(--blur);
       backdrop-filter: var(--blur);
+      animation: floatCard 5.8s ease-in-out infinite, fadeRise .9s .36s cubic-bezier(.2,.8,.2,1) both;
     }
 
-    .listing-card__title { display: flex; justify-content: space-between; gap: 14px; align-items: start; margin-bottom: 18px; }
+    @keyframes floatCard { 50% { transform: translateY(-10px); } }
+    @keyframes fadeRise { from { opacity: 0; transform: translateY(24px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+
+    .listing-card__title { display: flex; justify-content: space-between; gap: 14px; align-items: start; margin-bottom: 20px; }
     .listing-card__title strong { color: var(--cream); font-size: 1.1rem; line-height: 1.25; }
     .listing-card__title span { color: var(--champagne); font-size: .78rem; font-weight: 900; letter-spacing: .10em; text-transform: uppercase; white-space: nowrap; }
-    .listing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-    .listing-item { border: 1px solid rgba(245,239,228,.13); border-radius: 18px; background: rgba(255,255,255,.055); padding: 13px; }
-    .listing-item strong { display: block; color: #fff; font-size: 1.2rem; line-height: 1; }
+    .listing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .listing-item { border: 1px solid rgba(245,239,228,.13); border-radius: 18px; background: rgba(255,255,255,.055); padding: 14px; transition: transform .22s ease, background .22s ease; }
+    .listing-item:hover { transform: translateY(-3px); background: rgba(214,191,140,.10); }
+    .listing-item strong { display: block; color: #fff; font-size: 1.22rem; line-height: 1; }
     .listing-item span { display: block; margin-top: 8px; color: var(--muted); font-size: .82rem; font-weight: 800; }
 
-    .section { margin-top: 86px; scroll-margin-top: 96px; }
-    .section-heading { display: grid; gap: 12px; margin-bottom: 26px; }
-    .section-heading h2 { color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.8rem, 7vw, 6.4rem); font-weight: 500; line-height: .86; letter-spacing: -.075em; }
-    .section-heading h2::before { content: ""; display: block; width: 54px; height: 4px; margin-bottom: 18px; border-radius: 999px; background: var(--champagne); }
-    .section-heading p { max-width: 780px; color: var(--muted); font-size: 1.05rem; line-height: 1.75; }
+    .section { margin-top: clamp(118px, 15vw, 180px); scroll-margin-top: 112px; }
+    .section-heading { display: grid; gap: 16px; margin-bottom: clamp(34px, 5vw, 58px); }
+    .section-heading h2 { color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 7vw, 6.6rem); font-weight: 500; line-height: .86; letter-spacing: -.075em; }
+    .section-heading h2::before { content: ""; display: block; width: 56px; height: 4px; margin-bottom: 20px; border-radius: 999px; background: var(--champagne); transform-origin: left; animation: linePulse 3s ease-in-out infinite; }
+    .section-heading p { max-width: 640px; color: var(--muted); font-size: 1.02rem; line-height: 1.68; }
+    @keyframes linePulse { 50% { transform: scaleX(1.55); opacity: .62; } }
 
-    .intro-panel {
-      display: grid;
-      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
-      gap: 16px;
-      align-items: stretch;
-    }
+    .intro-panel { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 34px; align-items: stretch; }
+    .intro-copy, .quote-card, .amenity-card, .spec-card, .contact-card, .tour-step { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--glass); box-shadow: var(--shadow); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
+    .intro-copy::before, .amenity-card::before, .spec-card::before, .tour-step::before, .contact-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent, rgba(214,191,140,.08), transparent); transform: translateX(-120%); transition: transform .8s ease; pointer-events: none; }
+    .intro-copy:hover::before, .amenity-card:hover::before, .spec-card:hover::before, .tour-step:hover::before, .contact-card:hover::before { transform: translateX(120%); }
+    .intro-copy { padding: clamp(28px, 5vw, 50px); }
+    .intro-copy p { color: rgba(245,239,228,.78); font-size: 1.06rem; line-height: 1.78; }
 
-    .intro-copy, .quote-card, .amenity-card, .spec-card, .contact-card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--glass);
-      box-shadow: var(--shadow);
-      -webkit-backdrop-filter: var(--blur);
-      backdrop-filter: var(--blur);
-    }
-
-    .intro-copy { padding: clamp(24px, 4vw, 42px); }
-    .intro-copy p { color: rgba(245,239,228,.78); font-size: 1.06rem; line-height: 1.82; }
-    .intro-copy p + p { margin-top: 18px; }
-
-    .quote-card { min-height: 360px; display: flex; align-items: end; background: url("../img/games/helixhorizon.png") center/cover no-repeat; }
+    .quote-card { min-height: 390px; display: flex; align-items: end; background: url("../img/games/helixhorizon.png") center/cover no-repeat; animation: imageFloat 12s ease-in-out infinite alternate; }
     .quote-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.74)); }
-    .quote-card blockquote { position: relative; margin: 0; padding: 26px; color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.7rem, 4vw, 3rem); line-height: 1.02; letter-spacing: -.045em; }
+    .quote-card blockquote { position: relative; margin: 0; padding: 30px; color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.02; letter-spacing: -.045em; }
+    @keyframes imageFloat { from { background-position: 48% 50%; } to { background-position: 54% 46%; } }
 
-    .amenities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-    .amenity-card { min-height: 230px; padding: 24px; transition: transform .22s ease, border-color .22s ease, background .22s ease; }
-    .amenity-card:hover { transform: translateY(-4px); border-color: rgba(214,191,140,.38); background: linear-gradient(135deg, rgba(255,255,255,.17), rgba(255,255,255,.07)); }
-    .amenity-number { display: inline-flex; margin-bottom: 34px; color: var(--champagne); font-size: .78rem; font-weight: 950; letter-spacing: .12em; text-transform: uppercase; }
+    .amenities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+    .amenity-card { min-height: 230px; padding: 26px; transition: transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease; }
+    .amenity-card:hover { transform: translateY(-8px) scale(1.015); border-color: rgba(214,191,140,.40); background: linear-gradient(135deg, rgba(255,255,255,.17), rgba(255,255,255,.07)); box-shadow: 0 38px 100px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.18); }
+    .amenity-number { display: inline-flex; margin-bottom: 42px; color: var(--champagne); font-size: .78rem; font-weight: 950; letter-spacing: .12em; text-transform: uppercase; }
     .amenity-card h3 { margin-bottom: 12px; color: var(--cream); font-size: 1.28rem; line-height: 1.15; }
-    .amenity-card p { color: var(--muted); line-height: 1.68; }
+    .amenity-card p { color: var(--muted); line-height: 1.58; }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 16px;
-    }
+    .gallery { display: grid; grid-template-columns: 1.25fr .75fr; gap: 30px; }
+    .gallery-main, .gallery-side { display: grid; gap: 30px; }
+    .gallery-tile { position: relative; overflow: hidden; min-height: 310px; border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); background: #080c09; }
+    .gallery-tile::after { content: ""; position: absolute; inset: 0; background: url("../img/games/helixhorizon.png") center/cover no-repeat; transform: scale(1.04); animation: galleryZoom 14s ease-in-out infinite alternate; }
+    .gallery-tile--large { min-height: 660px; }
+    .gallery-side .gallery-tile:nth-child(1)::after { background-position: 35% center; animation-delay: -2s; }
+    .gallery-side .gallery-tile:nth-child(2)::after { background-position: 70% center; animation-delay: -4s; }
+    .gallery-tile::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,.72)); }
+    @keyframes galleryZoom { from { transform: scale(1.04) translateX(0); } to { transform: scale(1.12) translateX(-2%); } }
+    .gallery-caption { position: absolute; z-index: 2; left: 20px; right: 20px; bottom: 20px; border: 1px solid rgba(245,239,228,.18); border-radius: 20px; background: rgba(9,13,11,.58); padding: 15px 17px; -webkit-backdrop-filter: blur(18px) saturate(155%); backdrop-filter: blur(18px) saturate(155%); transform: translateY(0); transition: transform .28s ease, background .28s ease; }
+    .gallery-tile:hover .gallery-caption { transform: translateY(-6px); background: rgba(9,13,11,.70); }
+    .gallery-caption strong { display: block; color: var(--cream); margin-bottom: 5px; }
+    .gallery-caption span { display: block; color: var(--muted); line-height: 1.42; }
 
-    .gallery-main, .gallery-side {
-      display: grid;
-      gap: 16px;
-    }
+    .tour-panel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+    .tour-step { padding: 22px; transition: transform .28s ease, border-color .28s ease; }
+    .tour-step:hover { transform: translateY(-8px); border-color: var(--line-gold); }
+    .tour-step strong { display: block; color: var(--champagne); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+    .tour-step h3 { margin-bottom: 10px; color: var(--cream); font-size: 1.08rem; }
+    .tour-step p { color: var(--muted); line-height: 1.52; font-size: .95rem; }
 
-    .gallery-tile {
-      position: relative;
-      overflow: hidden;
-      min-height: 280px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: url("../img/games/helixhorizon.png") center/cover no-repeat;
-      box-shadow: var(--shadow);
-    }
+    .specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+    .spec-card { padding: 24px 18px; text-align: center; transition: transform .28s ease, border-color .28s ease; }
+    .spec-card:hover { transform: translateY(-7px); border-color: var(--line-gold); }
+    .spec-card strong { display: block; color: var(--cream); font-size: clamp(1.55rem, 3vw, 2.35rem); line-height: 1; }
+    .spec-card span { display: block; margin-top: 10px; color: var(--muted); font-size: .84rem; font-weight: 850; }
 
-    .gallery-tile--large { min-height: 610px; }
-    .gallery-tile:nth-child(2) { background-position: 35% center; }
-    .gallery-tile:nth-child(3) { background-position: 70% center; }
+    .contact-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: center; padding: clamp(30px, 5vw, 56px); margin-top: 32px; }
+    .contact-card h2 { color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.5rem, 6vw, 5.4rem); font-weight: 500; line-height: .86; letter-spacing: -.075em; margin-bottom: 18px; }
+    .contact-card p { max-width: 600px; color: var(--muted); line-height: 1.64; }
+    .fine-print { margin-top: 14px; color: rgba(245,239,228,.46); font-size: .84rem; line-height: 1.45; }
 
-    .gallery-tile::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,.70)); }
-    .gallery-caption { position: absolute; left: 18px; right: 18px; bottom: 18px; border: 1px solid rgba(245,239,228,.18); border-radius: 20px; background: rgba(9,13,11,.56); padding: 14px 16px; -webkit-backdrop-filter: blur(18px) saturate(155%); backdrop-filter: blur(18px) saturate(155%); }
-    .gallery-caption strong { display: block; color: var(--cream); margin-bottom: 4px; }
-    .gallery-caption span { display: block; color: var(--muted); line-height: 1.45; }
-
-    .tour-panel {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .tour-step {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: rgba(255,255,255,.06);
-      padding: 18px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
-    }
-
-    .tour-step strong { display: block; color: var(--champagne); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
-    .tour-step h3 { margin-bottom: 8px; color: var(--cream); font-size: 1.08rem; }
-    .tour-step p { color: var(--muted); line-height: 1.58; font-size: .95rem; }
-
-    .specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-    .spec-card { padding: 20px 16px; text-align: center; }
-    .spec-card strong { display: block; color: var(--cream); font-size: clamp(1.5rem, 3vw, 2.3rem); line-height: 1; }
-    .spec-card span { display: block; margin-top: 9px; color: var(--muted); font-size: .84rem; font-weight: 850; }
-
-    .contact-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: center; padding: clamp(24px, 4vw, 42px); }
-    .contact-card h2 { color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.5rem, 6vw, 5.4rem); font-weight: 500; line-height: .86; letter-spacing: -.075em; margin-bottom: 16px; }
-    .contact-card p { max-width: 700px; color: var(--muted); line-height: 1.75; }
-
-    .fine-print { margin-top: 14px; color: rgba(245,239,228,.48); font-size: .85rem; line-height: 1.5; }
-
-    .site-footer {
-      margin-top: 76px;
-      border-top: 1px solid rgba(245,239,228,.12);
-      padding-top: 24px;
-      color: rgba(245,239,228,.56);
-      text-align: center;
-      line-height: 1.6;
-    }
-
+    .site-footer { margin-top: 120px; border-top: 1px solid rgba(245,239,228,.12); padding-top: 28px; color: rgba(245,239,228,.56); text-align: center; line-height: 1.6; }
     .site-footer a { color: var(--champagne); font-weight: 800; }
 
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .62s ease, transform .62s cubic-bezier(.2,.8,.2,1); }
-    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal { opacity: 0; transform: translateY(46px) scale(.982); filter: blur(10px); transition: opacity .85s ease, transform .85s cubic-bezier(.2,.8,.2,1), filter .85s ease; transition-delay: var(--delay, 0ms); }
+    .reveal.is-visible { opacity: 1; transform: none; filter: blur(0); }
 
     @media (max-width: 920px) {
-      .page { padding-top: 124px; }
+      .page { padding-top: 128px; }
       .site-nav { top: 10px; border-radius: 24px; }
       .site-nav__inner { align-items: flex-start; flex-direction: column; gap: 10px; padding: 12px; }
       .site-nav__links { width: 100%; justify-content: flex-start; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero::before { background: linear-gradient(180deg, rgba(6,9,7,.82), rgba(6,9,7,.58)); }
+      .hero::before { background: linear-gradient(180deg, rgba(6,9,7,.84), rgba(6,9,7,.60)); }
       .hero-showroom { align-self: stretch; padding-top: 0; }
+      .section { margin-top: 120px; }
       .intro-panel, .gallery, .contact-card { grid-template-columns: 1fr; }
       .amenities-grid, .tour-panel, .specs { grid-template-columns: 1fr; }
-      .gallery-tile, .gallery-tile--large { min-height: 320px; }
+      .gallery-tile, .gallery-tile--large { min-height: 340px; }
     }
 
     @media (max-width: 560px) {
       .page { padding-inline: 12px; }
-      .hero-content { padding: 34px 22px 22px; }
+      .hero-content { padding: 36px 22px 28px; }
       .listing-grid { grid-template-columns: 1fr; }
       .hero-actions, .section-actions { flex-direction: column; }
       .button { width: 100%; }
+      .section { margin-top: 104px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .reveal { opacity: 1 !important; transform: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
     }
   </style>
 </head>
@@ -442,7 +448,7 @@
         <a href="#residence">Residence</a>
         <a href="#amenities">Amenities</a>
         <a href="#gallery">Gallery</a>
-        <a href="#tour">Private Tour</a>
+        <a href="#tour">Tour</a>
         <a href="#details">Details</a>
       </div>
     </div>
@@ -454,10 +460,10 @@
       <div class="hero-content">
         <span class="eyebrow">Private virtual residence</span>
         <h1>Helix Horizon Penthouse</h1>
-        <p class="hero-subtitle">A curated luxury residence suspended above the skyline: cinematic city views, refined lounge spaces, atmospheric lighting, wellness features and social entertainment areas designed for memorable VRChat evenings.</p>
+        <p class="hero-subtitle">Luxury skyline residence for social nights, media, wellness and immersive VRChat visits.</p>
         <div class="hero-actions">
           <a class="button" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Book a Private Viewing</a>
-          <a class="button button--ghost" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">View VRChat Listing</a>
+          <a class="button button--ghost" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">View Listing</a>
         </div>
       </div>
       <aside class="hero-showroom" aria-label="Residence summary">
@@ -467,9 +473,9 @@
             <span>By Haxurus</span>
           </div>
           <div class="listing-grid">
-            <div class="listing-item"><strong>64</strong><span>Guest capacity</span></div>
+            <div class="listing-item"><strong>64</strong><span>Guests</span></div>
             <div class="listing-item"><strong>3</strong><span>Platforms</span></div>
-            <div class="listing-item"><strong>24/7</strong><span>Night skyline</span></div>
+            <div class="listing-item"><strong>24/7</strong><span>Night view</span></div>
             <div class="listing-item"><strong>VR</strong><span>Luxury living</span></div>
           </div>
         </div>
@@ -478,13 +484,12 @@
 
     <section class="section reveal">
       <div class="section-heading">
-        <h2>A residence made to impress</h2>
-        <p>Helix Horizon is no longer presented like a simple VRChat map. It is framed as a premium penthouse experience: a destination, a private venue and a polished social space with a strong visual identity.</p>
+        <h2>A private address above the city</h2>
+        <p>A polished penthouse experience built around atmosphere, screenshots and memorable visits.</p>
       </div>
       <div class="intro-panel">
         <div class="intro-copy">
-          <p>Step into a high-rise environment designed around atmosphere first: dark luxury surfaces, warm highlights, skyline reflections and carefully staged areas that make the world feel like a private apartment listing.</p>
-          <p>The experience is built for visitors who want more than a room to stand in. It gives them a reason to stay, look around, take screenshots, invite friends, watch media, relax and use the residence as their own virtual night retreat.</p>
+          <p>Dark luxury surfaces, warm highlights and skyline reflections create the feel of a premium apartment showroom.</p>
         </div>
         <div class="quote-card">
           <blockquote>Not just a world. A private address above the city.</blockquote>
@@ -495,38 +500,38 @@
     <section class="section reveal" id="amenities">
       <div class="section-heading">
         <h2>Curated amenities</h2>
-        <p>Every feature is described as part of the property, not as a generic game feature.</p>
+        <p>Essential spaces, presented like a luxury listing.</p>
       </div>
       <div class="amenities-grid">
-        <article class="amenity-card">
+        <article class="amenity-card reveal">
           <span class="amenity-number">01 / Lounge</span>
-          <h3>Panoramic social lounge</h3>
-          <p>A premium gathering space for conversations, meetups and relaxed evenings with a cinematic skyline backdrop.</p>
+          <h3>Panoramic lounge</h3>
+          <p>Open social space with a cinematic skyline backdrop.</p>
         </article>
-        <article class="amenity-card">
+        <article class="amenity-card reveal">
           <span class="amenity-number">02 / Wellness</span>
-          <h3>Jacuzzi &amp; water retreat</h3>
-          <p>A dedicated relaxation area designed for screenshots, quiet conversations and soft luxury atmosphere.</p>
+          <h3>Jacuzzi retreat</h3>
+          <p>A soft, relaxed area for quiet moments and screenshots.</p>
         </article>
-        <article class="amenity-card">
+        <article class="amenity-card reveal">
           <span class="amenity-number">03 / Cinema</span>
-          <h3>Private media suite</h3>
-          <p>Integrated media areas turn the penthouse into a private venue for shared watching and late-night sessions.</p>
+          <h3>Media suite</h3>
+          <p>Designed for shared watching and late-night sessions.</p>
         </article>
-        <article class="amenity-card">
-          <span class="amenity-number">04 / Lighting</span>
-          <h3>Scene-based ambience</h3>
-          <p>Custom lighting and night mood controls allow the residence to shift from calm lounge to dramatic showroom.</p>
+        <article class="amenity-card reveal">
+          <span class="amenity-number">04 / Mood</span>
+          <h3>Ambient lighting</h3>
+          <p>Custom lights shape the tone of the residence.</p>
         </article>
-        <article class="amenity-card">
-          <span class="amenity-number">05 / Entertainment</span>
-          <h3>Interactive game areas</h3>
-          <p>Subtle entertainment spaces give guests something to do while keeping the environment elegant and social.</p>
+        <article class="amenity-card reveal">
+          <span class="amenity-number">05 / Play</span>
+          <h3>Interactive areas</h3>
+          <p>Entertainment without breaking the elegant atmosphere.</p>
         </article>
-        <article class="amenity-card">
+        <article class="amenity-card reveal">
           <span class="amenity-number">06 / Comfort</span>
-          <h3>Optimized guest experience</h3>
-          <p>Designed to feel polished and accessible across supported VRChat platforms without losing its premium look.</p>
+          <h3>Optimized visits</h3>
+          <p>Built for a smoother experience across supported devices.</p>
         </article>
       </div>
     </section>
@@ -534,28 +539,28 @@
     <section class="section reveal" id="gallery">
       <div class="section-heading">
         <h2>Showroom gallery</h2>
-        <p>A photographic-style presentation for the residence. Add more screenshots later and this section can become a full real-estate style gallery.</p>
+        <p>Large visuals, slow movement and a real-estate presentation style.</p>
       </div>
       <div class="gallery">
         <div class="gallery-main">
-          <div class="gallery-tile gallery-tile--large">
+          <div class="gallery-tile gallery-tile--large reveal">
             <div class="gallery-caption">
               <strong>Skyline signature view</strong>
-              <span>The main selling point: a luxury residence staged above a dramatic city horizon.</span>
+              <span>The main selling point of the residence.</span>
             </div>
           </div>
         </div>
         <div class="gallery-side">
-          <div class="gallery-tile">
+          <div class="gallery-tile reveal">
             <div class="gallery-caption">
               <strong>Evening ambience</strong>
-              <span>Dark surfaces, soft glow and cinematic lighting for premium screenshots.</span>
+              <span>Dark, warm and cinematic.</span>
             </div>
           </div>
-          <div class="gallery-tile">
+          <div class="gallery-tile reveal">
             <div class="gallery-caption">
               <strong>Private entertainment</strong>
-              <span>Social, media and interactive spaces presented as residential amenities.</span>
+              <span>Media, games and social areas.</span>
             </div>
           </div>
         </div>
@@ -564,29 +569,29 @@
 
     <section class="section reveal" id="tour">
       <div class="section-heading">
-        <h2>The private tour</h2>
-        <p>The visit flow is written like a guided property tour, so the page feels closer to an apartment showroom.</p>
+        <h2>Private tour</h2>
+        <p>A short guided flow for visitors.</p>
       </div>
       <div class="tour-panel">
-        <article class="tour-step">
+        <article class="tour-step reveal">
           <strong>Arrival</strong>
-          <h3>Enter the penthouse</h3>
-          <p>Guests are welcomed into a high-end virtual residence instead of a plain social world.</p>
+          <h3>Enter</h3>
+          <p>Step into the residence.</p>
         </article>
-        <article class="tour-step">
+        <article class="tour-step reveal">
           <strong>Living</strong>
-          <h3>Explore the lounge</h3>
-          <p>The main area is framed as the heart of the property: social, open and skyline-focused.</p>
+          <h3>Explore</h3>
+          <p>Move through the lounge.</p>
         </article>
-        <article class="tour-step">
+        <article class="tour-step reveal">
           <strong>Leisure</strong>
-          <h3>Discover the amenities</h3>
-          <p>Wellness, media, games and lighting systems are presented as premium lifestyle features.</p>
+          <h3>Relax</h3>
+          <p>Try the amenities.</p>
         </article>
-        <article class="tour-step">
+        <article class="tour-step reveal">
           <strong>Viewing</strong>
-          <h3>Launch in VRChat</h3>
-          <p>The CTA becomes a private viewing, keeping the luxury real-estate tone from start to finish.</p>
+          <h3>Launch</h3>
+          <p>Open it in VRChat.</p>
         </article>
       </div>
     </section>
@@ -594,22 +599,22 @@
     <section class="section reveal" id="details">
       <div class="section-heading">
         <h2>Property details</h2>
-        <p>Essential information remains available, but it is presented like a refined listing sheet.</p>
+        <p>Fast facts for the listing.</p>
       </div>
       <div class="specs">
-        <div class="spec-card"><strong>64</strong><span>Guest capacity</span></div>
-        <div class="spec-card"><strong>PC</strong><span>Supported</span></div>
-        <div class="spec-card"><strong>Quest</strong><span>Supported</span></div>
-        <div class="spec-card"><strong>iOS</strong><span>Supported</span></div>
+        <div class="spec-card reveal"><strong>64</strong><span>Guests</span></div>
+        <div class="spec-card reveal"><strong>PC</strong><span>Supported</span></div>
+        <div class="spec-card reveal"><strong>Quest</strong><span>Supported</span></div>
+        <div class="spec-card reveal"><strong>iOS</strong><span>Supported</span></div>
       </div>
-      <div class="contact-card" style="margin-top:16px">
+      <div class="contact-card reveal">
         <div>
           <h2>Schedule your viewing</h2>
-          <p>Open the Helix Horizon listing in VRChat or launch a private instance to experience the penthouse directly with friends.</p>
-          <p class="fine-print">Helix Horizon is a virtual VRChat world presented with a luxury real-estate showroom style. It is not a physical property listing.</p>
+          <p>Launch a private instance and experience the penthouse directly.</p>
+          <p class="fine-print">Virtual VRChat world. Not a physical property listing.</p>
         </div>
         <div class="section-actions">
-          <a class="button" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Launch Private Viewing</a>
+          <a class="button" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Launch Viewing</a>
           <a class="button button--ghost" href="../">Back to Haxurus</a>
         </div>
       </div>
@@ -617,7 +622,7 @@
 
     <footer class="site-footer">
       <p>Haxurus © Copyright 2016-<span id="current-year"></span>. All Rights Reserved.</p>
-      <p>World redesign, assets and presentation by <strong>Haxurus</strong>. Original base world by sli-zen. Hard optimizations and lighting by Kaira S. Custom scripts by Katseisu.</p>
+      <p>World redesign, assets and presentation by <strong>Haxurus</strong>.</p>
     </footer>
   </div>
 
@@ -645,7 +650,9 @@
         play();
       }
 
-      const revealItems = document.querySelectorAll('.reveal');
+      const revealItems = [...document.querySelectorAll('.reveal')];
+      revealItems.forEach((el, index) => el.style.setProperty('--delay', `${Math.min(index * 45, 360)}ms`));
+
       if (!('IntersectionObserver' in window)) {
         revealItems.forEach((el) => el.classList.add('is-visible'));
         return;
@@ -657,9 +664,16 @@
           entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         });
-      }, { threshold: .16 });
+      }, { threshold: .14, rootMargin: '0px 0px -8% 0px' });
 
       revealItems.forEach((el) => observer.observe(el));
+
+      window.addEventListener('pointermove', (event) => {
+        const x = (event.clientX / window.innerWidth - .5) * 10;
+        const y = (event.clientY / window.innerHeight - .5) * 10;
+        document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+      }, { passive: true });
     })();
   </script>
 </body>
