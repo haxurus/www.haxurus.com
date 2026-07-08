@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Helix Horizon | VRChat World by Haxurus</title>
+  <meta name="description" content="Explore Helix Horizon, a futuristic VRChat penthouse by Haxurus designed for chilling, socializing, games, media and late-night gatherings above the city skyline." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#081511" />
+  <link rel="canonical" href="https://haxurus.com/vrchat/" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="apple-touch-icon" href="../img/favicon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Haxurus" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Helix Horizon | VRChat World by Haxurus" />
+  <meta property="og:description" content="A futuristic cyberpunk penthouse for chilling, socializing, games, media and late-night gatherings in VRChat." />
+  <meta property="og:url" content="https://haxurus.com/vrchat/" />
+  <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png" />
+  <meta property="og:image:alt" content="Preview image for Helix Horizon VRChat world" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Helix Horizon | VRChat World by Haxurus" />
+  <meta name="twitter:description" content="A futuristic cyberpunk penthouse for chilling, socializing, games, media and late-night gatherings in VRChat." />
+  <meta name="twitter:image" content="https://haxurus.com/img/games/helixhorizon.png" />
+  <meta name="twitter:site" content="@Haxurus" />
+  <meta name="twitter:creator" content="@Haxurus" />
+
+  <style>
+    :root {
+      --maxw: 1120px;
+      --radius-md: 26px;
+      --radius-lg: 34px;
+      --radius-xl: 42px;
+      --accent: #8cffb3;
+      --accent-2: #b9ffe3;
+      --text: rgba(247, 255, 250, 0.94);
+      --text-soft: rgba(247, 255, 250, 0.76);
+      --line: rgba(255, 255, 255, 0.22);
+      --line-soft: rgba(255, 255, 255, 0.12);
+      --glass: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.075) 46%, rgba(255, 255, 255, 0.035));
+      --shadow-lg: 0 30px 70px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.20);
+      --shadow-md: 0 22px 48px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      --blur: blur(26px) saturate(170%);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(140, 255, 179, 0.17), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(54, 184, 255, 0.12), transparent 25%),
+        radial-gradient(circle at 50% 96%, rgba(185, 255, 227, 0.10), transparent 34%),
+        linear-gradient(180deg, #07110e 0%, #020806 100%);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.68), transparent 72%);
+    }
+
+    body::after {
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(1, 8, 6, 0.22), rgba(1, 8, 6, 0.60));
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+
+    .background-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      filter: saturate(1.08) contrast(1.05) brightness(0.42);
+      opacity: 0.42;
+    }
+
+    .site-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: grid;
+      place-items: center;
+      background: rgba(5, 10, 8, 0.78);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      transition: opacity .45s ease, visibility .45s ease;
+    }
+
+    .site-loader.is-hidden { opacity: 0; visibility: hidden; }
+
+    .site-loader__inner { display: grid; place-items: center; gap: 16px; text-align: center; }
+
+    .site-loader__ring {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      border-top-color: rgba(190, 255, 225, 0.96);
+      border-right-color: rgba(140, 255, 179, 0.64);
+      box-shadow: 0 0 32px rgba(140, 255, 179, 0.18), inset 0 0 24px rgba(255,255,255,0.06);
+      animation: spin 1.05s linear infinite;
+    }
+
+    .site-loader__text {
+      color: rgba(247,255,250,.94);
+      font-size: .9rem;
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .site-loader__skip {
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      color: #fff;
+      padding: 10px 16px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      width: min(100%, var(--maxw));
+      margin: 0 auto;
+      padding: 96px 18px 72px;
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      z-index: 100;
+      width: min(calc(100% - 28px), var(--maxw));
+      transform: translateX(-50%);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,255,255,.17), rgba(255,255,255,.075));
+      box-shadow: 0 18px 42px rgba(3,14,12,.20), inset 0 1px 0 rgba(255,255,255,.24);
+      -webkit-backdrop-filter: var(--blur);
+      backdrop-filter: var(--blur);
+    }
+
+    .site-nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 58px;
+      padding: 8px 12px 8px 20px;
+    }
+
+    .site-nav__brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent-2);
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .site-nav__brand img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .site-nav__links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .site-nav__links::-webkit-scrollbar { display: none; }
+
+    .site-nav__links a {
+      flex: 0 0 auto;
+      padding: 10px 13px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.90);
+      font-size: .9rem;
+      font-weight: 800;
+      line-height: 1;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .site-nav__links a:hover,
+    .site-nav__links a:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.14);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      align-items: stretch;
+      gap: clamp(24px, 4vw, 48px);
+      min-height: clamp(620px, 78vh, 820px);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--glass);
+      box-shadow: var(--shadow-lg);
+      -webkit-backdrop-filter: var(--blur);
+      backdrop-filter: var(--blur);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20% -12% auto auto;
+      width: 520px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(140,255,179,.24), transparent 68%);
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -22% -10%;
+      width: 440px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(54,184,255,.16), transparent 70%);
+      filter: blur(6px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(28px, 5vw, 58px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: max-content;
+      margin-bottom: 16px;
+      border: 1px solid rgba(140,255,179,.32);
+      border-radius: 999px;
+      background: rgba(140,255,179,.08);
+      padding: 7px 11px;
+      color: #d8ffe5;
+      font-size: .72rem;
+      font-weight: 950;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 18px;
+      color: var(--accent-2);
+      font-size: clamp(3.8rem, 10vw, 8.5rem);
+      line-height: .84;
+      letter-spacing: -.075em;
+      text-shadow: 0 18px 34px rgba(0,0,0,.34);
+    }
+
+    .hero-text {
+      max-width: 680px;
+      margin-bottom: 24px;
+      color: rgba(247,255,250,.86);
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      line-height: 1.75;
+    }
+
+    .hero-actions,
+    .section-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border: 1px solid rgba(140,255,179,.40);
+      border-radius: 999px;
+      background: rgba(140,255,179,.12);
+      padding: 12px 18px;
+      color: #e7ffef;
+      font-weight: 950;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 12px 24px rgba(0,0,0,.15);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(140,255,179,.20);
+    }
+
+    .button--ghost {
+      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: stretch;
+      min-height: 100%;
+      padding: clamp(18px, 3vw, 34px);
+    }
+
+    .hero-card {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 34px;
+      background: rgba(255,255,255,.08);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-card img {
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    .hero-card__caption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      display: grid;
+      gap: 4px;
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 22px;
+      background: rgba(4,12,9,.58);
+      padding: 14px 16px;
+      -webkit-backdrop-filter: blur(18px) saturate(170%);
+      backdrop-filter: blur(18px) saturate(170%);
+    }
+
+    .hero-card__caption strong { color: #fff; font-size: 1.06rem; }
+    .hero-card__caption span { color: var(--text-soft); line-height: 1.45; }
+
+    .section {
+      margin-top: 78px;
+      scroll-margin-top: 96px;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: #f7fff9;
+      font-size: clamp(2.3rem, 6vw, 5.6rem);
+      line-height: .86;
+      letter-spacing: -.07em;
+    }
+
+    .section-heading h2::before {
+      content: "";
+      display: block;
+      width: 56px;
+      height: 4px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .section-heading p {
+      max-width: 760px;
+      color: var(--text-soft);
+      font-size: 1.05rem;
+      line-height: 1.72;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 198px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--glass);
+      box-shadow: var(--shadow-md);
+      padding: 22px;
+      -webkit-backdrop-filter: var(--blur);
+      backdrop-filter: var(--blur);
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.36);
+      background: linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,.09));
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -44% auto auto -28%;
+      width: 220px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(140,255,179,.13), transparent 70%);
+      pointer-events: none;
+    }
+
+    .card-number {
+      display: inline-flex;
+      margin-bottom: 20px;
+      color: var(--accent-2);
+      font-size: .86rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #fff;
+      font-size: 1.24rem;
+      line-height: 1.18;
+    }
+
+    .card p,
+    .card li {
+      color: rgba(247,255,250,.78);
+      line-height: 1.62;
+    }
+
+    .card p { margin-bottom: 0; }
+    .card ul { margin: 0; padding-left: 18px; }
+
+    .showcase-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 18px;
+      align-items: stretch;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--glass);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      -webkit-backdrop-filter: var(--blur);
+      backdrop-filter: var(--blur);
+    }
+
+    .showcase-panel__media {
+      min-height: 360px;
+      background: url("../img/games/helixhorizon.png") center/cover no-repeat;
+    }
+
+    .showcase-panel__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(22px, 4vw, 38px);
+    }
+
+    .showcase-panel__content h3 {
+      margin-bottom: 14px;
+      color: #fff;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: .96;
+      letter-spacing: -.05em;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      border: 1px solid var(--line-soft);
+      border-radius: 22px;
+      background: rgba(255,255,255,.07);
+      padding: 18px 14px;
+      text-align: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .stat strong {
+      display: block;
+      color: #fff;
+      font-size: clamp(1.4rem, 3vw, 2.1rem);
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--text-soft);
+      font-size: .86rem;
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 14px;
+      border: 1px solid var(--line-soft);
+      border-radius: 22px;
+      background: rgba(255,255,255,.065);
+      padding: 16px;
+    }
+
+    .timeline-item strong { color: var(--accent-2); }
+    .timeline-item span { color: var(--text-soft); line-height: 1.6; }
+
+    .credits-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--glass);
+      box-shadow: var(--shadow-md);
+      padding: clamp(22px, 4vw, 34px);
+      -webkit-backdrop-filter: var(--blur);
+      backdrop-filter: var(--blur);
+    }
+
+    .credits-card p { color: var(--text-soft); line-height: 1.7; }
+    .credits-card p:last-child { margin-bottom: 0; }
+
+    .site-footer {
+      margin-top: 74px;
+      border-top: 1px solid var(--line-soft);
+      padding-top: 24px;
+      color: rgba(247,255,250,.64);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .56s ease, transform .56s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 880px) {
+      .page { padding-top: 118px; }
+      .site-nav { top: 10px; border-radius: 24px; }
+      .site-nav__inner { align-items: flex-start; flex-direction: column; gap: 8px; padding: 12px; }
+      .site-nav__links { width: 100%; justify-content: flex-start; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-visual { order: -1; min-height: 320px; }
+      .hero-card img { min-height: 300px; }
+      .grid, .stats { grid-template-columns: 1fr; }
+      .showcase-panel { grid-template-columns: 1fr; }
+      .showcase-panel__media { min-height: 280px; }
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-loader" id="site-loader" aria-hidden="true">
+    <div class="site-loader__inner">
+      <div class="site-loader__ring"></div>
+      <div class="site-loader__text">Loading, please wait</div>
+      <button class="site-loader__skip" data-skip-loader type="button">Skip animation</button>
+    </div>
+  </div>
+
+  <video aria-hidden="true" autoplay class="background-video" loop muted playsinline preload="auto" webkit-playsinline>
+    <source src="../img/background.webm" type="video/webm" />
+  </video>
+
+  <nav class="site-nav" aria-label="Helix Horizon navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../"><img src="../img/favicon.png" alt="" aria-hidden="true" />Haxurus</a>
+      <div class="site-nav__links">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#details">Details</a>
+        <a href="#credits">Credits</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+    <header class="hero reveal" id="overview">
+      <div class="hero-content">
+        <span class="eyebrow">VRChat World Showcase</span>
+        <h1>Helix Horizon</h1>
+        <p class="hero-text">A futuristic penthouse high above the city skyline. Helix Horizon is built as a cyberpunk retreat for chilling, socializing, media nights, interactive games and late-night gatherings.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">Open World Page</a>
+          <a class="button button--ghost" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Launch Instance</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card">
+          <img src="../img/games/helixhorizon.png" alt="" />
+          <div class="hero-card__caption">
+            <strong>Comfort meets neon city energy</strong>
+            <span>Designed for small hangouts, chill sessions and community moments.</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section reveal" id="features">
+      <div class="section-heading">
+        <h2>What it offers</h2>
+        <p>Helix Horizon focuses on a clean social experience: a stylish environment, useful systems, playful interactions and optimized comfort for visitors.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="card-number">01 / Social</span>
+          <h3>Cyberpunk penthouse</h3>
+          <p>A modern high-rise retreat with skyline views, cozy corners and a late-night city mood.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">02 / Activities</span>
+          <h3>Interactive games</h3>
+          <p>Built to give visitors something to do together instead of only standing around and talking.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">03 / Media</span>
+          <h3>Advanced media systems</h3>
+          <p>Useful for watching content, listening together and turning the world into a hangout space.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">04 / Atmosphere</span>
+          <h3>Custom lights &amp; night mode</h3>
+          <p>Adjustable lighting and mood controls help shape the right vibe for the moment.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">05 / Relax</span>
+          <h3>Water physics &amp; jacuzzi pool</h3>
+          <p>A more relaxed area for chilling, screenshots and casual conversations with friends.</p>
+        </article>
+        <article class="card">
+          <span class="card-number">06 / Performance</span>
+          <h3>Optimized experience</h3>
+          <p>Performance-friendly improvements keep the world more comfortable across supported platforms.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="showcase">
+      <div class="section-heading">
+        <h2>Showcase</h2>
+        <p>The page is ready to become a visual gallery. Replace or extend the preview image with screenshots from the penthouse, games, jacuzzi, media area and skyline views.</p>
+      </div>
+      <div class="showcase-panel">
+        <div class="showcase-panel__media" role="img" aria-label="Helix Horizon preview image"></div>
+        <div class="showcase-panel__content">
+          <span class="eyebrow">Featured world</span>
+          <h3>Invite friends, pick a mood, stay above the city.</h3>
+          <p class="hero-text">Use this section as the main visual pitch for visitors coming from your link hub, VRChat profile, Discord communities or Patreon updates.</p>
+          <div class="section-actions">
+            <a class="button" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">Visit in VRChat</a>
+            <a class="button button--ghost" href="../#support">Support Future Updates</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="details">
+      <div class="section-heading">
+        <h2>World details</h2>
+        <p>Useful information for visitors before joining the world.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>64</strong><span>Capacity</span></div>
+        <div class="stat"><strong>PC</strong><span>Supported</span></div>
+        <div class="stat"><strong>Quest</strong><span>Supported</span></div>
+        <div class="stat"><strong>iOS</strong><span>Supported</span></div>
+      </div>
+      <div class="timeline" style="margin-top:16px">
+        <div class="timeline-item">
+          <strong>World ID</strong>
+          <span>wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06</span>
+        </div>
+        <div class="timeline-item">
+          <strong>Current theme</strong>
+          <span>Helix Horizon - Winter / Christmas</span>
+        </div>
+        <div class="timeline-item">
+          <strong>Tags</strong>
+          <span>Chill, Games, Cozy, Home, Christmas</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="credits">
+      <div class="section-heading">
+        <h2>Credits</h2>
+        <p>Credits and contact information for the world.</p>
+      </div>
+      <div class="credits-card">
+        <p><strong>Major world redesign &amp; assets:</strong> Haxurus.</p>
+        <p><strong>Original base world:</strong> sli-zen. <strong>Hard optimizations &amp; lighting:</strong> Kaira S. <strong>Custom scripts:</strong> Katseisu.</p>
+        <p>For bug reports, contact <strong>@haxurus</strong> on Discord.</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Haxurus © Copyright 2016-<span id="current-year"></span>. All Rights Reserved.</p>
+      <p><a href="../">Back to haxurus.com</a></p>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      const loader = document.getElementById('site-loader');
+      const skip = document.querySelector('[data-skip-loader]');
+      const year = document.getElementById('current-year');
+      if (year) year.textContent = new Date().getFullYear();
+
+      function hideLoader() {
+        if (!loader) return;
+        loader.classList.add('is-hidden');
+        window.setTimeout(() => loader.remove(), 480);
+      }
+
+      skip?.addEventListener('click', hideLoader);
+      window.addEventListener('load', () => window.setTimeout(hideLoader, 850), { once: true });
+      window.setTimeout(hideLoader, 3000);
+
+      const video = document.querySelector('.background-video');
+      if (video) {
+        const play = () => video.play?.().catch?.(() => {});
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) play(); });
+        play();
+      }
+
+      const revealItems = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        revealItems.forEach((el) => el.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.18 });
+
+      revealItems.forEach((el) => observer.observe(el));
+    })();
+  </script>
+</body>
+</html>
