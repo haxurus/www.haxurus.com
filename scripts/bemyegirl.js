@@ -15,6 +15,14 @@
           `{label:it?"Il Tronchetto":"The Log",value:-15},{label:it?"Sono un transformer":"I'm a transformer",value:-10}`
         )
         .replace(
+          `versionTitle: "Scegli la versione del quiz",`,
+          `versionTitle: "Scegli la versione del quiz:",`
+        )
+        .replace(
+          `versionText: "La versione breve contiene 18 domande principali. La versione lunga contiene tutte le domande.",`,
+          `versionText: "Scegli una modalità: breve per fare prima, lunga per il risultato più preciso.",`
+        )
+        .replace(
           `shortText: "18 domande. Più veloce, ma ancora abbastanza completa.",`,
           `shortText: "18 domande. Più veloce, ma meno affidabile.",`
         )
@@ -28,7 +36,7 @@
         )
         .replace(
           `Il Fiore":"The Flower",value:2`,
-          `La fessa":"The Flower",value:2`
+          `La Fessa":"The Flower",value:2`
         );
 
       if (patched === source) {
