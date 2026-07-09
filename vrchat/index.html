@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Helix Horizon | Luxury Virtual Penthouse by Haxurus</title>
-  <meta name="description" content="Helix Horizon is a luxury virtual penthouse showroom: skyline views, private lounge areas, wellness spaces, media systems and premium social amenities inside VRChat." />
+  <title>Helix Horizon | Virtual Interior Showroom by Haxurus</title>
+  <meta name="description" content="Helix Horizon presented as a spacious luxury interior showroom: a virtual penthouse residence for VRChat with skyline views, lounge areas, wellness, media and social amenities." />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#111611" />
+  <meta name="theme-color" content="#f4efe7" />
   <link rel="canonical" href="https://haxurus.com/vrchat/" />
   <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="apple-touch-icon" href="../img/favicon.png" />
@@ -14,33 +14,31 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Haxurus" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="Helix Horizon | Luxury Virtual Penthouse" />
-  <meta property="og:description" content="A premium virtual penthouse above the skyline, designed for private evenings, media nights and immersive social visits." />
+  <meta property="og:title" content="Helix Horizon | Virtual Interior Showroom" />
+  <meta property="og:description" content="A spacious, editorial showroom page for a luxury VRChat penthouse above the skyline." />
   <meta property="og:url" content="https://haxurus.com/vrchat/" />
   <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png" />
-  <meta property="og:image:alt" content="Helix Horizon luxury virtual penthouse preview" />
+  <meta property="og:image:alt" content="Helix Horizon virtual penthouse preview" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Helix Horizon | Luxury Virtual Penthouse" />
-  <meta name="twitter:description" content="A premium virtual penthouse above the skyline, designed for private evenings, media nights and immersive social visits." />
+  <meta name="twitter:title" content="Helix Horizon | Virtual Interior Showroom" />
+  <meta name="twitter:description" content="A spacious, editorial showroom page for a luxury VRChat penthouse above the skyline." />
   <meta name="twitter:image" content="https://haxurus.com/img/games/helixhorizon.png" />
   <meta name="twitter:site" content="@Haxurus" />
   <meta name="twitter:creator" content="@Haxurus" />
 
   <style>
     :root {
-      --maxw: 1180px;
-      --cream: #f5efe4;
-      --champagne: #d6bf8c;
-      --sage: #8cffb3;
-      --text: rgba(250, 246, 237, .94);
-      --muted: rgba(250, 246, 237, .68);
-      --line: rgba(245, 239, 228, .20);
-      --line-gold: rgba(214, 191, 140, .40);
-      --glass: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.07) 54%, rgba(255,255,255,.035));
-      --shadow: 0 34px 90px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.18);
-      --radius-xl: 42px;
-      --radius-lg: 32px;
-      --blur: blur(24px) saturate(165%);
+      --paper: #f4efe7;
+      --paper-2: #ebe3d7;
+      --ink: #26231f;
+      --muted: #6e675f;
+      --soft: #9b9186;
+      --line: rgba(38, 35, 31, .14);
+      --line-strong: rgba(38, 35, 31, .26);
+      --brown: #3b332d;
+      --gold: #b79b68;
+      --maxw: 1240px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
     }
 
     * { box-sizing: border-box; }
@@ -48,20 +46,13 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: var(--text);
+      color: var(--ink);
       background:
-        radial-gradient(circle at 18% 14%, rgba(214, 191, 140, .20), transparent 30%),
-        radial-gradient(circle at 84% 22%, rgba(140, 255, 179, .14), transparent 28%),
-        linear-gradient(180deg, #172018 0%, #09100c 100%);
+        radial-gradient(circle at 8% 18%, rgba(183,155,104,.13), transparent 28%),
+        radial-gradient(circle at 84% 8%, rgba(255,255,255,.62), transparent 26%),
+        linear-gradient(180deg, var(--paper) 0%, #fbf8f2 42%, var(--paper-2) 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      animation: ambientShift 14s ease-in-out infinite alternate;
-    }
-
-    @keyframes ambientShift {
-      from { background-position: 0 0, 0 0, 0 0; }
-      to { background-position: 60px 24px, -48px 42px, 0 0; }
+      overflow-x: hidden;
     }
 
     body::before {
@@ -71,45 +62,19 @@
       z-index: 0;
       pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(245,239,228,.035) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(245,239,228,.026) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: linear-gradient(180deg, rgba(0,0,0,.72), transparent 78%);
-      animation: gridDrift 24s linear infinite;
+        linear-gradient(90deg, rgba(38,35,31,.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(38,35,31,.028) 1px, transparent 1px);
+      background-size: 84px 84px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.42), transparent 72%);
+      animation: gridMove 28s linear infinite;
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background: linear-gradient(180deg, rgba(4,7,5,.04), rgba(4,7,5,.42));
-    }
-
-    @keyframes gridDrift { to { background-position: 72px 72px; } }
+    @keyframes gridMove { to { background-position: 84px 84px; } }
 
     a { color: inherit; text-decoration: none; }
     img { display: block; width: 100%; }
     p { margin: 0; }
-
-    .background-video {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .42;
-      filter: saturate(1.15) contrast(1.08) brightness(.78);
-      animation: videoBreath 18s ease-in-out infinite alternate;
-    }
-
-    @keyframes videoBreath {
-      from { transform: scale(1); opacity: .34; }
-      to { transform: scale(1.035); opacity: .50; }
-    }
+    h1, h2, h3 { margin: 0; font-weight: 400; }
 
     .site-loader {
       position: fixed;
@@ -117,331 +82,444 @@
       z-index: 9999;
       display: grid;
       place-items: center;
-      background: rgba(5,8,6,.68);
-      -webkit-backdrop-filter: blur(26px) saturate(165%);
-      backdrop-filter: blur(26px) saturate(165%);
+      background: rgba(244,239,231,.78);
+      backdrop-filter: blur(18px) saturate(145%);
       transition: opacity .45s ease, visibility .45s ease;
     }
 
     .site-loader.is-hidden { opacity: 0; visibility: hidden; }
-    .site-loader__inner { display: grid; place-items: center; gap: 16px; text-align: center; }
-    .site-loader__ring { width: 106px; height: 106px; border-radius: 50%; border: 1.5px solid rgba(245,239,228,.22); border-top-color: var(--champagne); border-right-color: rgba(140,255,179,.72); box-shadow: 0 0 34px rgba(214,191,140,.22), inset 0 0 24px rgba(255,255,255,.06); animation: spin 1.1s linear infinite; }
-    .site-loader__text { color: rgba(245,239,228,.92); font-size: .84rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; animation: softPulse 1.8s ease-in-out infinite; }
-    .site-loader__skip { border: 1px solid rgba(245,239,228,.22); border-radius: 999px; background: rgba(255,255,255,.12); color: #fff; padding: 10px 16px; font: inherit; font-weight: 800; cursor: pointer; transition: transform .2s ease, background .2s ease; }
-    .site-loader__skip:hover { transform: translateY(-2px); background: rgba(214,191,140,.20); }
+    .site-loader__inner { display: grid; place-items: center; gap: 16px; text-align: center; color: var(--brown); }
+    .site-loader__ring { width: 90px; height: 90px; border-radius: 50%; border: 1px solid rgba(38,35,31,.18); border-top-color: var(--brown); animation: spin 1.05s linear infinite; }
+    .site-loader__text { font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .site-loader__skip { border: 1px solid var(--line-strong); background: transparent; color: var(--ink); padding: 10px 18px; font: inherit; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: background .2s ease, color .2s ease; }
+    .site-loader__skip:hover { background: var(--ink); color: var(--paper); }
     @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes softPulse { 50% { opacity: .58; } }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 100vh;
+    }
 
     .site-nav {
-      position: fixed;
-      top: 16px;
-      left: 50%;
+      position: sticky;
+      top: 0;
       z-index: 100;
-      width: min(calc(100% - 28px), var(--maxw));
-      transform: translateX(-50%);
-      border: 1px solid rgba(245,239,228,.22);
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(20,24,20,.68), rgba(20,24,20,.34));
-      box-shadow: 0 18px 48px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.18);
-      -webkit-backdrop-filter: var(--blur);
-      backdrop-filter: var(--blur);
-      animation: navDrop .65s cubic-bezier(.2,.8,.2,1) both;
+      border-bottom: 1px solid var(--line);
+      background: rgba(251,248,242,.82);
+      backdrop-filter: blur(18px) saturate(160%);
+      animation: navIn .75s var(--ease) both;
     }
 
-    @keyframes navDrop { from { opacity: 0; transform: translate(-50%, -18px); } to { opacity: 1; transform: translate(-50%, 0); } }
+    @keyframes navIn { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
 
-    .site-nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 62px; padding: 9px 14px 9px 20px; }
-    .site-nav__brand { display: inline-flex; align-items: center; gap: 10px; color: var(--cream); font-size: 1rem; font-weight: 900; letter-spacing: -.02em; white-space: nowrap; }
-    .site-nav__brand img { width: 25px; height: 25px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(214,191,140,.28), 0 0 18px rgba(214,191,140,.18); animation: logoGlow 3.5s ease-in-out infinite; }
-    @keyframes logoGlow { 50% { box-shadow: 0 0 0 1px rgba(214,191,140,.48), 0 0 26px rgba(214,191,140,.32); } }
-    .site-nav__links { display: flex; align-items: center; justify-content: flex-end; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .site-nav__inner {
+      width: min(100% - 64px, var(--maxw));
+      margin: 0 auto;
+      min-height: 78px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .site-nav__brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.08rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .site-nav__brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: saturate(.75);
+    }
+
+    .site-nav__links {
+      justify-self: center;
+      display: flex;
+      gap: clamp(24px, 4vw, 52px);
+      align-items: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
     .site-nav__links::-webkit-scrollbar { display: none; }
-    .site-nav__links a { flex: 0 0 auto; padding: 10px 13px; border-radius: 999px; color: rgba(245,239,228,.86); font-size: .86rem; font-weight: 800; line-height: 1; transition: background .2s ease, color .2s ease, transform .2s ease; }
-    .site-nav__links a:hover, .site-nav__links a:focus-visible { background: rgba(214,191,140,.16); color: var(--cream); transform: translateY(-2px); }
 
-    .page { position: relative; z-index: 2; width: min(100%, var(--maxw)); margin: 0 auto; padding: 112px 18px 86px; }
+    .site-nav__links a {
+      position: relative;
+      flex: 0 0 auto;
+      padding: 8px 0;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: color .25s ease;
+    }
+
+    .site-nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: var(--ink);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .28s var(--ease);
+    }
+
+    .site-nav__links a:hover { color: var(--ink); }
+    .site-nav__links a:hover::after { transform: scaleX(1); }
+    .site-nav__cta { justify-self: end; font-size: .72rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 
     .hero {
-      position: relative;
-      min-height: clamp(720px, 88vh, 960px);
+      width: 100%;
+      min-height: clamp(560px, 72vh, 820px);
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: rgba(8, 12, 9, .20);
-      box-shadow: var(--shadow);
-      isolation: isolate;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(6,9,7,.55) 0%, rgba(6,9,7,.34) 42%, rgba(6,9,7,.10) 100%),
-        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.24));
-      z-index: 2;
-      pointer-events: none;
+    .hero__media {
+      position: relative;
+      min-height: inherit;
+      display: grid;
+      align-items: center;
+      background: #d6cec2;
+      overflow: hidden;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto -12% -24% auto;
-      width: 520px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(214,191,140,.22), transparent 68%);
-      filter: blur(4px);
-      z-index: 3;
-      pointer-events: none;
-      animation: orbFloat 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes orbFloat { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(-46px,-38px,0) scale(1.15); } }
-
-    .hero-video {
+    .hero__video,
+    .hero__image {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
-      opacity: .92;
-      filter: saturate(1.25) contrast(1.10) brightness(.92);
-      transform: scale(1.045);
-      animation: heroVideoMove 18s ease-in-out infinite alternate;
     }
 
-    .hero-media {
+    .hero__video {
+      opacity: .68;
+      filter: saturate(.88) contrast(1.02) brightness(1.08);
+      animation: heroVideo 18s ease-in-out infinite alternate;
+    }
+
+    .hero__image {
+      opacity: .46;
+      mix-blend-mode: multiply;
+      filter: saturate(.64) contrast(.96) brightness(1.14);
+      animation: heroImage 24s ease-in-out infinite alternate;
+    }
+
+    .hero__media::after {
+      content: "";
       position: absolute;
       inset: 0;
-      z-index: 1;
-      background: url("../img/games/helixhorizon.png") center/cover no-repeat;
-      opacity: .18;
-      mix-blend-mode: screen;
+      background: linear-gradient(90deg, rgba(38,35,31,.72) 0%, rgba(38,35,31,.46) 34%, rgba(38,35,31,.08) 78%);
       pointer-events: none;
-      animation: heroImageDrift 22s ease-in-out infinite alternate;
     }
 
-    @keyframes heroVideoMove { from { transform: scale(1.045) translateX(0); } to { transform: scale(1.11) translateX(-1.8%); } }
-    @keyframes heroImageDrift { from { background-position: 48% 50%; } to { background-position: 54% 46%; } }
+    @keyframes heroVideo { from { transform: scale(1.02); } to { transform: scale(1.08) translateX(-1.4%); } }
+    @keyframes heroImage { from { transform: scale(1.01); } to { transform: scale(1.06) translateX(1.4%); } }
 
-    .hero-content {
+    .hero__content {
       position: relative;
-      z-index: 4;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(34px, 6vw, 72px);
+      z-index: 2;
+      width: min(100% - 64px, var(--maxw));
+      margin: 0 auto;
+      padding: clamp(86px, 10vw, 150px) 0;
+      color: #fffaf2;
     }
 
     .eyebrow {
       display: inline-flex;
-      width: max-content;
-      margin-bottom: 18px;
-      border: 1px solid rgba(214,191,140,.42);
-      border-radius: 999px;
-      background: rgba(20, 18, 12, .32);
-      padding: 8px 12px;
-      color: var(--champagne);
+      margin-bottom: 28px;
       font-size: .72rem;
-      font-weight: 950;
-      letter-spacing: .12em;
+      font-weight: 850;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      box-shadow: 0 12px 26px rgba(0,0,0,.16);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      backdrop-filter: blur(14px) saturate(160%);
-      animation: pillGlow 3.2s ease-in-out infinite;
+      color: rgba(255,250,242,.78);
     }
-
-    @keyframes pillGlow { 50% { border-color: rgba(214,191,140,.68); box-shadow: 0 0 26px rgba(214,191,140,.20); } }
-
-    h1, h2, h3 { margin: 0; }
 
     h1 {
-      max-width: 680px;
-      color: var(--cream);
+      max-width: 560px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(4.3rem, 10vw, 9rem);
-      font-weight: 500;
-      line-height: .82;
-      letter-spacing: -.085em;
-      text-shadow: 0 24px 54px rgba(0,0,0,.56), 0 0 18px rgba(0,0,0,.26);
-      animation: titleIn 1s cubic-bezier(.2,.8,.2,1) both, titleGlow 5s ease-in-out 1s infinite;
+      font-size: clamp(3.6rem, 7.8vw, 7.8rem);
+      line-height: .92;
+      letter-spacing: -.055em;
+      text-shadow: 0 18px 45px rgba(0,0,0,.25);
+      animation: titleReveal 1s var(--ease) both;
     }
 
-    @keyframes titleIn { from { opacity: 0; transform: translateY(34px) scale(.96); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
-    @keyframes titleGlow { 50% { text-shadow: 0 24px 54px rgba(0,0,0,.56), 0 0 28px rgba(214,191,140,.22); } }
-
-    .hero-subtitle {
-      max-width: 570px;
-      margin-top: 26px;
-      color: rgba(245,239,228,.88);
-      font-size: clamp(1.04rem, 1.9vw, 1.18rem);
-      line-height: 1.72;
-      text-shadow: 0 10px 24px rgba(0,0,0,.58);
-      animation: fadeRise .85s .16s cubic-bezier(.2,.8,.2,1) both;
+    .hero__lead {
+      max-width: 440px;
+      margin-top: 34px;
+      color: rgba(255,250,242,.84);
+      font-size: 1.05rem;
+      line-height: 1.78;
+      animation: fadeUp .9s .16s var(--ease) both;
     }
 
-    .hero-actions, .section-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; animation: fadeRise .85s .28s cubic-bezier(.2,.8,.2,1) both; }
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 44px;
+      animation: fadeUp .9s .28s var(--ease) both;
+    }
 
     .button {
-      position: relative;
-      overflow: hidden;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 48px;
-      border: 1px solid rgba(214,191,140,.50);
-      border-radius: 999px;
-      background: linear-gradient(180deg, rgba(214,191,140,.32), rgba(214,191,140,.16));
-      padding: 12px 18px;
-      color: var(--cream);
-      font-weight: 900;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 14px 28px rgba(0,0,0,.22);
-      -webkit-backdrop-filter: blur(12px) saturate(150%);
-      backdrop-filter: blur(12px) saturate(150%);
-      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+      border: 1px solid rgba(255,250,242,.72);
+      padding: 13px 24px;
+      color: #fffaf2;
+      font-size: .75rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: background .25s ease, color .25s ease, transform .25s ease;
     }
 
-    .button::after {
-      content: "";
-      position: absolute;
-      inset: -40% auto -40% -45%;
-      width: 38%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.42), transparent);
-      transform: skewX(-18deg);
-      animation: buttonSheen 4.8s ease-in-out infinite;
+    .button:hover { background: #fffaf2; color: var(--ink); transform: translateY(-3px); }
+    .button--dark { border-color: var(--ink); color: var(--ink); }
+    .button--dark:hover { background: var(--ink); color: var(--paper); }
+
+    @keyframes titleReveal { from { opacity: 0; transform: translateY(36px); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+    .section {
+      width: min(100% - 64px, var(--maxw));
+      margin: 0 auto;
+      padding: clamp(110px, 12vw, 170px) 0;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 110px;
     }
 
-    @keyframes buttonSheen { 0%, 58% { left: -45%; } 82%, 100% { left: 125%; } }
-    .button:hover, .button:focus-visible { transform: translateY(-3px); border-color: rgba(245,239,228,.54); background: linear-gradient(180deg, rgba(214,191,140,.42), rgba(214,191,140,.22)); }
-    .button--ghost { border-color: rgba(245,239,228,.28); background: rgba(255,255,255,.10); }
-
-    .hero-showroom {
-      position: relative;
-      z-index: 4;
-      align-self: end;
+    .section--split {
       display: grid;
-      gap: 12px;
-      padding: clamp(28px, 4vw, 50px);
+      grid-template-columns: minmax(280px, .75fr) minmax(0, 1.25fr);
+      gap: clamp(72px, 10vw, 140px);
+      align-items: center;
     }
 
-    .listing-card {
-      border: 1px solid rgba(245,239,228,.24);
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(28, 25, 21, .66), rgba(28, 25, 21, .38));
-      box-shadow: 0 24px 70px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.16);
-      padding: 22px;
-      -webkit-backdrop-filter: var(--blur);
-      backdrop-filter: var(--blur);
-      animation: floatCard 5.8s ease-in-out infinite, fadeRise .9s .36s cubic-bezier(.2,.8,.2,1) both;
+    .section__label {
+      margin-bottom: 22px;
+      color: var(--soft);
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .16em;
+      text-transform: uppercase;
     }
 
-    @keyframes floatCard { 50% { transform: translateY(-10px); } }
-    @keyframes fadeRise { from { opacity: 0; transform: translateY(24px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    .section h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.7rem, 5.5vw, 5.6rem);
+      line-height: .96;
+      letter-spacing: -.055em;
+      color: var(--ink);
+    }
 
-    .listing-card__title { display: flex; justify-content: space-between; gap: 14px; align-items: start; margin-bottom: 20px; }
-    .listing-card__title strong { color: var(--cream); font-size: 1.1rem; line-height: 1.25; }
-    .listing-card__title span { color: var(--champagne); font-size: .78rem; font-weight: 900; letter-spacing: .10em; text-transform: uppercase; white-space: nowrap; }
-    .listing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .listing-item { border: 1px solid rgba(245,239,228,.16); border-radius: 18px; background: rgba(255,255,255,.08); padding: 14px; transition: transform .22s ease, background .22s ease; }
-    .listing-item:hover { transform: translateY(-3px); background: rgba(214,191,140,.13); }
-    .listing-item strong { display: block; color: #fff; font-size: 1.22rem; line-height: 1; }
-    .listing-item span { display: block; margin-top: 8px; color: rgba(245,239,228,.72); font-size: .82rem; font-weight: 800; }
+    .section__text {
+      max-width: 540px;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.78;
+    }
 
-    .section { margin-top: clamp(118px, 15vw, 180px); scroll-margin-top: 112px; }
-    .section-heading { display: grid; gap: 16px; margin-bottom: clamp(34px, 5vw, 58px); }
-    .section-heading h2 { color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 7vw, 6.6rem); font-weight: 500; line-height: .86; letter-spacing: -.075em; }
-    .section-heading h2::before { content: ""; display: block; width: 56px; height: 4px; margin-bottom: 20px; border-radius: 999px; background: var(--champagne); transform-origin: left; animation: linePulse 3s ease-in-out infinite; }
-    .section-heading p { max-width: 640px; color: var(--muted); font-size: 1.02rem; line-height: 1.68; }
-    @keyframes linePulse { 50% { transform: scaleX(1.55); opacity: .62; } }
+    .portrait-card {
+      display: grid;
+      grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr);
+      gap: clamp(48px, 8vw, 96px);
+      align-items: center;
+    }
 
-    .intro-panel { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 34px; align-items: stretch; }
-    .intro-copy, .quote-card, .amenity-card, .spec-card, .contact-card, .tour-step { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--glass); box-shadow: var(--shadow); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
-    .intro-copy::before, .amenity-card::before, .spec-card::before, .tour-step::before, .contact-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent, rgba(214,191,140,.08), transparent); transform: translateX(-120%); transition: transform .8s ease; pointer-events: none; }
-    .intro-copy:hover::before, .amenity-card:hover::before, .spec-card:hover::before, .tour-step:hover::before, .contact-card:hover::before { transform: translateX(120%); }
-    .intro-copy { padding: clamp(28px, 5vw, 50px); }
-    .intro-copy p { color: rgba(245,239,228,.78); font-size: 1.06rem; line-height: 1.78; }
+    .portrait-card__image,
+    .image-strip__item,
+    .quote-image {
+      position: relative;
+      overflow: hidden;
+      background: #d6cec2;
+    }
 
-    .quote-card { min-height: 390px; display: flex; align-items: end; background: url("../img/games/helixhorizon.png") center/cover no-repeat; animation: imageFloat 12s ease-in-out infinite alternate; }
-    .quote-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.62)); }
-    .quote-card blockquote { position: relative; margin: 0; padding: 30px; color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.02; letter-spacing: -.045em; }
-    @keyframes imageFloat { from { background-position: 48% 50%; } to { background-position: 54% 46%; } }
+    .portrait-card__image img,
+    .image-strip__item img,
+    .quote-image img {
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(.18) saturate(.72) contrast(.95);
+      transform: scale(1.04);
+      transition: transform .8s var(--ease), filter .8s ease;
+    }
 
-    .amenities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
-    .amenity-card { min-height: 230px; padding: 26px; transition: transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease; }
-    .amenity-card:hover { transform: translateY(-8px) scale(1.015); border-color: rgba(214,191,140,.40); background: linear-gradient(135deg, rgba(255,255,255,.17), rgba(255,255,255,.07)); box-shadow: 0 38px 100px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.18); }
-    .amenity-number { display: inline-flex; margin-bottom: 42px; color: var(--champagne); font-size: .78rem; font-weight: 950; letter-spacing: .12em; text-transform: uppercase; }
-    .amenity-card h3 { margin-bottom: 12px; color: var(--cream); font-size: 1.28rem; line-height: 1.15; }
-    .amenity-card p { color: var(--muted); line-height: 1.58; }
+    .portrait-card__image { aspect-ratio: 4 / 3; }
+    .portrait-card__image:hover img,
+    .image-strip__item:hover img,
+    .quote-image:hover img { transform: scale(1.095); filter: sepia(.06) saturate(.88) contrast(1); }
 
-    .gallery { display: grid; grid-template-columns: 1.25fr .75fr; gap: 30px; }
-    .gallery-main, .gallery-side { display: grid; gap: 30px; }
-    .gallery-tile { position: relative; overflow: hidden; min-height: 310px; border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); background: #080c09; }
-    .gallery-tile::after { content: ""; position: absolute; inset: 0; background: url("../img/games/helixhorizon.png") center/cover no-repeat; transform: scale(1.04); animation: galleryZoom 14s ease-in-out infinite alternate; }
-    .gallery-tile--large { min-height: 660px; }
-    .gallery-side .gallery-tile:nth-child(1)::after { background-position: 35% center; animation-delay: -2s; }
-    .gallery-side .gallery-tile:nth-child(2)::after { background-position: 70% center; animation-delay: -4s; }
-    .gallery-tile::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,.58)); }
-    @keyframes galleryZoom { from { transform: scale(1.04) translateX(0); } to { transform: scale(1.12) translateX(-2%); } }
-    .gallery-caption { position: absolute; z-index: 2; left: 20px; right: 20px; bottom: 20px; border: 1px solid rgba(245,239,228,.18); border-radius: 20px; background: rgba(9,13,11,.58); padding: 15px 17px; -webkit-backdrop-filter: blur(18px) saturate(155%); backdrop-filter: blur(18px) saturate(155%); transform: translateY(0); transition: transform .28s ease, background .28s ease; }
-    .gallery-tile:hover .gallery-caption { transform: translateY(-6px); background: rgba(9,13,11,.70); }
-    .gallery-caption strong { display: block; color: var(--cream); margin-bottom: 5px; }
-    .gallery-caption span { display: block; color: var(--muted); line-height: 1.42; }
+    .portrait-card__content h3 {
+      margin-top: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 3.2vw, 3.2rem);
+      line-height: 1;
+    }
 
-    .tour-panel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
-    .tour-step { padding: 22px; transition: transform .28s ease, border-color .28s ease; }
-    .tour-step:hover { transform: translateY(-8px); border-color: var(--line-gold); }
-    .tour-step strong { display: block; color: var(--champagne); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
-    .tour-step h3 { margin-bottom: 10px; color: var(--cream); font-size: 1.08rem; }
-    .tour-step p { color: var(--muted); line-height: 1.52; font-size: .95rem; }
+    .portrait-card__content p {
+      max-width: 520px;
+      margin-top: 28px;
+      color: var(--muted);
+      line-height: 1.78;
+    }
 
-    .specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
-    .spec-card { padding: 24px 18px; text-align: center; transition: transform .28s ease, border-color .28s ease; }
-    .spec-card:hover { transform: translateY(-7px); border-color: var(--line-gold); }
-    .spec-card strong { display: block; color: var(--cream); font-size: clamp(1.55rem, 3vw, 2.35rem); line-height: 1; }
-    .spec-card span { display: block; margin-top: 10px; color: var(--muted); font-size: .84rem; font-weight: 850; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(28px, 4vw, 56px);
+    }
 
-    .contact-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: center; padding: clamp(30px, 5vw, 56px); margin-top: 32px; }
-    .contact-card h2 { color: var(--cream); font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.5rem, 6vw, 5.4rem); font-weight: 500; line-height: .86; letter-spacing: -.075em; margin-bottom: 18px; }
-    .contact-card p { max-width: 600px; color: var(--muted); line-height: 1.64; }
-    .fine-print { margin-top: 14px; color: rgba(245,239,228,.50); font-size: .84rem; line-height: 1.45; }
+    .value-card {
+      min-height: 240px;
+      padding: clamp(28px, 4vw, 46px) clamp(22px, 3vw, 36px);
+      border-left: 1px solid var(--line);
+      color: var(--muted);
+      transition: transform .35s var(--ease), color .35s ease;
+    }
 
-    .site-footer { margin-top: 120px; border-top: 1px solid rgba(245,239,228,.12); padding-top: 28px; color: rgba(245,239,228,.58); text-align: center; line-height: 1.6; }
-    .site-footer a { color: var(--champagne); font-weight: 800; }
+    .value-card:hover { transform: translateY(-10px); color: var(--ink); }
+    .value-card__icon { display: block; margin-bottom: 44px; color: var(--gold); font-size: 2rem; line-height: 1; }
+    .value-card h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.65rem; color: var(--ink); }
+    .value-card p { margin-top: 24px; line-height: 1.7; }
 
-    .reveal { opacity: 0; transform: translateY(46px) scale(.982); filter: blur(10px); transition: opacity .85s ease, transform .85s cubic-bezier(.2,.8,.2,1), filter .85s ease; transition-delay: var(--delay, 0ms); }
+    .showroom {
+      display: grid;
+      grid-template-columns: minmax(260px, .52fr) minmax(0, 1.48fr);
+      gap: clamp(70px, 9vw, 130px);
+      align-items: center;
+    }
+
+    .image-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .image-strip__item { min-height: clamp(260px, 28vw, 410px); }
+
+    .process {
+      display: grid;
+      grid-template-columns: minmax(240px, .58fr) minmax(0, 1.42fr);
+      gap: clamp(70px, 10vw, 130px);
+      align-items: start;
+    }
+
+    .process-list {
+      display: grid;
+      gap: 38px;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 32px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line-strong);
+      transition: transform .35s var(--ease);
+    }
+
+    .process-item:hover { transform: translateX(10px); }
+    .process-item strong { color: var(--gold); font-size: .8rem; letter-spacing: .12em; }
+    .process-item h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.35rem; }
+    .process-item p { margin-top: 12px; color: var(--muted); line-height: 1.62; }
+
+    .quote-contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .78fr);
+      gap: clamp(72px, 10vw, 140px);
+      align-items: stretch;
+    }
+
+    .quote-image { min-height: 420px; }
+
+    .contact-panel {
+      padding: clamp(44px, 5vw, 70px);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.28);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-panel h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 4.6vw, 4.5rem);
+      line-height: .96;
+      letter-spacing: -.05em;
+    }
+
+    .contact-panel p { margin-top: 28px; color: var(--muted); line-height: 1.72; }
+    .contact-panel .button { margin-top: 42px; width: max-content; }
+
+    .site-footer {
+      width: min(100% - 64px, var(--maxw));
+      margin: 0 auto;
+      padding: 46px 0 56px;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      color: var(--soft);
+      font-size: .82rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(46px);
+      filter: blur(8px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s ease;
+      transition-delay: var(--delay, 0ms);
+    }
+
     .reveal.is-visible { opacity: 1; transform: none; filter: blur(0); }
 
-    @media (max-width: 920px) {
-      .page { padding-top: 128px; }
-      .site-nav { top: 10px; border-radius: 24px; }
-      .site-nav__inner { align-items: flex-start; flex-direction: column; gap: 10px; padding: 12px; }
-      .site-nav__links { width: 100%; justify-content: flex-start; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero::before { background: linear-gradient(180deg, rgba(6,9,7,.58), rgba(6,9,7,.38)); }
-      .hero-showroom { align-self: stretch; padding-top: 0; }
-      .section { margin-top: 120px; }
-      .intro-panel, .gallery, .contact-card { grid-template-columns: 1fr; }
-      .amenities-grid, .tour-panel, .specs { grid-template-columns: 1fr; }
-      .gallery-tile, .gallery-tile--large { min-height: 340px; }
+    @media (max-width: 980px) {
+      .site-nav__inner { width: min(100% - 32px, var(--maxw)); grid-template-columns: 1fr; gap: 18px; padding: 18px 0; }
+      .site-nav__links { justify-self: start; width: 100%; justify-content: flex-start; gap: 28px; }
+      .site-nav__cta { display: none; }
+      .hero__content, .section, .site-footer { width: min(100% - 32px, var(--maxw)); }
+      .section { padding: 96px 0; }
+      .section--split, .portrait-card, .showroom, .process, .quote-contact { grid-template-columns: 1fr; gap: 54px; }
+      .values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .image-strip { grid-template-columns: 1fr; }
+      .site-footer { flex-direction: column; }
     }
 
-    @media (max-width: 560px) {
-      .page { padding-inline: 12px; }
-      .hero-content { padding: 36px 22px 28px; }
-      .listing-grid { grid-template-columns: 1fr; }
-      .hero-actions, .section-actions { flex-direction: column; }
+    @media (max-width: 620px) {
+      .hero__media::after { background: linear-gradient(180deg, rgba(38,35,31,.68), rgba(38,35,31,.30)); }
+      .hero__actions { flex-direction: column; align-items: flex-start; }
+      .values-grid { grid-template-columns: 1fr; }
+      .value-card { border-left: 0; border-top: 1px solid var(--line); }
+      .process-item { grid-template-columns: 1fr; gap: 14px; }
       .button { width: 100%; }
-      .section { margin-top: 104px; }
+      .contact-panel .button { width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
       .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
     }
   </style>
@@ -450,134 +528,111 @@
   <div class="site-loader" id="site-loader" aria-hidden="true">
     <div class="site-loader__inner">
       <div class="site-loader__ring"></div>
-      <div class="site-loader__text">Preparing private viewing</div>
-      <button class="site-loader__skip" data-skip-loader type="button">Enter showroom</button>
+      <div class="site-loader__text">Opening showroom</div>
+      <button class="site-loader__skip" data-skip-loader type="button">Enter</button>
     </div>
   </div>
 
-  <video aria-hidden="true" autoplay class="background-video" loop muted playsinline preload="auto" webkit-playsinline>
-    <source src="../img/background.webm" type="video/webm" />
-  </video>
-
-  <nav class="site-nav" aria-label="Helix Horizon showroom navigation">
-    <div class="site-nav__inner">
-      <a class="site-nav__brand" href="../"><img src="../img/favicon.png" alt="" aria-hidden="true" />Haxurus Estates</a>
-      <div class="site-nav__links">
-        <a href="#residence">Residence</a>
-        <a href="#amenities">Amenities</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#tour">Tour</a>
-        <a href="#details">Details</a>
-      </div>
-    </div>
-  </nav>
-
   <div class="page">
-    <header class="hero reveal" id="residence">
-      <video aria-hidden="true" autoplay class="hero-video" loop muted playsinline preload="auto" webkit-playsinline>
-        <source src="../img/background.webm" type="video/webm" />
-      </video>
-      <div class="hero-media" aria-hidden="true"></div>
-      <div class="hero-content">
-        <span class="eyebrow">Private virtual residence</span>
-        <h1>Helix Horizon Penthouse</h1>
-        <p class="hero-subtitle">Luxury skyline residence for social nights, media, wellness and immersive VRChat visits.</p>
-        <div class="hero-actions">
-          <a class="button" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Book a Private Viewing</a>
-          <a class="button button--ghost" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">View Listing</a>
+    <nav class="site-nav" aria-label="Helix Horizon showroom navigation">
+      <div class="site-nav__inner">
+        <a class="site-nav__brand" href="../"><img src="../img/favicon.png" alt="" aria-hidden="true" />Haxurus Interior</a>
+        <div class="site-nav__links">
+          <a href="#home">Home</a>
+          <a href="#vision">Vision</a>
+          <a href="#values">Values</a>
+          <a href="#showroom">Showroom</a>
+          <a href="#process">Process</a>
+          <a href="#visit">Visit</a>
+        </div>
+        <a class="site-nav__cta" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">VRChat</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="home">
+      <div class="hero__media">
+        <video aria-hidden="true" autoplay class="hero__video" loop muted playsinline preload="auto" webkit-playsinline>
+          <source src="../img/background.webm" type="video/webm" />
+        </video>
+        <img class="hero__image" src="../img/games/helixhorizon.png" alt="" aria-hidden="true" />
+        <div class="hero__content">
+          <span class="eyebrow">Virtual penthouse showroom</span>
+          <h1>Helix Horizon.<br />The vision.</h1>
+          <p class="hero__lead">A luxury VRChat residence designed as a calm, cinematic showroom above the city.</p>
+          <div class="hero__actions">
+            <a class="button" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Visit showroom</a>
+            <a class="button" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">View listing</a>
+          </div>
         </div>
       </div>
-      <aside class="hero-showroom" aria-label="Residence summary">
-        <div class="listing-card">
-          <div class="listing-card__title">
-            <strong>Signature skyline penthouse</strong>
-            <span>By Haxurus</span>
-          </div>
-          <div class="listing-grid">
-            <div class="listing-item"><strong>64</strong><span>Guests</span></div>
-            <div class="listing-item"><strong>3</strong><span>Platforms</span></div>
-            <div class="listing-item"><strong>24/7</strong><span>Night view</span></div>
-            <div class="listing-item"><strong>VR</strong><span>Luxury living</span></div>
-          </div>
-        </div>
-      </aside>
     </header>
 
-    <section class="section reveal">
-      <div class="section-heading">
-        <h2>A private address above the city</h2>
-        <p>A polished penthouse experience built around atmosphere, screenshots and memorable visits.</p>
+    <section class="section section--split reveal" id="vision">
+      <div>
+        <div class="section__label">Studio direction</div>
+        <h2>The residence.</h2>
+        <p class="section__text">A virtual attic apartment imagined like a high-end interior project: spacious, warm and built for presence.</p>
       </div>
-      <div class="intro-panel">
-        <div class="intro-copy">
-          <p>Dark luxury surfaces, warm highlights and skyline reflections create the feel of a premium apartment showroom.</p>
-        </div>
-        <div class="quote-card">
-          <blockquote>Not just a world. A private address above the city.</blockquote>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="amenities">
-      <div class="section-heading">
-        <h2>Curated amenities</h2>
-        <p>Essential spaces, presented like a luxury listing.</p>
-      </div>
-      <div class="amenities-grid">
-        <article class="amenity-card reveal"><span class="amenity-number">01 / Lounge</span><h3>Panoramic lounge</h3><p>Open social space with a cinematic skyline backdrop.</p></article>
-        <article class="amenity-card reveal"><span class="amenity-number">02 / Wellness</span><h3>Jacuzzi retreat</h3><p>A soft, relaxed area for quiet moments and screenshots.</p></article>
-        <article class="amenity-card reveal"><span class="amenity-number">03 / Cinema</span><h3>Media suite</h3><p>Designed for shared watching and late-night sessions.</p></article>
-        <article class="amenity-card reveal"><span class="amenity-number">04 / Mood</span><h3>Ambient lighting</h3><p>Custom lights shape the tone of the residence.</p></article>
-        <article class="amenity-card reveal"><span class="amenity-number">05 / Play</span><h3>Interactive areas</h3><p>Entertainment without breaking the elegant atmosphere.</p></article>
-        <article class="amenity-card reveal"><span class="amenity-number">06 / Comfort</span><h3>Optimized visits</h3><p>Built for a smoother experience across supported devices.</p></article>
-      </div>
-    </section>
-
-    <section class="section reveal" id="gallery">
-      <div class="section-heading"><h2>Showroom gallery</h2><p>Large visuals, slow movement and a real-estate presentation style.</p></div>
-      <div class="gallery">
-        <div class="gallery-main"><div class="gallery-tile gallery-tile--large reveal"><div class="gallery-caption"><strong>Skyline signature view</strong><span>The main selling point of the residence.</span></div></div></div>
-        <div class="gallery-side">
-          <div class="gallery-tile reveal"><div class="gallery-caption"><strong>Evening ambience</strong><span>Dark, warm and cinematic.</span></div></div>
-          <div class="gallery-tile reveal"><div class="gallery-caption"><strong>Private entertainment</strong><span>Media, games and social areas.</span></div></div>
+      <div class="portrait-card">
+        <div class="portrait-card__image"><img src="../img/games/helixhorizon.png" alt="Helix Horizon interior preview" /></div>
+        <div class="portrait-card__content">
+          <div class="section__label">Founder & designer</div>
+          <h3>Haxurus</h3>
+          <p>The world is presented as an elegant showroom: a place to visit, photograph, relax and share with guests.</p>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="tour">
-      <div class="section-heading"><h2>Private tour</h2><p>A short guided flow for visitors.</p></div>
-      <div class="tour-panel">
-        <article class="tour-step reveal"><strong>Arrival</strong><h3>Enter</h3><p>Step into the residence.</p></article>
-        <article class="tour-step reveal"><strong>Living</strong><h3>Explore</h3><p>Move through the lounge.</p></article>
-        <article class="tour-step reveal"><strong>Leisure</strong><h3>Relax</h3><p>Try the amenities.</p></article>
-        <article class="tour-step reveal"><strong>Viewing</strong><h3>Launch</h3><p>Open it in VRChat.</p></article>
+    <section class="section reveal" id="values">
+      <div class="section__label">Design values</div>
+      <div class="values-grid">
+        <article class="value-card reveal"><span class="value-card__icon">○</span><h3>Atmosphere</h3><p>Soft light, warm tones and a cinematic skyline.</p></article>
+        <article class="value-card reveal"><span class="value-card__icon">✦</span><h3>Balance</h3><p>Elegant spaces with room to breathe.</p></article>
+        <article class="value-card reveal"><span class="value-card__icon">◇</span><h3>Comfort</h3><p>Social areas made for longer visits.</p></article>
+        <article class="value-card reveal"><span class="value-card__icon">♡</span><h3>Presence</h3><p>A residence that feels calm, premium and memorable.</p></article>
       </div>
     </section>
 
-    <section class="section reveal" id="details">
-      <div class="section-heading"><h2>Property details</h2><p>Fast facts for the listing.</p></div>
-      <div class="specs">
-        <div class="spec-card reveal"><strong>64</strong><span>Guests</span></div>
-        <div class="spec-card reveal"><strong>PC</strong><span>Supported</span></div>
-        <div class="spec-card reveal"><strong>Quest</strong><span>Supported</span></div>
-        <div class="spec-card reveal"><strong>iOS</strong><span>Supported</span></div>
+    <section class="section showroom reveal" id="showroom">
+      <div>
+        <div class="section__label">Our house as showroom</div>
+        <h2>Open, calm, curated.</h2>
+        <p class="section__text">Large scenes, fewer words and more distance between each part of the page.</p>
+        <div class="hero__actions"><a class="button button--dark" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Visit the showroom</a></div>
       </div>
-      <div class="contact-card reveal">
-        <div>
-          <h2>Schedule your viewing</h2>
-          <p>Launch a private instance and experience the penthouse directly.</p>
-          <p class="fine-print">Virtual VRChat world. Not a physical property listing.</p>
-        </div>
-        <div class="section-actions">
-          <a class="button" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Launch Viewing</a>
-          <a class="button button--ghost" href="../">Back to Haxurus</a>
-        </div>
+      <div class="image-strip">
+        <div class="image-strip__item reveal"><img src="../img/games/helixhorizon.png" alt="Helix Horizon showcase image" /></div>
+        <div class="image-strip__item reveal"><img src="../img/games/helixhorizon.png" alt="Helix Horizon showcase image" /></div>
+        <div class="image-strip__item reveal"><img src="../img/games/helixhorizon.png" alt="Helix Horizon showcase image" /></div>
+      </div>
+    </section>
+
+    <section class="section process reveal" id="process">
+      <div>
+        <div class="section__label">Experience flow</div>
+        <h2>The visit.</h2>
+      </div>
+      <div class="process-list">
+        <article class="process-item reveal"><strong>01</strong><div><h3>Arrive</h3><p>Enter the penthouse and discover the view.</p></div></article>
+        <article class="process-item reveal"><strong>02</strong><div><h3>Explore</h3><p>Move through lounge, media and social spaces.</p></div></article>
+        <article class="process-item reveal"><strong>03</strong><div><h3>Relax</h3><p>Use the atmosphere for screenshots and quiet moments.</p></div></article>
+        <article class="process-item reveal"><strong>04</strong><div><h3>Invite</h3><p>Share the residence with friends in VRChat.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section quote-contact reveal" id="visit">
+      <div class="quote-image"><img src="../img/games/helixhorizon.png" alt="Helix Horizon detail" /></div>
+      <div class="contact-panel">
+        <div class="section__label">Private viewing</div>
+        <h2>Visit Helix Horizon.</h2>
+        <p>Open the world page or launch a private instance directly from VRChat.</p>
+        <a class="button button--dark" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Launch viewing</a>
       </div>
     </section>
 
     <footer class="site-footer">
-      <p>Haxurus © Copyright 2016-<span id="current-year"></span>. All Rights Reserved.</p>
-      <p>World redesign, assets and presentation by <strong>Haxurus</strong>.</p>
+      <span>Haxurus © 2016-<span id="current-year"></span>. All Rights Reserved.</span>
+      <span>Virtual world showroom. Not a physical property listing.</span>
     </footer>
   </div>
 
@@ -595,8 +650,8 @@
       }
 
       skip?.addEventListener('click', hideLoader);
-      window.addEventListener('load', () => window.setTimeout(hideLoader, 900), { once: true });
-      window.setTimeout(hideLoader, 2800);
+      window.addEventListener('load', () => window.setTimeout(hideLoader, 650), { once: true });
+      window.setTimeout(hideLoader, 2400);
 
       document.querySelectorAll('video').forEach((video) => {
         const play = () => video.play?.().catch?.(() => {});
@@ -605,7 +660,7 @@
       });
 
       const revealItems = [...document.querySelectorAll('.reveal')];
-      revealItems.forEach((el, index) => el.style.setProperty('--delay', `${Math.min(index * 45, 360)}ms`));
+      revealItems.forEach((el, index) => el.style.setProperty('--delay', `${Math.min(index * 55, 420)}ms`));
 
       if (!('IntersectionObserver' in window)) {
         revealItems.forEach((el) => el.classList.add('is-visible'));
@@ -618,7 +673,7 @@
           entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         });
-      }, { threshold: .14, rootMargin: '0px 0px -8% 0px' });
+      }, { threshold: .16, rootMargin: '0px 0px -8% 0px' });
 
       revealItems.forEach((el) => observer.observe(el));
     })();
