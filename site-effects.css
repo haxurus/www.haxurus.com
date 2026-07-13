@@ -1,0 +1,56 @@
+/*
+ * Pointer normalization
+ *
+ * Keep the native browser cursor and prevent visual elements from following
+ * pointer coordinates. This stylesheet is loaded by scripts/script_loader.js.
+ */
+
+html,
+body,
+body * {
+  cursor: auto !important;
+}
+
+a,
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+label[for],
+select,
+summary {
+  cursor: pointer !important;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  cursor: text !important;
+}
+
+.link-card,
+.playlist-card,
+.quick-link,
+.site-nav,
+.site-footer__inner {
+  --liquid-x: 50% !important;
+  --liquid-y: 50% !important;
+  --liquid-tilt-x: 0deg !important;
+  --liquid-tilt-y: 0deg !important;
+}
+
+.link-card,
+.playlist-card,
+.quick-link {
+  transform: none !important;
+  will-change: auto !important;
+}
+
+.custom-cursor,
+.cursor-dot,
+.cursor-ring,
+.cursor-follower,
+.mouse-cursor {
+  display: none !important;
+}
