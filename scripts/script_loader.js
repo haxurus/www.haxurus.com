@@ -84,37 +84,6 @@
   else initLoader();
 })();
 
-/* background video loop watchdog */
-(() => {
-  const video = document.querySelector('.background-video');
-  if (!video) return;
-  video.loop = true;
-  video.muted = true;
-  video.playsInline = true;
-  video.setAttribute('loop', '');
-  video.setAttribute('muted', '');
-  video.setAttribute('playsinline', '');
-  video.setAttribute('webkit-playsinline', '');
-  const play = () => {
-    if (document.hidden) return;
-    const promise = video.play();
-    if (promise && typeof promise.catch === 'function') promise.catch(() => {});
-  };
-  const restart = () => { try { video.currentTime = 0; } catch (error) {} play(); };
-  video.addEventListener('ended', restart);
-  video.addEventListener('stalled', play);
-  video.addEventListener('suspend', play);
-  video.addEventListener('waiting', play);
-  video.addEventListener('pause', () => { if (!document.hidden) window.setTimeout(play, 120); });
-  video.addEventListener('timeupdate', () => {
-    if (Number.isFinite(video.duration) && video.duration > 0 && video.currentTime >= video.duration - 0.08) restart();
-  });
-  document.addEventListener('visibilitychange', play);
-  window.addEventListener('focus', play);
-  window.setInterval(() => { if (!document.hidden && (video.paused || video.ended)) play(); }, 3000);
-  play();
-})();
-
 /* combined effects stylesheet */
 (() => {
   const href = 'site-effects.css';

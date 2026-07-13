@@ -193,103 +193,50 @@
 
 /* background video */
 (() => {
-  const bgVideo = document.querySelector('.background-video');
-  if (!bgVideo) return;
-  const tryPlay = () => {
-    const promise = bgVideo.play();
-    if (promise && typeof promise.catch === 'function') promise.catch(() => {});
-  };
-  bgVideo.addEventListener('loadeddata', tryPlay);
-  bgVideo.addEventListener('canplay', tryPlay);
-  bgVideo.addEventListener('ended', () => { bgVideo.currentTime = 0; tryPlay(); });
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
-  window.addEventListener('focus', tryPlay);
-  window.addEventListener('pointerdown', tryPlay, { once: true });
-  tryPlay();
-})();
+  const video = document.querySelector('.background-video');
+  if (!video) return;
 
-/* particles */
-(() => {
-  const canvas = document.getElementById('particle-bg');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-  const particles = [];
-  const mouse = { x: -9999, y: -9999, active: false };
-  let rafId = null;
-  let enabled = false;
+  video.loop = true;
+  video.muted = true;
+  video.playsInline = true;
+  video.setAttribute('loop', '');
+  video.setAttribute('muted', '');
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
 
-  function shouldEnable() {
-    const device = document.body?.dataset?.device;
-    const touchLike = window.matchMedia('(pointer: coarse), (hover: none)').matches || (navigator.maxTouchPoints || 0) > 0;
-    return device ? device === 'desktop' && !touchLike : window.innerWidth > 768 && !touchLike;
-  }
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = Math.floor(window.innerWidth * dpr);
-    canvas.height = Math.floor(window.innerHeight * dpr);
-    canvas.style.width = `${window.innerWidth}px`;
-    canvas.style.height = `${window.innerHeight}px`;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  function randomBetween(min, max) { return Math.random() * (max - min) + min; }
-  function createParticles() {
-    particles.length = 0;
-    for (let i = 0; i < 150; i += 1) {
-      particles.push({ x: randomBetween(0, window.innerWidth), y: randomBetween(0, window.innerHeight), vx: randomBetween(-0.12, 0.12), vy: randomBetween(-0.12, 0.12), size: randomBetween(1.2, 3.1), glow: randomBetween(8, 18), hue: [120, 135, 145][Math.floor(Math.random() * 3)], phase: randomBetween(0, Math.PI * 2), drift: randomBetween(0.0015, 0.0035) });
+  let retryTimer = null;
+
+  function play() {
+    if (document.hidden || !video.paused) return;
+    const promise = video.play();
+    if (promise && typeof promise.catch === 'function') {
+      promise.catch(() => {});
     }
   }
-  function drawParticle(p) {
-    ctx.beginPath();
-    ctx.fillStyle = `hsla(${p.hue}, 85%, 68%, 0.78)`;
-    ctx.shadowBlur = p.glow;
-    ctx.shadowColor = `hsla(${p.hue}, 85%, 65%, 0.45)`;
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
+
+  function scheduleRetry() {
+    window.clearTimeout(retryTimer);
+    retryTimer = window.setTimeout(play, 250);
   }
-  function drawLinks() {
-    for (let i = 0; i < particles.length; i += 1) {
-      const a = particles[i];
-      for (let j = i + 1; j < particles.length; j += 1) {
-        const b = particles[j];
-        const dist = Math.hypot(a.x - b.x, a.y - b.y);
-        if (dist < 135) { ctx.beginPath(); ctx.strokeStyle = `rgba(120, 255, 170, ${0.12 * (1 - dist / 135)})`; ctx.lineWidth = 1; ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
-      }
-      if (mouse.active) {
-        const dist = Math.hypot(a.x - mouse.x, a.y - mouse.y);
-        if (dist < 150) { ctx.beginPath(); ctx.strokeStyle = `rgba(187, 247, 208, ${0.18 * (1 - dist / 150)})`; ctx.lineWidth = 1; ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke(); }
-      }
-    }
+
+  function restart() {
+    try { video.currentTime = 0; } catch (error) {}
+    play();
   }
-  function updateParticles() {
-    const time = performance.now();
-    for (const p of particles) {
-      p.vx += Math.cos(time * p.drift + p.phase) * 0.0028;
-      p.vy += Math.sin(time * p.drift * 0.8 + p.phase) * 0.0028;
-      if (mouse.active) {
-        const dx = mouse.x - p.x;
-        const dy = mouse.y - p.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 140 && dist > 0.1) { const force = (140 - dist) / 140; p.vx -= (dx / dist) * force * 0.03; p.vy -= (dy / dist) * force * 0.03; }
-      }
-      p.x += p.vx; p.y += p.vy; p.vx *= 0.996; p.vy *= 0.996;
-      if (p.x < -20) p.x = window.innerWidth + 20;
-      if (p.x > window.innerWidth + 20) p.x = -20;
-      if (p.y < -20) p.y = window.innerHeight + 20;
-      if (p.y > window.innerHeight + 20) p.y = -20;
-    }
-  }
-  function render() { if (!enabled) return; ctx.clearRect(0, 0, window.innerWidth, window.innerHeight); drawLinks(); particles.forEach(drawParticle); updateParticles(); rafId = window.requestAnimationFrame(render); }
-  function start() { if (enabled) return; enabled = true; canvas.style.display = 'block'; resize(); createParticles(); render(); }
-  function stop() { enabled = false; canvas.style.display = 'none'; mouse.active = false; if (rafId) window.cancelAnimationFrame(rafId); rafId = null; ctx.clearRect(0, 0, canvas.width, canvas.height); }
-  function sync() { shouldEnable() ? start() : stop(); }
-  window.addEventListener('mousemove', (event) => { if (!enabled) return; mouse.x = event.clientX; mouse.y = event.clientY; mouse.active = true; });
-  window.addEventListener('mouseleave', () => { mouse.active = false; });
-  window.addEventListener('resize', () => { if (enabled) { resize(); createParticles(); } sync(); }, { passive: true });
-  window.addEventListener('haxurus:devicechange', sync);
-  document.addEventListener('visibilitychange', () => { if (document.hidden && enabled && rafId) { window.cancelAnimationFrame(rafId); rafId = null; } else if (!document.hidden && enabled && !rafId) render(); });
-  sync();
+
+  video.addEventListener('loadeddata', play);
+  video.addEventListener('canplay', play);
+  video.addEventListener('ended', restart);
+  video.addEventListener('stalled', scheduleRetry);
+  video.addEventListener('waiting', scheduleRetry);
+  video.addEventListener('pause', scheduleRetry);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) play();
+  });
+  window.addEventListener('focus', play);
+  window.addEventListener('pointerdown', play, { once: true });
+
+  play();
 })();
 
 /* sequential reveal */
@@ -416,52 +363,3 @@
   yearTarget.textContent = String(new Date().getFullYear());
 })();
 
-/* custom cyber cursor */
-(() => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const touchLike = window.matchMedia('(pointer: coarse), (hover: none)').matches || (navigator.maxTouchPoints || 0) > 0;
-  if (reduceMotion || touchLike || window.innerWidth <= 900) return;
-
-  const style = document.createElement('style');
-  style.textContent = `
-    body.custom-cursor-enabled,body.custom-cursor-enabled *{cursor:none!important}.cyber-cursor{position:fixed;left:0;top:0;z-index:10000;width:12px;height:12px;border-radius:50%;background:#8cffb3;box-shadow:0 0 12px rgba(140,255,179,.9),0 0 28px rgba(57,255,20,.34);pointer-events:none;transform:translate3d(-50%,-50%,0);transition:opacity .18s ease,background .18s ease,box-shadow .18s ease}.cyber-cursor-ring{position:fixed;left:0;top:0;z-index:9999;width:34px;height:34px;border:1px solid rgba(140,255,179,.76);border-radius:50%;box-shadow:0 0 18px rgba(140,255,179,.35),inset 0 0 18px rgba(140,255,179,.12);pointer-events:none;transform:translate3d(-50%,-50%,0);transition:width .18s ease,height .18s ease,border-color .18s ease,opacity .18s ease,box-shadow .18s ease}.cyber-cursor-ring::before,.cyber-cursor-ring::after{content:"";position:absolute;background:rgba(140,255,179,.82);box-shadow:0 0 10px rgba(140,255,179,.7)}.cyber-cursor-ring::before{left:50%;top:-5px;width:1px;height:10px;transform:translateX(-50%)}.cyber-cursor-ring::after{top:50%;left:-5px;width:10px;height:1px;transform:translateY(-50%)}body.cursor-idle .cyber-cursor,body.cursor-idle .cyber-cursor-ring{opacity:0}body.cursor-target .cyber-cursor{width:6px;height:6px;background:#fff;box-shadow:0 0 10px rgba(255,255,255,.8),0 0 24px rgba(140,255,179,.6)}body.cursor-target .cyber-cursor-ring{width:52px;height:52px;border-color:rgba(140,255,179,.95);box-shadow:0 0 24px rgba(140,255,179,.55),inset 0 0 20px rgba(140,255,179,.18)}body.cursor-down .cyber-cursor-ring{width:44px;height:44px}body.cursor-down .cyber-cursor{transform:translate3d(-50%,-50%,0) scale(.85)}
-  `;
-  document.head.appendChild(style);
-
-  const dot = document.createElement('div');
-  dot.className = 'cyber-cursor';
-  const ring = document.createElement('div');
-  ring.className = 'cyber-cursor-ring';
-  document.body.append(dot, ring);
-  document.body.classList.add('custom-cursor-enabled', 'cursor-idle');
-
-  const clickableSelector = 'a,button,[role="button"],input,textarea,select,.link-card,.playlist-card,.quick-link,.about-haxurus__button,.site-loader__skip,.modal-close,.lol-button';
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
-
-  function move(event) {
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
-    document.body.classList.remove('cursor-idle');
-    document.body.classList.toggle('cursor-target', Boolean(event.target.closest(clickableSelector)));
-  }
-
-  function animate() {
-    ringX += (mouseX - ringX) * 0.22;
-    ringY += (mouseY - ringY) * 0.22;
-    ring.style.left = `${ringX}px`;
-    ring.style.top = `${ringY}px`;
-    window.requestAnimationFrame(animate);
-  }
-
-  document.addEventListener('mousemove', move, { passive: true });
-  document.addEventListener('mouseleave', () => document.body.classList.add('cursor-idle'));
-  document.addEventListener('mouseenter', () => document.body.classList.remove('cursor-idle'));
-  document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
-  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
-  animate();
-})();
