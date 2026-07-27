@@ -5,7 +5,7 @@
   const MIN_LOADER_TIME = 3800;
   const MAX_ASSET_WAIT = 2600;
   const SKIP_EVENT = 'haxurus:skip-intro';
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = false;
   const loader = document.getElementById('site-loader');
   const skipButton = loader ? loader.querySelector('[data-skip-loader]') : null;
   const startedAt = performance.now();
@@ -16,6 +16,24 @@
   let revealObserver = null;
 
   const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+  function forceAnimationsEnabled() {
+    const style = document.createElement('style');
+    style.setAttribute('data-force-homepage-animations', '');
+    style.textContent = `
+      #site-loader .site-loader__ring{animation:loader-spin 1.05s linear infinite!important}
+      #site-loader .site-loader__dot{animation:loader-pulse 1.15s ease-in-out infinite!important}
+      #site-loader .site-loader__text{animation:loader-text 1.4s ease-in-out infinite!important}
+      .hero .glitch-logo{animation:glitch-main 2.6s infinite!important}
+      .hero .glitch-logo::before{animation:glitch-cyan 1.05s infinite linear alternate-reverse!important}
+      .hero .glitch-logo::after{animation:glitch-magenta .85s infinite linear alternate-reverse!important}
+      .hero .glitch-logo .scanlines{animation:scanline-move .8s linear infinite!important}
+      .hero .glitch-logo .noise{animation:glitch-bars 1.4s infinite steps(1)!important}
+      .type-caret::after{animation:caret-blink .72s steps(1,end) infinite!important}
+      .intro-managed{transition:opacity .62s ease,transform .62s cubic-bezier(.2,.8,.2,1),visibility .62s ease!important}
+    `;
+    document.head.appendChild(style);
+  }
 
   function createAboutSection() {
     const hero = document.querySelector('.hero');
@@ -115,7 +133,7 @@
     if (!element) return;
     rememberText(element);
     const text = textState.get(element) || '';
-    if (!text || skipped || reducedMotion) {
+    if (!text || skipped) {
       restoreText(element);
       return;
     }
@@ -134,7 +152,7 @@
     activeAnimations.add(element);
     showElement(element);
 
-    if (skipped || reducedMotion) {
+    if (skipped) {
       textTargetsFor(element).forEach(restoreText);
       if (element.matches('.about-haxurus')) element.classList.add('about-actions-ready');
       return;
@@ -191,7 +209,7 @@
 
   function startScrollReveals() {
     const targets = managedElements().filter((element) => !element.matches('.hero, .quick-link'));
-    if (reducedMotion || skipped || !('IntersectionObserver' in window)) {
+    if (skipped || !('IntersectionObserver' in window)) {
       targets.forEach((element) => revealManaged(element));
       return;
     }
@@ -211,7 +229,7 @@
     try {
       await waitForPageAssets();
       await closeLoader();
-      if (skipped || reducedMotion) {
+      if (skipped) {
         revealAll();
         return;
       }
@@ -262,6 +280,7 @@
     play();
   }
 
+  forceAnimationsEnabled();
   createAboutSection();
   prepareGlitchTitle();
   prepareIntro();
