@@ -1,0 +1,33 @@
+name: Restore homepage animations
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restore-homepage-animations.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository history
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Restore animation stylesheet only
+        run: |
+          git show 23b20b98f97d15874c2d3dae5edd733b1bd3cca4:css/site-effects.css > css/site-effects.css
+          rm -f .github/workflows/restore-homepage-animations.yml
+
+      - name: Commit restored animations
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add css/site-effects.css .github/workflows/restore-homepage-animations.yml
+          git commit -m "Restore homepage text title and loader animations"
+          git push origin main
