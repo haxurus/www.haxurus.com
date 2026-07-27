@@ -84,15 +84,8 @@
   else initLoader();
 })();
 
-/* combined effects stylesheet */
+/* hero summer banner */
 (() => {
-  const href = 'site-effects.css';
-  if (!document.querySelector(`link[href="${href}"]`)) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    document.head.appendChild(link);
-  }
   if (!document.querySelector('style[data-hero-summer-banner]')) {
     const override = document.createElement('style');
     override.setAttribute('data-hero-summer-banner', '');
