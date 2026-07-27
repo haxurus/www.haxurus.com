@@ -1,0 +1,68 @@
+name: Patch homepage entrypoint
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/patch-homepage-entrypoint.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove legacy inline scripts and version assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          html = path.read_text(encoding='utf-8')
+          version = '20260727-1100'
+
+          html = html.replace('href="css/style.css"', f'href="css/style.css?v={version}"')
+          html = html.replace('href="css/site-effects.css"', f'href="css/site-effects.css?v={version}"')
+
+          style_end = html.index('</style>') + len('</style>')
+          loader_tag = '<script defer="" src="scripts/script_loader.js"></script>'
+          script_tag = '<script defer="" src="scripts/script.js"></script>'
+          loader_pos = html.index(loader_tag, style_end)
+          scripts_end = html.index(script_tag, loader_pos) + len(script_tag)
+
+          replacement = (
+              '\n<script defer src="scripts/script_loader.js?v=' + version + '"></script>'
+              '\n<script defer src="scripts/script.js?v=' + version + '"></script>'
+          )
+          html = html[:style_end] + replacement + html[scripts_end:]
+
+          marker = '<meta content="#0f1115" name="theme-color"/>'
+          build = f'{marker}\n<meta name="haxurus-build" content="{version}"/>'
+          html = html.replace(marker, build, 1)
+
+          path.write_text(html, encoding='utf-8')
+          PY
+
+      - name: Validate entrypoint
+        run: |
+          grep -q 'haxurus-build' index.html
+          grep -q 'script_loader.js?v=20260727-1100' index.html
+          grep -q 'site-effects.css?v=20260727-1100' index.html
+          test "$(grep -c 'minimumLoaderTime' index.html || true)" -eq 0
+          test "$(grep -c 'primeSupport' index.html || true)" -eq 0
+
+      - name: Remove this workflow
+        run: rm -f .github/workflows/patch-homepage-entrypoint.yml
+
+      - name: Commit patch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html .github/workflows/patch-homepage-entrypoint.yml
+          git commit -m 'Fix homepage entrypoint and bust asset cache'
+          git push
