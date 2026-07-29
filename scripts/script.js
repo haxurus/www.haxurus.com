@@ -27,7 +27,7 @@
   }
 
   function addBadge(card, type, label) {
-    if (!card) return;
+    if (!card || card.dataset.noBadges === 'true') return;
     const body = getCardBody(card);
     let badges = body.querySelector('.card-badges');
     if (!badges) {
@@ -58,6 +58,12 @@
     ];
 
     cards.forEach((card) => {
+      if (card.dataset.noBadges === 'true') {
+        card.querySelector('.card-badges')?.remove();
+        card.classList.remove('has-card-badges');
+        return;
+      }
+
       const href = card.getAttribute('href') || '';
       const text = card.textContent || '';
       const aria = card.getAttribute('aria-label') || '';
@@ -74,7 +80,9 @@
       if (/Telegram\s*\(Chat Bot\)/i.test(text)) addBadge(card, 'bot', 'Bot');
     });
 
-    document.querySelectorAll('#discord .link-card, #vrchat a[href*="vrc.group"]').forEach((card) => addBadge(card, 'community', 'Community'));
+    document.querySelectorAll('#discord .link-card, #vrchat a[href*="vrc.group"]').forEach((card) => {
+      if (card.dataset.noBadges !== 'true') addBadge(card, 'community', 'Community');
+    });
 
     const supportNote = document.querySelector('.support-note');
     if (supportNote) {
@@ -99,6 +107,72 @@
     }, { threshold: 0.22, rootMargin: '-10% 0px -18% 0px' });
 
     sections.forEach((section) => observer.observe(section));
+  }
+
+  function enableSectionWheelNavigation() {
+    if (!window.matchMedia('(min-width: 721px) and (pointer: fine)').matches) return;
+
+    const sections = [
+      document.querySelector('.hero'),
+      document.querySelector('.about-haxurus'),
+      ...document.querySelectorAll('.animated-sections .category'),
+      document.querySelector('.site-footer')
+    ].filter(Boolean);
+
+    if (sections.length < 2) return;
+
+    let locked = false;
+    let unlockTimer = 0;
+
+    function canScrollableAncestorHandleWheel(target, direction) {
+      let element = target instanceof Element ? target : null;
+      while (element && element !== document.body) {
+        const style = window.getComputedStyle(element);
+        const scrollable = /(auto|scroll)/.test(style.overflowY) && element.scrollHeight > element.clientHeight + 1;
+        if (scrollable) {
+          const canScrollDown = element.scrollTop + element.clientHeight < element.scrollHeight - 1;
+          const canScrollUp = element.scrollTop > 1;
+          if ((direction > 0 && canScrollDown) || (direction < 0 && canScrollUp)) return true;
+        }
+        element = element.parentElement;
+      }
+      return false;
+    }
+
+    function currentSectionIndex() {
+      const viewportReference = window.innerHeight * 0.38;
+      let bestIndex = 0;
+      let bestDistance = Number.POSITIVE_INFINITY;
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.abs(rect.top - viewportReference);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = index;
+        }
+      });
+      return bestIndex;
+    }
+
+    window.addEventListener('wheel', (event) => {
+      if (event.ctrlKey || event.metaKey || document.body.classList.contains('modal-open')) return;
+      if (Math.abs(event.deltaY) < 12 || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+
+      const direction = event.deltaY > 0 ? 1 : -1;
+      if (canScrollableAncestorHandleWheel(event.target, direction)) return;
+
+      event.preventDefault();
+      if (locked) return;
+
+      const currentIndex = currentSectionIndex();
+      const nextIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
+      if (nextIndex === currentIndex) return;
+
+      locked = true;
+      sections[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.clearTimeout(unlockTimer);
+      unlockTimer = window.setTimeout(() => { locked = false; }, 850);
+    }, { passive: false });
   }
 
   function enableModals() {
@@ -159,6 +233,7 @@
   addAboutNavigation();
   applyCardBadges();
   activateSections();
+  enableSectionWheelNavigation();
   enableModals();
   setCurrentYear();
 })();
