@@ -121,8 +121,13 @@
 
     if (sections.length < 2) return;
 
+    // Native mandatory snapping moves away from tall sections before their
+    // content has been fully read. Desktop wheel navigation is managed here.
+    document.documentElement.style.scrollSnapType = 'none';
+
     let locked = false;
     let unlockTimer = 0;
+    const edgeTolerance = 3;
 
     function canScrollableAncestorHandleWheel(target, direction) {
       let element = target instanceof Element ? target : null;
@@ -140,18 +145,21 @@
     }
 
     function currentSectionIndex() {
-      const viewportReference = window.innerHeight * 0.38;
-      let bestIndex = 0;
-      let bestDistance = Number.POSITIVE_INFINITY;
+      const pageY = window.scrollY + edgeTolerance;
+      let currentIndex = 0;
+
       sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - viewportReference);
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          bestIndex = index;
-        }
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+        if (sectionTop <= pageY) currentIndex = index;
       });
-      return bestIndex;
+
+      return currentIndex;
+    }
+
+    function sectionHasMoreContent(section, direction) {
+      const rect = section.getBoundingClientRect();
+      if (direction > 0) return rect.bottom > window.innerHeight + edgeTolerance;
+      return rect.top < -edgeTolerance;
     }
 
     window.addEventListener('wheel', (event) => {
@@ -161,13 +169,22 @@
       const direction = event.deltaY > 0 ? 1 : -1;
       if (canScrollableAncestorHandleWheel(event.target, direction)) return;
 
-      event.preventDefault();
-      if (locked) return;
+      if (locked) {
+        event.preventDefault();
+        return;
+      }
 
       const currentIndex = currentSectionIndex();
+      const currentSection = sections[currentIndex];
+
+      // Keep normal page scrolling while the current section still extends
+      // beyond the viewport in the requested direction.
+      if (sectionHasMoreContent(currentSection, direction)) return;
+
       const nextIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
       if (nextIndex === currentIndex) return;
 
+      event.preventDefault();
       locked = true;
       sections[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
       window.clearTimeout(unlockTimer);
