@@ -9,7 +9,6 @@
   const loader = document.getElementById('site-loader');
   const skipButton = loader ? loader.querySelector('[data-skip-loader]') : null;
   const startedAt = performance.now();
-  const textState = new Map();
   const activeAnimations = new WeakSet();
   let skipped = window.__skipIntro === true;
   let loaderClosed = false;
@@ -29,7 +28,6 @@
       .hero .glitch-logo::after{animation:glitch-magenta .85s infinite linear alternate-reverse!important}
       .hero .glitch-logo .scanlines{animation:scanline-move .8s linear infinite!important}
       .hero .glitch-logo .noise{animation:glitch-bars 1.4s infinite steps(1)!important}
-      .type-caret::after{animation:caret-blink .72s steps(1,end) infinite!important}
       .intro-managed{transition:opacity .62s ease,transform .62s cubic-bezier(.2,.8,.2,1),visibility .62s ease!important}
     `;
     document.head.appendChild(style);
@@ -69,27 +67,6 @@
     title.innerHTML = `<span aria-hidden="true">${text}</span><i class="scanlines" aria-hidden="true"></i><i class="noise" aria-hidden="true"></i>`;
   }
 
-  function rememberText(element) {
-    if (!element || textState.has(element)) return;
-    const text = (element.textContent || '').trim();
-    textState.set(element, text);
-    element.dataset.introText = text;
-  }
-
-  function clearText(element) {
-    if (!element) return;
-    rememberText(element);
-    element.textContent = '';
-    element.classList.remove('type-caret');
-  }
-
-  function restoreText(element) {
-    if (!element) return;
-    rememberText(element);
-    element.textContent = textState.get(element) || element.dataset.introText || '';
-    element.classList.remove('type-caret');
-  }
-
   function managedElements() {
     return [
       document.querySelector('.hero'),
@@ -100,26 +77,9 @@
     ].filter(Boolean);
   }
 
-  function textTargetsFor(element) {
-    if (!element) return [];
-    if (element.matches('.hero')) return [element.querySelector('.hero-text')].filter(Boolean);
-    if (element.matches('.about-haxurus')) {
-      return [
-        element.querySelector('.about-haxurus__eyebrow'),
-        element.querySelector('h2'),
-        element.querySelector('p'),
-        ...element.querySelectorAll('.about-haxurus__button')
-      ].filter(Boolean);
-    }
-    if (element.matches('h2')) return [element];
-    if (element.matches('.support-card')) return [element.querySelector('.card-title')].filter(Boolean);
-    return [...element.querySelectorAll('.card-title, .card-subtitle, .playlist-title, .playlist-subtitle, .playlist-tag')];
-  }
-
   function prepareIntro() {
     managedElements().forEach((element) => {
       element.classList.add('intro-managed');
-      textTargetsFor(element).forEach(clearText);
     });
   }
 
@@ -129,43 +89,10 @@
     if (element.matches('.about-haxurus')) element.classList.add('about-ready');
   }
 
-  async function typeText(element, speed = 14) {
-    if (!element) return;
-    rememberText(element);
-    const text = textState.get(element) || '';
-    if (!text || skipped) {
-      restoreText(element);
-      return;
-    }
-
-    element.classList.add('type-caret');
-    for (let index = 1; index <= text.length; index += 1) {
-      if (skipped) break;
-      element.textContent = text.slice(0, index);
-      await wait(speed);
-    }
-    restoreText(element);
-  }
-
   async function revealManaged(element) {
     if (!element || activeAnimations.has(element) || element.classList.contains('seq-visible')) return;
     activeAnimations.add(element);
     showElement(element);
-
-    if (skipped) {
-      textTargetsFor(element).forEach(restoreText);
-      if (element.matches('.about-haxurus')) element.classList.add('about-actions-ready');
-      return;
-    }
-
-    await wait(element.matches('.hero') ? 260 : 100);
-    const targets = textTargetsFor(element);
-    for (const target of targets) {
-      const speed = target.matches('p, .card-subtitle, .playlist-subtitle, .playlist-tag') ? 8 : 14;
-      await typeText(target, speed);
-      if (skipped) break;
-      await wait(45);
-    }
     if (element.matches('.about-haxurus')) element.classList.add('about-actions-ready');
   }
 
@@ -176,7 +103,6 @@
     document.body.classList.remove('is-loading');
     managedElements().forEach((element) => {
       showElement(element);
-      textTargetsFor(element).forEach(restoreText);
       if (element.matches('.about-haxurus')) element.classList.add('about-actions-ready');
     });
     if (revealObserver) revealObserver.disconnect();
