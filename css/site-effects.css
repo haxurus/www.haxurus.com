@@ -26,6 +26,22 @@ body.is-loading #particle-bg {
   visibility: hidden !important;
 }
 
+.background-video {
+  filter: none !important;
+}
+
+/* Skip layout, paint and style work for content far outside the viewport. */
+.about-haxurus,
+.animated-sections .category,
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100vh;
+}
+
+.site-footer {
+  contain-intrinsic-size: auto 320px;
+}
+
 /* The loading screen is the only animated part of the main site. */
 #site-loader {
   position: fixed;
