@@ -85,53 +85,7 @@
     });
 
     const supportNote = document.querySelector('.support-note');
-    if (supportNote) {
-      const text = 'You can join for FREE to see extra content.';
-      supportNote.dataset.originalText = text;
-      supportNote.textContent = text;
-    }
-  }
-
-  function enableModals() {
-    const modals = [...document.querySelectorAll('.modal')];
-    let activeModal = null;
-    let previousFocus = null;
-
-    function openModal(id, trigger) {
-      const modal = document.getElementById(id);
-      if (!modal) return;
-      previousFocus = trigger || document.activeElement;
-      activeModal = modal;
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('modal-open');
-      const focusTarget = modal.querySelector('button, a[href], [tabindex]:not([tabindex="-1"])');
-      if (focusTarget) window.requestAnimationFrame(() => focusTarget.focus());
-    }
-
-    function closeModal(modal) {
-      if (!modal) return;
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      activeModal = null;
-      document.body.classList.remove('modal-open');
-      if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
-    }
-
-    document.querySelectorAll('[data-modal-open]').forEach((trigger) => {
-      trigger.addEventListener('click', () => openModal(trigger.dataset.modalOpen, trigger));
-    });
-    document.querySelectorAll('[data-modal-close]').forEach((trigger) => {
-      trigger.addEventListener('click', () => closeModal(trigger.closest('.modal')));
-    });
-    modals.forEach((modal) => {
-      modal.addEventListener('click', (event) => {
-        if (event.target.matches('.modal, .modal-backdrop')) closeModal(modal);
-      });
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && activeModal) closeModal(activeModal);
-    });
+    if (supportNote) supportNote.textContent = 'You can join for FREE to see extra content.';
   }
 
   function setCurrentYear() {
@@ -149,6 +103,5 @@
   applyDeviceClass();
   addAboutNavigation();
   applyCardBadges();
-  enableModals();
   setCurrentYear();
 })();
