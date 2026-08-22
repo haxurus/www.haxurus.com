@@ -10,7 +10,7 @@
     section.id = 'about';
     section.innerHTML = `
       <div class="about-haxurus__card">
-        <div class="about-haxurus__visual" aria-hidden="true"><img alt="" src="img/favicon.png"></div>
+        <div class="about-haxurus__visual" aria-hidden="true"><img alt="" src="img/favicon.png" loading="lazy" decoding="async"></div>
         <div class="about-haxurus__content">
           <span class="about-haxurus__eyebrow">Personal hub</span>
           <h2>About me</h2>
@@ -24,6 +24,17 @@
       </div>`;
     hero.insertAdjacentElement('afterend', section);
   }
+
+  document.querySelectorAll('.about-haxurus img, .animated-sections img, .site-footer img').forEach((image) => {
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
+  });
+
+  document.querySelectorAll('.site-nav img, .hero img').forEach((image) => {
+    image.loading = 'eager';
+    image.decoding = 'async';
+  });
 
   window.setTimeout(() => {
     document.body.classList.remove('is-loading');
