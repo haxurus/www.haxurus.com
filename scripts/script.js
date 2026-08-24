@@ -22,6 +22,49 @@
     links.prepend(link);
   }
 
+  function addAdminLoginLink() {
+    if (document.querySelector('.admin-login-link')) return;
+
+    const link = document.createElement('a');
+    link.className = 'admin-login-link';
+    link.href = '/wp-admin/';
+    link.setAttribute('aria-label', 'WordPress admin login');
+    link.title = 'WordPress admin login';
+    link.innerHTML = `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M7.5 14a5.5 5.5 0 1 1 4.87-2.94L22 20.69V22h-1.31l-1-1H18v-1.69l-1-1H15.31l-1.44-1.44A5.47 5.47 0 0 1 7.5 14Zm0-3A2.5 2.5 0 1 0 5 8.5 2.5 2.5 0 0 0 7.5 11Z"/>
+      </svg>`;
+
+    Object.assign(link.style, {
+      position: 'fixed',
+      top: '16px',
+      right: '16px',
+      zIndex: '1400',
+      width: '42px',
+      height: '42px',
+      display: 'grid',
+      placeItems: 'center',
+      border: '1px solid rgba(255,255,255,.28)',
+      borderRadius: '50%',
+      background: 'rgba(7,16,12,.72)',
+      boxShadow: '0 10px 24px rgba(0,0,0,.22)',
+      color: '#dfffe7',
+      textDecoration: 'none'
+    });
+
+    const svg = link.querySelector('svg');
+    if (svg) {
+      Object.assign(svg.style, {
+        width: '20px',
+        height: '20px',
+        fill: 'currentColor',
+        pointerEvents: 'none'
+      });
+    }
+
+    document.body.appendChild(link);
+  }
+
   function getCardBody(card) {
     return card.querySelector('.card-body, .link-card-banner-body, .playlist-info') || card;
   }
@@ -102,6 +145,7 @@
 
   applyDeviceClass();
   addAboutNavigation();
+  addAdminLoginLink();
   applyCardBadges();
   setCurrentYear();
 })();
