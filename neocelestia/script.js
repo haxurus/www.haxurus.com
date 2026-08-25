@@ -4,6 +4,78 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const navLinks = [...document.querySelectorAll('[data-nav]')];
 const sections = [...document.querySelectorAll('main section[id]')];
 
+// Add or remove staff members here.
+// Suggested image path: ../img/neocelestia/staff/filename.webp
+const staffMembers = [
+  {
+    name: 'Haxurus',
+    role: 'Founder',
+    image: '../img/neocelestia/staff/haxurus.webp'
+  },
+  {
+    name: 'Nome staffer',
+    role: 'Ruolo',
+    image: '../img/neocelestia/staff/staffer-2.webp'
+  },
+  {
+    name: 'Nome staffer',
+    role: 'Ruolo',
+    image: '../img/neocelestia/staff/staffer-3.webp'
+  }
+];
+
+const staffGrid = document.getElementById('staff-grid');
+
+if (staffGrid) {
+  const fragment = document.createDocumentFragment();
+
+  staffMembers.forEach((member) => {
+    const card = document.createElement('article');
+    card.className = 'staff-card reveal';
+
+    const media = document.createElement('div');
+    media.className = 'staff-card__media';
+
+    const img = document.createElement('img');
+    img.src = member.image;
+    img.alt = `${member.name} - ${member.role}`;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.addEventListener('error', () => {
+      media.classList.add('is-placeholder');
+      img.remove();
+    }, { once: true });
+
+    const initials = document.createElement('span');
+    initials.className = 'staff-card__initials';
+    initials.textContent = member.name
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part[0])
+      .join('')
+      .toUpperCase() || '?';
+
+    media.append(img, initials);
+
+    const info = document.createElement('div');
+    info.className = 'staff-card__info';
+
+    const name = document.createElement('h3');
+    name.textContent = member.name;
+
+    const role = document.createElement('span');
+    role.className = 'staff-card__role';
+    role.textContent = member.role;
+
+    info.append(name, role);
+    card.append(media, info);
+    fragment.appendChild(card);
+  });
+
+  staffGrid.appendChild(fragment);
+}
+
 if (toggle && mobileMenu) {
   toggle.addEventListener('click', () => {
     const open = body.classList.toggle('menu-open');
