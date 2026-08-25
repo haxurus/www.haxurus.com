@@ -37,11 +37,11 @@
 
     Object.assign(link.style, {
       position: 'fixed',
-      top: '16px',
-      right: '16px',
+      top: '14px',
+      right: '14px',
       zIndex: '1400',
-      width: '42px',
-      height: '42px',
+      width: '60px',
+      height: '60px',
       display: 'grid',
       placeItems: 'center',
       border: '1px solid rgba(255,255,255,.28)',
@@ -55,8 +55,8 @@
     const svg = link.querySelector('svg');
     if (svg) {
       Object.assign(svg.style, {
-        width: '20px',
-        height: '20px',
+        width: '24px',
+        height: '24px',
         fill: 'currentColor',
         pointerEvents: 'none'
       });
