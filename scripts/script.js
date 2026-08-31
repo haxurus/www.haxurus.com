@@ -65,6 +65,13 @@
     document.body.appendChild(link);
   }
 
+  function updateCelestiaInvite() {
+    const invite = 'https://discord.gg/8d4ZRhRN6y';
+    document.querySelectorAll('a[href="https://discord.gg/celestiaita"]').forEach((link) => {
+      link.href = invite;
+    });
+  }
+
   function getCardBody(card) {
     return card.querySelector('.card-body, .link-card-banner-body, .playlist-info') || card;
   }
@@ -146,6 +153,7 @@
   applyDeviceClass();
   addAboutNavigation();
   addAdminLoginLink();
+  updateCelestiaInvite();
   applyCardBadges();
   setCurrentYear();
 })();
