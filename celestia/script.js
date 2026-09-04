@@ -5,28 +5,26 @@ const navLinks = [...document.querySelectorAll('[data-nav]')];
 const sections = [...document.querySelectorAll('main section[id]')];
 
 // Add or remove staff members here.
-// Assign the same `level` to members that should appear on the same row.
-// Rows are shown in the order defined in staffLevelOrder.
+// `level` must be a number from 1 to 5.
+// Level 1 is shown at the top; level 5 is shown at the bottom.
 // Suggested image path: ../img/neocelestia/staff/filename.webp
-const staffLevelOrder = ['Founder', 'Admin', 'Moderator', 'Staffer'];
-
 const staffMembers = [
   {
     name: 'Haxurus',
     role: 'Founder',
-    level: 'Founder',
+    level: 1,
     image: '../img/neocelestia/staff/haxurus.webp'
   },
   {
     name: 'Nome staffer',
     role: 'Ruolo',
-    level: 'Staffer',
+    level: 5,
     image: '../img/neocelestia/staff/staffer-2.webp'
   },
   {
     name: 'Nome staffer',
     role: 'Ruolo',
-    level: 'Staffer',
+    level: 5,
     image: '../img/neocelestia/staff/staffer-3.webp'
   }
 ];
@@ -49,21 +47,16 @@ if (staffGrid) {
   `;
   document.head.appendChild(staffStyles);
 
-  const levelRank = new Map(staffLevelOrder.map((level, index) => [level, index]));
   const groupedMembers = new Map();
 
   staffMembers.forEach((member) => {
-    const level = member.level || member.role || 'Staff';
+    const parsedLevel = Number(member.level);
+    const level = Number.isInteger(parsedLevel) && parsedLevel >= 1 && parsedLevel <= 5 ? parsedLevel : 5;
     if (!groupedMembers.has(level)) groupedMembers.set(level, []);
     groupedMembers.get(level).push(member);
   });
 
-  const orderedLevels = [...groupedMembers.keys()].sort((a, b) => {
-    const rankA = levelRank.has(a) ? levelRank.get(a) : Number.MAX_SAFE_INTEGER;
-    const rankB = levelRank.has(b) ? levelRank.get(b) : Number.MAX_SAFE_INTEGER;
-    if (rankA !== rankB) return rankA - rankB;
-    return a.localeCompare(b, 'it');
-  });
+  const orderedLevels = [...groupedMembers.keys()].sort((a, b) => a - b);
 
   const createStaffCard = (member) => {
     const card = document.createElement('article');
@@ -120,7 +113,7 @@ if (staffGrid) {
 
     const title = document.createElement('h3');
     title.className = 'staff-level__title';
-    title.textContent = level;
+    title.textContent = `Livello ${level}`;
 
     const line = document.createElement('span');
     line.className = 'staff-level__line';
