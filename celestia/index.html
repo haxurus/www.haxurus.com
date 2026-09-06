@@ -10,6 +10,7 @@
   <link rel="canonical" href="https://haxurus.com/celestia/" />
   <link rel="icon" type="image/webp" href="../img/celestia/logo_white.webp" />
   <link rel="apple-touch-icon" href="../img/celestia/logo_white.webp" />
+  <link rel="preload" as="image" href="/img/celestia/logo_white.webp" type="image/webp" fetchpriority="high" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Celestia" />
@@ -44,7 +45,7 @@
     body.intro-active{overflow:hidden}
     .site-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#000;opacity:1;visibility:visible;transition:opacity .9s ease,visibility 0s linear .9s}
     .site-intro.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
-    .site-intro__logo{display:block;width:min(62vw,520px);max-height:38vh;object-fit:contain}
+    .site-intro__logo{display:block;width:min(62vw,520px);height:auto;max-height:38vh;object-fit:contain;opacity:1;visibility:visible}
     .site-header{background:rgba(17,17,17,.90)}
     .brand{padding:7px 0}
     .brand img{display:block;width:auto;height:52px;max-width:210px;object-fit:contain}
@@ -94,7 +95,7 @@
 </head>
 <body class="intro-active">
   <div class="site-intro" id="site-intro" aria-hidden="true">
-    <img class="site-intro__logo" src="../img/celestia/logo_white.webp" alt="" />
+    <img class="site-intro__logo" id="site-intro-logo" src="/img/celestia/logo_white.webp" alt="" fetchpriority="high" decoding="sync" />
   </div>
 
   <header class="site-header">
@@ -254,13 +255,26 @@
   <script>
     (() => {
       const intro = document.getElementById('site-intro');
-      if (!intro) return;
+      const logo = document.getElementById('site-intro-logo');
+      if (!intro || !logo) return;
 
-      window.setTimeout(() => {
-        intro.classList.add('is-leaving');
-        document.body.classList.remove('intro-active');
-        window.setTimeout(() => intro.remove(), 950);
-      }, 2000);
+      let started = false;
+      const startIntroTimer = () => {
+        if (started) return;
+        started = true;
+        window.setTimeout(() => {
+          intro.classList.add('is-leaving');
+          document.body.classList.remove('intro-active');
+          window.setTimeout(() => intro.remove(), 950);
+        }, 2000);
+      };
+
+      if (logo.complete && logo.naturalWidth > 0) {
+        startIntroTimer();
+      } else {
+        logo.addEventListener('load', startIntroTimer, { once: true });
+        logo.addEventListener('error', startIntroTimer, { once: true });
+      }
     })();
   </script>
 </body>
