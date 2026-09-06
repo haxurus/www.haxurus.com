@@ -7,6 +7,7 @@ const sections = [...document.querySelectorAll('main section[id]')];
 // Add or remove staff members here.
 // `level` must be a number from 1 to 5.
 // Level 1 is shown at the top; level 5 is shown at the bottom.
+// Levels are used only to separate staff members into rows and are not shown on the page.
 // Suggested image path: ../img/neocelestia/staff/filename.webp
 const staffMembers = [
   {
@@ -37,13 +38,10 @@ if (staffGrid) {
   const staffStyles = document.createElement('style');
   staffStyles.textContent = `
     .staff-grid.staff-grid--levels{display:block}
-    .staff-level + .staff-level{margin-top:44px}
-    .staff-level__header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-    .staff-level__title{margin:0;color:#d69aff;font-size:.78rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
-    .staff-level__line{width:100%;height:1px;background:linear-gradient(90deg,rgba(202,131,255,.35),rgba(255,255,255,.06),transparent)}
+    .staff-level + .staff-level{margin-top:34px;padding-top:34px;border-top:1px solid rgba(255,255,255,.08)}
     .staff-level__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
     @media(max-width:980px){.staff-level__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:620px){.staff-level + .staff-level{margin-top:34px}.staff-level__grid{grid-template-columns:1fr}.staff-level__header{margin-bottom:14px}}
+    @media(max-width:620px){.staff-level + .staff-level{margin-top:28px;padding-top:28px}.staff-level__grid{grid-template-columns:1fr}}
   `;
   document.head.appendChild(staffStyles);
 
@@ -106,26 +104,14 @@ if (staffGrid) {
 
   orderedLevels.forEach((level) => {
     const section = document.createElement('div');
-    section.className = 'staff-level reveal';
-
-    const header = document.createElement('div');
-    header.className = 'staff-level__header';
-
-    const title = document.createElement('h3');
-    title.className = 'staff-level__title';
-    title.textContent = `Livello ${level}`;
-
-    const line = document.createElement('span');
-    line.className = 'staff-level__line';
-    line.setAttribute('aria-hidden', 'true');
-
-    header.append(title, line);
+    section.className = 'staff-level';
+    section.setAttribute('data-level', String(level));
 
     const row = document.createElement('div');
     row.className = 'staff-level__grid';
     groupedMembers.get(level).forEach((member) => row.appendChild(createStaffCard(member)));
 
-    section.append(header, row);
+    section.appendChild(row);
     fragment.appendChild(section);
   });
 
