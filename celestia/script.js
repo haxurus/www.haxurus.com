@@ -10,13 +10,13 @@ const sections = [...document.querySelectorAll('main section[id]')];
 // Levels are used only to separate members into rows and are not shown on the page.
 // Levels 1-3 are staff; levels 4-5 are shown below the "No staff" divider.
 // Level 2 is always sorted alphabetically by name.
-// Suggested image path: ../img/neocelestia/staff/filename.webp
+// Suggested image path: ../img/celestia/users/filename.webp
 const staffMembers = [
   {
     name: 'Haxurus',
     role: 'CEO',
     level: 1,
-    image: '../img/neocelestia/staff/haxurus.webp'
+    image: '../img/celestia/users/haxurus.webp'
   },
 
   // Level 2 - Moderatori. Keep these members in alphabetical order.
@@ -24,81 +24,81 @@ const staffMembers = [
     name: 'Altr3xa',
     role: 'Moderatore',
     level: 2,
-    image: '../img/neocelestia/staff/altr3xa.webp'
+    image: '../img/celestia/users/altr3xa.webp'
   },
   {
     name: 'Golden Luna',
     role: 'Moderatore',
     level: 2,
-    image: '../img/neocelestia/staff/golden-luna.webp'
+    image: '../img/celestia/users/golden-luna.webp'
   },
   {
     name: 'Julie Senpai',
     role: 'Moderatore',
     level: 2,
-    image: '../img/neocelestia/staff/julie-senpai.webp'
+    image: '../img/celestia/users/julie-senpai.webp'
   },
   {
     name: 'Lil Shark',
     role: 'Moderatore',
     level: 2,
-    image: '../img/neocelestia/staff/lil-shark.webp'
+    image: '../img/celestia/users/lil-shark.webp'
   },
   {
     name: 'Yuko',
     role: 'Moderatore',
     level: 2,
-    image: '../img/neocelestia/staff/yuko.webp'
+    image: '../img/celestia/users/yuko.webp'
   },
 
   {
     name: 'Neko Senpai',
     role: 'Padre fondatore',
     level: 4,
-    image: '../img/neocelestia/staff/neko-senpai.webp'
+    image: '../img/celestia/users/neko-senpai.webp'
   },
   {
     name: 'Autoincazzata',
     role: 'Padre fondatore',
     level: 4,
-    image: '../img/neocelestia/staff/autoincazzata.webp'
+    image: '../img/celestia/users/autoincazzata.webp'
   },
   {
     name: 'Killer Jack',
     role: 'Padre fondatore',
     level: 4,
-    image: '../img/neocelestia/staff/killer-jack.webp'
+    image: '../img/celestia/users/killer-jack.webp'
   },
   {
     name: 'Wodoox',
     role: 'Padre fondatore',
     level: 4,
-    image: '../img/neocelestia/staff/wodoox.webp'
+    image: '../img/celestia/users/wodoox.webp'
   },
   {
     name: 'Julie Senpai',
     role: 'Padre fondatore',
     level: 4,
-    image: '../img/neocelestia/staff/julie-senpai.webp'
+    image: '../img/celestia/users/julie-senpai.webp'
   },
   {
     name: 'Haxurus',
     role: 'Padre fondatore',
     level: 4,
-    image: '../img/neocelestia/staff/haxurus.webp'
+    image: '../img/celestia/users/haxurus.webp'
   },
 
   {
     name: 'Walife',
     role: 'Collaboratore · Editor grafiche',
     level: 5,
-    image: '../img/neocelestia/staff/walife.webp'
+    image: '../img/celestia/users/walife.webp'
   },
   {
     name: 'Kaira',
     role: 'Collaboratore · Editor mappa',
     level: 5,
-    image: '../img/neocelestia/staff/kaira.webp'
+    image: '../img/celestia/users/kaira.webp'
   }
 ];
 
