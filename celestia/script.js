@@ -39,9 +39,9 @@ if (staffGrid) {
   staffStyles.textContent = `
     .staff-grid.staff-grid--levels{display:block}
     .staff-level + .staff-level{margin-top:34px;padding-top:34px;border-top:1px solid rgba(255,255,255,.08)}
-    .staff-level__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-    @media(max-width:980px){.staff-level__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:620px){.staff-level + .staff-level{margin-top:28px;padding-top:28px}.staff-level__grid{grid-template-columns:1fr}}
+    .staff-level__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,270px));justify-content:center;gap:16px}
+    @media(max-width:980px){.staff-level__grid{grid-template-columns:repeat(auto-fit,minmax(220px,270px));justify-content:center}}
+    @media(max-width:620px){.staff-level + .staff-level{margin-top:28px;padding-top:28px}.staff-level__grid{grid-template-columns:minmax(0,1fr)}}
   `;
   document.head.appendChild(staffStyles);
 
