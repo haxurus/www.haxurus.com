@@ -9,7 +9,7 @@ const sections = [...document.querySelectorAll('main section[id]')];
 // Level 1 is shown at the top; level 5 is shown at the bottom.
 // Levels are used only to separate members into rows and are not shown on the page.
 // Levels 1-3 are staff; level 4 is below the "No staff" divider; level 5 is below the "Collaboratori esterni" divider.
-// Level 2 is always sorted alphabetically by name.
+// IMPORTANT: members inside every level/category must always be displayed in alphabetical order by name.
 // Suggested image path: ../img/celestia/users/filename.webp
 const staffMembers = [
   {
@@ -51,12 +51,7 @@ const staffMembers = [
     image: '../img/celestia/users/yuko.webp'
   },
 
-  {
-    name: 'Neko Senpai',
-    role: 'Padre fondatore',
-    level: 4,
-    image: '../img/celestia/users/neko-senpai.webp'
-  },
+  // Level 4 - Padri fondatori. Keep these members in alphabetical order.
   {
     name: 'Autoincazzata',
     role: 'Padre fondatore',
@@ -64,16 +59,10 @@ const staffMembers = [
     image: '../img/celestia/users/autoincazzata.webp'
   },
   {
-    name: 'Killer Jack',
+    name: 'Haxurus',
     role: 'Padre fondatore',
     level: 4,
-    image: '../img/celestia/users/killer-jack.webp'
-  },
-  {
-    name: 'Wodoox',
-    role: 'Padre fondatore',
-    level: 4,
-    image: '../img/celestia/users/wodoox.webp'
+    image: '../img/celestia/users/haxurus.webp'
   },
   {
     name: 'Julie Senpai',
@@ -82,23 +71,36 @@ const staffMembers = [
     image: '../img/celestia/users/julie-senpai.webp'
   },
   {
-    name: 'Haxurus',
+    name: 'Killer Jack',
     role: 'Padre fondatore',
     level: 4,
-    image: '../img/celestia/users/haxurus.webp'
+    image: '../img/celestia/users/killer-jack.webp'
+  },
+  {
+    name: 'Neko Senpai',
+    role: 'Padre fondatore',
+    level: 4,
+    image: '../img/celestia/users/neko-senpai.webp'
+  },
+  {
+    name: 'Wodoox',
+    role: 'Padre fondatore',
+    level: 4,
+    image: '../img/celestia/users/wodoox.webp'
   },
 
-  {
-    name: 'Walife',
-    role: 'Editor grafiche',
-    level: 5,
-    image: '../img/celestia/users/walife.webp'
-  },
+  // Level 5 - Collaboratori esterni. Keep these members in alphabetical order.
   {
     name: 'Kaira',
     role: 'Editor mappa',
     level: 5,
     image: '../img/celestia/users/kaira.webp'
+  },
+  {
+    name: 'Walife',
+    role: 'Editor grafiche',
+    level: 5,
+    image: '../img/celestia/users/walife.webp'
   }
 ];
 
@@ -132,9 +134,9 @@ if (staffGrid) {
     groupedMembers.get(level).push(member);
   });
 
-  if (groupedMembers.has(2)) {
-    groupedMembers.get(2).sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
-  }
+  groupedMembers.forEach((members) => {
+    members.sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
+  });
 
   const orderedLevels = [...groupedMembers.keys()].sort((a, b) => a - b);
 
