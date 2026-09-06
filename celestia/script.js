@@ -8,7 +8,7 @@ const sections = [...document.querySelectorAll('main section[id]')];
 // `level` must be a number from 1 to 5.
 // Level 1 is shown at the top; level 5 is shown at the bottom.
 // Levels are used only to separate members into rows and are not shown on the page.
-// Levels 1-3 are staff; levels 4-5 are shown below the "No staff" divider.
+// Levels 1-3 are staff; level 4 is below the "No staff" divider; level 5 is below the "Collaboratori esterni" divider.
 // Level 2 is always sorted alphabetically by name.
 // Suggested image path: ../img/celestia/users/filename.webp
 const staffMembers = [
@@ -90,13 +90,13 @@ const staffMembers = [
 
   {
     name: 'Walife',
-    role: 'Collaboratore · Editor grafiche',
+    role: 'Editor grafiche',
     level: 5,
     image: '../img/celestia/users/walife.webp'
   },
   {
     name: 'Kaira',
-    role: 'Collaboratore · Editor mappa',
+    role: 'Editor mappa',
     level: 5,
     image: '../img/celestia/users/kaira.webp'
   }
@@ -184,6 +184,7 @@ if (staffGrid) {
 
   const fragment = document.createDocumentFragment();
   let noStaffDividerAdded = false;
+  let collaboratorsDividerAdded = false;
 
   orderedLevels.forEach((level) => {
     if (level >= 4 && !noStaffDividerAdded) {
@@ -194,6 +195,16 @@ if (staffGrid) {
       divider.appendChild(label);
       fragment.appendChild(divider);
       noStaffDividerAdded = true;
+    }
+
+    if (level >= 5 && !collaboratorsDividerAdded) {
+      const divider = document.createElement('div');
+      divider.className = 'staff-divider';
+      const label = document.createElement('span');
+      label.textContent = 'Collaboratori esterni';
+      divider.appendChild(label);
+      fragment.appendChild(divider);
+      collaboratorsDividerAdded = true;
     }
 
     const section = document.createElement('div');
