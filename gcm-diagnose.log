@@ -1,0 +1,175 @@
+﻿Diagnose log at 2026-09-06T20:55:01Z
+
+AppPath: C:\Program Files\Git Credential Manager\git-credential-manager.exe
+InstallDir: C:\Program Files\Git Credential Manager\
+Version: 2.9.1+6760f0ef069c994aa2bb1d703fb374986ee82a3e
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 26200)
+Reading environment variables... OK
+ Variables:
+OneDriveConsumer=D:\Microsoft\OneDrive
+ProgramFiles(x86)=C:\Program Files (x86)
+ProgramW6432=C:\Program Files
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 183 Stepping 1, GenuineIntel
+TMP=C:\Users\aless\AppData\Local\Temp
+PROCESSOR_ARCHITECTURE=AMD64
+DriverData=C:\Windows\System32\Drivers\DriverData
+Path=C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;D:\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\PowerToys\DSCModules\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Users\aless\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\aless\AppData\Local\Programs\Python\Python311\;C:\Users\aless\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\aless\AppData\Local\Programs\Python\Python313\;C:\Users\aless\AppData\Local\Programs\Python\Launcher\;C:\Users\aless\AppData\Local\Microsoft\WindowsApps;C:\Users\aless\.dotnet\tools;C:\Users\aless\AppData\Local\Programs\Ollama;C:\Users\aless\AppData\Local\Unity\bin
+MIC_LD_LIBRARY_PATH=C:\Program Files (x86)\Common Files\Intel\Shared Libraries\compiler\lib\mic
+WSLENV=WT_SESSION:WT_PROFILE_ID:
+PROCESSOR_REVISION=b701
+TEMP=C:\Users\aless\AppData\Local\Temp
+USERPROFILE=C:\Users\aless
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+LOGONSERVER=\\NB-ALESSIO
+WT_SESSION=a9117cf8-0203-4e39-9125-a817f4df0be5
+USERNAME=aless
+SystemRoot=C:\WINDOWS
+OneDrive=D:\Microsoft\OneDrive
+CommonProgramFiles=C:\Program Files\Common Files
+ZES_ENABLE_SYSMAN=1
+ProgramData=C:\ProgramData
+HOMEPATH=\Users\aless
+COMPUTERNAME=NB-ALESSIO
+ALLUSERSPROFILE=C:\ProgramData
+CommonProgramW6432=C:\Program Files\Common Files
+WT_PROFILE_ID={61c54bbd-c2c6-5271-96e7-009a87ff44bf}
+SESSIONNAME=Console
+ESET_OPTIONS=                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+HOMEDRIVE=C:
+INTEL_DEV_REDIST=C:\Program Files (x86)\Common Files\Intel\Shared Libraries\
+windir=C:\WINDOWS
+GIT_TRACE2_PARENT_SID=0bd14a56-5ef0-466f-8ea9-259395dd3a9a
+SystemDrive=C:
+NUMBER_OF_PROCESSORS=32
+OS=Windows_NT
+ProgramFiles=C:\Program Files
+ComSpec=C:\WINDOWS\system32\cmd.exe
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+PSModulePath=C:\Users\aless\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+APPDATA=C:\Users\aless\AppData\Roaming
+USERDOMAIN=NB-ALESSIO
+PROCESSOR_LEVEL=6
+LOCALAPPDATA=C:\Users\aless\AppData\Local
+USERDOMAIN_ROAMINGPROFILE=NB-ALESSIO
+PUBLIC=C:\Users\Public
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Users\aless\AppData\Local\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Users\aless\AppData\Local\Temp\f8f649609addcfa8266b11b3'... OK
+Reading from temporary file 'C:\Users\aless\AppData\Local\Temp\f8f649609addcfa8266b11b3'... OK
+Deleting temporary file 'C:\Users\aless\AppData\Local\Temp\f8f649609addcfa8266b11b3'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\aless
+UserDataDirectoryPath: C:\Users\aless\.gcm
+GetCurrentDirectory(): D:\GitHub_repos\www.haxurus.com
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com... OK
+Sending HEAD request to https://example.com... OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:49713/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.50.1.windows.1'
+Locating current repository...Git repository at 'D:/GitHub_repos/www.haxurus.com/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Program Files/Git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.required=true
+file:C:/Program Files/Git/etc/gitconfig	http.sslbackend=schannel
+file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
+file:C:/Program Files/Git/etc/gitconfig	core.fscache=true
+file:C:/Program Files/Git/etc/gitconfig	core.symlinks=true
+file:C:/Program Files/Git/etc/gitconfig	core.editor="C:\\Program Files\\Notepad++\\notepad++.exe" -multiInst -notabbar -nosession -noPlugin
+file:C:/Program Files/Git/etc/gitconfig	pull.rebase=false
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=C:/Program\ Files/Git\ Credential\ Manager/git-credential-manager.exe
+file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:C:/Program Files/Git/etc/gitconfig	init.defaultbranch=master
+file:C:/Users/aless/.gitconfig	user.name=Haxurus
+file:C:/Users/aless/.gitconfig	user.email=haxurus@icloud.com
+file:C:/Users/aless/.gitconfig	credential.helper=C:/Program Files/Git Credential Manager/git-credential-manager.exe
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.ignorecase=true
+file:.git/config	remote.origin.url=https://github.com/haxurus/www.haxurus.com.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+file:.git/config	branch.main.remote=origin
+file:.git/config	branch.main.merge=refs/heads/main
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\aless\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\aless\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+
