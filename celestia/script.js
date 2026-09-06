@@ -4,29 +4,100 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const navLinks = [...document.querySelectorAll('[data-nav]')];
 const sections = [...document.querySelectorAll('main section[id]')];
 
-// Add or remove staff members here.
+// Add or remove staff/community members here.
 // `level` must be a number from 1 to 5.
 // Level 1 is shown at the top; level 5 is shown at the bottom.
-// Levels are used only to separate staff members into rows and are not shown on the page.
+// Levels are used only to separate members into rows and are not shown on the page.
+// Level 2 is always sorted alphabetically by name.
 // Suggested image path: ../img/neocelestia/staff/filename.webp
 const staffMembers = [
   {
     name: 'Haxurus',
-    role: 'Founder',
+    role: 'CEO',
     level: 1,
     image: '../img/neocelestia/staff/haxurus.webp'
   },
+
+  // Level 2 - Moderatori. Keep these members in alphabetical order.
   {
-    name: 'Nome staffer',
-    role: 'Ruolo',
-    level: 5,
-    image: '../img/neocelestia/staff/staffer-2.webp'
+    name: 'Altr3xa',
+    role: 'Moderatore',
+    level: 2,
+    image: '../img/neocelestia/staff/altr3xa.webp'
   },
   {
-    name: 'Nome staffer',
-    role: 'Ruolo',
+    name: 'Golden Luna',
+    role: 'Moderatore',
+    level: 2,
+    image: '../img/neocelestia/staff/golden-luna.webp'
+  },
+  {
+    name: 'Julie Senpai',
+    role: 'Moderatore',
+    level: 2,
+    image: '../img/neocelestia/staff/julie-senpai.webp'
+  },
+  {
+    name: 'Lil Shark',
+    role: 'Moderatore',
+    level: 2,
+    image: '../img/neocelestia/staff/lil-shark.webp'
+  },
+  {
+    name: 'Yuko',
+    role: 'Moderatore',
+    level: 2,
+    image: '../img/neocelestia/staff/yuko.webp'
+  },
+
+  {
+    name: 'Neko Senpai',
+    role: 'Padre fondatore · No staff',
+    level: 4,
+    image: '../img/neocelestia/staff/neko-senpai.webp'
+  },
+  {
+    name: 'Autoincazzata',
+    role: 'Padre fondatore · No staff',
+    level: 4,
+    image: '../img/neocelestia/staff/autoincazzata.webp'
+  },
+  {
+    name: 'Killer Jack',
+    role: 'Padre fondatore · No staff',
+    level: 4,
+    image: '../img/neocelestia/staff/killer-jack.webp'
+  },
+  {
+    name: 'Wodoox',
+    role: 'Padre fondatore · No staff',
+    level: 4,
+    image: '../img/neocelestia/staff/wodoox.webp'
+  },
+  {
+    name: 'Julie Senpai',
+    role: 'Padre fondatore · No staff',
+    level: 4,
+    image: '../img/neocelestia/staff/julie-senpai.webp'
+  },
+  {
+    name: 'Haxurus',
+    role: 'Padre fondatore · No staff',
+    level: 4,
+    image: '../img/neocelestia/staff/haxurus.webp'
+  },
+
+  {
+    name: 'Walife',
+    role: 'Collaboratore · Editor grafiche · No staff',
     level: 5,
-    image: '../img/neocelestia/staff/staffer-3.webp'
+    image: '../img/neocelestia/staff/walife.webp'
+  },
+  {
+    name: 'Kaira',
+    role: 'Collaboratore · Editor mappa · No staff',
+    level: 5,
+    image: '../img/neocelestia/staff/kaira.webp'
   }
 ];
 
@@ -53,6 +124,10 @@ if (staffGrid) {
     if (!groupedMembers.has(level)) groupedMembers.set(level, []);
     groupedMembers.get(level).push(member);
   });
+
+  if (groupedMembers.has(2)) {
+    groupedMembers.get(2).sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }));
+  }
 
   const orderedLevels = [...groupedMembers.keys()].sort((a, b) => a - b);
 
