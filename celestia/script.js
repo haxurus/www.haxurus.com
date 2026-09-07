@@ -27,7 +27,7 @@ const staffMembers = [
     image: '../img/celestia/users/altr3xa.webp'
   },
   {
-    name: 'Golden Luna',
+    name: 'GoldenLuna',
     role: 'Moderatore',
     level: 2,
     image: '../img/celestia/users/golden-luna.webp'
