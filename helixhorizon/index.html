@@ -14,7 +14,36 @@
   <meta property="og:url" content="https://haxurus.com/helixhorizon/" />
   <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="./styles.css?v=20260907-3" />
+  <link rel="stylesheet" href="./styles.css?v=20260907-4" />
+  <style>
+    #features .section-heading{grid-template-columns:1fr;margin-bottom:30px}
+    #features .section-heading>p{display:none}
+    #features .section-heading h2{max-width:760px}
+    #features .feature-card{min-height:145px;padding:23px}
+    #features .feature-icon{margin-bottom:20px}
+    #features .feature-card h3{margin:0;font-size:1rem}
+    #features .feature-card p{display:none}
+
+    #features .games-panel{display:block;margin-top:34px;padding:0;border:0;background:none}
+    #features .games-copy{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:18px}
+    #features .games-copy h3{margin:8px 0 0;font-size:clamp(1.65rem,2.8vw,2.7rem);letter-spacing:-.04em}
+    #features .games-copy>p:last-child{display:none}
+    #features .game-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    #features .game-item{position:relative;display:block;min-height:0;aspect-ratio:16/9;padding:0;overflow:hidden;border:1px solid rgba(127,255,218,.12);border-radius:14px;background:#0a1514}
+    #features .game-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04) 35%,rgba(0,0,0,.78) 100%);pointer-events:none}
+    #features .game-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.82);transition:transform .45s ease,filter .45s ease}
+    #features .game-item:hover img{transform:scale(1.05);filter:brightness(.86) saturate(.95)}
+    #features .game-item strong{position:absolute;z-index:2;left:18px;right:18px;bottom:16px;font-size:1rem;letter-spacing:-.01em}
+
+    @media(max-width:980px){
+      #features .game-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:620px){
+      #features .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      #features .feature-card{min-height:125px;padding:20px}
+      #features .game-list{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -109,29 +138,29 @@
           <p class="eyebrow">FEATURES</p>
           <h2>More than a simple world</h2>
         </div>
-        <p>Designed as a social destination with a polished visual identity and multiple ways to spend time together.</p>
       </div>
 
       <div class="feature-grid">
-        <article class="feature-card reveal"><span class="feature-icon">◎</span><h3>Social spaces</h3><p>Lounges, terraces and chill areas designed for meeting people and spending time together.</p></article>
-        <article class="feature-card reveal"><span class="feature-icon">◇</span><h3>Immersive design</h3><p>A cohesive visual language, atmospheric lighting and spaces designed around a strong identity.</p></article>
-        <article class="feature-card reveal"><span class="feature-icon">▦</span><h3>Community moments</h3><p>Areas suitable for gatherings, community nights, photos, conversations and shared experiences.</p></article>
-        <article class="feature-card reveal"><span class="feature-icon">⌾</span><h3>Photo spots</h3><p>Scenic viewpoints and composed environments made for screenshots, memories and content creation.</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">◎</span><h3>Social spaces</h3></article>
+        <article class="feature-card reveal"><span class="feature-icon">◇</span><h3>Immersive design</h3></article>
+        <article class="feature-card reveal"><span class="feature-icon">▦</span><h3>Community moments</h3></article>
+        <article class="feature-card reveal"><span class="feature-icon">⌾</span><h3>Photo spots</h3></article>
       </div>
 
       <div class="games-panel reveal">
         <div class="games-copy">
-          <p class="eyebrow">GAMES IN THE WORLD</p>
-          <h3>Play without leaving Helix Horizon.</h3>
-          <p>This area is ready for the complete list of games available inside the world, with room for a short description or player count for each one.</p>
+          <div>
+            <p class="eyebrow">GAMES</p>
+            <h3>Games in Helix Horizon</h3>
+          </div>
         </div>
         <div class="game-list" aria-label="Games available in Helix Horizon">
-          <div class="game-item"><span>01</span><div><strong>Game 01</strong><small>Game details</small></div></div>
-          <div class="game-item"><span>02</span><div><strong>Game 02</strong><small>Game details</small></div></div>
-          <div class="game-item"><span>03</span><div><strong>Game 03</strong><small>Game details</small></div></div>
-          <div class="game-item"><span>04</span><div><strong>Game 04</strong><small>Game details</small></div></div>
-          <div class="game-item"><span>05</span><div><strong>Game 05</strong><small>Game details</small></div></div>
-          <div class="game-item"><span>06</span><div><strong>Game 06</strong><small>Game details</small></div></div>
+          <div class="game-item"><img src="../img/games/helixhorizon.png" alt="Game 01 placeholder" /><strong>Game 01</strong></div>
+          <div class="game-item"><img src="../img/games/helixhorizon.png" alt="Game 02 placeholder" /><strong>Game 02</strong></div>
+          <div class="game-item"><img src="../img/games/helixhorizon.png" alt="Game 03 placeholder" /><strong>Game 03</strong></div>
+          <div class="game-item"><img src="../img/games/helixhorizon.png" alt="Game 04 placeholder" /><strong>Game 04</strong></div>
+          <div class="game-item"><img src="../img/games/helixhorizon.png" alt="Game 05 placeholder" /><strong>Game 05</strong></div>
+          <div class="game-item"><img src="../img/games/helixhorizon.png" alt="Game 06 placeholder" /><strong>Game 06</strong></div>
         </div>
       </div>
     </section>
