@@ -14,26 +14,36 @@
   <meta property="og:url" content="https://haxurus.com/helixhorizon/" />
   <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=20260907-2" />
 </head>
 <body>
-  <header class="nav" id="top">
-    <a class="brand" href="#top" aria-label="Helix Horizon home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48"><path d="M9 13c5-6 11-8 15-8s10 2 15 8M9 35c5 6 11 8 15 8s10-2 15-8M12 9c-5 5-7 10-7 15s2 10 7 15M36 9c5 5 7 10 7 15s-2 10-7 15M14 15l20 18M34 15L14 33"/></svg>
-      </span>
-      <span><strong>HELIX HORIZON</strong><small>A VRCHAT WORLD</small></span>
-    </a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#world" aria-label="Helix Horizon - Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M9 13c5-6 11-8 15-8s10 2 15 8M9 35c5 6 11 8 15 8s10-2 15-8M12 9c-5 5-7 10-7 15s2 10 7 15M36 9c5 5 7 10 7 15s-2 10-7 15M14 15l20 18M34 15L14 33"/></svg>
+        </span>
+        <span class="brand-copy"><strong>HELIX HORIZON</strong><small>A VRCHAT WORLD</small></span>
+      </a>
 
-    <nav class="nav-links" aria-label="Main navigation">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a data-nav class="is-active" href="#world">World</a>
+        <a data-nav href="#gallery">Gallery</a>
+        <a data-nav href="#features">Features</a>
+        <a data-nav href="#media">Media</a>
+      </nav>
+
+      <a class="nav-cta" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Enter on VRChat</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+
+    <nav class="mobile-menu" aria-label="Mobile navigation">
       <a href="#world">World</a>
       <a href="#gallery">Gallery</a>
       <a href="#features">Features</a>
       <a href="#media">Media</a>
+      <a class="nav-cta" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Enter on VRChat</a>
     </nav>
-
-    <a class="nav-cta" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Enter on VRChat <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
   </header>
 
   <main>
@@ -134,13 +144,15 @@
     </section>
   </main>
 
-  <footer>
-    <a class="brand" href="#top">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 13c5-6 11-8 15-8s10 2 15 8M9 35c5 6 11 8 15 8s10-2 15-8M12 9c-5 5-7 10-7 15s2 10 7 15M36 9c5 5 7 10 7 15s-2 10-7 15M14 15l20 18M34 15L14 33"/></svg></span>
-      <span><strong>HELIX HORIZON</strong><small>A VRCHAT WORLD</small></span>
-    </a>
-    <p>People. Worlds. Higher together.</p>
-    <div class="footer-links"><a href="https://instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://haxurus.com/">Haxurus.com</a><a href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">VRChat</a></div>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Helix Horizon © <span id="year">2026</span></span>
+      <div class="footer-links">
+        <a href="https://instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">VRChat World</a>
+        <a href="../">haxurus.com</a>
+      </div>
+    </div>
   </footer>
 
   <div class="lightbox" aria-hidden="true" role="dialog" aria-label="Gallery image preview">
@@ -148,6 +160,6 @@
     <img src="" alt="Helix Horizon gallery preview" />
   </div>
 
-  <script src="./script.js"></script>
+  <script src="./script.js?v=20260907-2"></script>
 </body>
 </html>
