@@ -97,7 +97,7 @@ const staffMembers = [
     image: '../img/celestia/users/kaira.webp'
   },
   {
-    name: 'Walife',
+    name: 'ThaWalife',
     role: 'Editor grafiche',
     level: 5,
     image: '../img/celestia/users/walife.webp'
