@@ -72,6 +72,30 @@
     });
   }
 
+  function addRdr2Game() {
+    const grid = document.querySelector('#games .links-grid');
+    if (!grid || grid.querySelector('[data-game="rdr2"]')) return;
+
+    const card = document.createElement('a');
+    card.className = 'link-card';
+    card.dataset.game = 'rdr2';
+    card.href = 'https://www.rockstargames.com/reddeadredemption2';
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.innerHTML = `
+      <div class="card-icon thumb small-thumb">
+        <span aria-hidden="true" style="display:grid;place-items:center;width:100%;height:100%;border-radius:inherit;background:rgba(120,0,0,.72);color:#fff;font-size:.68rem;font-weight:900;letter-spacing:-.04em;line-height:1">RDR2</span>
+      </div>
+      <div class="card-body centered"><span class="card-title">RDR2</span></div>
+      <div class="card-more">⋮</div>`;
+
+    const rainbowSix = [...grid.querySelectorAll('.link-card')].find((item) =>
+      /r6\.tracker\.network\/r6siege/i.test(item.getAttribute('href') || '')
+    );
+
+    grid.insertBefore(card, rainbowSix || null);
+  }
+
   function getCardBody(card) {
     return card.querySelector('.card-body, .link-card-banner-body, .playlist-info') || card;
   }
@@ -106,6 +130,10 @@
       /youtube\.com\/@haxurus/i,
       /tiktok\.com\/@haxurus/i
     ];
+    const forcedInactivePatterns = [
+      /x\.com\/haxurus/i,
+      /r6\.tracker\.network\/r6siege/i
+    ];
 
     cards.forEach((card) => {
       if (card.dataset.noBadges === 'true') {
@@ -117,6 +145,10 @@
       const href = card.getAttribute('href') || '';
       const text = card.textContent || '';
       const aria = card.getAttribute('aria-label') || '';
+
+      if (forcedInactivePatterns.some((pattern) => pattern.test(href))) {
+        card.classList.add('is-inactive');
+      }
 
       if (contactPatterns.some((pattern) => pattern.test(href))) addBadge(card, 'contact', 'Contact');
       if (card.classList.contains('is-inactive') || /💤|inactive/i.test(text) || /💤|inactive/i.test(aria)) {
@@ -131,6 +163,8 @@
     });
 
     document.querySelectorAll('#discord .link-card, #vrchat a[href*="vrc.group"]').forEach((card) => {
+      const href = card.getAttribute('href') || '';
+      if (/discord\.com\/users\//i.test(href)) return;
       if (card.dataset.noBadges !== 'true') addBadge(card, 'community', 'Community');
     });
 
@@ -154,6 +188,7 @@
   addAboutNavigation();
   addAdminLoginLink();
   updateCelestiaInvite();
+  addRdr2Game();
   applyCardBadges();
   setCurrentYear();
 })();
