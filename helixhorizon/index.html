@@ -19,10 +19,10 @@
     #features .section-heading{grid-template-columns:1fr;margin-bottom:30px}
     #features .section-heading>p{display:none}
     #features .section-heading h2{max-width:760px}
-    #features .feature-card{min-height:145px;padding:23px}
+    #features .feature-card{min-height:175px;padding:23px}
     #features .feature-icon{margin-bottom:20px}
-    #features .feature-card h3{margin:0;font-size:1rem}
-    #features .feature-card p{display:none}
+    #features .feature-card h3{margin:0 0 8px;font-size:1rem}
+    #features .feature-card p{display:block;margin:0;color:var(--muted);font-size:.8rem;line-height:1.5}
 
     #features .games-panel{display:block;margin-top:34px;padding:0;border:0;background:none}
     #features .games-copy{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:18px}
@@ -40,7 +40,7 @@
     }
     @media(max-width:620px){
       #features .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      #features .feature-card{min-height:125px;padding:20px}
+      #features .feature-card{min-height:155px;padding:20px}
       #features .game-list{grid-template-columns:1fr}
     }
   </style>
@@ -141,10 +141,10 @@
       </div>
 
       <div class="feature-grid">
-        <article class="feature-card reveal"><span class="feature-icon">◎</span><h3>Social spaces</h3></article>
-        <article class="feature-card reveal"><span class="feature-icon">◇</span><h3>Immersive design</h3></article>
-        <article class="feature-card reveal"><span class="feature-icon">▦</span><h3>Community moments</h3></article>
-        <article class="feature-card reveal"><span class="feature-icon">⌾</span><h3>Photo spots</h3></article>
+        <article class="feature-card reveal"><span class="feature-icon">◎</span><h3>Social spaces</h3><p>Made to meet, talk and relax together.</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">◇</span><h3>Immersive design</h3><p>A cohesive atmosphere built around every detail.</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">▦</span><h3>Community moments</h3><p>Spaces for events, gatherings and shared nights.</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">⌾</span><h3>Photo spots</h3><p>Scenic corners made for memorable shots.</p></article>
       </div>
 
       <div class="games-panel reveal">
