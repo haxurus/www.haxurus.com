@@ -171,7 +171,7 @@ body.is-loading #particle-bg {
   z-index: 0 !important;
   display: block !important;
   pointer-events: none !important;
-  background: url("../img/hero/banner_summer.png") center / cover no-repeat !important;
+  background: url("../img/hero/hero_biker.webp") center / cover no-repeat !important;
   filter: blur(6px) saturate(1.04) brightness(.92) !important;
   transform: scale(1.035) !important;
 }
