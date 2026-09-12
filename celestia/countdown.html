@@ -131,13 +131,6 @@
       text-shadow: 0 0 24px rgba(96, 93, 135, 0.32);
     }
 
-    .date {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: clamp(0.95rem, 2vw, 1.12rem);
-      letter-spacing: 0.04em;
-    }
-
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -194,10 +187,9 @@
 
     .footer-note {
       margin-top: 19px;
-      color: rgba(194, 199, 208, 0.50);
-      font-size: 0.76rem;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
+      color: var(--muted);
+      font-size: clamp(0.95rem, 2vw, 1.12rem);
+      letter-spacing: 0.04em;
     }
 
     .expired .countdown {
@@ -230,7 +222,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .date {
+      .footer-note {
         line-height: 1.6;
       }
     }
@@ -250,7 +242,6 @@
     <section class="card" id="countdownCard">
       <div class="eyebrow">Celestia</div>
       <h1>Qualcosa sta per <span class="accent">accadere.</span></h1>
-      <p class="date">Venerdì 18 settembre 2026 · ore 22:00</p>
 
       <div class="countdown" aria-label="Conto alla rovescia">
         <div class="time-box">
@@ -272,7 +263,7 @@
       </div>
 
       <div class="line"></div>
-      <div class="footer-note">18 · 09 · 2026</div>
+      <div class="footer-note">Venerdì 18 settembre 2026 · ore 22:00</div>
     </section>
   </main>
 
