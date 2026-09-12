@@ -224,6 +224,73 @@ if (staffGrid) {
   staffGrid.appendChild(fragment);
 }
 
+// Trailer YouTube. Inserire qui l'ID del video quando disponibile.
+const trailerVideoId = '';
+const heroSection = document.querySelector('.hero');
+
+if (heroSection && !document.getElementById('trailer')) {
+  const trailerStyles = document.createElement('style');
+  trailerStyles.textContent = `
+    .trailer-section{padding-top:72px;padding-bottom:72px;background:linear-gradient(180deg,rgba(25,24,38,.16),transparent)}
+    .trailer-head{max-width:760px;margin:0 auto 30px;text-align:center}
+    .trailer-head h2{margin-top:8px;font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.04em}
+    .trailer-head p{margin-top:14px;color:var(--muted);line-height:1.7}
+    .trailer-player{position:relative;width:min(100%,1080px);margin:0 auto;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(194,199,208,.16);border-radius:24px;background:linear-gradient(135deg,rgba(63,60,84,.34),rgba(25,24,38,.92));box-shadow:var(--shadow)}
+    .trailer-player iframe{display:block;width:100%;height:100%;border:0}
+    .trailer-placeholder{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;background:radial-gradient(circle at 50% 45%,rgba(96,93,135,.28),transparent 34%),linear-gradient(135deg,#191826,#111111)}
+    .trailer-placeholder__inner{max-width:520px}
+    .trailer-placeholder__play{display:grid;place-items:center;width:78px;height:78px;margin:0 auto 20px;border:1px solid rgba(194,199,208,.34);border-radius:50%;background:rgba(96,93,135,.20);color:#e5e5e5;font-size:1.8rem;box-shadow:0 0 34px rgba(96,93,135,.22)}
+    .trailer-placeholder h3{font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.03em}
+    .trailer-placeholder p{margin-top:10px;color:var(--muted);line-height:1.65}
+    @media(max-width:760px){.trailer-section{padding-top:54px;padding-bottom:54px}.trailer-player{border-radius:18px}.trailer-placeholder__play{width:64px;height:64px;font-size:1.45rem}}
+  `;
+  document.head.appendChild(trailerStyles);
+
+  const trailerSection = document.createElement('section');
+  trailerSection.className = 'section trailer-section';
+  trailerSection.id = 'trailer';
+
+  const container = document.createElement('div');
+  container.className = 'container';
+
+  const head = document.createElement('div');
+  head.className = 'trailer-head reveal';
+  head.innerHTML = `
+    <span class="section-kicker">Celestia Remastered</span>
+    <h2>Guarda il trailer.</h2>
+    <p>Scopri in anteprima la nuova versione di Celestia e preparati a tornare tra le stelle.</p>
+  `;
+
+  const player = document.createElement('div');
+  player.className = 'trailer-player reveal';
+
+  if (trailerVideoId) {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(trailerVideoId)}?rel=0`;
+    iframe.title = 'Trailer Celestia Remastered';
+    iframe.loading = 'lazy';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    player.appendChild(iframe);
+  } else {
+    const placeholder = document.createElement('div');
+    placeholder.className = 'trailer-placeholder';
+    placeholder.innerHTML = `
+      <div class="trailer-placeholder__inner">
+        <div class="trailer-placeholder__play" aria-hidden="true">▶</div>
+        <h3>Trailer in arrivo</h3>
+        <p>Il player YouTube è già predisposto. Verrà attivato appena sarà disponibile il link ufficiale del trailer.</p>
+      </div>
+    `;
+    player.appendChild(placeholder);
+  }
+
+  container.append(head, player);
+  trailerSection.appendChild(container);
+  heroSection.insertAdjacentElement('afterend', trailerSection);
+}
+
 const socialLinks = [
   {
     label: 'Instagram',
