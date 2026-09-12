@@ -96,6 +96,73 @@
     grid.insertBefore(card, rainbowSix || null);
   }
 
+  function enableDesktopWheelNavigation() {
+    let locked = false;
+    let accumulatedDelta = 0;
+    let resetTimer = 0;
+
+    const getSections = () => [
+      document.querySelector('.hero'),
+      document.querySelector('.about-haxurus'),
+      ...document.querySelectorAll('.animated-sections .category'),
+      document.querySelector('.site-footer')
+    ].filter(Boolean);
+
+    const nearestSectionIndex = (sections) => {
+      const viewportCenter = window.scrollY + (window.innerHeight / 2);
+      let bestIndex = 0;
+      let bestDistance = Infinity;
+
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const center = window.scrollY + rect.top + (rect.height / 2);
+        const distance = Math.abs(center - viewportCenter);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = index;
+        }
+      });
+
+      return bestIndex;
+    };
+
+    window.addEventListener('wheel', (event) => {
+      if (document.body.dataset.device !== 'desktop' || event.ctrlKey || event.deltaY === 0) return;
+      if (event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+
+      const sections = getSections();
+      if (sections.length < 2) return;
+
+      event.preventDefault();
+      if (locked) return;
+
+      accumulatedDelta += event.deltaY;
+      window.clearTimeout(resetTimer);
+      resetTimer = window.setTimeout(() => {
+        accumulatedDelta = 0;
+      }, 140);
+
+      if (Math.abs(accumulatedDelta) < 36) return;
+
+      const direction = accumulatedDelta > 0 ? 1 : -1;
+      const currentIndex = nearestSectionIndex(sections);
+      const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
+      accumulatedDelta = 0;
+
+      if (targetIndex === currentIndex) return;
+
+      locked = true;
+      window.scrollTo({
+        top: Math.max(0, Math.round(window.scrollY + sections[targetIndex].getBoundingClientRect().top)),
+        behavior: 'smooth'
+      });
+
+      window.setTimeout(() => {
+        locked = false;
+      }, 650);
+    }, { passive: false });
+  }
+
   function getCardBody(card) {
     return card.querySelector('.card-body, .link-card-banner-body, .playlist-info') || card;
   }
@@ -191,4 +258,5 @@
   addRdr2Game();
   applyCardBadges();
   setCurrentYear();
+  enableDesktopWheelNavigation();
 })();
