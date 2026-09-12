@@ -160,6 +160,8 @@
       celestiaRemastered.href = 'https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/';
       celestiaRemastered.target = '_blank';
       celestiaRemastered.rel = 'noopener noreferrer';
+      const cover = celestiaRemastered.querySelector('.link-card-banner-media img');
+      if (cover) cover.src = 'img/celestia/hero.webp';
     }
   }
 
