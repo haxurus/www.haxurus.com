@@ -192,6 +192,40 @@
       letter-spacing: 0.04em;
     }
 
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 17px;
+      border: 1px solid rgba(194, 199, 208, 0.20);
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(96, 93, 135, 0.12);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 750;
+      letter-spacing: 0.01em;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(194, 199, 208, 0.52);
+      background: rgba(96, 93, 135, 0.24);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+      outline: none;
+    }
+
     .expired .countdown {
       display: none;
     }
@@ -225,11 +259,20 @@
       .footer-note {
         line-height: 1.6;
       }
+
+      .social-links {
+        flex-direction: column;
+      }
+
+      .social-link {
+        width: 100%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation: none !important;
+        transition: none !important;
       }
     }
   </style>
@@ -264,6 +307,12 @@
 
       <div class="line"></div>
       <div class="footer-note">Venerdì 18 settembre 2026 · ore 22:00</div>
+
+      <nav class="social-links" aria-label="Link Celestia">
+        <a class="social-link" href="https://discord.gg/8d4ZRhRN6y" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a class="social-link" href="https://vrc.group/CELEST.7570" target="_blank" rel="noopener noreferrer">Gruppo VRChat</a>
+        <a class="social-link" href="https://instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </nav>
     </section>
   </main>
 
