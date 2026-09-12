@@ -62,7 +62,7 @@
     .feature-card,.staff-card,.recruit-card{background:linear-gradient(180deg,rgba(96,93,135,.10),rgba(25,24,38,.48))}
     .feature-card:hover,.staff-card:hover,.recruit-card:hover{border-color:rgba(96,93,135,.72)}
     .feature-card:hover,.recruit-card:hover{background:linear-gradient(180deg,rgba(96,93,135,.18),rgba(25,24,38,.58))}
-    .feature-number{color:#605d87}
+    .feature-card h3{font-size:1.5rem;letter-spacing:-.025em}
     .world-shot::after{background:none!important}
     .world-shot--main{background-image:url("../img/celestia/vrchat-world.webp")}
     .world-shot--two{background-image:url("../img/celestia/world-2.webp")}
@@ -144,13 +144,12 @@
       <div class="container">
         <div class="section-head reveal">
           <div><span class="section-kicker">La community</span><h2>Uno spazio semplice da vivere, facile da chiamare casa.</h2></div>
-          <p>Celestia nasce per riunire persone che vogliono vivere VRChat in compagnia, senza complicazioni: conoscere gente nuova, partecipare alle attività e avere un punto di riferimento stabile.</p>
         </div>
         <div class="feature-grid">
-          <article class="feature-card reveal"><span class="feature-number">01</span><h3>Accogliente</h3><p>Un ambiente pensato per far sentire a proprio agio sia chi arriva per la prima volta sia chi è già parte del gruppo.</p></article>
-          <article class="feature-card reveal"><span class="feature-number">02</span><h3>Sociale</h3><p>Il centro della community sono le persone: conversazioni, nuove amicizie, serate tranquille e momenti da condividere.</p></article>
-          <article class="feature-card reveal"><span class="feature-number">03</span><h3>Attiva</h3><p>Attività e serate mantengono la community viva e danno sempre un motivo per ritrovarsi su VRChat.</p></article>
-          <article class="feature-card reveal"><span class="feature-number">04</span><h3>Rispettosa</h3><p>Rispetto reciproco, buon senso e una gestione presente sono alla base dell'esperienza Celestia.</p></article>
+          <article class="feature-card reveal"><h3>Accogliente</h3><p>Un ambiente pensato per far sentire a proprio agio sia chi arriva per la prima volta sia chi è già parte del gruppo.</p></article>
+          <article class="feature-card reveal"><h3>Sociale</h3><p>Il centro della community sono le persone: conversazioni, nuove amicizie, serate tranquille e momenti da condividere.</p></article>
+          <article class="feature-card reveal"><h3>Attiva</h3><p>Attività e serate mantengono la community viva e danno sempre un motivo per ritrovarsi su VRChat.</p></article>
+          <article class="feature-card reveal"><h3>Rispettosa</h3><p>Rispetto reciproco, buon senso e una gestione presente sono alla base dell'esperienza Celestia.</p></article>
         </div>
       </div>
     </section>
@@ -160,7 +159,6 @@
         <div class="section-head reveal">
           <div><span class="section-kicker">Il nostro mondo</span><h2>Il punto d'incontro della community.</h2></div>
           <div>
-            <p>Uno spazio virtuale dedicato a Celestia, pensato per incontrarsi, rilassarsi e vivere insieme le attività della community.</p>
             <div class="world-actions world-actions--head">
               <a class="button button-primary" href="https://vrc.group/CELEST.7570" target="_blank" rel="noopener noreferrer">Apri il mondo</a>
               <a class="button button-secondary" href="https://vrc.group/CELEST.7570" target="_blank" rel="noopener noreferrer">Entra nel nostro gruppo</a>
@@ -193,8 +191,7 @@
     <section class="section" id="join-team">
       <div class="container">
         <div class="section-head reveal">
-          <div><span class="section-kicker">Aiuta Celestia</span><h2>Vuoi contribuire attivamente alla community?</h2></div>
-          <p>Ci sono due modi per dare una mano in prima persona. Puoi rappresentare Celestia aprendo lobby per il gruppo, oppure entrare nello staff e occuparti attivamente della moderazione.</p>
+          <div><span class="section-kicker">Aiuta Celestia</span><h2>vuoi contribuire attivamente?</h2></div>
         </div>
         <div class="recruit-grid">
           <article class="recruit-card reveal">
@@ -270,6 +267,30 @@
         window.setTimeout(() => intro.remove(), 950);
       }, 2000);
     })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const trailerDescription = document.querySelector('.trailer-head p');
+      if (trailerDescription) trailerDescription.remove();
+
+      const staffGrid = document.getElementById('staff-grid');
+      if (!staffGrid) return;
+
+      const level4 = staffGrid.querySelector('.staff-level[data-level="4"]');
+      const level5 = staffGrid.querySelector('.staff-level[data-level="5"]');
+      const dividers = [...staffGrid.querySelectorAll('.staff-divider')];
+
+      if (level4 && level5 && dividers.length >= 2) {
+        const collaboratorsDivider = dividers[0];
+        const foundersDivider = dividers[1];
+        const collaboratorsLabel = collaboratorsDivider.querySelector('span');
+        const foundersLabel = foundersDivider.querySelector('span');
+
+        if (collaboratorsLabel) collaboratorsLabel.textContent = 'Collaboratori esterni';
+        if (foundersLabel) foundersLabel.textContent = 'Padri fondatori';
+
+        staffGrid.append(collaboratorsDivider, level5, foundersDivider, level4);
+      }
+    });
   </script>
 </body>
 </html>
