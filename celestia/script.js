@@ -299,8 +299,8 @@ const socialLinks = [
   },
   {
     label: 'YouTube',
-    href: '#',
-    external: false
+    href: 'https://www.youtube.com/@celestiaita',
+    external: true
   }
 ];
 
