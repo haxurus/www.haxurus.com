@@ -98,7 +98,7 @@ const staffMembers = [
   },
   {
     name: 'ThaWalife',
-    role: 'Editor grafiche',
+    role: 'Graphic Designer',
     level: 5,
     image: '../img/celestia/users/walife.webp'
   }
@@ -222,6 +222,52 @@ if (staffGrid) {
   });
 
   staffGrid.appendChild(fragment);
+}
+
+const socialLinks = [
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/celestia.ita',
+    external: true
+  },
+  {
+    label: 'YouTube',
+    href: '#',
+    external: false
+  }
+];
+
+const heroActions = document.querySelector('.hero-actions');
+if (heroActions) {
+  socialLinks.forEach(({ label, href, external }) => {
+    if (heroActions.querySelector(`[data-social="${label.toLowerCase()}"]`)) return;
+    const link = document.createElement('a');
+    link.className = 'button button-secondary';
+    link.href = href;
+    link.dataset.social = label.toLowerCase();
+    link.textContent = label;
+    if (external) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+    heroActions.appendChild(link);
+  });
+}
+
+const footerLinks = document.querySelector('.footer-links');
+if (footerLinks) {
+  socialLinks.forEach(({ label, href, external }) => {
+    if (footerLinks.querySelector(`[data-social="${label.toLowerCase()}"]`)) return;
+    const link = document.createElement('a');
+    link.href = href;
+    link.dataset.social = label.toLowerCase();
+    link.textContent = label;
+    if (external) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+    footerLinks.insertBefore(link, footerLinks.querySelector('a[href="../"]'));
+  });
 }
 
 if (toggle && mobileMenu) {
