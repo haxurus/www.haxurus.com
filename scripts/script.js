@@ -101,15 +101,52 @@
     if (!section) return;
 
     const grid = section.querySelector('.links-grid');
-    if (grid) grid.style.alignItems = 'start';
+    if (!grid) return;
 
-    section.querySelectorAll('.link-card:not(.link-card--banner)').forEach((card) => {
-      card.style.alignSelf = 'start';
-      card.style.height = 'auto';
-      card.style.minHeight = '86px';
-    });
-
+    const smallCards = [...section.querySelectorAll('.link-card:not(.link-card--banner)')];
     const worldCards = [...section.querySelectorAll('.link-card--banner')];
+    const isDesktop = document.body.dataset.device === 'desktop';
+
+    grid.style.alignItems = 'start';
+
+    if (isDesktop) {
+      grid.style.gridTemplateColumns = 'repeat(2, minmax(0, 1fr))';
+      grid.style.gridAutoFlow = 'row';
+
+      smallCards.forEach((card, index) => {
+        card.style.alignSelf = 'start';
+        card.style.height = '86px';
+        card.style.minHeight = '86px';
+        card.style.maxHeight = '86px';
+        card.style.gridRow = '1';
+        card.style.gridColumn = String(index + 1);
+      });
+
+      worldCards.forEach((card, index) => {
+        card.style.alignSelf = 'start';
+        card.style.gridRow = '2';
+        card.style.gridColumn = String(index + 1);
+      });
+    } else {
+      grid.style.gridTemplateColumns = '';
+      grid.style.gridAutoFlow = '';
+
+      smallCards.forEach((card) => {
+        card.style.alignSelf = '';
+        card.style.height = '';
+        card.style.minHeight = '';
+        card.style.maxHeight = '';
+        card.style.gridRow = '';
+        card.style.gridColumn = '';
+      });
+
+      worldCards.forEach((card) => {
+        card.style.alignSelf = '';
+        card.style.gridRow = '';
+        card.style.gridColumn = '';
+      });
+    }
+
     const helixHorizon = worldCards.find((card) => /Helix Horizon/i.test(card.textContent || ''));
     const celestiaRemastered = worldCards.find((card) => /Celestia Remastered/i.test(card.textContent || ''));
 
@@ -277,9 +314,15 @@
   let resizeFrame = 0;
   window.addEventListener('resize', () => {
     window.cancelAnimationFrame(resizeFrame);
-    resizeFrame = window.requestAnimationFrame(applyDeviceClass);
+    resizeFrame = window.requestAnimationFrame(() => {
+      applyDeviceClass();
+      configureVrchatCards();
+    });
   }, { passive: true });
-  window.addEventListener('orientationchange', applyDeviceClass, { passive: true });
+  window.addEventListener('orientationchange', () => {
+    applyDeviceClass();
+    configureVrchatCards();
+  }, { passive: true });
 
   applyDeviceClass();
   addAboutNavigation();
