@@ -96,6 +96,36 @@
     grid.insertBefore(card, rainbowSix || null);
   }
 
+  function configureVrchatCards() {
+    const section = document.querySelector('#vrchat');
+    if (!section) return;
+
+    const grid = section.querySelector('.links-grid');
+    if (grid) grid.style.alignItems = 'start';
+
+    section.querySelectorAll('.link-card:not(.link-card--banner)').forEach((card) => {
+      card.style.alignSelf = 'start';
+      card.style.height = 'auto';
+      card.style.minHeight = '86px';
+    });
+
+    const worldCards = [...section.querySelectorAll('.link-card--banner')];
+    const helixHorizon = worldCards.find((card) => /Helix Horizon/i.test(card.textContent || ''));
+    const celestiaRemastered = worldCards.find((card) => /Celestia Remastered/i.test(card.textContent || ''));
+
+    if (helixHorizon) {
+      helixHorizon.href = '#';
+      helixHorizon.removeAttribute('target');
+      helixHorizon.removeAttribute('rel');
+    }
+
+    if (celestiaRemastered) {
+      celestiaRemastered.href = 'https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/';
+      celestiaRemastered.target = '_blank';
+      celestiaRemastered.rel = 'noopener noreferrer';
+    }
+  }
+
   function enableDesktopWheelNavigation() {
     let locked = false;
     let accumulatedDelta = 0;
@@ -256,6 +286,7 @@
   addAdminLoginLink();
   updateCelestiaInvite();
   addRdr2Game();
+  configureVrchatCards();
   applyCardBadges();
   setCurrentYear();
   enableDesktopWheelNavigation();
