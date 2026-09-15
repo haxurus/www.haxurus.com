@@ -51,7 +51,7 @@ const staffMembers = [
     image: '../img/celestia/users/yuko.webp'
   },
 
-  // Level 4 - Padri fondatori. Keep these members in alphabetical order.
+  // Level 4 - Fondatori (no staff). Keep these members in alphabetical order.
   {
     name: 'Autoincazzata',
     role: '',
@@ -379,3 +379,10 @@ const navObserver = new IntersectionObserver((entries) => {
 sections.forEach((section) => navObserver.observe(section));
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const founders = document.querySelector('.staff-level[data-level="4"]');
+  const divider = founders?.previousElementSibling;
+  const label = divider?.classList.contains('staff-divider') ? divider.querySelector('span') : null;
+  if (label) label.textContent = 'Fondatori (no staff)';
+});
