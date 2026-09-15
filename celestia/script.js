@@ -54,37 +54,37 @@ const staffMembers = [
   // Level 4 - Padri fondatori. Keep these members in alphabetical order.
   {
     name: 'Autoincazzata',
-    role: 'Padre fondatore',
+    role: '',
     level: 4,
     image: '../img/celestia/users/autoincazzata.webp'
   },
   {
     name: 'Haxurus',
-    role: 'Padre fondatore',
+    role: '',
     level: 4,
     image: '../img/celestia/users/haxurus.webp'
   },
   {
     name: 'Julie Senpai',
-    role: 'Padre fondatore',
+    role: '',
     level: 4,
     image: '../img/celestia/users/julie-senpai.webp'
   },
   {
     name: 'Killer Jack',
-    role: 'Padre fondatore',
+    role: '',
     level: 4,
     image: '../img/celestia/users/killer-jack.webp'
   },
   {
     name: 'Neko Senpai',
-    role: 'Padre fondatore',
+    role: '',
     level: 4,
     image: '../img/celestia/users/neko-senpai.webp'
   },
   {
     name: 'Wodoox',
-    role: 'Padre fondatore',
+    role: '',
     level: 4,
     image: '../img/celestia/users/wodoox.webp'
   },
@@ -149,7 +149,7 @@ if (staffGrid) {
 
     const img = document.createElement('img');
     img.src = member.image;
-    img.alt = `${member.name} - ${member.role}`;
+    img.alt = member.role ? `${member.name} - ${member.role}` : member.name;
     img.loading = 'lazy';
     img.decoding = 'async';
     img.addEventListener('error', () => {
@@ -174,12 +174,15 @@ if (staffGrid) {
 
     const name = document.createElement('h3');
     name.textContent = member.name;
+    info.appendChild(name);
 
-    const role = document.createElement('span');
-    role.className = 'staff-card__role';
-    role.textContent = member.role;
+    if (member.role) {
+      const role = document.createElement('span');
+      role.className = 'staff-card__role';
+      role.textContent = member.role;
+      info.appendChild(role);
+    }
 
-    info.append(name, role);
     card.append(media, info);
     return card;
   };
