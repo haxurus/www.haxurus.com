@@ -227,8 +227,8 @@ if (staffGrid) {
   staffGrid.appendChild(fragment);
 }
 
-// Trailer YouTube. Inserire qui l'ID del video quando disponibile.
-const trailerVideoId = '';
+// Trailer YouTube ufficiale Celestia Remastered.
+const trailerVideoId = '716jlzONSFo';
 const heroSection = document.querySelector('.hero');
 
 if (heroSection && !document.getElementById('trailer')) {
@@ -269,13 +269,40 @@ if (heroSection && !document.getElementById('trailer')) {
 
   if (trailerVideoId) {
     const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(trailerVideoId)}?rel=0`;
     iframe.title = 'Trailer Celestia Remastered';
     iframe.loading = 'lazy';
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     iframe.allowFullscreen = true;
+    iframe.dataset.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(trailerVideoId)}?autoplay=1&mute=1&rel=0&playsinline=1&enablejsapi=1`;
     player.appendChild(iframe);
+
+    let trailerStarted = false;
+    const sendTrailerCommand = (command) => {
+      if (!iframe.contentWindow) return;
+      iframe.contentWindow.postMessage(JSON.stringify({
+        event: 'command',
+        func: command,
+        args: []
+      }), '*');
+    };
+
+    const trailerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+          if (!trailerStarted) {
+            iframe.src = iframe.dataset.src;
+            trailerStarted = true;
+          } else {
+            sendTrailerCommand('playVideo');
+          }
+        } else if (trailerStarted) {
+          sendTrailerCommand('pauseVideo');
+        }
+      });
+    }, { threshold: [0, 0.35, 0.7] });
+
+    trailerObserver.observe(player);
   } else {
     const placeholder = document.createElement('div');
     placeholder.className = 'trailer-placeholder';
