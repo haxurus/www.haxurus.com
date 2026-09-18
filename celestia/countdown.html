@@ -320,6 +320,7 @@
   <script>
     // 18 settembre 2026, ore 20:00 in Italia (CEST, UTC+2)
     const deadline = new Date('2026-09-18T20:00:00+02:00').getTime();
+    const redirectUrl = 'https://youtu.be/716jlzONSFo';
 
     const els = {
       days: document.getElementById('days'),
@@ -342,6 +343,7 @@
         els.seconds.textContent = '00';
         els.card.classList.add('expired');
         clearInterval(timer);
+        window.location.replace(redirectUrl);
         return;
       }
 
