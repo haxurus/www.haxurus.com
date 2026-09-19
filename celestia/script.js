@@ -27,6 +27,12 @@ const staffMembers = [
     image: '../img/celestia/users/altr3xa.webp'
   },
   {
+    name: 'Artyom',
+    role: 'Moderatore',
+    level: 2,
+    image: '../img/celestia/users/artyom.webp'
+  },
+  {
     name: 'GoldenLuna',
     role: 'Moderatore',
     level: 2,
@@ -43,6 +49,12 @@ const staffMembers = [
     role: 'Moderatore',
     level: 2,
     image: '../img/celestia/users/lil-shark.webp'
+  },
+  {
+    name: 'thadoom',
+    role: 'Moderatore · In prova',
+    level: 2,
+    image: '../img/celestia/users/thadoom.webp'
   },
   {
     name: 'Yuko',
