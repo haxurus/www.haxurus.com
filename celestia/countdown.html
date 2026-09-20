@@ -306,7 +306,7 @@
       </div>
 
       <div class="line"></div>
-      <div class="footer-note">Venerdì 18 settembre 2026 · ore 22:00</div>
+      <div class="footer-note">Venerdì 18 settembre 2026 · ore 20:00</div>
 
       <nav class="social-links" aria-label="Link Celestia">
         <a class="social-link" href="https://discord.gg/8d4ZRhRN6y" target="_blank" rel="noopener noreferrer">Discord</a>
@@ -318,8 +318,9 @@
   </main>
 
   <script>
-    // 18 settembre 2026, ore 22:00 in Italia (CEST, UTC+2)
-    const deadline = new Date('2026-09-18T22:00:00+02:00').getTime();
+    // 18 settembre 2026, ore 20:00 in Italia (CEST, UTC+2)
+    const deadline = new Date('2026-09-18T20:00:00+02:00').getTime();
+    const redirectUrl = 'https://youtu.be/716jlzONSFo';
 
     const els = {
       days: document.getElementById('days'),
@@ -342,6 +343,7 @@
         els.seconds.textContent = '00';
         els.card.classList.add('expired');
         clearInterval(timer);
+        window.location.replace(redirectUrl);
         return;
       }
 
