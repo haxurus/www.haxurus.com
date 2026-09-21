@@ -122,12 +122,11 @@ const staffMembers = [
 // Logo consigliato: ../img/celestia/guests/nome-community.webp
 const guestCommunities = [
   {
-    name: 'Nebula Haven',
-    logo: '../img/celestia/guests/nebula-haven.webp',
-    description: 'Community di esempio. Community VRChat dedicata a serate social, incontri tranquilli ed eventi di gruppo. Usa Celestia come uno dei suoi principali punti di ritrovo per accogliere membri e nuovi ospiti.',
-    vrchat: '',
-    discord: '',
-    demo: true
+    name: 'The Realms',
+    logo: '../img/celestia/guests/the-realms.webp',
+    description: 'The Realms ITA è una community italiana di VRChat, chill e aperta a tutti. Fondata su rispetto, amicizia e divertimento, offre uno spazio tranquillo dove essere se stessi, conoscere nuove persone e condividere momenti senza pressioni.',
+    vrchat: 'https://vrc.group/ITALIA.1585',
+    discord: 'https://discord.gg/zMdY5SfPNy'
   }
 ];
 
