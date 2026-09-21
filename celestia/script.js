@@ -124,7 +124,7 @@ const guestCommunities = [
   {
     name: 'Nebula Haven',
     logo: '../img/celestia/guests/nebula-haven.webp',
-    description: 'Community VRChat dedicata a serate social, incontri tranquilli ed eventi di gruppo. Usa Celestia come uno dei suoi principali punti di ritrovo per accogliere membri e nuovi ospiti.',
+    description: 'Community di esempio. Community VRChat dedicata a serate social, incontri tranquilli ed eventi di gruppo. Usa Celestia come uno dei suoi principali punti di ritrovo per accogliere membri e nuovi ospiti.',
     vrchat: '',
     discord: '',
     demo: true
@@ -176,13 +176,6 @@ if (guestGrid) {
 
         const content = document.createElement('div');
         content.className = 'guest-card__content';
-
-        if (community.demo) {
-          const demoBadge = document.createElement('span');
-          demoBadge.className = 'guest-demo-badge';
-          demoBadge.textContent = 'Community di esempio';
-          content.appendChild(demoBadge);
-        }
 
         const name = document.createElement('h3');
         name.textContent = community.name;
