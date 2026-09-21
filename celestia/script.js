@@ -121,14 +121,14 @@ const staffMembers = [
 // name, logo, description, vrchat, discord.
 // Logo consigliato: ../img/celestia/guests/nome-community.webp
 const guestCommunities = [
-  // Esempio:
-  // {
-  //   name: 'Nome Community',
-  //   logo: '../img/celestia/guests/nome-community.webp',
-  //   description: 'Breve descrizione della community e del modo in cui usa il mondo Celestia.',
-  //   vrchat: 'https://vrc.group/...',
-  //   discord: 'https://discord.gg/...'
-  // }
+  {
+    name: 'Nebula Haven',
+    logo: '../img/celestia/guests/nebula-haven.webp',
+    description: 'Community VRChat dedicata a serate social, incontri tranquilli ed eventi di gruppo. Usa Celestia come uno dei suoi principali punti di ritrovo per accogliere membri e nuovi ospiti.',
+    vrchat: '',
+    discord: '',
+    demo: true
+  }
 ];
 
 const guestGrid = document.getElementById('guest-grid');
@@ -177,6 +177,13 @@ if (guestGrid) {
         const content = document.createElement('div');
         content.className = 'guest-card__content';
 
+        if (community.demo) {
+          const demoBadge = document.createElement('span');
+          demoBadge.className = 'guest-demo-badge';
+          demoBadge.textContent = 'Community di esempio';
+          content.appendChild(demoBadge);
+        }
+
         const name = document.createElement('h3');
         name.textContent = community.name;
 
@@ -194,6 +201,12 @@ if (guestGrid) {
           vrchat.rel = 'noopener noreferrer';
           vrchat.textContent = 'Gruppo VRChat';
           actions.appendChild(vrchat);
+        } else if (community.demo) {
+          const vrchat = document.createElement('span');
+          vrchat.className = 'button button-primary guest-demo-button';
+          vrchat.setAttribute('aria-disabled', 'true');
+          vrchat.textContent = 'Gruppo VRChat';
+          actions.appendChild(vrchat);
         }
 
         if (community.discord) {
@@ -202,6 +215,12 @@ if (guestGrid) {
           discord.href = community.discord;
           discord.target = '_blank';
           discord.rel = 'noopener noreferrer';
+          discord.textContent = 'Discord';
+          actions.appendChild(discord);
+        } else if (community.demo) {
+          const discord = document.createElement('span');
+          discord.className = 'button button-secondary guest-demo-button';
+          discord.setAttribute('aria-disabled', 'true');
           discord.textContent = 'Discord';
           actions.appendChild(discord);
         }
