@@ -116,6 +116,105 @@ const staffMembers = [
   }
 ];
 
+// Community ospiti.
+// Per aggiungerne una, inserire un oggetto con:
+// name, logo, description, vrchat, discord.
+// Logo consigliato: ../img/celestia/guests/nome-community.webp
+const guestCommunities = [
+  // Esempio:
+  // {
+  //   name: 'Nome Community',
+  //   logo: '../img/celestia/guests/nome-community.webp',
+  //   description: 'Breve descrizione della community e del modo in cui usa il mondo Celestia.',
+  //   vrchat: 'https://vrc.group/...',
+  //   discord: 'https://discord.gg/...'
+  // }
+];
+
+const guestGrid = document.getElementById('guest-grid');
+
+if (guestGrid) {
+  if (!guestCommunities.length) {
+    const empty = document.createElement('div');
+    empty.className = 'guest-empty reveal';
+    empty.textContent = 'Le community ospiti verranno aggiunte qui.';
+    guestGrid.appendChild(empty);
+  } else {
+    const guestFragment = document.createDocumentFragment();
+
+    [...guestCommunities]
+      .sort((a, b) => a.name.localeCompare(b.name, 'it', { sensitivity: 'base' }))
+      .forEach((community) => {
+        const card = document.createElement('article');
+        card.className = 'guest-card reveal';
+
+        const logo = document.createElement('div');
+        logo.className = 'guest-logo';
+
+        const img = document.createElement('img');
+        img.src = community.logo;
+        img.alt = `Logo ${community.name}`;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+
+        const fallback = document.createElement('span');
+        fallback.className = 'guest-logo__fallback';
+        fallback.textContent = community.name
+          .split(/\s+/)
+          .filter(Boolean)
+          .slice(0, 2)
+          .map((part) => part[0])
+          .join('')
+          .toUpperCase() || '?';
+
+        img.addEventListener('error', () => {
+          logo.classList.add('is-placeholder');
+          img.remove();
+        }, { once: true });
+
+        logo.append(img, fallback);
+
+        const content = document.createElement('div');
+        content.className = 'guest-card__content';
+
+        const name = document.createElement('h3');
+        name.textContent = community.name;
+
+        const description = document.createElement('p');
+        description.textContent = community.description;
+
+        const actions = document.createElement('div');
+        actions.className = 'guest-card__actions';
+
+        if (community.vrchat) {
+          const vrchat = document.createElement('a');
+          vrchat.className = 'button button-primary';
+          vrchat.href = community.vrchat;
+          vrchat.target = '_blank';
+          vrchat.rel = 'noopener noreferrer';
+          vrchat.textContent = 'Gruppo VRChat';
+          actions.appendChild(vrchat);
+        }
+
+        if (community.discord) {
+          const discord = document.createElement('a');
+          discord.className = 'button button-secondary';
+          discord.href = community.discord;
+          discord.target = '_blank';
+          discord.rel = 'noopener noreferrer';
+          discord.textContent = 'Discord';
+          actions.appendChild(discord);
+        }
+
+        content.append(name, description, actions);
+        card.append(logo, content);
+        guestFragment.appendChild(card);
+      });
+
+    guestGrid.appendChild(guestFragment);
+  }
+}
+
 const staffGrid = document.getElementById('staff-grid');
 
 if (staffGrid) {
