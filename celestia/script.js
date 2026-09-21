@@ -222,6 +222,25 @@ if (guestGrid) {
         guestFragment.appendChild(card);
       });
 
+    const joinCard = document.createElement('a');
+    joinCard.className = 'guest-card guest-card--join reveal';
+    joinCard.href = 'https://discord.gg/8d4ZRhRN6y';
+    joinCard.target = '_blank';
+    joinCard.rel = 'noopener noreferrer';
+    joinCard.setAttribute('aria-label', 'Questo spazio potrebbe essere tuo - apri Discord');
+
+    const joinIcon = document.createElement('span');
+    joinIcon.className = 'guest-card--join__icon';
+    joinIcon.setAttribute('aria-hidden', 'true');
+    joinIcon.textContent = '+';
+
+    const joinText = document.createElement('span');
+    joinText.className = 'guest-card--join__text';
+    joinText.textContent = 'Questo spazio potrebbe essere tuo';
+
+    joinCard.append(joinIcon, joinText);
+    guestFragment.appendChild(joinCard);
+
     guestGrid.appendChild(guestFragment);
   }
 }
