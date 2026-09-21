@@ -63,6 +63,19 @@
     .feature-card:hover,.staff-card:hover,.recruit-card:hover{border-color:rgba(96,93,135,.72)}
     .feature-card:hover,.recruit-card:hover{background:linear-gradient(180deg,rgba(96,93,135,.18),rgba(25,24,38,.58))}
     .feature-card h3{font-size:1.5rem;letter-spacing:-.025em}
+    .guest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .guest-card{display:grid;grid-template-columns:112px minmax(0,1fr);gap:24px;align-items:center;padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(96,93,135,.10),rgba(25,24,38,.48));transition:transform .25s var(--ease),border-color .25s ease,background .25s ease}
+    .guest-card:hover{transform:translateY(-3px);border-color:rgba(96,93,135,.72);background:linear-gradient(180deg,rgba(96,93,135,.18),rgba(25,24,38,.58))}
+    .guest-logo{display:grid;place-items:center;width:112px;height:112px;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at 50% 35%,rgba(96,93,135,.30),rgba(25,24,38,.88) 70%)}
+    .guest-logo img{width:100%;height:100%;object-fit:cover}
+    .guest-logo__fallback{display:none;color:#c2c7d0;font-size:1.7rem;font-weight:800;letter-spacing:.04em}
+    .guest-logo.is-placeholder .guest-logo__fallback{display:block}
+    .guest-card__content h3{margin-bottom:10px;font-size:1.45rem;letter-spacing:-.03em}
+    .guest-card__content p{margin:0 0 20px;color:var(--muted);line-height:1.7}
+    .guest-card__actions{display:flex;flex-wrap:wrap;gap:10px}
+    .guest-empty{grid-column:1/-1;padding:30px;border:1px dashed rgba(194,199,208,.20);border-radius:var(--radius);color:var(--muted);text-align:center;background:rgba(25,24,38,.28)}
+    @media(max-width:900px){.guest-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.guest-card{grid-template-columns:1fr;padding:22px;text-align:center}.guest-logo{width:96px;height:96px;margin:0 auto}.guest-card__actions{justify-content:center}.guest-card__actions .button{width:100%}}
     .world-shot::after{background:none!important}
     .world-shot--main{background-image:url("../img/celestia/vrchat-world.webp")}
     .world-shot--two{background-image:url("../img/celestia/world-2.webp")}
@@ -94,7 +107,7 @@
     @media(max-width:980px){.mobile-menu{display:grid;background:rgba(17,17,17,.98)}.brand img{height:46px;max-width:175px}}
     @media(max-width:760px){.recruit-grid{grid-template-columns:1fr}.recruit-card{min-height:auto;padding:26px}.recruit-card>.button,.recruit-actions .button{width:100%}.recruit-actions{flex-direction:column}.site-intro::before{width:min(76vw,420px);height:min(34vh,260px)}}
   </style>
-  <script defer src="script.js?v=20260921-1"></script>
+  <script defer src="script.js?v=20260921-2"></script>
 </head>
 <body class="intro-active">
   <div class="site-intro" id="site-intro" aria-hidden="true"></div>
@@ -108,6 +121,7 @@
         <a data-nav class="is-active" href="#home">Home</a>
         <a data-nav href="#community">Community</a>
         <a data-nav href="#world">Mondo</a>
+        <a data-nav href="#guests">Ospiti</a>
         <a data-nav href="#staff">Staff</a>
         <a data-nav href="#join-team">Collabora</a>
       </nav>
@@ -118,6 +132,7 @@
       <a href="#home">Home</a>
       <a href="#community">Community</a>
       <a href="#world">Mondo</a>
+      <a href="#guests">Ospiti</a>
       <a href="#staff">Staff</a>
       <a href="#join-team">Collabora</a>
       <a class="nav-cta" href="https://discord.gg/8d4ZRhRN6y" target="_blank" rel="noopener noreferrer">Entra nel Discord</a>
@@ -174,6 +189,19 @@
           <div class="world-shot world-shot--six" role="img" aria-label="Mondo Celestia - sesta vista"></div>
           <div class="world-shot world-shot--seven" role="img" aria-label="Mondo Celestia - settima vista"></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="guests">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-kicker">Community ospiti</span>
+            <h2>Community che hanno scelto Celestia come casa.</h2>
+          </div>
+          <p>Un piccolo spazio dedicato ai gruppi e alle community che usano il nostro mondo come punto di ritrovo per i propri membri e le proprie attività.</p>
+        </div>
+        <div class="guest-grid" id="guest-grid" aria-live="polite"></div>
       </div>
     </section>
 
