@@ -21,7 +21,7 @@ const staffMembers = [
 
   // Level 2 - Moderatori. Keep these members in alphabetical order.
   {
-    name: '-Floweyy-',
+    name: 'Flowey',
     role: 'Moderatore · In prova',
     level: 2,
     image: '../../img/celestia/users/floweyy.webp'
@@ -69,7 +69,7 @@ const staffMembers = [
     image: '../../img/celestia/users/lil-shark.webp'
   },
   {
-    name: '«Tatsu-Ming»',
+    name: 'Tatsu-Ming',
     role: 'Moderatore · In prova',
     level: 2,
     image: '../../img/celestia/users/tatsu-ming.webp'
