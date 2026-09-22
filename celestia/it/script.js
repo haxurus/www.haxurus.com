@@ -57,7 +57,7 @@ const staffMembers = [
     image: '../../img/celestia/users/julie-senpai.webp'
   },
   {
-    name: 'Lev Haiba',
+    name: 'Lev_Hiaba11',
     role: 'Moderatore · In prova',
     level: 2,
     image: '../../img/celestia/users/lev-haiba.webp'
@@ -69,7 +69,7 @@ const staffMembers = [
     image: '../../img/celestia/users/lil-shark.webp'
   },
   {
-    name: 'Tatsu-Ming',
+    name: '«Tatsu-Ming»',
     role: 'Moderatore · In prova',
     level: 2,
     image: '../../img/celestia/users/tatsu-ming.webp'
