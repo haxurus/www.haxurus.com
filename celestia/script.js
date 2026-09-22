@@ -21,6 +21,12 @@ const staffMembers = [
 
   // Level 2 - Moderatori. Keep these members in alphabetical order.
   {
+    name: '-Floweyy-',
+    role: 'Moderatore · In prova',
+    level: 2,
+    image: '../img/celestia/users/floweyy.webp'
+  },
+  {
     name: 'Altr3xa',
     role: 'Moderatore',
     level: 2,
@@ -31,6 +37,12 @@ const staffMembers = [
     role: 'Moderatore',
     level: 2,
     image: '../img/celestia/users/artyom.webp'
+  },
+  {
+    name: 'Cristaldragon17',
+    role: 'Moderatore · In prova',
+    level: 2,
+    image: '../img/celestia/users/cristaldragon17.webp'
   },
   {
     name: 'GoldenLuna',
@@ -45,10 +57,22 @@ const staffMembers = [
     image: '../img/celestia/users/julie-senpai.webp'
   },
   {
+    name: 'Lev Haiba',
+    role: 'Moderatore · In prova',
+    level: 2,
+    image: '../img/celestia/users/lev-haiba.webp'
+  },
+  {
     name: 'Lil Shark',
     role: 'Moderatore',
     level: 2,
     image: '../img/celestia/users/lil-shark.webp'
+  },
+  {
+    name: 'Tatsu-Ming',
+    role: 'Moderatore · In prova',
+    level: 2,
+    image: '../img/celestia/users/tatsu-ming.webp'
   },
   {
     name: 'thadoom',
