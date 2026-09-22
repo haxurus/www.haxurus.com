@@ -5,11 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Celestia</title>
   <meta name="robots" content="noindex, follow" />
-  <link rel="canonical" href="https://haxurus.com/celestia/it/" />
-  <meta http-equiv="refresh" content="0; url=./it/" />
-  <script>window.location.replace('./it/');</script>
+  <link rel="alternate" hreflang="it" href="https://haxurus.com/celestia/it/" />
+  <link rel="alternate" hreflang="en" href="https://haxurus.com/celestia/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://haxurus.com/celestia/it/" />
+  <script>
+    (function () {
+      var supportedLanguages = {
+        it: './it/',
+        en: './en/'
+      };
+
+      var browserLanguages =
+        Array.isArray(navigator.languages) && navigator.languages.length
+          ? navigator.languages
+          : [navigator.language || navigator.userLanguage].filter(Boolean);
+
+      var target = './it/';
+
+      for (var i = 0; i < browserLanguages.length; i++) {
+        var language = String(browserLanguages[i]).toLowerCase().split(/[-_]/)[0];
+
+        if (supportedLanguages[language]) {
+          target = supportedLanguages[language];
+          break;
+        }
+      }
+
+      window.location.replace(target);
+    })();
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=./it/" />
+  </noscript>
 </head>
 <body>
-  <p>Reindirizzamento alla versione italiana di Celestia. <a href="./it/">Continua</a>.</p>
+  <p>Reindirizzamento a Celestia. <a href="./it/">Continua alla versione italiana</a>.</p>
 </body>
 </html>
