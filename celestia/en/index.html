@@ -8,8 +8,11 @@
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#191826" />
   <link rel="canonical" href="https://haxurus.com/celestia/en/" />
+  <link rel="alternate" hreflang="it" href="https://haxurus.com/celestia/it/" />
+  <link rel="alternate" hreflang="en" href="https://haxurus.com/celestia/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://haxurus.com/celestia/it/" />
   <link rel="icon" type="image/webp" href="../../img/celestia/logo_white.webp" />
-  <link rel="apple-touch-icon" href="../../img/celestia/logo_white.webp" />
+  <link rel="apple-touch-icon" href="../img/celestia/logo_white.webp" />
   <link rel="preload" as="image" href="/img/celestia/logo_white.webp" type="image/webp" fetchpriority="high" />
 
   <meta property="og:type" content="website" />
@@ -54,7 +57,14 @@
     .button-secondary{color:#e5e5e5;border-color:#605d87;background:rgba(25,24,38,.72)}
     .button-secondary:hover{border-color:#c2c7d0;background:rgba(96,93,135,.18)}
     .menu-toggle{background:rgba(25,24,38,.72)}
-    .hero::before{background:linear-gradient(90deg,rgba(17,17,17,.98) 0%,rgba(25,24,38,.90) 38%,rgba(25,24,38,.32) 72%,rgba(17,17,17,.52) 100%),linear-gradient(0deg,rgba(17,17,17,.78),rgba(17,17,17,.04) 50%),url("../../img/celestia/hero.webp") 66% center/cover no-repeat,radial-gradient(circle at 75% 30%,#3f3c54,#191826 42%,#111111 76%)}
+    .language-switcher{display:flex;align-items:center;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:rgba(25,24,38,.72)}
+    .language-switcher a{display:grid;place-items:center;min-width:38px;height:32px;padding:0 10px;border-radius:999px;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-decoration:none;transition:color .2s ease,background .2s ease}
+    .language-switcher a:hover{color:var(--text);background:rgba(96,93,135,.18)}
+    .language-switcher a.is-active{color:var(--text);background:linear-gradient(135deg,#3f3c54,#605d87)}
+    .mobile-language-switcher{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 0 4px}
+    .mobile-language-switcher a{min-width:74px;padding:9px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.78rem;font-weight:800;text-align:center;text-decoration:none}
+    .mobile-language-switcher a.is-active{color:var(--text);border-color:#605d87;background:rgba(96,93,135,.22)}
+    .hero::before{background:linear-gradient(90deg,rgba(17,17,17,.98) 0%,rgba(25,24,38,.90) 38%,rgba(25,24,38,.20) 72%,rgba(17,17,17,.24) 100%),linear-gradient(0deg,rgba(17,17,17,.78),rgba(17,17,17,.04) 50%),url("../../img/celestia/hero.webp") 66% center/cover no-repeat,radial-gradient(circle at 75% 30%,#3f3c54,#191826 42%,#111111 76%)}
     .eyebrow,.section-kicker{color:#c2c7d0}
     h1 span{background:linear-gradient(105deg,#e5e5e5 0 8%,#c2c7d0 48%,#605d87 100%);-webkit-background-clip:text;background-clip:text}
     .hero-lead,.hero-note{color:#c2c7d0}
@@ -115,7 +125,7 @@
     @media(max-width:980px){.mobile-menu{display:grid;background:rgba(17,17,17,.98)}.brand img{height:46px;max-width:175px}}
     @media(max-width:760px){.recruit-grid{grid-template-columns:1fr}.recruit-card{min-height:auto;padding:26px}.recruit-card>.button,.recruit-actions .button{width:100%}.recruit-actions{flex-direction:column}.site-intro::before{width:min(76vw,420px);height:min(34vh,260px)}}
   </style>
-  <script defer src="script.js?v=20260921-6"></script>
+  <script defer src="script.js?v=20260922-3"></script>
 </head>
 <body class="intro-active">
   <div class="site-intro" id="site-intro" aria-hidden="true"></div>
@@ -133,6 +143,10 @@
         <a data-nav href="#staff">Staff</a>
         <a data-nav href="#join-team">Get involved</a>
       </nav>
+      <div class="language-switcher" aria-label="Language selector">
+        <a href="../it/" lang="it" hreflang="it">IT</a>
+        <a class="is-active" href="./" lang="en" aria-current="page">EN</a>
+      </div>
       <a class="nav-cta" href="https://discord.gg/8d4ZRhRN6y" target="_blank" rel="noopener noreferrer">Join Discord</a>
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
     </div>
@@ -143,6 +157,10 @@
       <a href="#guests">Guests</a>
       <a href="#staff">Staff</a>
       <a href="#join-team">Get involved</a>
+      <div class="mobile-language-switcher" aria-label="Language selector">
+        <a href="../it/" lang="it" hreflang="it">Italiano</a>
+        <a class="is-active" href="./" lang="en" aria-current="page">English</a>
+      </div>
       <a class="nav-cta" href="https://discord.gg/8d4ZRhRN6y" target="_blank" rel="noopener noreferrer">Join Discord</a>
     </nav>
   </header>
@@ -153,7 +171,7 @@
         <div class="hero-copy reveal is-visible">
           <span class="eyebrow">VRChat Community</span>
           <h1><span>Celestia</span></h1>
-          <p class="hero-lead">A place where the stars shine, friendships begin, and adventures never end. Join our community and experience VRChat with us.</p>
+          <p class="hero-lead">A place where the stars shine, friendships begin, and adventures never end. Entra nella nostra community e vivi VRChat insieme a noi.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="https://discord.gg/8d4ZRhRN6y" target="_blank" rel="noopener noreferrer">Join Discord</a>
             <a class="button button-secondary" href="https://vrc.group/CELEST.7570" target="_blank" rel="noopener noreferrer">VRChat Group</a>
