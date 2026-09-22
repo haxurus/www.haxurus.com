@@ -19,7 +19,13 @@ const staffMembers = [
     image: '../../img/celestia/users/haxurus.webp'
   },
 
-  // Level 2 - Moderatori. Keep these members in alphabetical order.
+  // Level 2 - Moderators. Keep these members in alphabetical order.
+  {
+    name: 'Flowey',
+    role: 'Moderator · Trial',
+    level: 2,
+    image: '../../img/celestia/users/floweyy.webp'
+  },
   {
     name: 'Altr3xa',
     role: 'Moderator',
@@ -31,6 +37,12 @@ const staffMembers = [
     role: 'Moderator',
     level: 2,
     image: '../../img/celestia/users/artyom.webp'
+  },
+  {
+    name: 'Cristaldragon17',
+    role: 'Moderator · Trial',
+    level: 2,
+    image: '../../img/celestia/users/cristaldragon17.webp'
   },
   {
     name: 'GoldenLuna',
@@ -45,10 +57,22 @@ const staffMembers = [
     image: '../../img/celestia/users/julie-senpai.webp'
   },
   {
+    name: 'Lev_Hiaba11',
+    role: 'Moderator · Trial',
+    level: 2,
+    image: '../../img/celestia/users/lev-haiba.webp'
+  },
+  {
     name: 'Lil Shark',
     role: 'Moderator',
     level: 2,
     image: '../../img/celestia/users/lil-shark.webp'
+  },
+  {
+    name: 'Tatsu-Ming',
+    role: 'Moderator · Trial',
+    level: 2,
+    image: '../../img/celestia/users/tatsu-ming.webp'
   },
   {
     name: 'thadoom',
@@ -116,10 +140,10 @@ const staffMembers = [
   }
 ];
 
-// Community ospiti.
-// Per aggiungerne una, inserire un oggetto con:
+// Guest communities.
+// To add one, insert an object with:
 // name, logo, description, vrchat, discord.
-// Logo consigliato: ../../img/celestia/guests/nome-community.webp
+// Suggested logo: ../../img/celestia/guests/community-name.webp
 const guestCommunities = [
   {
     name: 'The Realms',
@@ -374,7 +398,7 @@ if (staffGrid) {
   staffGrid.appendChild(fragment);
 }
 
-// Trailer YouTube ufficiale Celestia Remastered.
+// Official Celestia Remastered YouTube trailer.
 const trailerVideoId = '716jlzONSFo';
 const heroSection = document.querySelector('.hero');
 
@@ -510,7 +534,7 @@ if (footerLinks) {
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
     }
-    footerLinks.insertBefore(link, footerLinks.querySelector('a[href="../"]'));
+    footerLinks.insertBefore(link, footerLinks.querySelector('a[href="../../"]'));
   });
 }
 
