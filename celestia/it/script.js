@@ -57,6 +57,12 @@ const staffMembers = [
     image: '../../img/celestia/users/julie-senpai.webp'
   },
   {
+    name: 'kitsunefirefox',
+    role: 'Moderatore · In prova',
+    level: 2,
+    image: '../../img/celestia/users/kitsunefirefox.webp'
+  },
+  {
     name: 'Lev_Hiaba11',
     role: 'Moderatore · In prova',
     level: 2,
