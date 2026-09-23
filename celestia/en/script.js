@@ -57,6 +57,12 @@ const staffMembers = [
     image: '../../img/celestia/users/julie-senpai.webp'
   },
   {
+    name: 'kitsunefirefox',
+    role: 'Moderator · Trial',
+    level: 2,
+    image: '../../img/celestia/users/kitsunefirefox.webp'
+  },
+  {
     name: 'Lev_Hiaba11',
     role: 'Moderator · Trial',
     level: 2,
@@ -67,6 +73,12 @@ const staffMembers = [
     role: 'Moderator',
     level: 2,
     image: '../../img/celestia/users/lil-shark.webp'
+  },
+  {
+    name: 'Neko Senpai',
+    role: 'Moderator',
+    level: 2,
+    image: '../../img/celestia/users/neko-senpai.webp'
   },
   {
     name: 'Tatsu-Ming',
