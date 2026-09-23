@@ -75,6 +75,12 @@ const staffMembers = [
     image: '../../img/celestia/users/lil-shark.webp'
   },
   {
+    name: 'Neko Senpai',
+    role: 'Moderatore',
+    level: 2,
+    image: '../../img/celestia/users/neko-senpai.webp'
+  },
+  {
     name: 'Tatsu-Ming',
     role: 'Moderatore · In prova',
     level: 2,
