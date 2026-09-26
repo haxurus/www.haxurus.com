@@ -51,7 +51,7 @@ const staffMembers = [
     image: '../../img/celestia/users/golden-luna.webp'
   },
   {
-    name: 'Julie Senpai',
+    name: 'julisenpai',
     role: 'Moderatore',
     level: 2,
     image: '../../img/celestia/users/julie-senpai.webp'
@@ -113,7 +113,7 @@ const staffMembers = [
     image: '../../img/celestia/users/haxurus.webp'
   },
   {
-    name: 'Julie Senpai',
+    name: 'julisenpai',
     role: '',
     level: 4,
     image: '../../img/celestia/users/julie-senpai.webp'
