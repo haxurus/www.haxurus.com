@@ -161,7 +161,7 @@
       celestiaRemastered.target = '_blank';
       celestiaRemastered.rel = 'noopener noreferrer';
       const cover = celestiaRemastered.querySelector('.link-card-banner-media img');
-      if (cover) cover.src = 'img/celestia/hero.webp';
+      if (cover) cover.src = '/img/celestia/copertina.webp';
     }
   }
 
