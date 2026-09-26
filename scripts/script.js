@@ -157,7 +157,7 @@
     }
 
     if (celestiaRemastered) {
-      celestiaRemastered.href = 'https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/';
+      celestiaRemastered.href = 'https://vrchat.com/home/launch?worldId=wrld_c4f7c04f-0bcd-4f67-8d9f-1bf08e22c997';
       celestiaRemastered.target = '_blank';
       celestiaRemastered.rel = 'noopener noreferrer';
       const cover = celestiaRemastered.querySelector('.link-card-banner-media img');
