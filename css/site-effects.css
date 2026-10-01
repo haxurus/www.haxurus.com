@@ -196,16 +196,29 @@ body.is-loading #particle-bg {
   margin: auto !important;
 }
 
+.about-haxurus__card,
 .site-nav,
 .link-card,
 .playlist-card,
 .quick-link,
-.site-footer__inner {
+.site-footer__inner,
+.modal-panel,
+.age-gate-modal__panel {
   border: 1px solid var(--liquid-glass-edge) !important;
   background: var(--liquid-glass-bg) !important;
   box-shadow: var(--liquid-glass-shadow) !important;
-  -webkit-backdrop-filter: blur(7px) saturate(138%) brightness(1.06) !important;
-  backdrop-filter: blur(7px) saturate(138%) brightness(1.06) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(138%) !important;
+  backdrop-filter: blur(8px) saturate(138%) !important;
+}
+
+/* Keep every panel on the same single-layer glass treatment used by About me. */
+.link-card::before,
+.playlist-card::before,
+.site-footer__inner::before,
+.modal-panel::before,
+.age-gate-modal__panel::before {
+  content: none !important;
+  display: none !important;
 }
 
 .link-card:hover,
@@ -286,12 +299,7 @@ body.is-loading #particle-bg {
   gap: clamp(28px,5vw,58px);
   min-height: 420px;
   padding: clamp(28px,4vw,48px);
-  border: 1px solid var(--liquid-glass-edge);
   border-radius: 30px;
-  background: var(--liquid-glass-bg);
-  box-shadow: var(--liquid-glass-shadow);
-  -webkit-backdrop-filter: blur(8px) saturate(138%);
-  backdrop-filter: blur(8px) saturate(138%);
 }
 
 .about-haxurus__visual {
@@ -387,5 +395,48 @@ body.is-loading #particle-bg {
 
   .about-haxurus__button {
     width: 100%;
+  }
+}
+
+
+/* Support card: let the copy determine the panel height instead of the artwork. */
+.support-card {
+  grid-template-columns: minmax(0,1fr) minmax(240px,340px) !important;
+  align-items: center !important;
+  min-height: 0 !important;
+  padding: clamp(28px,4vw,48px) !important;
+}
+
+.support-content {
+  align-self: center !important;
+}
+
+.support-visual {
+  align-self: center !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: 300px !important;
+  padding: 0 !important;
+}
+
+.support-visual img {
+  width: min(300px,100%) !important;
+  height: auto !important;
+  max-height: 300px !important;
+  object-fit: contain !important;
+}
+
+@media (max-width:720px) {
+  .support-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .support-visual {
+    max-height: none !important;
+  }
+
+  .support-visual img {
+    width: min(240px,70vw) !important;
+    max-height: none !important;
   }
 }
