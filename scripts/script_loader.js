@@ -25,13 +25,13 @@
     hero.insertAdjacentElement('afterend', section);
   }
 
-  document.querySelectorAll('.about-haxurus img, .animated-sections img, .site-footer img').forEach((image) => {
+  document.querySelectorAll('.about-haxurus img, .animated-sections img:not([data-load-eager]), .site-footer img').forEach((image) => {
     image.loading = 'lazy';
     image.decoding = 'async';
     image.fetchPriority = 'low';
   });
 
-  document.querySelectorAll('.site-nav img, .hero img').forEach((image) => {
+  document.querySelectorAll('.site-nav img, .hero img, [data-load-eager]').forEach((image) => {
     image.loading = 'eager';
     image.decoding = 'async';
   });
