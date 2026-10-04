@@ -110,7 +110,7 @@
     grid.style.alignItems = 'start';
 
     if (isDesktop) {
-      grid.style.gridTemplateColumns = 'repeat(2, minmax(0, 1fr))';
+      grid.style.gridTemplateColumns = 'repeat(6, minmax(0, 1fr))';
       grid.style.gridAutoFlow = 'row';
 
       smallCards.forEach((card, index) => {
@@ -119,13 +119,13 @@
         card.style.minHeight = '86px';
         card.style.maxHeight = '86px';
         card.style.gridRow = '1';
-        card.style.gridColumn = String(index + 1);
+        card.style.gridColumn = `${(index * 2) + 1} / span 2`;
       });
 
       worldCards.forEach((card, index) => {
         card.style.alignSelf = 'start';
         card.style.gridRow = '2';
-        card.style.gridColumn = String(index + 1);
+        card.style.gridColumn = index === 0 ? '1 / span 3' : '4 / span 3';
       });
     } else {
       grid.style.gridTemplateColumns = '';
