@@ -407,7 +407,6 @@ main{
   transform: scale(1);
   transform-origin: center;
   transition: transform 0.32s ease;
-  will-change: transform;
 }
 
 .link-card--banner:hover .link-card-banner-media img, .link-card--banner:focus-visible .link-card-banner-media img{
@@ -463,7 +462,6 @@ main{
   transform: scale(1);
   transform-origin: center;
   transition: transform 0.32s ease;
-  will-change: transform;
 }
 
 .playlist-card:hover img, .playlist-card:focus-visible img{

@@ -10,7 +10,7 @@
     section.id = 'about';
     section.innerHTML = `
       <div class="about-haxurus__card">
-        <div class="about-haxurus__visual" aria-hidden="true"><img alt="" src="img/favicon.png" loading="lazy" decoding="async"></div>
+        <div class="about-haxurus__visual" aria-hidden="true"><img alt="" src="img/favicon.webp" loading="lazy" decoding="async"></div>
         <div class="about-haxurus__content">
           <span class="about-haxurus__eyebrow">Personal hub</span>
           <h2>About me</h2>
@@ -36,8 +36,25 @@
     image.decoding = 'async';
   });
 
-  window.setTimeout(() => {
+  // Hide the loader as soon as the page has loaded (short minimum to avoid a flash), 5s at most.
+  let released = false;
+  const release = () => {
+    if (released) return;
+    released = true;
     document.body.classList.remove('is-loading');
     loader?.remove();
-  }, 5000);
+  };
+  const started = performance.now();
+  const onLoad = () => window.setTimeout(release, Math.max(0, 600 - (performance.now() - started)));
+  if (document.readyState === 'complete') onLoad();
+  else window.addEventListener('load', onLoad, { once: true });
+  window.setTimeout(release, 5000);
+
+  // Don't decode a looping background video for users who asked for less motion or less data.
+  const video = document.querySelector('.background-video');
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (video && (saveData || window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    video.removeAttribute('autoplay');
+    video.pause();
+  }
 })();

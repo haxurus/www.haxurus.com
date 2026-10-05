@@ -41,7 +41,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;width
 body.menu-open .menu-toggle span{opacity:0}body.menu-open .menu-toggle::before{transform:translateY(5.5px) rotate(45deg)}body.menu-open .menu-toggle::after{transform:translateY(-5.5px) rotate(-45deg)}.mobile-menu{display:none}
 
 .hero{min-height:calc(100svh - 74px);position:relative;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
-.hero-bg{position:absolute;inset:0;background-image:url('../img/games/helixhorizon.png');background-size:cover;background-position:center;transform:scale(1.025);animation:heroMove 20s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;background-image:url('../img/games/helixhorizon.webp');background-size:cover;background-position:center;transform:scale(1.025);animation:heroMove 20s ease-in-out infinite alternate}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,5,16,.97) 0%,rgba(2,8,24,.86) 28%,rgba(4,15,38,.42) 57%,rgba(5,17,40,.18) 100%),linear-gradient(180deg,rgba(1,4,13,.06) 52%,rgba(1,5,16,.82) 100%)}
 @keyframes heroMove{to{transform:scale(1.08) translateX(1.5%)}}
 .hero-content{position:relative;z-index:2;width:min(calc(100% - 44px),var(--max));margin:0 auto;padding:150px 0 110px}

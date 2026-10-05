@@ -198,9 +198,6 @@ body.is-loading #particle-bg {
 
 .about-haxurus__card,
 .site-nav,
-.link-card,
-.playlist-card,
-.quick-link,
 .site-footer__inner,
 .modal-panel,
 .age-gate-modal__panel {
@@ -209,6 +206,17 @@ body.is-loading #particle-bg {
   box-shadow: var(--liquid-glass-shadow) !important;
   -webkit-backdrop-filter: blur(8px) saturate(138%) !important;
   backdrop-filter: blur(8px) saturate(138%) !important;
+}
+
+/* Many small cards: blur-free glass (a backdrop blur per card is very costly over a playing video). */
+.link-card,
+.playlist-card,
+.quick-link {
+  border: 1px solid var(--liquid-glass-edge) !important;
+  background: linear-gradient(135deg, rgba(8,20,15,.46), rgba(8,20,15,.34) 48%, rgba(8,20,15,.3)) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.3) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
 /* Keep every panel on the same single-layer glass treatment used by About me. */
