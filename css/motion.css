@@ -82,6 +82,11 @@
   perspective: 600px;
 }
 
+.m-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .m-letter {
   display: inline-block;
   opacity: 0;
@@ -170,7 +175,8 @@
 
 /* ---------- Cards: glare + tilt (tilt transform is set from JS on hover-capable devices) ---------- */
 .link-card::after,
-.playlist-card::after {
+.playlist-card::after,
+.tier-card::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -183,14 +189,94 @@
 }
 
 .link-card.is-tilting::after,
-.playlist-card.is-tilting::after {
+.playlist-card.is-tilting::after,
+.tier-card.is-tilting::after {
   opacity: 1;
 }
 
 .link-card.is-tilting,
-.playlist-card.is-tilting {
+.playlist-card.is-tilting,
+.tier-card.is-tilting {
   transition: transform .12s ease-out, box-shadow .25s ease, border-color .25s ease, background .25s ease;
   box-shadow: 0 30px 60px rgba(0, 0, 0, .28), 0 0 0 1px rgba(57, 255, 20, .25) !important;
+}
+
+/* ---------- Support page ---------- */
+.hero-panel {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -8%;
+  top: -30%;
+  width: min(70%, 640px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(57, 255, 20, .16), transparent 64%);
+  animation: m-breathe 7s ease-in-out infinite;
+}
+
+.hero-panel > div {
+  transform: translate3d(0, calc(var(--hp, 0) * 40px), 0);
+}
+
+.m-ready .hero-panel > div > * {
+  opacity: 0;
+  translate: 0 30px;
+}
+
+.m-go .hero-panel > div > * {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity .8s ease, translate .9s var(--m-ease), background .2s ease;
+  transition-delay: calc(.1s + var(--si, 0) * 110ms);
+}
+
+/* h1 letters animate on their own; keep the heading box itself visible. */
+.m-ready .hero-panel > div > h1 {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.recommended {
+  position: relative;
+  overflow: hidden;
+}
+
+.recommended::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .38) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: m-shine 4.5s ease-in-out 1.5s infinite;
+}
+
+@keyframes m-shine {
+  0%, 55%, 100% { transform: translateX(-120%); }
+  80% { transform: translateX(120%); }
+}
+
+.faq-item[open] p {
+  animation: m-faq .45s var(--m-ease) both;
+}
+
+@keyframes m-faq {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.faq-item summary::after {
+  transition: transform .3s var(--m-ease);
+}
+
+.faq-item[open] summary::after {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 /* ---------- About: floating emblem ---------- */
@@ -220,7 +306,10 @@
 
   .m-letter,
   .about-haxurus__visual img,
-  .hero-content::before {
+  .hero-content::before,
+  .hero-panel::before,
+  .recommended::after,
+  .faq-item[open] p {
     animation: none !important;
   }
 }

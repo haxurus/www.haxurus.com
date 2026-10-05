@@ -7,37 +7,44 @@
 
   const root = document.documentElement;
   const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const hero = document.querySelector('.hero');
+  const hero = document.querySelector('.hero, .hero-panel');
   const about = document.querySelector('.about-haxurus');
 
   root.classList.add('m-ready');
 
-  /* ---- Hero title split into letters ---- */
-  const title = document.querySelector('.hero h1');
+  /* ---- Hero title split into words/letters ---- */
+  const title = hero && hero.querySelector('h1');
   if (title && !title.querySelector('.m-letter')) {
     const text = title.textContent.trim();
+    const step = Math.min(1, 14 / text.length);
+    let index = 0;
     title.setAttribute('aria-label', text);
     title.textContent = '';
-    [...text].forEach((char, index) => {
-      const span = document.createElement('span');
-      span.className = 'm-letter';
-      span.setAttribute('aria-hidden', 'true');
-      span.style.setProperty('--i', index);
-      span.textContent = char === ' ' ? ' ' : char;
-      title.appendChild(span);
+    text.split(/\s+/).forEach((word, w, words) => {
+      const wrap = document.createElement('span');
+      wrap.className = 'm-word';
+      wrap.setAttribute('aria-hidden', 'true');
+      [...word].forEach((char) => {
+        const span = document.createElement('span');
+        span.className = 'm-letter';
+        span.style.setProperty('--i', (index++ * step).toFixed(2));
+        span.textContent = char;
+        wrap.appendChild(span);
+      });
+      title.appendChild(wrap);
+      if (w < words.length - 1) title.appendChild(document.createTextNode(' '));
     });
   }
   document.querySelectorAll('.hero .quick-link').forEach((el, i) => el.style.setProperty('--qi', i));
+  document.querySelectorAll('.hero-panel > div > *').forEach((el, i) => el.style.setProperty('--si', i));
 
   /* ---- Scroll reveal ---- */
   const targets = [
-    ...document.querySelectorAll('.category h2, .link-card, .playlist-card, .about-haxurus__card, .site-footer__inner')
+    ...document.querySelectorAll('.category h2, .link-card, .playlist-card, .about-haxurus__card, .site-footer__inner, .section-heading, .tier-card, .faq-item, .footer-panel')
   ].filter((el) => !el.closest('.hero'));
 
   targets.forEach((el) => {
-    if (el.classList.contains('about-haxurus__card') || el.classList.contains('support-card')) el.dataset.reveal = '';
-    else if (el.matches('h2')) el.dataset.reveal = 'left';
-    else el.dataset.reveal = '';
+    el.dataset.reveal = el.matches('h2, .section-heading') ? 'left' : '';
   });
 
   const revealObserver = new IntersectionObserver((entries) => {
@@ -63,7 +70,7 @@
   const pauseObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => entry.target.classList.toggle('m-paused', !entry.isIntersecting));
   }, { threshold: 0 });
-  [hero, about].filter(Boolean).forEach((el) => pauseObserver.observe(el));
+  [hero, about, document.querySelector('.tier-card--featured')].filter(Boolean).forEach((el) => pauseObserver.observe(el));
 
   /* ---- Progress bar + hero parallax (single rAF-throttled scroll handler) ---- */
   const bar = document.createElement('div');
@@ -126,7 +133,7 @@
       const rect = active.getBoundingClientRect();
       const x = (last.clientX - rect.left) / rect.width;
       const y = (last.clientY - rect.top) / rect.height;
-      const max = active.classList.contains('link-card--banner') || rect.width > 420 ? 3.5 : 8;
+      const max = active.classList.contains('link-card--banner') || rect.width > 420 ? 3.5 : rect.height > 320 ? 4.5 : 8;
       active.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
       active.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
       active.style.transform =
@@ -135,7 +142,7 @@
 
     document.addEventListener('pointermove', (event) => {
       if (event.pointerType && event.pointerType !== 'mouse') return;
-      const card = event.target.closest && event.target.closest('.link-card:not(.support-card), .playlist-card');
+      const card = event.target.closest && event.target.closest('.link-card:not(.support-card), .playlist-card, .tier-card');
       if (card !== active) {
         if (active) reset(active);
         active = card;
