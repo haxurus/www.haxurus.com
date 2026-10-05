@@ -8,7 +8,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
 <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
 <meta name="author" content="Haxurus"/>
-<meta name="theme-color" content="#06110c"/>
+<meta name="theme-color" content="#04070a"/>
 <link rel="canonical" href="https://haxurus.com/support/"/>
 <link rel="sitemap" type="application/xml" href="../sitemap.xml"/>
 <link rel="icon" type="image/png" href="../img/favicon.png"/>
@@ -23,206 +23,76 @@
 <meta name="twitter:title" content="Support my projects | Haxurus"/>
 <meta name="twitter:description" content="Help me keep building VRChat worlds, websites, tools and community projects."/>
 <meta name="twitter:image" content="https://haxurus.com/img/hero/hero_biker.webp"/>
-<link rel="stylesheet" href="./style.css?v=20261005-motion"/>
-<link rel="stylesheet" href="../css/motion.css?v=20261005-motion"/>
-<script defer src="../scripts/motion.js?v=20261005-motion2"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Unbounded:wght@700;800&display=swap"/>
+<link rel="stylesheet" href="../css/hub.css?v=20261005-hub4"/>
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');setTimeout(function(){d.classList.add('ready')},50)})();
+</script>
+<script type="application/json" id="pal-extra">[{"t":"Home","s":"Pages","h":"../"},{"t":"Patreon (Haxurus)","s":"Pages","h":"https://patreon.com/haxurus"}]</script>
+<script defer src="../js/hub.js?v=20261005-hub2"></script>
 </head>
 <body>
-<video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-  <source src="../img/background.webm" type="video/webm"/>
-</video>
-<div class="background-overlay" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bg" aria-hidden="true"><i class="bg__blob bg__blob--1"></i><i class="bg__blob bg__blob--2"></i><i class="bg__blob bg__blob--3"></i><div class="bg__grid"></div><div class="bg__grain"></div></div>
+<div id="spot" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
 
-<nav class="site-nav" aria-label="Support navigation">
-  <a class="brand" href="../"><img src="../img/favicon.webp" alt="" aria-hidden="true"/>Haxurus</a>
-  <div class="nav-links">
-    <a href="#patreon">Patreon</a>
-    <a href="#faq">FAQ</a>
-    <a class="home-link" href="../">Back home</a>
-  </div>
-</nav>
+<nav class="nav" aria-label="Support navigation"><div class="nav__bar">
+<a class="nav__brand" href="../" aria-label="Haxurus — back to home"><img src="../img/favicon.webp" alt="" width="30" height="30"/><span>Haxurus</span></a>
+<div class="nav__links"><a href="#patreon">Patreon</a><a href="#faq">FAQ</a></div>
+<div class="nav__tools"><button class="kbd-btn" type="button" data-open-palette aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search <kbd>Ctrl K</kbd></button><a class="btn btn--primary" style="min-height:42px;padding:0 18px;font-size:.88rem" href="../">Back home</a><button class="burger" type="button" aria-label="Open menu" aria-expanded="false"><i></i><i></i><i></i></button></div>
+</div></nav>
+<div class="mmenu" aria-hidden="true"><a href="../" style="--i:0">Home</a><a href="#patreon" style="--i:1">Patreon</a><a href="#faq" style="--i:2">FAQ</a></div>
 
-<main>
-  <section class="hero-panel glass-panel">
-    <div>
-      <span class="eyebrow">Supporter hub</span>
-      <h1>Support what I build</h1>
-      <p class="lead">I create VRChat worlds, community spaces, websites, tools and small digital experiments because I enjoy turning ideas into things people can actually use. Supporting me helps cover the recurring costs behind those projects and gives me more room to keep improving them instead of putting them aside.</p>
-      <p>You never need to pay to follow what I do. Patreon is simply a way to support the work more directly and, depending on the tier, get closer access to updates, previews and selected community or VRChat perks.</p>
-      <a class="primary-button" href="#patreon">See Patreon tiers</a>
-    </div>
-  </section>
+<div class="page" id="top"><main id="main">
 
-  <section class="section" id="patreon">
-    <div class="section-heading">
-      <span class="eyebrow">Patreon</span>
-      <h2>Choose your tier</h2>
-      <p>Pick the level that makes sense for you. Every tier contributes to the same goal: keeping the projects alive and moving forward.</p>
-    </div>
+<header class="shero"><div class="wrap">
+<div class="shero__card">
+<span class="shero__orb" aria-hidden="true"></span>
+<span class="eyebrow">Supporter hub</span>
+<h1 aria-label="Support what I build"><span class="w"><span class="ltr" style="--i:0" aria-hidden="true">S</span><span class="ltr" style="--i:1" aria-hidden="true">u</span><span class="ltr" style="--i:2" aria-hidden="true">p</span><span class="ltr" style="--i:3" aria-hidden="true">p</span><span class="ltr" style="--i:4" aria-hidden="true">o</span><span class="ltr" style="--i:5" aria-hidden="true">r</span><span class="ltr" style="--i:6" aria-hidden="true">t</span></span> <span class="w"><span class="ltr" style="--i:7" aria-hidden="true">w</span><span class="ltr" style="--i:8" aria-hidden="true">h</span><span class="ltr" style="--i:9" aria-hidden="true">a</span><span class="ltr" style="--i:10" aria-hidden="true">t</span></span> <span class="w"><span class="ltr" style="--i:11" aria-hidden="true">I</span></span> <span class="w"><span class="ltr" style="--i:12" aria-hidden="true">b</span><span class="ltr" style="--i:13" aria-hidden="true">u</span><span class="ltr" style="--i:14" aria-hidden="true">i</span><span class="ltr" style="--i:15" aria-hidden="true">l</span><span class="ltr" style="--i:16" aria-hidden="true">d</span></span></h1>
+<p class="lead">I create VRChat worlds, community spaces, websites, tools and small digital experiments because I enjoy turning ideas into things people can actually use. Supporting me helps cover the recurring costs behind those projects and gives me more room to keep improving them instead of putting them aside.</p>
+<p class="sub">You never need to pay to follow what I do. Patreon is simply a way to support the work more directly and, depending on the tier, get closer access to updates, previews and selected community or VRChat perks.</p>
+<a class="btn btn--primary" href="#patreon" data-magnet>See Patreon tiers <span class="arr">↓</span></a>
+</div>
+</div></header>
 
-    <div class="tier-grid">
-      <article class="tier-card glass-panel">
-        <div class="tier-banner"><img src="../img/patreon/tier-spritz-supporter.webp" alt="Spritz Supporter Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div>
-        <div class="tier-top">
-          <span class="tier-number">01</span>
-          <h3>Spritz Supporter</h3>
-          <p class="price"><strong>€1.50</strong><span>/ month</span></p>
-          <p class="tier-copy">A simple and symbolic tier for anyone who wants to support me with a virtual spritz.</p>
-        </div>
-        <ul>
-          <li>Supporter role on Discord</li>
-          <li>Access to basic Patreon updates</li>
-        </ul>
-        <a class="tier-button" href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer">Join on Patreon</a>
-      </article>
+<section class="sec" id="patreon"><div class="wrap">
+<header class="sec-head" data-r><span class="sec-no">01 / PATREON</span><div class="sec-head__row"><h2><span class="mask"><span style="--d:0">Choose</span></span> <span class="mask"><span style="--d:1">your</span></span> <span class="mask"><span style="--d:2">tier</span></span></h2><p>Pick the level that makes sense for you. Every tier contributes to the same goal: keeping the projects alive and moving forward.</p></div></header>
+<div class="tiers">
+<article class="tier" data-r data-s="Patreon tiers"><div class="tier__banner"><img src="../img/patreon/tier-spritz-supporter.webp" alt="Spritz Supporter Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div><div class="tier__body"><span class="tier__no">TIER 01</span><h3>Spritz Supporter</h3><p class="tier__price"><strong>€1.50</strong><span>/ month</span></p><p class="tier__copy">A simple and symbolic tier for anyone who wants to support me with a virtual spritz.</p><ul><li>Supporter role on Discord</li><li>Access to basic Patreon updates</li></ul><a class="btn " href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer" data-s="Patreon" data-magnet><span>Join on Patreon</span> <span class="arr">↗</span></a></div><span class="glare"></span></article>
+<article class="tier tier--hot" data-r data-s="Patreon tiers"><div class="tier__hot">Creator's choice</div><div class="tier__banner"><img src="../img/patreon/tier-rookie-adventurer.webp" alt="Rookie Adventurer Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div><div class="tier__body"><span class="tier__no">TIER 02</span><h3>Rookie Adventurer</h3><p class="tier__price"><strong>€5</strong><span>/ month</span></p><p class="tier__copy">The first real step into the community. Perfect for those who want to follow my projects more closely.</p><ul><li>Supporter role on Discord</li><li>Supporter-only Discord channels</li><li>Access to basic Patreon updates</li><li>Early project updates</li><li>VRChat: access to the VIP room in all my worlds</li><li>VRChat: VIP nameplate in all my worlds</li><li>VRChat: custom picture frames in Helix Horizon</li><li>VRChat: access to the giant city TV in Helix Horizon</li><li>Sneak peeks and previews</li></ul><a class="btn btn--primary" href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer" data-s="Patreon" data-magnet><span>Join on Patreon</span> <span class="arr">↗</span></a></div><span class="glare"></span></article>
+<article class="tier" data-r data-s="Patreon tiers"><div class="tier__banner"><img src="../img/patreon/tier-main-character.webp" alt="Main Character Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div><div class="tier__body"><span class="tier__no">TIER 03</span><h3>Main Character</h3><p class="tier__price"><strong>€10</strong><span>/ month</span></p><p class="tier__copy">For supporters who want more access, more previews, and a closer look at what I’m creating.</p><ul><li>Supporter role on Discord</li><li>Supporter-only Discord channels</li><li>Access to basic Patreon updates</li><li>Early project updates</li><li>Sneak peeks and previews</li><li>Early access to selected projects</li><li>Access to previews and test content</li><li>VRChat: access to the VIP room in all my worlds</li><li>VRChat: VIP nameplate in all my worlds</li><li>VRChat: custom picture frames in Helix Horizon</li><li>VRChat: access to the giant city TV in Helix Horizon</li><li>Ability to give feedback on future ideas</li></ul><a class="btn " href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer" data-s="Patreon" data-magnet><span>Join on Patreon</span> <span class="arr">↗</span></a></div><span class="glare"></span></article>
+<article class="tier" data-r data-s="Patreon tiers"><div class="tier__banner"><img src="../img/patreon/tier-sensei.webp" alt="Sensei Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div><div class="tier__body"><span class="tier__no">TIER 04</span><h3>Sensei</h3><p class="tier__price"><strong>€15</strong><span>/ month</span></p><p class="tier__copy">A tier for those who want to be more involved, give feedback, and help shape future ideas.</p><ul><li>Supporter role on Discord</li><li>Supporter-only Discord channels</li><li>Access to basic Patreon updates</li><li>Early project updates</li><li>Sneak peeks and previews</li><li>Early access to selected projects</li><li>Access to previews and test content</li><li>VRChat: access to the VIP room in all my worlds</li><li>VRChat: VIP nameplate in all my worlds</li><li>VRChat: custom picture frames in Helix Horizon</li><li>VRChat: access to the giant city TV in Helix Horizon</li><li>Ability to give feedback on future ideas</li></ul><a class="btn " href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer" data-s="Patreon" data-magnet><span>Join on Patreon</span> <span class="arr">↗</span></a></div><span class="glare"></span></article>
+<article class="tier" data-r data-s="Patreon tiers"><div class="tier__banner"><img src="../img/patreon/tier-final-boss.webp" alt="Final Boss Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div><div class="tier__body"><span class="tier__no">TIER 05</span><h3>Final Boss</h3><p class="tier__price"><strong>€25</strong><span>/ month</span></p><p class="tier__copy">The highest tier, for those who want maximum access and want to support my projects at the top level.</p><ul><li>Supporter role on Discord</li><li>Supporter-only Discord channels</li><li>Access to basic Patreon updates</li><li>Early project updates</li><li>Sneak peeks and previews</li><li>Early access to selected projects</li><li>Access to previews and test content</li><li>VRChat: access to the VIP room in all my worlds</li><li>VRChat: VIP nameplate in all my worlds</li><li>VRChat: custom picture frames in Helix Horizon</li><li>VRChat: access to the giant city TV in Helix Horizon</li><li>Ability to give feedback on future ideas</li></ul><a class="btn " href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer" data-s="Patreon" data-magnet><span>Join on Patreon</span> <span class="arr">↗</span></a></div><span class="glare"></span></article>
+</div>
+</div></section>
 
-      <article class="tier-card tier-card--featured glass-panel">
-        <div class="tier-banner"><img src="../img/patreon/tier-rookie-adventurer.webp" alt="Rookie Adventurer Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div>
-        <div class="recommended">Creator's choice</div>
-        <div class="tier-top">
-          <span class="tier-number">02</span>
-          <h3>Rookie Adventurer</h3>
-          <p class="price"><strong>€5</strong><span>/ month</span></p>
-          <p class="tier-copy">The first real step into the community. Perfect for those who want to follow my projects more closely.</p>
-        </div>
-        <ul>
-          <li>Supporter role on Discord</li>
-          <li>Supporter-only Discord channels</li>
-          <li>Access to basic Patreon updates</li>
-          <li>Early project updates</li>
-          <li>VRChat: access to the VIP room in all my worlds</li>
-          <li>VRChat: VIP nameplate in all my worlds</li>
-          <li>VRChat: custom picture frames in Helix Horizon</li>
-          <li>VRChat: access to the giant city TV in Helix Horizon</li>
-          <li>Sneak peeks and previews</li>
-        </ul>
-        <a class="tier-button" href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer">Join on Patreon</a>
-      </article>
+<section class="sec" id="faq"><div class="wrap">
+<header class="sec-head" data-r><span class="sec-no">02 / FAQ</span><div class="sec-head__row"><h2><span class="mask"><span style="--d:0">Before</span></span> <span class="mask"><span style="--d:1">you</span></span> <span class="mask"><span style="--d:2">join</span></span></h2><p>A few useful answers about memberships and supporter perks.</p></div></header>
+<div class="faq">
+<details data-r><summary>Is Patreon support recurring?</summary><p>Yes. Patreon memberships are recurring subscriptions billed according to Patreon's current billing rules. You can manage, change or cancel your membership from your Patreon account.</p></details><details data-r><summary>Do I need to become a supporter to follow your projects?</summary><p>No. Public projects and normal community activity remain available without a paid membership. Supporting is optional and mainly gives extra access, previews and selected perks.</p></details><details data-r><summary>What does the money help pay for?</summary><p>Support helps cover recurring costs such as hosting, domains, online services, software, project assets and other expenses connected to websites, VRChat worlds, community tools and future experiments.</p></details><details data-r><summary>When do Discord and VRChat perks become available?</summary><p>After Patreon confirms an active membership. Some perks may require you to connect or identify the relevant Discord or VRChat account so I can apply the correct role or access manually.</p></details><details data-r><summary>Can I upgrade or downgrade later?</summary><p>Yes. You can change your tier from Patreon whenever you want. Patreon will show how the change affects your billing before you confirm it.</p></details><details data-r><summary>Can supporter perks change over time?</summary><p>Yes, because the projects themselves evolve. If a perk becomes obsolete or technically impossible to maintain, I may adjust it or replace it with something comparable and communicate the change.</p></details><details data-r><summary>Does supporting guarantee that a specific project will be completed?</summary><p>No. Support helps me dedicate more resources to my work, but experimental projects can change, pause or be cancelled if they stop being viable. I will always try to be transparent about meaningful changes.</p></details>
+</div>
+</div></section>
 
-      <article class="tier-card glass-panel">
-        <div class="tier-banner"><img src="../img/patreon/tier-main-character.webp" alt="Main Character Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div>
-        <div class="tier-top">
-          <span class="tier-number">03</span>
-          <h3>Main Character</h3>
-          <p class="price"><strong>€10</strong><span>/ month</span></p>
-          <p class="tier-copy">For supporters who want more access, more previews, and a closer look at what I’m creating.</p>
-        </div>
-        <ul>
-          <li>Supporter role on Discord</li>
-          <li>Supporter-only Discord channels</li>
-          <li>Access to basic Patreon updates</li>
-          <li>Early project updates</li>
-          <li>Sneak peeks and previews</li>
-          <li>Early access to selected projects</li>
-          <li>Access to previews and test content</li>
-          <li>VRChat: access to the VIP room in all my worlds</li>
-          <li>VRChat: VIP nameplate in all my worlds</li>
-          <li>VRChat: custom picture frames in Helix Horizon</li>
-          <li>VRChat: access to the giant city TV in Helix Horizon</li>
-          <li>Ability to give feedback on future ideas</li>
-        </ul>
-        <a class="tier-button" href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer">Join on Patreon</a>
-      </article>
-
-      <article class="tier-card glass-panel">
-        <div class="tier-banner"><img src="../img/patreon/tier-sensei.webp" alt="Sensei Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div>
-        <div class="tier-top">
-          <span class="tier-number">04</span>
-          <h3>Sensei</h3>
-          <p class="price"><strong>€15</strong><span>/ month</span></p>
-          <p class="tier-copy">A tier for those who want to be more involved, give feedback, and help shape future ideas.</p>
-        </div>
-        <ul>
-          <li>Supporter role on Discord</li>
-          <li>Supporter-only Discord channels</li>
-          <li>Access to basic Patreon updates</li>
-          <li>Early project updates</li>
-          <li>Sneak peeks and previews</li>
-          <li>Early access to selected projects</li>
-          <li>Access to previews and test content</li>
-          <li>VRChat: access to the VIP room in all my worlds</li>
-          <li>VRChat: VIP nameplate in all my worlds</li>
-          <li>VRChat: custom picture frames in Helix Horizon</li>
-          <li>VRChat: access to the giant city TV in Helix Horizon</li>
-          <li>Ability to give feedback on future ideas</li>
-        </ul>
-        <a class="tier-button" href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer">Join on Patreon</a>
-      </article>
-
-      <article class="tier-card glass-panel">
-        <div class="tier-banner"><img src="../img/patreon/tier-final-boss.webp" alt="Final Boss Patreon tier banner" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"/></div>
-        <div class="tier-top">
-          <span class="tier-number">05</span>
-          <h3>Final Boss</h3>
-          <p class="price"><strong>€25</strong><span>/ month</span></p>
-          <p class="tier-copy">The highest tier, for those who want maximum access and want to support my projects at the top level.</p>
-        </div>
-        <ul>
-          <li>Supporter role on Discord</li>
-          <li>Supporter-only Discord channels</li>
-          <li>Access to basic Patreon updates</li>
-          <li>Early project updates</li>
-          <li>Sneak peeks and previews</li>
-          <li>Early access to selected projects</li>
-          <li>Access to previews and test content</li>
-          <li>VRChat: access to the VIP room in all my worlds</li>
-          <li>VRChat: VIP nameplate in all my worlds</li>
-          <li>VRChat: custom picture frames in Helix Horizon</li>
-          <li>VRChat: access to the giant city TV in Helix Horizon</li>
-          <li>Ability to give feedback on future ideas</li>
-        </ul>
-        <a class="tier-button" href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer">Join on Patreon</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section faq-section" id="faq">
-    <div class="section-heading">
-      <span class="eyebrow">FAQ</span>
-      <h2>Before you join</h2>
-      <p>A few useful answers about memberships and supporter perks.</p>
-    </div>
-
-    <div class="faq-list">
-      <details class="faq-item glass-panel">
-        <summary>Is Patreon support recurring?</summary>
-        <p>Yes. Patreon memberships are recurring subscriptions billed according to Patreon's current billing rules. You can manage, change or cancel your membership from your Patreon account.</p>
-      </details>
-      <details class="faq-item glass-panel">
-        <summary>Do I need to become a supporter to follow your projects?</summary>
-        <p>No. Public projects and normal community activity remain available without a paid membership. Supporting is optional and mainly gives extra access, previews and selected perks.</p>
-      </details>
-      <details class="faq-item glass-panel">
-        <summary>What does the money help pay for?</summary>
-        <p>Support helps cover recurring costs such as hosting, domains, online services, software, project assets and other expenses connected to websites, VRChat worlds, community tools and future experiments.</p>
-      </details>
-      <details class="faq-item glass-panel">
-        <summary>When do Discord and VRChat perks become available?</summary>
-        <p>After Patreon confirms an active membership. Some perks may require you to connect or identify the relevant Discord or VRChat account so I can apply the correct role or access manually.</p>
-      </details>
-      <details class="faq-item glass-panel">
-        <summary>Can I upgrade or downgrade later?</summary>
-        <p>Yes. You can change your tier from Patreon whenever you want. Patreon will show how the change affects your billing before you confirm it.</p>
-      </details>
-      <details class="faq-item glass-panel">
-        <summary>Can supporter perks change over time?</summary>
-        <p>Yes, because the projects themselves evolve. If a perk becomes obsolete or technically impossible to maintain, I may adjust it or replace it with something comparable and communicate the change.</p>
-      </details>
-      <details class="faq-item glass-panel">
-        <summary>Does supporting guarantee that a specific project will be completed?</summary>
-        <p>No. Support helps me dedicate more resources to my work, but experimental projects can change, pause or be cancelled if they stop being viable. I will always try to be transparent about meaningful changes.</p>
-      </details>
-    </div>
-  </section>
 </main>
 
-<footer>
-  <div class="footer-panel glass-panel">
-    <span>Haxurus © 2016-<span id="year"></span></span>
-    <a href="../">haxurus.com</a>
-  </div>
-</footer>
+<footer class="foot" aria-label="Footer"><div class="wrap">
+<div class="foot__mark" aria-hidden="true" data-r>HAXURUS</div>
+<div class="foot__card" data-r style="grid-template-columns:1fr auto;align-items:center">
+<p style="margin:0"><strong>Haxurus</strong> © 2016-<span id="current-year"></span></p>
+<div class="foot__links"><a href="../">haxurus.com</a><a href="https://patreon.com/haxurus" target="_blank" rel="noopener noreferrer">Patreon</a><a href="#top">Back to top ↑</a></div>
+</div>
+</div></footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</div>
+
+<div class="pal" role="dialog" aria-modal="true" aria-label="Search" aria-hidden="true"><div class="pal__veil" data-close-palette></div><div class="pal__box">
+<div class="pal__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="text" placeholder="Search tiers, FAQ, pages…" autocomplete="off" spellcheck="false" aria-label="Search"/><kbd>Esc</kbd></div>
+<div class="pal__list" role="listbox"></div>
+<div class="pal__foot"><span><kbd>↑</kbd><kbd>↓</kbd>navigate</span><span><kbd>Enter</kbd>open</span></div>
+</div></div>
 </body>
 </html>
