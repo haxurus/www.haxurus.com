@@ -114,35 +114,42 @@ body.is-loading #particle-bg {
   50% { opacity: 1; letter-spacing: .19em; }
 }
 
-/* Disable all non-loader animations and transitions, including legacy inline rules. */
-.page *,
-.page *::before,
-.page *::after,
-.site-nav *,
-.site-nav *::before,
-.site-nav *::after,
-.site-footer *,
-.site-footer *::before,
-.site-footer *::after {
-  animation: none !important;
-  transition: none !important;
-}
-
-.quick-link,
-.category h2,
-.link-card,
-.playlist-card,
+/* Legacy inline reveal/animation rules are replaced by css/motion.css (compositor-only motion). */
 .animated-sections .category,
 .animated-sections .links-grid,
 .animated-sections .playlist-grid,
 .support-visual,
 .about-haxurus,
-.about-haxurus__visual,
 .about-haxurus__cta {
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
   filter: none !important;
+}
+
+.animated-sections .category,
+.animated-sections .links-grid,
+.animated-sections .playlist-grid {
+  transition: none !important;
+}
+
+.animated-sections .link-card,
+.animated-sections .playlist-card,
+.support-visual {
+  animation: none !important;
+}
+
+.support-visual {
+  transition: none !important;
+}
+
+/* Base state for elements the old stylesheet hid until a script revealed them. */
+.quick-link,
+.category h2,
+.link-card,
+.playlist-card {
+  opacity: 1;
+  transform: none;
 }
 
 .hero {
@@ -173,7 +180,7 @@ body.is-loading #particle-bg {
   pointer-events: none !important;
   background: url("../img/hero/hero_biker.webp") center / cover no-repeat !important;
   filter: blur(6px) saturate(1.04) brightness(.92) !important;
-  transform: scale(1.035) !important;
+  transform: translate3d(0, calc(var(--hp, 0) * 90px), 0) scale(calc(1.035 + var(--hp, 0) * .08)) !important;
 }
 
 .hero::after {
