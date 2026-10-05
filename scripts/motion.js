@@ -170,12 +170,12 @@
   const revealStart = () => targets.forEach((el) => revealObserver.observe(el));
 
   if (!document.body.classList.contains('is-loading')) {
-    window.requestAnimationFrame(go);
+    window.setTimeout(go, 30);
   } else {
     const bodyObserver = new MutationObserver(() => {
       if (!document.body.classList.contains('is-loading')) {
         bodyObserver.disconnect();
-        window.requestAnimationFrame(go);
+        window.setTimeout(go, 30);
       }
     });
     bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
