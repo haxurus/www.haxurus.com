@@ -1,4 +1,4 @@
-/* Haxurus hub: boot, reveal, hero parallax, spotlight, tilt, rail, counters, command palette. */
+/* Haxurus site v2: boot, reveal, hero, manifesto, link index peek, playlist deck, support tiers, command palette. */
 (() => {
   'use strict';
 
@@ -9,6 +9,7 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const pad = (n) => String(n).padStart(2, '0');
 
   /* ---------- Boot / ready ---------- */
   const ready = () => {
@@ -23,6 +24,7 @@
       ready();
       return;
     }
+    const lines = $$('.boot__term p', el);
     const bar = $('.boot__bar i', el);
     const num = $('.boot__num', el);
     const start = performance.now();
@@ -31,7 +33,8 @@
     addEventListener('load', () => { loaded = true; }, { once: true });
     const timer = setInterval(() => {
       const t = performance.now() - start;
-      const target = loaded && t > 1000 ? 1 : Math.min(.9, t / 2600);
+      lines.forEach((l, i) => { if (t > 120 + i * 260) l.classList.add('on'); });
+      const target = loaded && t > 1250 ? 1 : Math.min(.92, t / 2600);
       p += (target - p) * .16;
       if (target === 1 && p > .985) p = 1;
       bar.style.transform = `scaleX(${p.toFixed(3)})`;
@@ -43,14 +46,14 @@
           el.classList.add('is-done');
           ready();
           setTimeout(() => el.remove(), 1100);
-        }, 180);
+        }, 220);
       }
     }, 32);
   };
 
   /* ---------- Reveal on scroll ---------- */
   const initReveal = () => {
-    $$('[data-stagger] > .tile').forEach((t, i) => { t.dataset.r = ''; t.style.setProperty('--d', i % 8); });
+    $$('[data-stagger] > .row').forEach((t, i) => { t.dataset.r = ''; t.style.setProperty('--d', i % 8); });
     const els = $$('[data-r]');
     if (reduced || !('IntersectionObserver' in window)) {
       els.forEach((el) => el.classList.add('in'));
@@ -60,10 +63,9 @@
       const vis = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
       vis.forEach((e, i) => {
         const el = e.target;
-        if (!el.classList.contains('tile')) el.style.setProperty('--d', Math.min(i, 6));
+        if (!el.classList.contains('row')) el.style.setProperty('--d', Math.min(i, 6));
         el.classList.add('in');
         io.unobserve(el);
-        // Drop the reveal rules afterwards so the element's own hover transitions come back.
         setTimeout(() => { el.removeAttribute('data-r'); el.style.removeProperty('--d'); }, 1800 + Math.min(i, 8) * 70);
       });
     }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
@@ -72,24 +74,7 @@
 
   /* ---------- Hero ---------- */
   const initHero = () => {
-    const stage = $('.stage');
     const hero = $('.hero');
-    if (stage && hero && fine && !reduced) {
-      let px = 0, py = 0, frame = 0;
-      const apply = () => {
-        frame = 0;
-        stage.style.setProperty('--px', px.toFixed(3));
-        stage.style.setProperty('--py', py.toFixed(3));
-      };
-      hero.addEventListener('pointermove', (e) => {
-        const r = hero.getBoundingClientRect();
-        px = clamp(((e.clientX - r.left) / r.width - .5) * 2, -1, 1);
-        py = clamp(((e.clientY - r.top) / r.height - .5) * 2, -1, 1);
-        if (!frame) frame = requestAnimationFrame(apply);
-      }, { passive: true });
-      hero.addEventListener('pointerleave', () => { px = 0; py = 0; if (!frame) frame = requestAnimationFrame(apply); });
-    }
-
     const roles = $$('.roles span');
     if (roles.length > 1 && !reduced) {
       let i = 0;
@@ -111,32 +96,82 @@
     }
   };
 
-  /* ---------- Nav, progress, scroll state ---------- */
-  const initNav = () => {
-    const nav = $('.nav');
-    const bar = $('#progress');
-    const burger = $('.burger');
-    const links = $$('.nav__links a');
-    let lastY = scrollY, ticking = false;
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        ticking = false;
-        const y = scrollY;
-        const max = root.scrollHeight - innerHeight;
-        if (bar) bar.style.transform = `scaleX(${max > 0 ? clamp(y / max, 0, 1).toFixed(4) : 0})`;
-        if (nav && !root.classList.contains('menu-open')) {
-          if (y > 260 && y > lastY + 8) nav.classList.add('is-hidden');
-          else if (y < lastY - 8 || y < 120) nav.classList.remove('is-hidden');
-        }
-        lastY = y;
+  /* ---------- Manifesto: words light up with scroll ---------- */
+  let manifestoUpdate = () => {};
+  const initManifesto = () => {
+    const m = $('[data-manifesto]');
+    if (!m || reduced) return;
+    const walk = (node) => {
+      [...node.childNodes].forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = d.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((tok) => {
+            if (!tok) return;
+            if (/^\s+$/.test(tok)) { frag.appendChild(d.createTextNode(tok)); return; }
+            const s = d.createElement('span');
+            s.className = 'w';
+            s.textContent = tok;
+            frag.appendChild(s);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n);
       });
     };
+    walk(m);
+    const words = $$('.w', m);
+    let last = 0;
+    manifestoUpdate = () => {
+      const r = m.getBoundingClientRect();
+      const p = clamp((innerHeight * .88 - r.top) / (r.height + innerHeight * .2), 0, 1);
+      const n = Math.round(p * words.length);
+      if (n === last) return;
+      if (n > last) for (let i = last; i < n; i++) words[i].classList.add('on');
+      else for (let i = n; i < last; i++) words[i].classList.remove('on');
+      last = n;
+    };
+    manifestoUpdate();
+  };
+
+  /* ---------- Scroll state: progress, nav, hero var, parallax ---------- */
+  const initScroll = () => {
+    const nav = $('.nav');
+    const bar = $('#progress');
+    const hero = $('.hero');
+    const par = $$('[data-parallax]');
+    let lastY = scrollY, ticking = false;
+
+    const frame = () => {
+      ticking = false;
+      const y = scrollY;
+      const max = root.scrollHeight - innerHeight;
+      if (bar) bar.style.transform = `scaleX(${max > 0 ? clamp(y / max, 0, 1).toFixed(4) : 0})`;
+      if (nav && !root.classList.contains('menu-open')) {
+        if (y > 260 && y > lastY + 8) nav.classList.add('is-hidden');
+        else if (y < lastY - 8 || y < 120) nav.classList.remove('is-hidden');
+      }
+      lastY = y;
+      if (hero && !reduced) hero.style.setProperty('--hp', clamp(y / (hero.offsetHeight || 1), 0, 1).toFixed(3));
+      if (!reduced) {
+        par.forEach((el) => {
+          const box = el.parentElement.getBoundingClientRect();
+          if (box.bottom < -100 || box.top > innerHeight + 100) return;
+          const p = (box.top + box.height / 2 - innerHeight / 2) / innerHeight;
+          el.style.setProperty('--ty', `${(p * -48).toFixed(1)}px`);
+        });
+      }
+      manifestoUpdate();
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
     addEventListener('scroll', onScroll, { passive: true });
     addEventListener('resize', onScroll, { passive: true });
-    onScroll();
+    frame();
+  };
+
+  /* ---------- Nav ---------- */
+  const initNav = () => {
+    const nav = $('.nav');
+    const burger = $('.burger');
+    const links = $$('.nav__links a');
 
     if ('IntersectionObserver' in window && links.length) {
       const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
@@ -163,7 +198,7 @@
     addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   };
 
-  /* ---------- Spotlight, tile glow, tilt, magnets ---------- */
+  /* ---------- Pointer: spotlight, peek, tilt, magnets ---------- */
   const initPointer = () => {
     if (!fine || reduced) return;
     const spot = $('#spot');
@@ -180,42 +215,51 @@
     }, { passive: true });
     root.addEventListener('mouseleave', () => spot && spot.classList.remove('on'));
 
-    let target = null, last = null, tFrame = 0, tilting = null;
-    const rail = $('[data-rail]');
+    // Cursor-following preview of the hovered link icon
+    const peek = $('#peek');
+    if (peek) {
+      const img = $('img', peek);
+      let hov = null, tx = 0, ty = 0, x = 0, y = 0, loop = 0;
+      const tick = () => {
+        x += (tx - x) * .16;
+        y += (ty - y) * .16;
+        const rot = clamp((tx - x) * .08, -14, 14);
+        peek.style.transform = `translate3d(${(x + 30).toFixed(1)}px, ${(y - 70).toFixed(1)}px, 0) rotate(${rot.toFixed(2)}deg)`;
+        if (hov || peek.classList.contains('on')) loop = requestAnimationFrame(tick); else loop = 0;
+      };
+      d.addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+      d.addEventListener('pointerover', (e) => {
+        const r = e.target.closest && e.target.closest('.row[data-peek]');
+        if (r === hov) return;
+        hov = r;
+        if (r) {
+          if (!peek.classList.contains('on')) { x = tx; y = ty; }
+          img.src = r.dataset.peek;
+          peek.classList.add('on');
+          if (!loop) loop = requestAnimationFrame(tick);
+        } else peek.classList.remove('on');
+      });
+      root.addEventListener('mouseleave', () => { hov = null; peek.classList.remove('on'); });
+    }
 
-    const reset = (el) => { el.classList.remove('is-tilting'); el.style.transform = ''; };
-    const paint = () => {
-      tFrame = 0;
-      if (!target || !last) return;
-      const r = target.getBoundingClientRect();
-      const x = last.clientX - r.left;
-      const y = last.clientY - r.top;
-      target.style.setProperty('--mx', `${x.toFixed(0)}px`);
-      target.style.setProperty('--my', `${y.toFixed(0)}px`);
-      if (tilting === target) {
-        const nx = x / r.width, ny = y / r.height;
-        const m = r.height > 360 ? 4.5 : 8;
-        target.style.transform = `perspective(900px) rotateX(${((.5 - ny) * m).toFixed(2)}deg) rotateY(${((nx - .5) * m * 1.4).toFixed(2)}deg) translateY(-4px) scale(1.02)`;
-      }
-    };
-
-    d.addEventListener('pointermove', (e) => {
-      if (e.pointerType && e.pointerType !== 'mouse') return;
-      const el = e.target.closest && e.target.closest('.tile, .world, .pl, .tier');
-      if (el !== target) {
-        if (tilting) reset(tilting);
-        tilting = null;
-        target = el;
-        if (target && target.matches('.pl, .tier') && !(rail && rail.classList.contains('is-drag'))) {
-          tilting = target;
-          target.classList.add('is-tilting');
-        }
-      }
-      if (!target) return;
-      last = e;
-      if (!tFrame) tFrame = requestAnimationFrame(paint);
-    }, { passive: true });
-    root.addEventListener('mouseleave', () => { if (tilting) reset(tilting); tilting = null; target = null; });
+    // Tilt for the support card
+    $$('[data-tilt]').forEach((card) => {
+      let frame = 0, ev = null;
+      card.addEventListener('pointermove', (e) => {
+        ev = e;
+        if (frame) return;
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          const r = card.getBoundingClientRect();
+          const nx = (ev.clientX - r.left) / r.width, ny = (ev.clientY - r.top) / r.height;
+          card.classList.add('is-tilting');
+          card.style.setProperty('--mx', `${(nx * 100).toFixed(1)}%`);
+          card.style.setProperty('--my', `${(ny * 100).toFixed(1)}%`);
+          card.style.transform = `perspective(1100px) rotateY(${(-9 + (nx - .5) * 16).toFixed(2)}deg) rotateX(${(5 + (.5 - ny) * 12).toFixed(2)}deg) scale(1.02)`;
+        });
+      }, { passive: true });
+      card.addEventListener('pointerleave', () => { card.classList.remove('is-tilting'); card.style.transform = ''; });
+    });
 
     $$('[data-magnet]').forEach((el) => {
       el.addEventListener('pointermove', (e) => {
@@ -233,8 +277,9 @@
     const finalOf = (n) => {
       const k = n.dataset.count;
       if (k === 'years') return new Date().getFullYear() - Number(n.dataset.since || 2016);
-      if (k === 'links') return $$('.tile, .world').length || Number(n.dataset.fallback);
-      if (k === 'playlists') return $$('.pl').length || Number(n.dataset.fallback);
+      if (k === 'links') return $$('.row, .film').length || Number(n.dataset.fallback);
+      if (k === 'playlists') return $$('.trk').length || Number(n.dataset.fallback);
+      if (k === 'worlds') return $$('.film').length || Number(n.dataset.fallback);
       return Number(n.textContent) || 0;
     };
     nodes.forEach((n) => { n.textContent = String(finalOf(n)); });
@@ -257,66 +302,112 @@
     nodes.forEach((n) => io.observe(n));
   };
 
-  /* ---------- Playlist rail ---------- */
-  const initRail = () => {
-    const rail = $('[data-rail]');
-    if (!rail) return;
-    const fill = $('.rail-bar i');
-    const prev = $('[data-rail-prev]');
-    const next = $('[data-rail-next]');
-    const update = () => {
-      const max = rail.scrollWidth - rail.clientWidth;
-      const p = max > 0 ? rail.scrollLeft / max : 1;
-      if (fill) fill.style.transform = `scaleX(${(.08 + .92 * clamp(p, 0, 1)).toFixed(3)})`;
-    };
-    rail.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
-    addEventListener('resize', update, { passive: true });
-    update();
-    const by = (dir) => rail.scrollBy({ left: dir * Math.min(rail.clientWidth * .8, 640), behavior: 'smooth' });
-    if (prev) prev.addEventListener('click', () => by(-1));
-    if (next) next.addEventListener('click', () => by(1));
+  /* ---------- Playlist deck ---------- */
+  const initDeck = () => {
+    const deck = $('[data-deck]');
+    if (!deck) return;
+    const links = $$('.trk', deck);
+    const crate = $('.crate', deck);
+    const sleeve = $('.sleeve img', deck);
+    const disc = $('.disc img', deck);
+    const no = $('.deck__no', deck);
+    const title = $('.deck__title', deck);
+    const tags = $('.deck__tags', deck);
+    const open = $('.deck__open', deck);
+    const bar = $('.deck__bar i', deck);
+    const DUR = 7000;
+    let cur = 0, auto = !reduced, t0 = performance.now(), inView = false;
 
-    let down = false, startX = 0, startLeft = 0, moved = 0;
-    rail.addEventListener('pointerdown', (e) => {
-      if (e.pointerType !== 'mouse' || e.button !== 0) return;
-      down = true; moved = 0; startX = e.clientX; startLeft = rail.scrollLeft;
-    });
-    addEventListener('pointermove', (e) => {
-      if (!down) return;
-      const dx = e.clientX - startX;
-      moved = Math.max(moved, Math.abs(dx));
-      if (moved > 6) { rail.classList.add('is-drag'); rail.scrollLeft = startLeft - dx; }
-    }, { passive: true });
-    const end = () => {
-      if (!down) return;
-      down = false;
-      setTimeout(() => rail.classList.remove('is-drag'), 60);
+    const select = (i) => {
+      cur = i;
+      const a = links[i];
+      links.forEach((l, k) => l.classList.toggle('is-active', k === i));
+      sleeve.src = disc.src = a.dataset.cover;
+      sleeve.alt = `Playlist cover for ${a.dataset.title}`;
+      no.textContent = `${pad(i + 1)} / ${pad(links.length)}`;
+      title.textContent = a.dataset.title;
+      tags.textContent = '';
+      a.dataset.tags.split('|').forEach((t) => tags.appendChild(Object.assign(d.createElement('span'), { textContent: t })));
+      open.href = a.href;
+      if (!reduced) { crate.classList.remove('swap'); void crate.offsetWidth; crate.classList.add('swap'); }
+      t0 = performance.now();
     };
-    addEventListener('pointerup', end);
-    addEventListener('pointercancel', end);
+
+    links.forEach((a, i) => {
+      a.addEventListener('click', (e) => {
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
+        e.preventDefault();
+        auto = false;
+        bar.style.transform = 'scaleX(0)';
+        select(i);
+      });
+      a.addEventListener('pointerenter', () => { new Image().src = a.dataset.cover; });
+    });
+
+    if ('IntersectionObserver' in window) new IntersectionObserver((es) => { inView = es[0].isIntersecting; if (inView) t0 = performance.now(); }, { threshold: .35 }).observe(deck);
+    else inView = true;
+
+    setInterval(() => {
+      if (!auto || d.hidden || !inView) return;
+      const k = (performance.now() - t0) / DUR;
+      bar.style.transform = `scaleX(${clamp(k, 0, 1).toFixed(3)})`;
+      if (k >= 1) select((cur + 1) % links.length);
+    }, 100);
+  };
+
+  /* ---------- Support: tier explorer ---------- */
+  const initTiers = () => {
+    const tabs = $$('[role="tab"]');
+    const panels = $$('.panel');
+    if (!tabs.length || tabs.length !== panels.length) return;
+    const cols = $$('[data-col]');
+    const pick = (i, focus) => {
+      tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; });
+      panels.forEach((p, k) => {
+        p.hidden = k !== i;
+        if (k === i && !reduced) { p.classList.remove('is-enter'); void p.offsetWidth; p.classList.add('is-enter'); }
+      });
+      cols.forEach((c) => c.classList.toggle('col-sel', Number(c.dataset.col) === i));
+      if (focus) tabs[i].focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => pick(i));
+      t.addEventListener('keydown', (e) => {
+        const k = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (k) { e.preventDefault(); pick((i + k + tabs.length) % tabs.length, true); }
+        if (e.key === 'Home') { e.preventDefault(); pick(0, true); }
+        if (e.key === 'End') { e.preventDefault(); pick(tabs.length - 1, true); }
+      });
+    });
+    $$('[data-tier]').forEach((b) => b.addEventListener('click', () => {
+      pick(Number(b.dataset.tier));
+      const t = $('#patreon');
+      if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+    }));
+    const start = tabs.findIndex((t) => t.dataset.hot === '1');
+    pick(start > -1 ? start : 0);
   };
 
   /* ---------- Misc ---------- */
   const initMisc = () => {
-    const year = $('#current-year');
-    if (year) year.textContent = String(new Date().getFullYear());
+    $$('#current-year').forEach((y) => { y.textContent = String(new Date().getFullYear()); });
 
-    // Broken icons fall back to a lettermark instead of a broken-image glyph.
     const fallback = (img) => {
-      const title = (img.closest('.tile') && $('.tile__title', img.closest('.tile'))) || null;
+      const holder = img.closest('.row, .tile');
+      const title = holder && $('.row__title, .tile__title', holder);
       const g = d.createElement('span');
       g.className = 'glyph';
       g.textContent = ((title && title.textContent) || '?').trim().slice(0, 2).toUpperCase();
       g.style.cssText = 'width:100%;height:100%;display:grid;place-items:center;background:rgba(255,255,255,.08)';
+      if (holder) holder.removeAttribute('data-peek');
       img.replaceWith(g);
     };
     d.addEventListener('error', (e) => { if (e.target.tagName === 'IMG' && e.target.hasAttribute('data-icon')) fallback(e.target); }, true);
     $$('img[data-icon]').forEach((img) => { if (img.complete && img.naturalWidth === 0 && img.currentSrc) fallback(img); });
 
-    // Pause continuous animations while their section is off-screen.
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('is-paused', !e.isIntersecting)));
-      $$('.hero, .marquee, .sup, .shero, .tier--hot').forEach((el) => io.observe(el));
+      $$('.hero, .ticker, .card3d, .deck, .ladder').forEach((el) => io.observe(el));
     }
   };
 
@@ -337,9 +428,10 @@
       $$('a[data-s]').forEach((a) => {
         const href = a.getAttribute('href');
         if (!href || href === '#') return;
-        const t = ($('.tile__title, .world__title, .pl__title', a) || a).textContent.trim();
+        const t = ($('.row__title, .film__title, .trk__t', a) || a).textContent.trim();
         const img = $('img', a);
-        items.push({ t, s: a.dataset.s, h: href, i: img && img.getAttribute('src') && !a.classList.contains('world') ? img.getAttribute('src') : null, g: t.slice(0, 2).toUpperCase() });
+        const icon = a.classList.contains('row') && img ? img.getAttribute('src') : null;
+        items.push({ t, s: a.dataset.s, h: href, i: icon, g: t.slice(0, 2).toUpperCase() });
       });
       const extra = $('#pal-extra');
       if (extra) { try { JSON.parse(extra.textContent).forEach((x) => items.push({ t: x.t, s: x.s, h: x.h, g: x.t.slice(0, 2).toUpperCase() })); } catch (e) { /* ignore */ } }
@@ -433,10 +525,13 @@
   initMisc();
   initReveal();
   initHero();
+  initManifesto();
+  initScroll();
   initNav();
   initPointer();
   initCounters();
-  initRail();
+  initDeck();
+  initTiers();
   initPalette();
   boot();
 })();
