@@ -9,7 +9,7 @@
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="googlebot"/>
 <meta content="Haxurus" name="author"/>
 <meta content="#030607" name="theme-color"/>
-<meta name="haxurus-build" content="20261006-v3"/>
+<meta name="haxurus-build" content="20261007-v5"/>
 <link href="https://haxurus.com/" rel="canonical"/>
 <link href="https://haxurus.com/img/favicon.png" rel="icon" type="image/png"/>
 <link href="https://haxurus.com/img/favicon.png" rel="apple-touch-icon"/>
@@ -80,12 +80,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Unbounded:wght@700;800&display=swap"/>
 <link rel="preload" as="image" href="img/hero/hero_biker.webp" fetchpriority="high"/>
-<link href="css/site.css?v=20261006-v3" rel="stylesheet"/>
+<link href="css/site.css?v=20261007-v5" rel="stylesheet"/>
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');try{if(!sessionStorage.getItem('hx-booted'))d.classList.add('booting')}catch(e){d.classList.add('booting')}
 setTimeout(function(){d.classList.remove('booting');d.classList.add('ready')},6000)})();
 </script>
-<script defer src="js/site.js?v=20261006-v3"></script>
+<script defer src="js/site.js?v=20261007-v5"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -97,10 +97,10 @@ setTimeout(function(){d.classList.remove('booting');d.classList.add('ready')},60
 
 <nav class="nav" aria-label="Main navigation"><div class="nav__bar">
 <a class="nav__brand" href="#top" aria-label="Haxurus — back to top"><img src="img/favicon.webp" alt="" width="30" height="30"/><span>Haxurus</span></a>
-<div class="nav__links"><a href="#about">About</a><a href="#support">Support</a><a href="#social">Social</a><a href="#discord">Discord</a><a href="#vrchat">VRChat</a><a href="#games">Games</a><a href="#spotify">Playlists</a></div>
+<div class="nav__links"><a href="#about">About</a><a href="#support">Support</a><a class="nav__cta" href="commissions/">Commissions</a><a href="#social">Social</a><a href="#discord">Discord</a><a href="#vrchat">VRChat</a><a href="#games">Games</a><a href="#spotify">Playlists</a></div>
 <div class="nav__tools"><button class="kbd-btn" type="button" data-open-palette aria-label="Search all links"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search <kbd>Ctrl K</kbd></button><button class="burger" type="button" aria-label="Open menu" aria-expanded="false"><i></i><i></i><i></i></button></div>
 </div></nav>
-<div class="mmenu" aria-hidden="true"><a href="#about" style="--i:0">About</a><a href="#support" style="--i:1">Support</a><a href="#social" style="--i:2">Social</a><a href="#discord" style="--i:3">Discord</a><a href="#vrchat" style="--i:4">VRChat</a><a href="#games" style="--i:5">Games</a><a href="#spotify" style="--i:6">Playlists</a></div>
+<div class="mmenu" aria-hidden="true"><a href="#about" style="--i:0">About</a><a href="#support" style="--i:1">Support</a><a href="commissions/" style="--i:2">Commissions</a><a href="#social" style="--i:3">Social</a><a href="#discord" style="--i:4">Discord</a><a href="#vrchat" style="--i:5">VRChat</a><a href="#games" style="--i:6">Games</a><a href="#spotify" style="--i:7">Playlists</a></div>
 
 <div class="page" id="top"><main id="main">
 
@@ -158,10 +158,12 @@ setTimeout(function(){d.classList.remove('booting');d.classList.add('ready')},60
 <span class="eyebrow">Supporter hub</span>
 <h3>Support my projects</h3>
 <p>If you like what I create, you can support me on Patreon and get closer to my projects. Supporters can unlock exclusive perks connected to my Discord communities, VRChat maps, tools, websites and future digital experiments. Visit my Patreon to discover the available tiers, what each one includes, and how you can help me keep building new things.</p>
-<ul class="pricepills" aria-label="Patreon tiers"><li><b>€1.50</b><span>Spritz Supporter</span></li><li><b>€5</b><span>Rookie Adventurer</span></li><li><b>€10</b><span>Main Character</span></li><li><b>€15</b><span>Sensei</span></li><li><b>€25</b><span>Final Boss</span></li></ul>
-<div class="wallet__cta"><a class="btn btn--primary" href="support/" data-magnet>Explore support options <span class="arr">↗</span></a><span class="wallet__note">You can join for FREE to see extra content.</span></div>
+<ul class="pricepills" aria-label="Patreon tiers"><li><b><span class="price"><span class="price__v">€1.50</span></span></b><span>Spritz Supporter</span></li><li><b><span class="price"><span class="price__v">€5</span></span></b><span>Rookie Adventurer</span></li><li><b><span class="price"><span class="price__v">€10</span></span></b><span>Main Character</span></li><li><b><span class="price"><span class="price__v">€15</span></span></b><span>Sensei</span></li><li><b><span class="price"><span class="price__v">€25</span></span></b><span>Final Boss</span></li></ul>
+<p class="price-hint" style="margin-top:14px">Prices are censored. Click one to reveal it. <button type="button" data-reveal-prices>Reveal all</button></p>`n<div class="wallet__cta"><a class="btn btn--primary" href="support/" data-magnet>Explore support options <span class="arr">↗</span></a><span class="wallet__note">You can join for FREE to see extra content.</span></div>
 </div>
 </div></section>
+
+<section class="sec" id="commissions"><div class="wrap cm"><div data-r="left"><span class="eyebrow">Commissions open</span><h3>Need something built?</h3><p>I take on selected technical commissions across web development, custom software, automation, systems administration, networking, online community infrastructure, security hardening and IT support. From a focused fix to a complete project, the scope is agreed before the work starts.</p><div class="cm__cta"><a class="btn btn--primary" href="commissions/" data-magnet>See all commissions <span class="arr">↗</span></a><a class="btn" href="mailto:inviati-49-armonia@icloud.com?subject=Commission%20request" data-magnet>Request a quote</a></div></div><div class="ticket" data-r="right"><div class="ticket__top"><span>Starting from</span><span>Commissions</span></div><ul class="ticket__list"><li><span>Web development</span><i></i><span class="price"><span class="price__v">€150</span></span><em>/ project</em></li><li><span>Custom software &amp; automation</span><i></i><span class="price"><span class="price__v">€100</span></span><em>/ project</em></li><li><span>Systems, servers &amp; hosting</span><i></i><span class="price"><span class="price__v">€70</span></span><em>/ intervention</em></li><li><span>Networking &amp; infrastructure</span><i></i><span class="price"><span class="price__v">€80</span></span><em>/ intervention</em></li><li><span>Discord &amp; community systems</span><i></i><span class="price"><span class="price__v">€80</span></span><em>/ project</em></li><li><span>Security &amp; technical support</span><i></i><span class="price"><span class="price__v">€60</span></span><em>/ intervention</em></li><li><span>Maintenance &amp; ongoing support</span><i></i><span class="price"><span class="price__v">€30</span></span><em>/ month</em></li></ul><div class="ticket__foot price-hint">Prices are censored. Click one to reveal it. <button type="button" data-reveal-prices>Reveal all</button></div></div></div></section>
 
 <section class="sec" id="social"><div class="wrap idx"><div class="idx__head" data-r="left"><span class="sec-no">02 / SOCIAL</span><h2 class="h2"><span class="mask"><span style="--d:0">Social</span></span></h2><p>Where to find me and talk to me.</p><span class="idx__count">05<small>profiles</small></span></div><div><div class="rows" data-stagger><a class="row" style="--tint:#29a9eb" href="https://t.me/haxurus_official" target="_blank" rel="noopener noreferrer" data-s="Social" data-peek="img/social/telegram.png"><span class="row__no">01</span><span class="row__main"><span class="row__title">Telegram</span><span class="badges"><span class="badge badge--contact">Contact</span></span></span><span class="row__icon"><img alt="" src="img/social/telegram.png" width="46" height="46" loading="lazy" decoding="async" data-icon/></span><span class="row__go" aria-hidden="true">↗</span></a>
 <a class="row" style="--tint:#29a9eb" href="https://t.me/limitati_haxbot" target="_blank" rel="noopener noreferrer" data-s="Social" data-peek="img/social/telegram_bot.png"><span class="row__no">02</span><span class="row__main"><span class="row__title">Telegram (Chat Bot)</span><span class="badges"><span class="badge badge--contact">Contact</span><span class="badge badge--bot">Bot</span></span></span><span class="row__icon"><img alt="" src="img/social/telegram_bot.png" width="46" height="46" loading="lazy" decoding="async" data-icon/></span><span class="row__go" aria-hidden="true">↗</span></a>
@@ -232,7 +234,7 @@ setTimeout(function(){d.classList.remove('booting');d.classList.add('ready')},60
 <p>Third-party app and social media icons remain the property of their respective owners and are used only for identification and linking purposes. No ownership or endorsement is claimed.</p>
 <p>For any issue or request, please contact <a href="mailto:inviati-49-armonia@icloud.com" style="color:var(--g)">by e-mail</a>.</p>
 </div>
-<div class="foot__links"><a href="mailto:inviati-49-armonia@icloud.com">E-mail</a><a href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://t.me/haxurus_official" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://github.com/Haxurus" target="_blank" rel="noopener noreferrer">GitHub</a><a href="support/">Support</a><a href="#top">Back to top ↑</a></div>
+<div class="foot__links"><a href="mailto:inviati-49-armonia@icloud.com">E-mail</a><a href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://t.me/haxurus_official" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://github.com/Haxurus" target="_blank" rel="noopener noreferrer">GitHub</a><a href="commissions/">Commissions</a><a href="support/">Support</a><a href="#top">Back to top ↑</a></div>
 </div>
 <div class="foot__base"><span>Tip: press <strong>Ctrl K</strong> to search every link.</span><a class="keyicon" href="/wp-admin/" aria-label="WordPress admin login" title="WordPress admin login"><svg viewBox="0 0 24 24"><path d="M7.5 14a5.5 5.5 0 1 1 4.87-2.94L22 20.69V22h-1.31l-1-1H18v-1.69l-1-1H15.31l-1.44-1.44A5.47 5.47 0 0 1 7.5 14Zm0-3A2.5 2.5 0 1 0 5 8.5 2.5 2.5 0 0 0 7.5 11Z"/></svg></a></div>
 </div></footer>

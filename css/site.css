@@ -563,3 +563,76 @@ html { overflow-x: clip; }
   .roles span:not(:first-child) { display: none; }
   .roles span:first-child { translate: 0 0; opacity: 1; }
 }
+
+/* ================= v3 additions ================= */
+
+/* Hero title wave: a light wave crosses the letters every --wave-every seconds. */
+:root { --wave-every: 7s; }
+.js.ready .hero h1 .ltr {
+  animation:
+    rise 1s var(--ease) calc(.2s + var(--i) * 65ms) forwards,
+    wave var(--wave-every) ease-in-out calc(2.6s + var(--i) * 85ms) infinite;
+}
+@keyframes wave {
+  0%, 16%, 100% { transform: translateY(0) scale(1); filter: none; }
+  6% { transform: translateY(-.13em) scale(1.04); filter: brightness(1.7) drop-shadow(0 0 22px rgba(57, 255, 20, .75)); }
+}
+
+/* Censored prices: click to reveal. Only active with JS, so no-JS visitors still see every price. */
+.price { position: relative; display: inline-block; vertical-align: baseline; cursor: pointer; min-inline-size: 3.4ch; border-radius: .3em; -webkit-tap-highlight-color: transparent; }
+.price__v { display: inline-block; transition: opacity .45s ease .12s, translate .55s var(--ease) .1s; }
+.js .price:not(.is-open) .price__v { opacity: 0; translate: 0 .18em; }
+.js .price::after {
+  content: ""; position: absolute; inset: -.16em -.36em; border-radius: .36em; pointer-events: none;
+  background: repeating-linear-gradient(135deg, #090f0c 0 5px, #14211b 5px 10px);
+  box-shadow: inset 0 0 0 1px rgba(57, 255, 20, .4), 0 0 18px rgba(57, 255, 20, .12);
+  transform-origin: 100% 50%; transition: transform .6s var(--ease), box-shadow .25s;
+}
+.js .price::before {
+  content: ""; position: absolute; z-index: 2; left: 50%; top: 50%; width: .95em; height: .95em; margin: -.475em 0 0 -.475em; pointer-events: none;
+  background: var(--g-soft); transition: opacity .2s;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z' fill='none' stroke='black' stroke-width='2'/><circle cx='12' cy='12' r='3.2' fill='black'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z' fill='none' stroke='black' stroke-width='2'/><circle cx='12' cy='12' r='3.2' fill='black'/></svg>") center / contain no-repeat;
+}
+.js .price:not(.is-open):hover::after, .js .price:not(.is-open):focus-visible::after { box-shadow: inset 0 0 0 1px var(--g), 0 0 28px rgba(57, 255, 20, .38); }
+.js .price.is-open { cursor: default; }
+.js .price.is-open::after { transform: scaleX(0); }
+.js .price.is-open::before { opacity: 0; }
+.price.is-open .price__v { animation: pricePop .9s var(--ease); }
+@keyframes pricePop { 0% { filter: brightness(2.4) drop-shadow(0 0 14px var(--g)); scale: 1.14; } 100% { filter: none; scale: 1; } }
+.price-hint { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; color: var(--dim); font-size: .84rem; font-weight: 600; }
+.price-hint button { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .05); font: 700 .74rem var(--f-ui); color: var(--g-soft); transition: background .2s, border-color .2s; }
+.price-hint button:hover { background: rgba(57, 255, 20, .12); border-color: var(--g); }
+
+/* Nav: highlighted link to a separate page */
+.nav__links a.nav__cta { color: var(--g-soft); box-shadow: inset 0 0 0 1px rgba(57, 255, 20, .4); }
+.nav__links a.nav__cta:hover { background: rgba(57, 255, 20, .14); color: #fff; }
+.nav__links a { padding: 9px 11px; }
+
+/* Home: commissions section */
+.cm { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(26px, 5vw, 80px); align-items: center; }
+.cm h3 { font: 800 clamp(2.2rem, 5.4vw, 4.4rem)/.94 var(--f-display); letter-spacing: -.06em; margin: 14px 0 18px; }
+.cm p { color: var(--mut); font-size: 1.05rem; line-height: 1.8; max-width: 620px; }
+.cm__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.ticket {
+  position: relative; padding: clamp(20px, 3vw, 30px); border-radius: 26px; border: 1px solid rgba(57, 255, 20, .35);
+  background: linear-gradient(160deg, rgba(14, 26, 22, .9), rgba(6, 12, 10, .94)); box-shadow: 0 40px 90px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .14);
+  -webkit-mask: radial-gradient(circle 11px at 0 64px, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 11px at 100% 64px, transparent 98%, #000) right / 51% 100% no-repeat;
+  mask: radial-gradient(circle 11px at 0 64px, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 11px at 100% 64px, transparent 98%, #000) right / 51% 100% no-repeat;
+}
+.ticket__top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; margin-bottom: 8px; border-bottom: 2px dashed rgba(255, 255, 255, .16); font: 700 .72rem ui-monospace, "Cascadia Code", monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--g-soft); }
+.ticket__list { list-style: none; margin: 0; padding: 0; }
+.ticket__list li { display: flex; align-items: baseline; gap: 12px; padding: 13px 0; font-weight: 600; }
+.ticket__list li > span:first-child { flex: none; }
+.ticket__list li i { flex: 1; min-width: 14px; border-bottom: 2px dotted rgba(255, 255, 255, .2); translate: 0 -4px; }
+.ticket__list .price { font: 800 1.12rem var(--f-display); letter-spacing: -.04em; color: #fff; }
+.ticket__list em { flex: none; font-style: normal; color: var(--dim); font-size: .78rem; min-width: 7.5em; }
+.ticket__foot { margin-top: 12px; padding-top: 16px; border-top: 2px dashed rgba(255, 255, 255, .16); }
+
+@media (max-width: 1180px) {
+  .nav__links { display: none; }
+  .burger { display: block; }
+  .kbd-btn kbd { display: none; }
+}
+@media (max-width: 980px) { .cm { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .ticket__list em { display: none; } }

@@ -171,7 +171,7 @@
   const initNav = () => {
     const nav = $('.nav');
     const burger = $('.burger');
-    const links = $$('.nav__links a');
+    const links = $$('.nav__links a[href^="#"]');
 
     if ('IntersectionObserver' in window && links.length) {
       const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
@@ -388,6 +388,38 @@
     pick(start > -1 ? start : 0);
   };
 
+  /* ---------- Censored prices: click to reveal ---------- */
+  const initPrices = () => {
+    const open = (p) => {
+      if (p.classList.contains('is-open')) return;
+      p.classList.add('is-open');
+      p.removeAttribute('aria-label');
+    };
+    $$('.price').forEach((p) => {
+      if (!p.closest('button, a, [data-price-host]')) {
+        p.setAttribute('role', 'button');
+        p.tabIndex = 0;
+        p.setAttribute('aria-label', 'Reveal price');
+      }
+    });
+    d.addEventListener('click', (e) => {
+      let p = e.target.closest && e.target.closest('.price');
+      if (!p) {
+        const host = e.target.closest && e.target.closest('[data-price-host]');
+        if (host) p = $('.price', host);
+      }
+      if (p) open(p);
+      const all = e.target.closest && e.target.closest('[data-reveal-prices]');
+      if (all) $$('.price').forEach(open);
+    });
+    d.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('price') && e.target.getAttribute('role') === 'button') {
+        e.preventDefault();
+        open(e.target);
+      }
+    });
+  };
+
   /* ---------- Misc ---------- */
   const initMisc = () => {
     $$('#current-year').forEach((y) => { y.textContent = String(new Date().getFullYear()); });
@@ -532,6 +564,7 @@
   initCounters();
   initDeck();
   initTiers();
+  initPrices();
   initPalette();
   boot();
 })();
