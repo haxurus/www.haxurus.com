@@ -430,7 +430,8 @@
   /* ---------- Motion toggle (footer) ---------- */
   const initMotionToggle = () => {
     const wrap = $('.foot .wrap');
-    if (!wrap) return;
+    const base = wrap && $('.foot__base', wrap);
+    if (!base) return; // only the home footer carries the toggle
     let btn = $('[data-motion-toggle]');
     if (!btn) {
       btn = d.createElement('button');
@@ -438,8 +439,7 @@
       btn.className = 'motion-toggle';
       btn.dataset.motionToggle = '';
       btn.innerHTML = '<i></i><span></span>';
-      const base = $('.foot__base', wrap);
-      if (base) base.insertBefore(btn, base.lastElementChild); else { const row = d.createElement('div'); row.style.cssText = 'margin-top:18px'; row.appendChild(btn); wrap.appendChild(row); }
+      base.insertBefore(btn, base.lastElementChild);
     }
     const label = () => { $('span', btn).textContent = isCalm() ? 'Motion: calm' : 'Motion: full'; btn.setAttribute('aria-pressed', String(!isCalm())); };
     btn.addEventListener('click', () => {

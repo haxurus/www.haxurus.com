@@ -42,7 +42,8 @@
         var chip = d.createElement('span');
         chip.className = 'skill-chip';
         chip.dataset.level = m[0];
-        chip.title = m[1];
+        chip.dataset.levelLabel = m[1];
+        chip.tabIndex = 0;
         var dot = d.createElement('i');
         dot.className = 'dot';
         chip.appendChild(dot);
@@ -87,6 +88,52 @@
     if (input) input.addEventListener('input', apply);
     apply();
   }
+
+
+  /* ---------- Technology logo card (hover / focus) ---------- */
+  var LOGOS = window.TECH_LOGOS || {};
+  var tip = d.createElement('div');
+  tip.className = 'techtip';
+  tip.setAttribute('role', 'tooltip');
+  tip.innerHTML = '<span class="techtip__logo"></span><span class="techtip__txt"><b></b><small></small></span>';
+  d.body.appendChild(tip);
+  var tipLogo = $('.techtip__logo', tip), tipName = $('b', tip), tipLevel = $('small', tip);
+  var current = null;
+
+  var readable = function (hex) {
+    if (!hex) return null;
+    var n = parseInt(hex, 16), r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255;
+    var lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    return lum < 0.28 ? '#e8f5ec' : '#' + hex;   // very dark brand colours would vanish on the dark card
+  };
+  var showTip = function (el) {
+    var name = el.textContent.trim();
+    var entry = LOGOS[name.toLowerCase()];
+    if (!entry) return;
+    current = el;
+    tipLogo.style.setProperty('--logo', 'url("' + new URL('../img/tech/' + entry[0], d.baseURI).href + '")');
+    tipLogo.style.setProperty('--c', readable(entry[1]) || 'var(--g)');
+    tipName.textContent = name;
+    tipLevel.textContent = el.dataset.levelLabel || '';
+    tipLevel.hidden = !el.dataset.levelLabel;
+    tip.classList.add('on');
+    var r = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+    var left = clamp(r.left + r.width / 2 - w / 2, 8, innerWidth - w - 8);
+    var top = r.top - h - 10;
+    if (top < 8) top = r.bottom + 10;
+    tip.style.transform = 'translate3d(' + Math.round(left) + 'px,' + Math.round(top) + 'px,0)';
+  };
+  var hideTip = function () { current = null; tip.classList.remove('on'); };
+  var TIP_SEL = '.skill-chip, .services .chips li';
+  $$('.services .chips li').forEach(function (li) { li.tabIndex = 0; });
+  d.addEventListener('pointerover', function (e) {
+    var el = e.target.closest && e.target.closest(TIP_SEL);
+    if (el) showTip(el); else if (current) hideTip();
+  });
+  d.addEventListener('focusin', function (e) { var el = e.target.closest && e.target.closest(TIP_SEL); if (el) showTip(el); });
+  d.addEventListener('focusout', hideTip);
+  d.addEventListener('pointerdown', function (e) { if (!(e.target.closest && e.target.closest(TIP_SEL))) hideTip(); });
+  addEventListener('scroll', hideTip, { passive: true });
 
   /* ---------- Service chips: show the first six, expand on demand ---------- */
   $$('.chips[data-chips]').forEach(function (ul) {
