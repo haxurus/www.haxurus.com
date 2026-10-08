@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="./styles.css?v=20260907-4" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Unbounded:wght@800&display=swap" />
+  <link rel="stylesheet" href="../css/footer.css?v=20261009-v9" />
   <style>
     #features .section-heading{grid-template-columns:1fr;margin-bottom:30px}
     #features .section-heading>p{display:none}
@@ -56,6 +58,7 @@
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
+        <a href="../" title="Back to the Haxurus home page">← haxurus.com</a>
         <a data-nav class="is-active" href="#world">World</a>
         <a data-nav href="#gallery">Gallery</a>
         <a data-nav href="#features">Features</a>
@@ -67,6 +70,7 @@
     </div>
 
     <nav class="mobile-menu" aria-label="Mobile navigation">
+      <a href="../" title="Back to the Haxurus home page">← haxurus.com</a>
       <a href="#world">World</a>
       <a href="#gallery">Gallery</a>
       <a href="#features">Features</a>
@@ -202,16 +206,19 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>Helix Horizon © <span id="year">2026</span></span>
-      <div class="footer-links">
-        <a href="https://instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">VRChat World</a>
-        <a href="../">haxurus.com</a>
-      </div>
-    </div>
-  </footer>
+  <footer class="foot" id="credits" aria-label="Copyright and credits"><div class="wrap">
+<div class="foot__mark" aria-hidden="true">HAXURUS</div>
+<div class="foot__card">
+<div>
+<p><strong>Haxurus</strong> © Copyright 2016-<span id="current-year"></span>. All Rights Reserved.</p>
+<p>This website was entirely created with <strong>love</strong> 💚 by <strong>@Haxurus</strong>. The graphics were created by <strong>@Haxurus</strong> with the help of ChatGPT, and the website was developed with the help of Claude by Anthropic.</p>
+<p>Third-party app and social media icons remain the property of their respective owners and are used only for identification and linking purposes. No ownership or endorsement is claimed.</p>
+<p>For any issue or request, please contact <a href="mailto:inviati-49-armonia@icloud.com" style="color:var(--g)">by e-mail</a>.</p>
+</div>
+<div class="foot__links"><a href="mailto:inviati-49-armonia@icloud.com">E-mail</a><a href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://t.me/haxurus_official" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://github.com/Haxurus" target="_blank" rel="noopener noreferrer">GitHub</a><a href="../commissions/">Commissions</a><a href="../support/">Support</a><a href="#">Back to top ↑</a></div>
+</div>
+<div class="foot__base"><a href="../" style="color:var(--mut)">← Back to haxurus.com</a><a class="keyicon" href="/wp-admin/" aria-label="WordPress admin login" title="WordPress admin login"><svg viewBox="0 0 24 24"><path d="M7.5 14a5.5 5.5 0 1 1 4.87-2.94L22 20.69V22h-1.31l-1-1H18v-1.69l-1-1H15.31l-1.44-1.44A5.47 5.47 0 0 1 7.5 14Zm0-3A2.5 2.5 0 1 0 5 8.5 2.5 2.5 0 0 0 7.5 11Z"/></svg></a></div>
+</div></footer>
 
   <div class="lightbox" aria-hidden="true" role="dialog" aria-label="Gallery image preview">
     <button class="lightbox-close" type="button" aria-label="Close image">×</button>
@@ -219,5 +226,6 @@
   </div>
 
   <script src="./script.js?v=20260907-3"></script>
+  <script>(function(){var y=document.getElementById("current-year");if(y)y.textContent=String(new Date().getFullYear());})();</script>
 </body>
 </html>

@@ -430,7 +430,7 @@
   /* ---------- Motion toggle (footer) ---------- */
   const initMotionToggle = () => {
     const wrap = $('.foot .wrap');
-    const base = wrap && $('.foot__base', wrap);
+    const base = wrap && $('.foot__base[data-motion]', wrap);
     if (!base) return; // only the home footer carries the toggle
     let btn = $('[data-motion-toggle]');
     if (!btn) {

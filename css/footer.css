@@ -1,0 +1,35 @@
+/* Shared site footer for pages that do not use site.css (vrchat/, helixhorizon/).
+   Mirrors the footer block of site.css; tokens are scoped to .foot so the host page styles are untouched. */
+.foot {
+  --g: #39ff14; --g-soft: #c9ffd4; --ink: #eefcf2; --mut: rgba(238, 252, 242, .66); --dim: rgba(238, 252, 242, .42);
+  --line: rgba(255, 255, 255, .11); --line-2: rgba(255, 255, 255, .2); --maxw: 1240px;
+  --f-display: "Unbounded", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --f-ui: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  position: relative; z-index: 2; padding-top: clamp(50px, 8vw, 90px); background: linear-gradient(180deg, transparent, #030607 22%);
+  color: var(--ink); font-family: var(--f-ui); line-height: 1.6; text-align: left;
+}
+.foot *, .foot *::before, .foot *::after { box-sizing: border-box; }
+.foot p { margin: 0; }
+.foot a { color: inherit; text-decoration: none; }
+.foot .wrap { width: min(calc(100% - 40px), var(--maxw)); margin-inline: auto; }
+/* Footer */
+.foot { position: relative; margin-top: 0; padding: 0 0 36px; overflow: hidden; }
+.foot .wrap { container-type: inline-size; }
+.foot__mark {
+  font: 800 16.2cqi/.9 var(--f-display); letter-spacing: -.07em; text-align: center; white-space: nowrap; user-select: none; padding-bottom: .1em;
+  background: linear-gradient(180deg, rgba(57, 255, 20, .55), rgba(57, 255, 20, .04) 85%); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.foot__card { margin-top: -2vw; padding: clamp(22px, 4vw, 40px); border-radius: 28px; border: 1px solid var(--line-2); background: rgba(8, 14, 13, .7); display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 30px; position: relative; }
+.foot__card p { color: var(--mut); font-size: .95rem; margin-bottom: 10px; }
+.foot__card strong { color: var(--ink); }
+.foot__links { display: flex; flex-wrap: wrap; align-content: flex-start; justify-content: flex-end; gap: 8px; }
+.foot__links a { padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line-2); font-weight: 600; font-size: .9rem; color: var(--mut); transition: color .2s, background .2s, border-color .2s; }
+.foot__links a:hover { color: #021005; background: var(--g); border-color: transparent; }
+.foot__base { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 22px; color: var(--dim); font-size: .85rem; }
+.keyicon { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); color: var(--dim); transition: color .2s, border-color .2s; }
+.keyicon:hover { color: var(--g); border-color: var(--g); }
+.keyicon svg { width: 15px; height: 15px; fill: currentColor; }
+@media (max-width: 980px) { .foot__card { grid-template-columns: 1fr !important; } .foot__links { justify-content: flex-start; } }
+@media (max-width: 640px) { .foot .wrap { width: min(calc(100% - 28px), var(--maxw)); } .foot__base { flex-direction: column; align-items: flex-start; } }
+
+.foot { padding-top: clamp(50px, 8vw, 90px); padding-bottom: 36px; }

@@ -638,3 +638,8 @@ html.rm { scroll-behavior: auto; }
 }
 @media (max-width: 980px) { .cm { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .ticket__list em { display: none; } }
+
+/* Quick link back to the home page (sub-pages) */
+.nav__home { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .05); color: var(--ink); transition: background .2s, border-color .2s, color .2s, transform .3s var(--ease); }
+.nav__home:hover { background: rgba(57, 255, 20, .14); border-color: var(--g); color: #fff; transform: translateY(-2px); }
+.nav__home svg { width: 18px; height: 18px; }
