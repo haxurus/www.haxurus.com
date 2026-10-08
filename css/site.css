@@ -554,15 +554,19 @@ html { overflow-x: clip; }
 /* ================= Preferences ================= */
 @media (hover: none), (pointer: coarse) { #spot, #peek { display: none; } }
 .is-paused, .is-paused *, .is-paused *::before, .is-paused *::after { animation-play-state: paused !important; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
-  .js [data-r], .js .mask > span, .js .hero .fade, .js .hero h1 .ltr, .js .shero h1 .ltr, .js .manifesto .w, .js .ladder__bar { opacity: 1 !important; translate: 0 0 !important; scale: 1 !important; rotate: 0deg !important; transform: none !important; }
-  .js .nav { translate: -50% 0; opacity: 1; }
-  #spot, #progress, #peek { display: none; }
-  .roles span:not(:first-child) { display: none; }
-  .roles span:first-child { translate: 0 0; opacity: 1; }
-}
+/* "Calm" motion mode (.rm on <html>): chosen by the visitor with the footer toggle, or applied by default when the
+   OS asks for reduced motion. It removes parallax and endless drifting/spinning loops but keeps reveals, hovers and
+   the title wave, so the site never goes completely static. */
+html.rm { scroll-behavior: auto; }
+.rm .hero__media { transform: none !important; opacity: 1 !important; }
+.rm .hero h1 { transform: none; }
+.rm .ticker__row, .rm .disc, .rm .card3d__art, .rm .sup__art img, .rm .scrollcue i, .rm .shero__orb, .rm .cx-hero::after, .rm .tier--hot::before { animation: none !important; }
+.rm .about__img img, .rm .film img { --ty: 0px !important; }
+
+.motion-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .05); font: 700 .78rem var(--f-ui); color: var(--mut); transition: background .2s, border-color .2s, color .2s; }
+.motion-toggle:hover { color: #fff; border-color: var(--g); background: rgba(57, 255, 20, .1); }
+.motion-toggle i { width: 8px; height: 8px; border-radius: 50%; background: var(--g); }
+.rm .motion-toggle i { background: var(--dim); }
 
 /* ================= v3 additions ================= */
 

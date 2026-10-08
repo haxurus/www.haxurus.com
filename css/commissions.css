@@ -140,6 +140,3 @@
   .cx-stat { padding: 14px 16px; }
   .stack-count { margin-left: 0; width: 100%; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .js .cx-title > span > b { translate: 0 0 !important; }
-}

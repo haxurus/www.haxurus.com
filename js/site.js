@@ -6,7 +6,14 @@
   const root = d.documentElement;
   const $ = (s, c = d) => c.querySelector(s);
   const $$ = (s, c = d) => [...c.querySelectorAll(s)];
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // The OS reduced-motion flag only switches on "calm" mode (no parallax or endless loops); effects are never fully disabled.
+  // Visitors can flip the mode with the footer toggle, and the choice is remembered.
+  const MOTION_KEY = 'hx-motion';
+  const stored = (() => { try { return localStorage.getItem(MOTION_KEY); } catch (e) { return null; } })();
+  const calmByDefault = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.toggle('rm', stored ? stored === 'calm' : calmByDefault);
+  const isCalm = () => root.classList.contains('rm');
+  const reduced = false;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const pad = (n) => String(n).padStart(2, '0');
@@ -150,8 +157,8 @@
         else if (y < lastY - 8 || y < 120) nav.classList.remove('is-hidden');
       }
       lastY = y;
-      if (hero && !reduced) hero.style.setProperty('--hp', clamp(y / (hero.offsetHeight || 1), 0, 1).toFixed(3));
-      if (!reduced) {
+      if (hero && !isCalm()) hero.style.setProperty('--hp', clamp(y / (hero.offsetHeight || 1), 0, 1).toFixed(3));
+      if (!isCalm()) {
         par.forEach((el) => {
           const box = el.parentElement.getBoundingClientRect();
           if (box.bottom < -100 || box.top > innerHeight + 100) return;
@@ -420,6 +427,30 @@
     });
   };
 
+  /* ---------- Motion toggle (footer) ---------- */
+  const initMotionToggle = () => {
+    const wrap = $('.foot .wrap');
+    if (!wrap) return;
+    let btn = $('[data-motion-toggle]');
+    if (!btn) {
+      btn = d.createElement('button');
+      btn.type = 'button';
+      btn.className = 'motion-toggle';
+      btn.dataset.motionToggle = '';
+      btn.innerHTML = '<i></i><span></span>';
+      const base = $('.foot__base', wrap);
+      if (base) base.insertBefore(btn, base.lastElementChild); else { const row = d.createElement('div'); row.style.cssText = 'margin-top:18px'; row.appendChild(btn); wrap.appendChild(row); }
+    }
+    const label = () => { $('span', btn).textContent = isCalm() ? 'Motion: calm' : 'Motion: full'; btn.setAttribute('aria-pressed', String(!isCalm())); };
+    btn.addEventListener('click', () => {
+      const calm = !isCalm();
+      root.classList.toggle('rm', calm);
+      try { localStorage.setItem(MOTION_KEY, calm ? 'calm' : 'full'); } catch (e) { /* ignore */ }
+      label();
+    });
+    label();
+  };
+
   /* ---------- Misc ---------- */
   const initMisc = () => {
     $$('#current-year').forEach((y) => { y.textContent = String(new Date().getFullYear()); });
@@ -565,6 +596,7 @@
   initDeck();
   initTiers();
   initPrices();
+  initMotionToggle();
   initPalette();
   boot();
 })();
