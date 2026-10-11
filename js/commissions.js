@@ -207,4 +207,146 @@
     addEventListener('resize', onScroll, { passive: true });
     run();
   }
+
+  /* ---------- Hero: a pinned fly-through. Scrolling pushes the camera through Build / Deploy / Maintain. ---------- */
+  (function () {
+  var hero = $('[data-cx-hero]');
+  if (hero) {
+    var intro = $('[data-cx-intro]', hero);
+    var scenes = $$('.cx-sc', hero).map(function (el) {
+      return { el: el, ring: $('.cx-sc__ring', el), no: $('.cx-sc__no', el), word: $('.cx-sc__word', el), body: $('.cx-sc__body', el), key: '' };
+    });
+    var tints = $$('.cx-bg__tints i', hero);
+    var railItems = $$('.cx-rail__i', hero);
+    var railFill = $('.cx-rail__fill i', hero);
+    var cue = $('.cx-cue', hero);
+    var layers = { aurora: $('.cx-bg__aurora', hero), rings: $('.cx-bg__rings', hero), code: $('.cx-bg__code', hero) };
+    var root = d.documentElement;
+    var pinMQ = matchMedia('(min-width: 901px) and (min-height: 641px)');
+    var smooth = function (k) { return k * k * (3 - 2 * k); };
+    var ramp = function (v, a, b) { return smooth(clamp((v - a) / (b - a), 0, 1)); };
+    // [enter start, enter end, exit start, exit end] on the 0..1 scroll progress of the pinned hero.
+    var WIN = [[.17, .30, .40, .52], [.44, .57, .67, .78], [.70, .83, 2, 3]];
+    var pinned = false, inView = true, ticking = false, introKey = '';
+
+    // Floating code glyphs
+    var glyphHost = $('[data-glyphs]', hero);
+    if (glyphHost) {
+      var bits = ['{ }', '</>', '$ _', '200 OK', 'git push', ':443', 'sudo', 'nginx', 'ssh', '0x1F', 'async', 'docker', 'SELECT *', 'PHP', '=> {}', 'TLS', 'ping', '#!/bin/sh'];
+      var frag = d.createDocumentFragment();
+      for (var g = 0; g < 18; g++) {
+        var sp = d.createElement('span');
+        sp.textContent = bits[(g * 7) % bits.length];
+        sp.style.left = (4 + ((g * 37) % 92)) + '%';
+        sp.style.setProperty('--fs', (11 + (g * 5) % 10) + 'px');
+        sp.style.setProperty('--dur', (13 + (g * 3) % 11) + 's');
+        sp.style.setProperty('--delay', '-' + ((g * 2.3) % 14).toFixed(1) + 's');
+        frag.appendChild(sp);
+      }
+      glyphHost.appendChild(frag);
+    }
+
+    var reset = function () {
+      [intro].concat(scenes.reduce(function (a, s) { return a.concat([s.el, s.ring, s.no, s.word, s.body]); }, [])).forEach(function (n) {
+        if (n) { n.style.transform = n.style.opacity = n.style.visibility = ''; }
+      });
+      if (intro) intro.inert = false;
+      tints.forEach(function (t, i) { t.style.opacity = ''; });
+      scenes.forEach(function (s) { s.key = ''; });
+      introKey = '';
+    };
+
+    var update = function () {
+      ticking = false;
+      if (!pinned || !inView) return;
+      var r = hero.getBoundingClientRect();
+      var total = hero.offsetHeight - innerHeight;
+      var P = total > 0 ? clamp(-r.top / total, 0, 1) : 0;
+      var tilt = root.classList.contains('rm') ? 0 : 1;
+
+      // Intro: the camera flies through the headline.
+      var t = ramp(P, .05, .27);
+      var ik = t.toFixed(3);
+      if (ik !== introKey) {
+        introKey = ik;
+        intro.style.transform = 'translate3d(0,' + (-t * 30).toFixed(1) + 'px,0) scale(' + (1 + t * .8).toFixed(4) + ')';
+        intro.style.opacity = clamp(1 - t * 1.45, 0, 1).toFixed(3);
+        intro.style.visibility = t >= .72 ? 'hidden' : '';
+        intro.inert = t >= .72;
+      }
+      var strongest = 0, strongestOp = 0;
+      scenes.forEach(function (s, i) {
+        var w = WIN[i];
+        var eu = ramp(P, w[0], w[1]), ev = ramp(P, w[2], w[3]);
+        var op = eu * (1 - ev);
+        var key = eu.toFixed(3) + '|' + ev.toFixed(3);
+        if (op > strongestOp) { strongestOp = op; strongest = i; }
+        s._op = op;
+        if (key === s.key) return;
+        s.key = key;
+        var sw = (.5 + .5 * eu) * (1 + 1.25 * ev);
+        var sr = (.32 + .68 * eu) * (1 + 2.3 * ev);
+        var sb = (.84 + .16 * eu) * (1 + .5 * ev);
+        s.el.style.opacity = op > .002 ? '1' : '0';
+        s.el.style.visibility = op > .002 ? '' : 'hidden';
+        s.ring.style.transform = 'scale(' + sr.toFixed(4) + ')';
+        s.ring.style.opacity = (op * .95).toFixed(3);
+        s.word.style.transform = 'translate3d(0,0,0) scale(' + sw.toFixed(4) + ')';
+        s.word.style.opacity = op.toFixed(3);
+        s.no.style.opacity = op.toFixed(3);
+        s.no.style.transform = 'translate3d(0,' + ((1 - eu) * -26).toFixed(1) + 'px,0)';
+        var bo = ramp(eu, .3, 1) * (1 - clamp(ev * 1.7, 0, 1));
+        s.body.style.opacity = bo.toFixed(3);
+        s.body.style.transform = 'translate3d(0,' + ((1 - eu) * 46 - ev * 30).toFixed(1) + 'px,0) scale(' + sb.toFixed(4) + ')';
+      });
+      tints.forEach(function (tn, i) {
+        var base = i === 0 ? clamp(1 - t * 1.3, 0, 1) * .7 : 0;
+        tn.style.opacity = Math.max(base, scenes[i]._op || 0).toFixed(3);
+      });
+      railItems.forEach(function (n, i) { n.classList.toggle('is-on', P > .15 && i === strongest); });
+      var rail = railItems[0] && railItems[0].parentNode;
+      if (rail) rail.style.opacity = ramp(P, .08, .17).toFixed(2);
+      if (railFill) railFill.style.transform = 'scaleY(' + P.toFixed(3) + ')';
+      if (cue) cue.style.opacity = clamp(1 - P * 14, 0, 1).toFixed(2);
+    };
+    var schedule = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+
+    var setMode = function () {
+      pinned = pinMQ.matches;
+      hero.classList.toggle('is-pin', pinned);
+      if (pinned) update(); else reset();
+    };
+    if (pinMQ.addEventListener) pinMQ.addEventListener('change', setMode); else pinMQ.addListener(setMode);
+    addEventListener('scroll', schedule, { passive: true });
+    addEventListener('resize', schedule, { passive: true });
+    setMode();
+
+    // Stop all the endless background loops while the hero is off screen.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        inView = es[0].isIntersecting;
+        hero.classList.toggle('is-paused', !inView);
+        if (inView) schedule();
+      }).observe(hero);
+    }
+
+    // Pointer parallax on the background layers
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var px = 0, py = 0, cx = 0, cy = 0, loop = 0;
+      var tick = function () {
+        cx += (px - cx) * .07; cy += (py - cy) * .07;
+        if (!root.classList.contains('rm')) {
+          layers.aurora.style.transform = 'translate3d(' + (cx * -34).toFixed(1) + 'px,' + (cy * -24).toFixed(1) + 'px,0)';
+          layers.rings.style.transform = 'translate3d(' + (cx * 18).toFixed(1) + 'px,' + (cy * 12).toFixed(1) + 'px,0)';
+          layers.code.style.transform = 'translate3d(' + (cx * 52).toFixed(1) + 'px,0,0)';
+        }
+        loop = (Math.abs(px - cx) > .001 || Math.abs(py - cy) > .001) && inView ? requestAnimationFrame(tick) : 0;
+      };
+      hero.addEventListener('pointermove', function (e) {
+        px = e.clientX / innerWidth - .5; py = e.clientY / innerHeight - .5;
+        if (!loop) loop = requestAnimationFrame(tick);
+      }, { passive: true });
+    }
+  }
+  })();
 })();

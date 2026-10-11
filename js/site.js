@@ -79,6 +79,70 @@
     els.forEach((el) => io.observe(el));
   };
 
+
+  /* ---------- Scenes: sections fade out as they leave and stage themselves as they arrive (home only) ---------- */
+  let scenesUpdate = () => {};
+  const initScenes = () => {
+    const main = $('main[data-scenes]');
+    if (!main) return;
+    const secs = $$('.sec', main).map((el) => {
+      const mk = (cls) => { const i = d.createElement('i'); i.className = `sec__edge ${cls}`; i.setAttribute('aria-hidden', 'true'); return i; };
+      const top = mk('sec__edge--t'), bot = mk('sec__edge--b');
+      el.prepend(top);
+      el.append(bot);
+      return { el, top, bot, y: 0, h: 0, key: '', live: false };
+    });
+    if (!secs.length) return;
+    // Layout offsets are cached so the scroll loop never forces a layout.
+    const measure = () => secs.forEach((s) => {
+      let t = 0;
+      for (let n = s.el; n; n = n.offsetParent) t += n.offsetTop;
+      s.y = t;
+      s.h = s.el.offsetHeight;
+    });
+    measure();
+    if ('ResizeObserver' in window) new ResizeObserver(measure).observe(main);
+    addEventListener('load', measure);
+    addEventListener('resize', measure, { passive: true });
+
+    const smooth = (k) => k * k * (3 - 2 * k);
+    const clear = (s) => {
+      if (!s.live) return;
+      s.live = false;
+      s.key = '';
+      s.el.style.transform = s.el.style.opacity = s.el.style.transformOrigin = '';
+      s.el.classList.remove('is-scene');
+      s.top.style.opacity = s.bot.style.opacity = '';
+    };
+    scenesUpdate = () => {
+      const vh = innerHeight, y = scrollY, tilt = isCalm() ? 0 : 1;
+      secs.forEach((s) => {
+        const top = s.y - y, bottom = top + s.h;
+        if (bottom < -80 || top > vh) { clear(s); return; }
+        // e: 0 -> 1 while the section's top edge travels from 92% to 38% of the viewport.
+        const e = smooth(clamp((vh * .92 - top) / (vh * .54), 0, 1));
+        // x: 0 -> 1 while its bottom edge travels from 78% of the viewport to the top.
+        const x = smooth(clamp((vh * .78 - bottom) / (vh * .78), 0, 1));
+        if (e >= 1 && x <= 0) { clear(s); return; }
+        const E = 1 - e;
+        const key = `${e.toFixed(3)}|${x.toFixed(3)}|${tilt}`;
+        if (key === s.key) return;
+        s.key = key;
+        if (!s.live) { s.live = true; s.el.classList.add('is-scene'); }
+        const out = x > 0;
+        s.el.style.transformOrigin = out ? '50% 100%' : '50% 0%';
+        s.el.style.transform = `perspective(1500px) translate3d(0, ${(E * 90 - x * 46).toFixed(1)}px, 0) scale(${(1 - E * .09 - x * .1).toFixed(4)}) rotateX(${((-E * 8 + x * 9) * tilt).toFixed(2)}deg)`;
+        s.el.style.opacity = (e * (1 - Math.pow(x, 1.4))).toFixed(3);
+        // Light curtain: a line sweeps open along the arriving edge and closes along the leaving one.
+        s.top.style.opacity = e < 1 ? Math.min(1, e * 5).toFixed(2) : '0';
+        s.top.style.transform = `scaleX(${e.toFixed(3)})`;
+        s.bot.style.opacity = x > 0 ? Math.min(1, x * 5).toFixed(2) : '0';
+        s.bot.style.transform = `scaleX(${(1 - x).toFixed(3)})`;
+      });
+    };
+    scenesUpdate();
+  };
+
   /* ---------- Hero ---------- */
   const initHero = () => {
     const hero = $('.hero');
@@ -167,6 +231,7 @@
         });
       }
       manifestoUpdate();
+      scenesUpdate();
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
     addEventListener('scroll', onScroll, { passive: true });
@@ -589,6 +654,7 @@
   initReveal();
   initHero();
   initManifesto();
+  initScenes();
   initScroll();
   initNav();
   initPointer();

@@ -41,7 +41,7 @@ body {
   color: var(--ink);
   font-family: var(--f-ui);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -643,3 +643,11 @@ html.rm { scroll-behavior: auto; }
 .nav__home { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .05); color: var(--ink); transition: background .2s, border-color .2s, color .2s, transform .3s var(--ease); }
 .nav__home:hover { background: rgba(57, 255, 20, .14); border-color: var(--g); color: #fff; transform: translateY(-2px); }
 .nav__home svg { width: 18px; height: 18px; }
+
+/* ================= Scenes (home): sections stage themselves on the way in and out ================= */
+.sec.is-scene { will-change: transform, opacity; }
+.sec__edge { position: absolute; left: 0; right: 0; z-index: 3; height: 2px; opacity: 0; pointer-events: none; transform: scaleX(0); transform-origin: 50% 50%; background: linear-gradient(90deg, transparent, var(--g) 22%, var(--c) 78%, transparent); box-shadow: 0 0 26px 2px rgba(57, 255, 20, .55), 0 0 90px 10px rgba(0, 234, 255, .18); }
+.sec__edge--t { top: 0; }
+.sec__edge--b { bottom: 0; }
+.sec__edge--t::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: clamp(120px, 24vh, 240px); background: linear-gradient(180deg, rgba(57, 255, 20, .09), transparent); }
+.sec__edge--b::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: clamp(90px, 18vh, 180px); background: linear-gradient(0deg, rgba(0, 234, 255, .07), transparent); }
