@@ -55,7 +55,7 @@
   .cx-hero.is-pin .cx-sc__ring { position: absolute; left: 50%; top: 48%; display: block; width: min(92vh, 82vw); aspect-ratio: 1; margin: calc(min(92vh, 82vw) / -2) 0 0 calc(min(92vh, 82vw) / -2); will-change: transform, opacity; }
   .cx-hero.is-pin .cx-sc__ring i { position: absolute; inset: 0; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--tint) 55%, transparent); background: radial-gradient(circle, color-mix(in srgb, var(--tint) 14%, transparent), transparent 66%); box-shadow: 0 0 120px color-mix(in srgb, var(--tint) 22%, transparent), inset 0 0 80px color-mix(in srgb, var(--tint) 12%, transparent); }
   .cx-hero.is-pin .cx-sc__ring i::after { content: ""; position: absolute; inset: 7%; border-radius: 50%; border: 1px dashed color-mix(in srgb, var(--tint) 50%, transparent); animation: spin 48s linear infinite; }
-  .cx-hero.is-pin .cx-sc__main { position: relative; justify-items: center; text-align: center; gap: clamp(8px, 1.6vh, 16px); width: 100%; padding-inline: 20px; }
+  .cx-hero.is-pin .cx-sc__main { grid-template-columns: minmax(0, 1fr); position: relative; justify-items: center; text-align: center; gap: clamp(8px, 1.6vh, 16px); width: 100%; padding-inline: 20px; }
   .cx-hero.is-pin .cx-sc__no { will-change: transform, opacity; }
   .cx-hero.is-pin .cx-sc__word { font-size: min(9.6cqi, 25vh); white-space: nowrap; justify-self: center; will-change: transform, opacity; padding: 0 .06em .06em 0; }
   .cx-hero.is-pin .cx-sc__word::before { content: attr(data-t); position: absolute; left: 0; top: 0; z-index: -1; translate: .04em .045em; background: none; -webkit-text-fill-color: transparent; -webkit-text-stroke: 1.5px color-mix(in srgb, var(--tint) 70%, transparent); opacity: .7; }

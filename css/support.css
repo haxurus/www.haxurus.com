@@ -14,7 +14,7 @@
 .cx-sc--tier .cx-sc__word { overflow-wrap: normal; }
 
 @media (min-width: 901px) and (min-height: 641px) {
-  .cx-hero.is-pin .cx-sc--tier .cx-sc__word { width: 9.4em; max-width: 100%; white-space: normal; text-align: center; font-size: var(--wf, min(8.4cqi, 19vh)); line-height: .92; text-wrap: balance; }
+  .cx-hero.is-pin .cx-sc--tier .cx-sc__word { width: min(9.4em, 100%); white-space: normal; text-align: center; font-size: var(--wf, min(8.4cqi, 19vh)); line-height: .92; text-wrap: balance; }
   .cx-hero.is-pin .cx-sc--tier .cx-sc__word::before { width: 100%; text-align: center; }
   .cx-hero.is-pin .cx-sc--tier .cx-sc__body { max-width: 560px; }
   .cx-hero.is-pin .cx-sc__art { position: absolute; z-index: 1; right: clamp(28px, 7vw, 130px); top: clamp(92px, 15vh, 150px); width: min(25vw, 360px); margin: 0; border-radius: 22px; border-width: 1.5px; will-change: transform, opacity; box-shadow: 0 34px 80px rgba(0, 0, 0, .55), 0 0 70px color-mix(in srgb, var(--tint) 30%, transparent); }

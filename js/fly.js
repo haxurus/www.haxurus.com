@@ -136,6 +136,42 @@
   addEventListener('resize', schedule, { passive: true });
   setMode();
 
+  // One notch of the mouse wheel = one step: the intro, each scene, then the page continues. The scroll position is animated
+  // to the next (or previous) resting point; keyboard, touch and the scrollbar keep working as usual.
+  var snaps = [0].concat(scenes.map(function (s, i) { return i === N - 1 ? 1 : (WIN[i][1] + WIN[i][2]) / 2; }));
+  var gliding = false, lastWheel = 0;
+  var glide = function (toY) {
+    var fromY = scrollY, dist = toY - fromY;
+    var dur = clamp(Math.abs(dist) * .5, 650, 1250);
+    var t0 = performance.now();
+    gliding = true;
+    var frame = function (now) {
+      var k = clamp((now - t0) / dur, 0, 1);
+      var e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      window.scrollTo({ top: fromY + dist * e, behavior: 'instant' });
+      if (k < 1) requestAnimationFrame(frame); else { gliding = false; lastWheel = performance.now(); }
+    };
+    requestAnimationFrame(frame);
+  };
+  addEventListener('wheel', function (e) {
+    if (!pinned || e.ctrlKey || e.deltaY === 0 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    if (root.classList.contains('menu-open') || (e.target.closest && e.target.closest('.pal.is-open, .mmenu, .matrix-wrap'))) return;
+    var r = hero.getBoundingClientRect();
+    if (r.top > 2 || r.bottom < innerHeight - 2) return;                    // only while the stage is pinned
+    var now = performance.now();
+    var quiet = now - lastWheel > 140;                                      // trackpad momentum keeps lastWheel fresh
+    lastWheel = now;
+    var total = hero.offsetHeight - innerHeight;
+    var P = clamp(-r.top / total, 0, 1);
+    var dir = e.deltaY > 0 ? 1 : -1, target = -1;
+    if (dir > 0) { for (var i = 0; i < snaps.length; i++) if (snaps[i] > P + .004) { target = i; break; } }
+    else { for (var j = snaps.length - 1; j >= 0; j--) if (snaps[j] < P - .004) { target = j; break; } }
+    if (target < 0) return;                                                 // past the first / last step: the page scrolls normally
+    e.preventDefault();
+    if (gliding || !quiet) return;
+    glide(scrollY + r.top + snaps[target] * total);
+  }, { passive: false });
+
   // Stop all the endless background loops while the hero is off screen.
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {
