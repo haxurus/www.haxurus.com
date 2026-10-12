@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Helix Horizon - Un mondo VRChat</title>
+  <meta name="description" content="Esplora Helix Horizon, un mondo VRChat sociale di Haxurus. Scopri spazi, atmosfera, giochi e foto della community."/>
+  <meta name="theme-color" content="#06110f"/>
+  <link rel="canonical" href="https://haxurus.com/it/helixhorizon/"/>
+<!--lang:head--><link rel="alternate" hreflang="en" href="https://haxurus.com/helixhorizon/"/>
+<link rel="alternate" hreflang="it" href="https://haxurus.com/it/helixhorizon/"/>
+<link rel="alternate" hreflang="es" href="https://haxurus.com/es/helixhorizon/"/>
+<link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/helixhorizon/"/>
+<link rel="alternate" hreflang="de" href="https://haxurus.com/de/helixhorizon/"/>
+<link rel="alternate" hreflang="x-default" href="https://haxurus.com/helixhorizon/"/>
+<meta property="og:locale:alternate" content="en_US"/>
+<meta property="og:locale:alternate" content="es_ES"/>
+<meta property="og:locale:alternate" content="ja_JP"/>
+<meta property="og:locale:alternate" content="de_DE"/>
+<script src="../../js/i18n/it.js?v=20261012-v17"></script>
+<script>(function(){document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-lang]');if(a)try{localStorage.setItem('hx-lang',a.getAttribute('data-lang'))}catch(_){}});})()</script><!--/lang:head-->
+  <link rel="icon" type="image/png" href="../../img/favicon.png"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Helix Horizon - Un mondo VRChat"/>
+  <meta property="og:description" content="Persone. Luoghi. Più in alto, insieme. Esplora Helix Horizon."/>
+  <meta property="og:url" content="https://haxurus.com/it/helixhorizon/"/>
+  <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="stylesheet" href="../../helixhorizon/styles.css?v=20260907-4"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Unbounded:wght@800&amp;display=swap"/>
+  <link rel="stylesheet" href="../../css/footer.css?v=20261012-v17"/>
+  <style>
+    #features .section-heading{grid-template-columns:1fr;margin-bottom:30px}
+    #features .section-heading>p{display:none}
+    #features .section-heading h2{max-width:760px}
+    #features .feature-card{min-height:175px;padding:23px}
+    #features .feature-icon{margin-bottom:20px}
+    #features .feature-card h3{margin:0 0 8px;font-size:1rem}
+    #features .feature-card p{display:block;margin:0;color:var(--muted);font-size:.8rem;line-height:1.5}
+
+    #features .games-panel{display:block;margin-top:34px;padding:0;border:0;background:none}
+    #features .games-copy{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:18px}
+    #features .games-copy h3{margin:8px 0 0;font-size:clamp(1.65rem,2.8vw,2.7rem);letter-spacing:-.04em}
+    #features .games-copy>p:last-child{display:none}
+    #features .game-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    #features .game-item{position:relative;display:block;min-height:0;aspect-ratio:16/9;padding:0;overflow:hidden;border:1px solid rgba(127,255,218,.12);border-radius:14px;background:#0a1514}
+    #features .game-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04) 35%,rgba(0,0,0,.78) 100%);pointer-events:none}
+    #features .game-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.82);transition:transform .45s ease,filter .45s ease}
+    #features .game-item:hover img{transform:scale(1.05);filter:brightness(.86) saturate(.95)}
+    #features .game-item strong{position:absolute;z-index:2;left:18px;right:18px;bottom:16px;font-size:1rem;letter-spacing:-.01em}
+
+    @media(max-width:980px){
+      #features .game-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:620px){
+      #features .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      #features .feature-card{min-height:155px;padding:20px}
+      #features .game-list{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#world" aria-label="Helix Horizon - Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewbox="0 0 48 48"><path d="M9 13c5-6 11-8 15-8s10 2 15 8M9 35c5 6 11 8 15 8s10-2 15-8M12 9c-5 5-7 10-7 15s2 10 7 15M36 9c5 5 7 10 7 15s-2 10-7 15M14 15l20 18M34 15L14 33"></path></svg>
+        </span>
+        <span class="brand-copy"><strong>HELIX HORIZON</strong><small>UN MONDO VRCHAT</small></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigazione principale">
+        <a href="../" title="Torna alla home page di Haxurus">← haxurus.com</a>
+        <a data-nav class="is-active" href="#world">Mondo</a>
+        <a data-nav href="#gallery">Galleria</a>
+        <a data-nav href="#features">Caratteristiche</a>
+        <a data-nav href="#community">Foto</a>
+      </nav>
+
+      <a class="nav-cta" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Entra su VRChat</a>
+      <button class="menu-toggle" type="button" aria-label="Apri il menu" aria-expanded="false"><span></span></button>
+    </div>
+
+    <nav class="mobile-menu" aria-label="Navigazione mobile">
+      <a href="../" title="Torna alla home page di Haxurus">← haxurus.com</a>
+      <a href="#world">Mondo</a>
+      <a href="#gallery">Galleria</a>
+      <a href="#features">Caratteristiche</a>
+      <a href="#community">Foto</a>
+      <a class="nav-cta" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Entra su VRChat</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="world">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="kicker">PERSONE · LUOGHI · PIÙ IN ALTO, INSIEME</p>
+        <h1>Esplora <span>Helix Horizon</span></h1>
+        <p class="hero-copy">Un mondo VRChat sociale in cui architettura, atmosfera e connessione si incontrano. Scopri spazi panoramici, angoli intimi e luoghi pensati per essere condivisi.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Entra nel mondo <span>↗</span></a>
+          <a class="button button-ghost" href="#gallery">Vedi la galleria <span>↓</span></a>
+        </div>
+      </div>
+      <div class="hero-note reveal">
+        <span>PIÙ DI UN MONDO</span>
+        <strong>UN POSTO IN CUI SENTIRTI A CASA</strong>
+      </div>
+      <div class="scroll-hint">SCORRI PER ESPLORARE <span>↓</span></div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">GALLERIA</p>
+          <h2>Uno sguardo sul mondo</h2>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <button class="gallery-card gallery-card-large reveal" data-image="../img/games/helixhorizon.webp" aria-label="Apri l'immagine The Lounge">
+          <img src="../../img/games/helixhorizon.webp" alt="Helix Horizon - The Lounge"/>
+          <span class="gallery-label"><strong>The Lounge</strong><small>Relax · Social · Good vibes</small></span>
+        </button>
+        <button class="gallery-card reveal" data-image="../img/games/helixhorizon.webp" aria-label="Apri l'immagine Skyline Terrace">
+          <img class="crop-right" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - Skyline Terrace"/>
+          <span class="gallery-label"><strong>Skyline Terrace</strong><small>Atmosfera panoramica</small></span>
+        </button>
+        <button class="gallery-card reveal" data-image="../img/games/helixhorizon.webp" aria-label="Apri l'immagine Helix Bar">
+          <img class="crop-left" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - Helix Bar"/>
+          <span class="gallery-label"><strong>Helix Bar</strong><small>Bevi · Chiacchiera · Incontra</small></span>
+        </button>
+        <button class="gallery-card reveal" data-image="../img/games/helixhorizon.webp" aria-label="Apri l'immagine Cozy Rooms">
+          <img class="crop-bottom" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - Cozy Rooms"/>
+          <span class="gallery-label"><strong>Cozy Rooms</strong><small>Uno spazio per ogni umore</small></span>
+        </button>
+        <button class="gallery-card reveal" data-image="../img/games/helixhorizon.webp" aria-label="Apri l'immagine Night Views">
+          <img class="crop-top" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - Night Views"/>
+          <span class="gallery-label"><strong>Night Views</strong><small>Sopra le luci della città</small></span>
+        </button>
+        <button class="gallery-card gallery-card-tall reveal" data-image="../img/games/helixhorizon.webp" aria-label="Apri l'immagine Main Plaza">
+          <img class="crop-right" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - Main Plaza"/>
+          <span class="gallery-label"><strong>Main Plaza</strong><small>Il cuore di Helix Horizon</small></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">CARATTERISTICHE</p>
+          <h2>Più di un semplice mondo</h2>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal"><span class="feature-icon">👥</span><h3>Spazi social</h3><p>Fatti per incontrarsi, chiacchierare e rilassarsi insieme.</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">✨</span><h3>Design immersivo</h3><p>Un'atmosfera coerente costruita attorno a ogni dettaglio.</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">🎉</span><h3>Momenti di community</h3><p>Spazi per eventi, ritrovi e serate insieme.</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">📸</span><h3>Spot fotografici</h3><p>Angoli panoramici fatti per scatti memorabili.</p></article>
+      </div>
+
+      <div class="games-panel reveal">
+        <div class="games-copy">
+          <div>
+            <p class="eyebrow">GIOCHI</p>
+            <h3>Giochi in Helix Horizon</h3>
+          </div>
+        </div>
+        <div class="game-list" aria-label="Giochi disponibili in Helix Horizon">
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="Segnaposto gioco 01"/><strong>Gioco 01</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="Segnaposto gioco 02"/><strong>Gioco 02</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="Segnaposto gioco 03"/><strong>Gioco 03</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="Segnaposto gioco 04"/><strong>Gioco 04</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="Segnaposto gioco 05"/><strong>Gioco 05</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="Segnaposto gioco 06"/><strong>Gioco 06</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section community-photos" id="community">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">FOTO DELLA COMMUNITY</p>
+          <h2>I tuoi momenti in Helix Horizon</h2>
+        </div>
+        <p>Foto scattate da chi visita il mondo. Vuoi comparire qui? Menziona <strong>@haxurus.vrc</strong> nella tua foto su Instagram, oppure mandamela in privato su Instagram o Discord.</p>
+      </div>
+
+      <div class="community-photo-grid">
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>La tua foto</strong><small>Contributo della community</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>La tua foto</strong><small>Contributo della community</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>La tua foto</strong><small>Contributo della community</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>La tua foto</strong><small>Contributo della community</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>La tua foto</strong><small>Contributo della community</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>La tua foto</strong><small>Contributo della community</small></div>
+      </div>
+
+      <div class="submit-photos reveal">
+        <div>
+          <span class="submit-label">CONDIVIDI IL TUO SCATTO</span>
+          <h3>Hai scattato una bella foto in Helix Horizon?</h3>
+          <p>Taggami su Instagram, oppure mandami l'immagine direttamente in privato. Le foto selezionate possono essere pubblicate in questa galleria.</p>
+        </div>
+        <div class="submit-actions">
+          <a class="button button-primary" href="https://instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="button button-ghost" href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">Discord</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section reveal">
+      <p class="eyebrow">PRONTO A ESPLORARE?</p>
+      <h2>Ci vediamo all'Orizzonte.</h2>
+      <a class="button button-primary" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Avvia in VRChat <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer class="foot" id="credits" aria-label="Copyright e crediti"><div class="wrap">
+<div class="foot__mark" aria-hidden="true">HAXURUS</div>
+<div class="foot__card">
+<div>
+<p><strong>Haxurus</strong> © Copyright 2016-<span id="current-year"></span>. Tutti i diritti riservati.</p>
+<p>Questo sito è stato interamente creato con <strong>amore</strong> 💚 da <strong>@Haxurus</strong>. La grafica è stata realizzata da <strong>@Haxurus</strong> con l'aiuto di ChatGPT di OpenAI, mentre il sito è stato sviluppato con l'aiuto di Claude di Anthropic.</p>
+<p>Le icone di app e social media di terze parti restano di proprietà dei rispettivi titolari e sono usate solo a scopo di identificazione e collegamento. Non viene rivendicata alcuna proprietà né approvazione.</p>
+<p>Per qualsiasi problema o richiesta, scrivimi <a href="mailto:inviati-49-armonia@icloud.com" style="color:var(--g)">via e-mail</a>.</p>
+</div>
+<div class="foot__links"><a href="mailto:inviati-49-armonia@icloud.com">E-mail</a><a href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://t.me/haxurus_official" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://github.com/Haxurus" target="_blank" rel="noopener noreferrer">GitHub</a><a href="../commissions/">Commissioni</a><a href="../support/">Supporto</a><a href="#">Torna su ↑</a></div>
+</div>
+<div class="foot__base"><a href="../" style="color:var(--mut)">← Torna a haxurus.com</a><!--lang:foot--><nav class="foot__lang" aria-label="Lingua"><a translate="no" lang="en" hreflang="en" data-lang="en" href="../../helixhorizon/">English</a><a translate="no" lang="it" hreflang="it" data-lang="it" href="../../it/helixhorizon/" aria-current="true">Italiano</a><a translate="no" lang="es" hreflang="es" data-lang="es" href="../../es/helixhorizon/">Español</a><a translate="no" lang="ja" hreflang="ja" data-lang="ja" href="../../ja/helixhorizon/">日本語</a><a translate="no" lang="de" hreflang="de" data-lang="de" href="../../de/helixhorizon/">Deutsch</a></nav><!--/lang:foot--><a class="keyicon" href="/wp-admin/" aria-label="Accesso admin WordPress" title="Accesso admin WordPress"><svg viewbox="0 0 24 24"><path d="M7.5 14a5.5 5.5 0 1 1 4.87-2.94L22 20.69V22h-1.31l-1-1H18v-1.69l-1-1H15.31l-1.44-1.44A5.47 5.47 0 0 1 7.5 14Zm0-3A2.5 2.5 0 1 0 5 8.5 2.5 2.5 0 0 0 7.5 11Z"></path></svg></a></div>
+</div></footer>
+
+  <div class="lightbox" aria-hidden="true" role="dialog" aria-label="Anteprima dell'immagine della galleria">
+    <button class="lightbox-close" type="button" aria-label="Chiudi l'immagine">×</button>
+    <img src="" alt="Anteprima della galleria di Helix Horizon"/>
+  </div>
+
+  <script src="../../helixhorizon/script.js?v=20260907-3"></script>
+  <script>(function(){var y=document.getElementById("current-year");if(y)y.textContent=String(new Date().getFullYear());})();</script>
+</body>
+</html>

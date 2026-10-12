@@ -4,6 +4,14 @@
   'use strict';
 
   var d = document;
+  var scriptSrc = d.currentScript && d.currentScript.src;
+  // UI strings come from the per-language dictionary (js/i18n/<lang>.js); English is the fallback.
+  var t = function (s, vars) {
+    var dict = window.HX_I18N;
+    var out = (dict && dict[s]) || s;
+    if (vars) Object.keys(vars).forEach(function (k) { out = out.split('{' + k + '}').join(vars[k]); });
+    return out;
+  };
   var $ = function (s, c) { return (c || d).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || d).querySelectorAll(s)); };
   var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
@@ -29,11 +37,11 @@
       var article = d.createElement('article');
       article.className = 'skill-group';
       var h = d.createElement('h3');
-      var t = d.createElement('span');
-      t.textContent = names[category] || category;
+      var label = d.createElement('span');
+      label.textContent = t(names[category] || category);
       var c = d.createElement('small');
-      c.textContent = String(data[category].length).padStart(2, '0') + ' skills';
-      h.appendChild(t);
+      c.textContent = t('{n} skills', { n: String(data[category].length).padStart(2, '0') });
+      h.appendChild(label);
       h.appendChild(c);
       var list = d.createElement('div');
       list.className = 'skill-list';
@@ -42,7 +50,7 @@
         var chip = d.createElement('span');
         chip.className = 'skill-chip';
         chip.dataset.level = m[0];
-        chip.dataset.levelLabel = m[1];
+        chip.dataset.levelLabel = t(m[1]);
         chip.tabIndex = 0;
         var dot = d.createElement('i');
         dot.className = 'dot';
@@ -75,7 +83,7 @@
       $$('.skill-group').forEach(function (g) {
         g.classList.toggle('is-empty', !g.querySelector('.skill-chip:not(.is-hidden)'));
       });
-      if (counter) counter.textContent = 'Showing ' + shown + ' of ' + totals.all;
+      if (counter) counter.textContent = t('Showing {shown} of {total}', { shown: shown, total: totals.all });
       if (empty) empty.hidden = shown !== 0;
     };
     buttons.forEach(function (b) {
@@ -111,7 +119,7 @@
     var entry = LOGOS[name.toLowerCase()];
     if (!entry) return;
     current = el;
-    tipLogo.style.setProperty('--logo', 'url("' + new URL('../img/tech/' + entry[0], d.baseURI).href + '")');
+    tipLogo.style.setProperty('--logo', 'url("' + new URL('../img/tech/' + entry[0], scriptSrc || d.baseURI).href + '")');
     tipLogo.style.setProperty('--c', readable(entry[1]) || 'var(--g)');
     tipName.textContent = name;
     tipLevel.textContent = el.dataset.levelLabel || '';
@@ -145,12 +153,12 @@
     btn.type = 'button';
     btn.className = 'chips-more';
     var extra = items.length - LIMIT;
-    btn.textContent = '+' + extra + ' more';
+    btn.textContent = t('+{n} more', { n: extra });
     var open = false;
     btn.addEventListener('click', function () {
       open = !open;
       items.slice(LIMIT).forEach(function (li) { li.hidden = !open; });
-      btn.textContent = open ? 'Show less' : '+' + extra + ' more';
+      btn.textContent = open ? t('Show less') : t('+{n} more', { n: extra });
     });
     ul.insertAdjacentElement('afterend', btn);
   });

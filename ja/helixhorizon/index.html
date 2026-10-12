@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Helix Horizon - VRChatワールド</title>
+  <meta name="description" content="VRChatのソーシャルワールド、Haxurus制作のHelix Horizonを探索しよう。空間、雰囲気、ゲーム、コミュニティの写真をご覧ください。"/>
+  <meta name="theme-color" content="#06110f"/>
+  <link rel="canonical" href="https://haxurus.com/ja/helixhorizon/"/>
+<!--lang:head--><link rel="alternate" hreflang="en" href="https://haxurus.com/helixhorizon/"/>
+<link rel="alternate" hreflang="it" href="https://haxurus.com/it/helixhorizon/"/>
+<link rel="alternate" hreflang="es" href="https://haxurus.com/es/helixhorizon/"/>
+<link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/helixhorizon/"/>
+<link rel="alternate" hreflang="de" href="https://haxurus.com/de/helixhorizon/"/>
+<link rel="alternate" hreflang="x-default" href="https://haxurus.com/helixhorizon/"/>
+<meta property="og:locale:alternate" content="en_US"/>
+<meta property="og:locale:alternate" content="it_IT"/>
+<meta property="og:locale:alternate" content="es_ES"/>
+<meta property="og:locale:alternate" content="de_DE"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&amp;display=swap"/>
+<script src="../../js/i18n/ja.js?v=20261012-v17"></script>
+<script>(function(){document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-lang]');if(a)try{localStorage.setItem('hx-lang',a.getAttribute('data-lang'))}catch(_){}});})()</script><!--/lang:head-->
+  <link rel="icon" type="image/png" href="../../img/favicon.png"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Helix Horizon - VRChatワールド"/>
+  <meta property="og:description" content="人と、場所と、ともに高みへ。Helix Horizonを探索しよう。"/>
+  <meta property="og:url" content="https://haxurus.com/ja/helixhorizon/"/>
+  <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="stylesheet" href="../../helixhorizon/styles.css?v=20260907-4"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Unbounded:wght@800&amp;display=swap"/>
+  <link rel="stylesheet" href="../../css/footer.css?v=20261012-v17"/>
+  <style>
+    #features .section-heading{grid-template-columns:1fr;margin-bottom:30px}
+    #features .section-heading>p{display:none}
+    #features .section-heading h2{max-width:760px}
+    #features .feature-card{min-height:175px;padding:23px}
+    #features .feature-icon{margin-bottom:20px}
+    #features .feature-card h3{margin:0 0 8px;font-size:1rem}
+    #features .feature-card p{display:block;margin:0;color:var(--muted);font-size:.8rem;line-height:1.5}
+
+    #features .games-panel{display:block;margin-top:34px;padding:0;border:0;background:none}
+    #features .games-copy{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:18px}
+    #features .games-copy h3{margin:8px 0 0;font-size:clamp(1.65rem,2.8vw,2.7rem);letter-spacing:-.04em}
+    #features .games-copy>p:last-child{display:none}
+    #features .game-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    #features .game-item{position:relative;display:block;min-height:0;aspect-ratio:16/9;padding:0;overflow:hidden;border:1px solid rgba(127,255,218,.12);border-radius:14px;background:#0a1514}
+    #features .game-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04) 35%,rgba(0,0,0,.78) 100%);pointer-events:none}
+    #features .game-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.82);transition:transform .45s ease,filter .45s ease}
+    #features .game-item:hover img{transform:scale(1.05);filter:brightness(.86) saturate(.95)}
+    #features .game-item strong{position:absolute;z-index:2;left:18px;right:18px;bottom:16px;font-size:1rem;letter-spacing:-.01em}
+
+    @media(max-width:980px){
+      #features .game-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:620px){
+      #features .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      #features .feature-card{min-height:155px;padding:20px}
+      #features .game-list{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#world" aria-label="Helix Horizon - ホーム">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewbox="0 0 48 48"><path d="M9 13c5-6 11-8 15-8s10 2 15 8M9 35c5 6 11 8 15 8s10-2 15-8M12 9c-5 5-7 10-7 15s2 10 7 15M36 9c5 5 7 10 7 15s-2 10-7 15M14 15l20 18M34 15L14 33"></path></svg>
+        </span>
+        <span class="brand-copy"><strong>HELIX HORIZON</strong><small>VRChatワールド</small></span>
+      </a>
+
+      <nav class="nav-links" aria-label="メインナビゲーション">
+        <a href="../" title="Haxurusのホームページへ戻る">← haxurus.com</a>
+        <a data-nav class="is-active" href="#world">ワールド</a>
+        <a data-nav href="#gallery">ギャラリー</a>
+        <a data-nav href="#features">特徴</a>
+        <a data-nav href="#community">フォト</a>
+      </nav>
+
+      <a class="nav-cta" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">VRChatで入る</a>
+      <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span></button>
+    </div>
+
+    <nav class="mobile-menu" aria-label="モバイル用ナビゲーション">
+      <a href="../" title="Haxurusのホームページへ戻る">← haxurus.com</a>
+      <a href="#world">ワールド</a>
+      <a href="#gallery">ギャラリー</a>
+      <a href="#features">特徴</a>
+      <a href="#community">フォト</a>
+      <a class="nav-cta" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">VRChatで入る</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="world">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="kicker">人 · 場所 · ともに高みへ</p>
+        <h1><span>Helix Horizon</span>を探索</h1>
+        <p class="hero-copy">建築、雰囲気、つながりが出会うソーシャルなVRChatワールド。パノラマの空間、親密なコーナー、みんなで共有するために作られた場所を発見してください。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">ワールドに入る <span>↗</span></a>
+          <a class="button button-ghost" href="#gallery">ギャラリーを見る <span>↓</span></a>
+        </div>
+      </div>
+      <div class="hero-note reveal">
+        <span>ワールド以上の存在</span>
+        <strong>居場所になれる場所</strong>
+      </div>
+      <div class="scroll-hint">スクロールして探索 <span>↓</span></div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">ギャラリー</p>
+          <h2>ワールドをちらっと覗く</h2>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <button class="gallery-card gallery-card-large reveal" data-image="../img/games/helixhorizon.webp" aria-label="ラウンジの画像を開く">
+          <img src="../../img/games/helixhorizon.webp" alt="Helix Horizon - ラウンジ"/>
+          <span class="gallery-label"><strong>ラウンジ</strong><small>リラックス · 交流 · いい雰囲気</small></span>
+        </button>
+        <button class="gallery-card reveal" data-image="../img/games/helixhorizon.webp" aria-label="スカイラインテラスの画像を開く">
+          <img class="crop-right" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - スカイラインテラス"/>
+          <span class="gallery-label"><strong>スカイラインテラス</strong><small>パノラマの雰囲気</small></span>
+        </button>
+        <button class="gallery-card reveal" data-image="../img/games/helixhorizon.webp" aria-label="Helix Barの画像を開く">
+          <img class="crop-left" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - Helix Bar"/>
+          <span class="gallery-label"><strong>Helix Bar</strong><small>飲んで · 話して · 出会う</small></span>
+        </button>
+        <button class="gallery-card reveal" data-image="../img/games/helixhorizon.webp" aria-label="コージールームの画像を開く">
+          <img class="crop-bottom" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - コージールーム"/>
+          <span class="gallery-label"><strong>コージールーム</strong><small>どんな気分にも合う空間</small></span>
+        </button>
+        <button class="gallery-card reveal" data-image="../img/games/helixhorizon.webp" aria-label="ナイトビューの画像を開く">
+          <img class="crop-top" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - ナイトビュー"/>
+          <span class="gallery-label"><strong>ナイトビュー</strong><small>街の灯りの上で</small></span>
+        </button>
+        <button class="gallery-card gallery-card-tall reveal" data-image="../img/games/helixhorizon.webp" aria-label="メインプラザの画像を開く">
+          <img class="crop-right" src="../../img/games/helixhorizon.webp" alt="Helix Horizon - メインプラザ"/>
+          <span class="gallery-label"><strong>メインプラザ</strong><small>Helix Horizonの中心</small></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">特徴</p>
+          <h2>ただのワールドではありません</h2>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal"><span class="feature-icon">👥</span><h3>交流スペース</h3><p>出会って、話して、一緒にくつろぐための場所。</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">✨</span><h3>没入感のあるデザイン</h3><p>細部までこだわった、まとまりのある雰囲気。</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">🎉</span><h3>コミュニティのひととき</h3><p>イベントや集まり、みんなで過ごす夜のためのスペース。</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">📸</span><h3>フォトスポット</h3><p>思い出に残る一枚を撮れる、景色のよいコーナー。</p></article>
+      </div>
+
+      <div class="games-panel reveal">
+        <div class="games-copy">
+          <div>
+            <p class="eyebrow">ゲーム</p>
+            <h3>Helix Horizonのゲーム</h3>
+          </div>
+        </div>
+        <div class="game-list" aria-label="Helix Horizonで遊べるゲーム">
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="ゲーム 01 プレースホルダー"/><strong>ゲーム 01</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="ゲーム 02 プレースホルダー"/><strong>ゲーム 02</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="ゲーム 03 プレースホルダー"/><strong>ゲーム 03</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="ゲーム 04 プレースホルダー"/><strong>ゲーム 04</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="ゲーム 05 プレースホルダー"/><strong>ゲーム 05</strong></div>
+          <div class="game-item"><img src="../../img/games/helixhorizon.webp" alt="ゲーム 06 プレースホルダー"/><strong>ゲーム 06</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section community-photos" id="community">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">コミュニティの写真</p>
+          <h2>Helix Horizonでのあなたのひととき</h2>
+        </div>
+        <p>ワールドを訪れた人たちが撮った写真です。ここに載りたい方は、Instagramの写真で<strong>@haxurus.vrc</strong>をメンションするか、InstagramまたはDiscordで私に非公開で送ってください。</p>
+      </div>
+
+      <div class="community-photo-grid">
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>あなたの写真</strong><small>コミュニティからの投稿</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>あなたの写真</strong><small>コミュニティからの投稿</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>あなたの写真</strong><small>コミュニティからの投稿</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>あなたの写真</strong><small>コミュニティからの投稿</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>あなたの写真</strong><small>コミュニティからの投稿</small></div>
+        <div class="community-photo-placeholder reveal"><span>+</span><strong>あなたの写真</strong><small>コミュニティからの投稿</small></div>
+      </div>
+
+      <div class="submit-photos reveal">
+        <div>
+          <span class="submit-label">あなたの一枚をシェア</span>
+          <h3>Helix Horizonでいい写真が撮れましたか？</h3>
+          <p>Instagramで私にタグ付けするか、画像を直接プライベートで送ってください。選ばれた写真はこのギャラリーで紹介されることがあります。</p>
+        </div>
+        <div class="submit-actions">
+          <a class="button button-primary" href="https://instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="button button-ghost" href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">Discord</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section reveal">
+      <p class="eyebrow">探索する準備はできましたか？</p>
+      <h2>Horizonで会いましょう。</h2>
+      <a class="button button-primary" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">VRChatで起動 <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer class="foot" id="credits" aria-label="著作権とクレジット"><div class="wrap">
+<div class="foot__mark" aria-hidden="true">HAXURUS</div>
+<div class="foot__card">
+<div>
+<p><strong>Haxurus</strong> © Copyright 2016-<span id="current-year"></span>. 無断転載を禁じます。</p>
+<p>このWebサイトは、<strong>@Haxurus</strong>が<strong>愛</strong>💚を込めてすべて自分で作りました。グラフィックはOpenAIのChatGPTの助けを借りて<strong>@Haxurus</strong>が制作し、WebサイトはAnthropicのClaudeの助けを借りて開発しました。</p>
+<p>サードパーティ製アプリやSNSのアイコンの権利は各権利者に帰属し、識別とリンクの目的にのみ使用しています。所有権や公認を主張するものではありません。</p>
+<p>問題やご要望がある場合は、<a href="mailto:inviati-49-armonia@icloud.com" style="color:var(--g)">メール</a>でご連絡ください。</p>
+</div>
+<div class="foot__links"><a href="mailto:inviati-49-armonia@icloud.com">E-mail</a><a href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://t.me/haxurus_official" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://github.com/Haxurus" target="_blank" rel="noopener noreferrer">GitHub</a><a href="../commissions/">制作依頼</a><a href="../support/">支援</a><a href="#">トップへ戻る ↑</a></div>
+</div>
+<div class="foot__base"><a href="../" style="color:var(--mut)">← haxurus.comへ戻る</a><!--lang:foot--><nav class="foot__lang" aria-label="言語"><a translate="no" lang="en" hreflang="en" data-lang="en" href="../../helixhorizon/">English</a><a translate="no" lang="it" hreflang="it" data-lang="it" href="../../it/helixhorizon/">Italiano</a><a translate="no" lang="es" hreflang="es" data-lang="es" href="../../es/helixhorizon/">Español</a><a translate="no" lang="ja" hreflang="ja" data-lang="ja" href="../../ja/helixhorizon/" aria-current="true">日本語</a><a translate="no" lang="de" hreflang="de" data-lang="de" href="../../de/helixhorizon/">Deutsch</a></nav><!--/lang:foot--><a class="keyicon" href="/wp-admin/" aria-label="WordPress管理画面ログイン" title="WordPress管理画面ログイン"><svg viewbox="0 0 24 24"><path d="M7.5 14a5.5 5.5 0 1 1 4.87-2.94L22 20.69V22h-1.31l-1-1H18v-1.69l-1-1H15.31l-1.44-1.44A5.47 5.47 0 0 1 7.5 14Zm0-3A2.5 2.5 0 1 0 5 8.5 2.5 2.5 0 0 0 7.5 11Z"></path></svg></a></div>
+</div></footer>
+
+  <div class="lightbox" aria-hidden="true" role="dialog" aria-label="ギャラリー画像のプレビュー">
+    <button class="lightbox-close" type="button" aria-label="画像を閉じる">×</button>
+    <img src="" alt="Helix Horizonのギャラリープレビュー"/>
+  </div>
+
+  <script src="../../helixhorizon/script.js?v=20260907-3"></script>
+  <script>(function(){var y=document.getElementById("current-year");if(y)y.textContent=String(new Date().getFullYear());})();</script>
+</body>
+</html>

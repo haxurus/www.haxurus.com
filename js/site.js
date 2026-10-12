@@ -17,6 +17,13 @@
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const pad = (n) => String(n).padStart(2, '0');
+  // UI strings that scripts create come from the per-language dictionary (js/i18n/<lang>.js); English is the fallback.
+  const t = (s, vars) => {
+    const d = window.HX_I18N;
+    let out = (d && d[s]) || s;
+    if (vars) Object.keys(vars).forEach((k) => { out = out.split('{' + k + '}').join(vars[k]); });
+    return out;
+  };
 
   /* ---------- Boot / ready ---------- */
   const ready = () => {
@@ -172,11 +179,15 @@
   const initManifesto = () => {
     const m = $('[data-manifesto]');
     if (!m || reduced) return;
+    // Languages written without spaces (Japanese) are cut into words with Intl.Segmenter.
+    const seg = root.lang === 'ja' && window.Intl && Intl.Segmenter ? new Intl.Segmenter('ja', { granularity: 'word' }) : null;
     const walk = (node) => {
       [...node.childNodes].forEach((n) => {
         if (n.nodeType === 3) {
           const frag = d.createDocumentFragment();
-          n.textContent.split(/(\s+)/).forEach((tok) => {
+          const text = n.textContent;
+          const parts = seg ? [...seg.segment(text)].map((x) => x.segment) : text.split(/(\s+)/);
+          parts.forEach((tok) => {
             if (!tok) return;
             if (/^\s+$/.test(tok)) { frag.appendChild(d.createTextNode(tok)); return; }
             const s = d.createElement('span');
@@ -260,7 +271,7 @@
 
     const setMenu = (open) => {
       root.classList.toggle('menu-open', open);
-      if (burger) { burger.setAttribute('aria-expanded', String(open)); burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
+      if (burger) { burger.setAttribute('aria-expanded', String(open)); burger.setAttribute('aria-label', open ? t('Close menu') : t('Open menu')); }
       const m = $('.mmenu');
       if (m) m.setAttribute('aria-hidden', String(!open));
       if (nav) nav.classList.remove('is-hidden');
@@ -395,7 +406,7 @@
       const a = links[i];
       links.forEach((l, k) => l.classList.toggle('is-active', k === i));
       sleeve.src = disc.src = a.dataset.cover;
-      sleeve.alt = `Playlist cover for ${a.dataset.title}`;
+      sleeve.alt = `${t('Playlist cover for')} ${a.dataset.title}`;
       no.textContent = `${pad(i + 1)} / ${pad(links.length)}`;
       title.textContent = a.dataset.title;
       tags.textContent = '';
@@ -471,7 +482,7 @@
       if (!p.closest('button, a, [data-price-host]')) {
         p.setAttribute('role', 'button');
         p.tabIndex = 0;
-        p.setAttribute('aria-label', 'Reveal price');
+        p.setAttribute('aria-label', t('Reveal price'));
       }
     });
     d.addEventListener('click', (e) => {
@@ -506,7 +517,7 @@
       btn.innerHTML = '<i></i><span></span>';
       base.insertBefore(btn, base.lastElementChild);
     }
-    const label = () => { $('span', btn).textContent = isCalm() ? 'Motion: calm' : 'Motion: full'; btn.setAttribute('aria-pressed', String(!isCalm())); };
+    const label = () => { $('span', btn).textContent = isCalm() ? t('Motion: calm') : t('Motion: full'); btn.setAttribute('aria-pressed', String(!isCalm())); };
     btn.addEventListener('click', () => {
       const calm = !isCalm();
       root.classList.toggle('rm', calm);
@@ -514,6 +525,15 @@
       label();
     });
     label();
+  };
+
+  /* ---------- Language menu: closes on outside click, Escape and when a language is picked ---------- */
+  const initLang = () => {
+    const menu = $('[data-lang-menu]');
+    if (!menu) return;
+    d.addEventListener('click', (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+    addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.open) { menu.open = false; $('summary', menu).focus(); } });
+    menu.addEventListener('toggle', () => { const nav = $('.nav'); if (nav) nav.classList.toggle('lang-open', menu.open); });
   };
 
   /* ---------- Misc ---------- */
@@ -552,7 +572,7 @@
 
     const collect = () => {
       items = [];
-      $$('.nav__links a').forEach((a) => items.push({ t: a.textContent.trim(), s: 'Jump to', h: a.getAttribute('href'), g: '→' }));
+      $$('.nav__links a').forEach((a) => items.push({ t: a.textContent.trim(), s: t('Jump to'), h: a.getAttribute('href'), g: '→' }));
       $$('a[data-s]').forEach((a) => {
         const href = a.getAttribute('href');
         if (!href || href === '#') return;
@@ -575,7 +595,7 @@
       if (!shown.length) {
         const e = d.createElement('div');
         e.className = 'pal__empty';
-        e.textContent = 'No results. Try another word.';
+        e.textContent = t('No results. Try another word.');
         list.appendChild(e);
         return;
       }
@@ -651,6 +671,7 @@
 
   /* ---------- Go ---------- */
   initMisc();
+  initLang();
   initReveal();
   initHero();
   initManifesto();

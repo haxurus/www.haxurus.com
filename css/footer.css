@@ -33,3 +33,9 @@
 @media (max-width: 640px) { .foot .wrap { width: min(calc(100% - 28px), var(--maxw)); } .foot__base { flex-direction: column; align-items: flex-start; } }
 
 .foot { padding-top: clamp(50px, 8vw, 90px); padding-bottom: 36px; }
+
+/* Language links */
+.foot__lang { display: flex; flex-wrap: wrap; gap: 6px; }
+.foot__lang a { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); font-size: .8rem; font-weight: 600; color: var(--dim); transition: color .2s, border-color .2s, background .2s; }
+.foot__lang a:hover { color: #fff; border-color: var(--line-2); }
+.foot__lang a[aria-current="true"] { color: var(--g); border-color: rgba(57, 255, 20, .4); background: rgba(57, 255, 20, .06); }

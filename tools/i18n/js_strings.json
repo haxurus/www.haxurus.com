@@ -1,0 +1,10 @@
+[
+ "Open menu", "Close menu", "Reveal price", "Playlist cover for", "Motion: calm", "Motion: full",
+ "Jump to", "No results. Try another word.", "Pages",
+ "Showing {shown} of {total}", "{n} skills", "+{n} more", "Show less",
+ "Advanced", "Intermediate", "Basic",
+ "Web & Frontend", "Backend & Programming", "Frameworks / Runtime / Libraries", "Database & Caching", "Mainframe",
+ "Linux & Server", "Windows / Microsoft", "Virtualization", "Container & DevOps", "Web Server / Hosting", "Networking",
+ "Vendor Networking", "Cybersecurity", "Cloud", "Monitoring / Administration", "Backup / Storage",
+ "Automation / Bot / Integration", "CMS / Websites", "Versioning / Project Workflow", "IT Support", "Enterprise Tools"
+]

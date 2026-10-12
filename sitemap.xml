@@ -1,18 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://haxurus.com/</loc>
     <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/it/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/es/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/ja/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/de/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/"/>
   </url>
   <url>
     <loc>https://haxurus.com/support/</loc>
     <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/support/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/support/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/support/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/support/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/it/support/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/support/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/support/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/support/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/support/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/es/support/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/support/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/support/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/support/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/support/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/ja/support/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/support/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/support/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/support/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/support/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/de/support/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/support/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/support/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/support/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/support/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/support/"/>
   </url>
   <url>
     <loc>https://haxurus.com/commissions/</loc>
     <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/commissions/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/it/commissions/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/commissions/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/es/commissions/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/commissions/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/ja/commissions/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/commissions/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/de/commissions/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/commissions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/commissions/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/vrchat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/vrchat/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/it/vrchat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/vrchat/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/es/vrchat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/vrchat/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/ja/vrchat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/vrchat/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/de/vrchat/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/vrchat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/vrchat/"/>
   </url>
   <url>
     <loc>https://haxurus.com/helixhorizon/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/helixhorizon/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/it/helixhorizon/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/helixhorizon/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/es/helixhorizon/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/helixhorizon/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/ja/helixhorizon/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/helixhorizon/"/>
+  </url>
+  <url>
+    <loc>https://haxurus.com/de/helixhorizon/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://haxurus.com/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://haxurus.com/it/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://haxurus.com/es/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://haxurus.com/de/helixhorizon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://haxurus.com/helixhorizon/"/>
   </url>
 </urlset>

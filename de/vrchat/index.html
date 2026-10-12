@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Helix Horizon | Virtueller Interior-Showroom von Haxurus</title>
+  <meta name="description" content="Helix Horizon als großzügiger Luxus-Showroom: ein virtuelles Penthouse für VRChat mit Skyline-Blick, Lounges, Wellness, Medien, Nutzerfotos und Games."/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="theme-color" content="#f4efe7"/>
+  <link rel="canonical" href="https://haxurus.com/de/vrchat/"/>
+<!--lang:head--><link rel="alternate" hreflang="en" href="https://haxurus.com/vrchat/"/>
+<link rel="alternate" hreflang="it" href="https://haxurus.com/it/vrchat/"/>
+<link rel="alternate" hreflang="es" href="https://haxurus.com/es/vrchat/"/>
+<link rel="alternate" hreflang="ja" href="https://haxurus.com/ja/vrchat/"/>
+<link rel="alternate" hreflang="de" href="https://haxurus.com/de/vrchat/"/>
+<link rel="alternate" hreflang="x-default" href="https://haxurus.com/vrchat/"/>
+<meta property="og:locale:alternate" content="en_US"/>
+<meta property="og:locale:alternate" content="it_IT"/>
+<meta property="og:locale:alternate" content="es_ES"/>
+<meta property="og:locale:alternate" content="ja_JP"/>
+<script src="../../js/i18n/de.js?v=20261012-v17"></script>
+<script>(function(){document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-lang]');if(a)try{localStorage.setItem('hx-lang',a.getAttribute('data-lang'))}catch(_){}});})()</script><!--/lang:head-->
+  <link rel="icon" type="image/png" href="../../img/favicon.png"/>
+  <link rel="apple-touch-icon" href="../../img/favicon.png"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Unbounded:wght@800&amp;display=swap"/>
+  <link rel="stylesheet" href="../../css/footer.css?v=20261012-v17"/>
+
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Haxurus"/>
+  <meta property="og:locale" content="de_DE"/>
+  <meta property="og:title" content="Helix Horizon | Virtueller Interior-Showroom"/>
+  <meta property="og:description" content="Eine großzügige, redaktionelle Showroom-Seite für ein luxuriöses VRChat-Penthouse über der Skyline."/>
+  <meta property="og:url" content="https://haxurus.com/de/vrchat/"/>
+  <meta property="og:image" content="https://haxurus.com/img/games/helixhorizon.png"/>
+  <meta property="og:image:alt" content="Vorschau des virtuellen Penthouses Helix Horizon"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Helix Horizon | Virtueller Interior-Showroom"/>
+  <meta name="twitter:description" content="Eine großzügige, redaktionelle Showroom-Seite für ein luxuriöses VRChat-Penthouse über der Skyline."/>
+  <meta name="twitter:image" content="https://haxurus.com/img/games/helixhorizon.png"/>
+  <meta name="twitter:site" content="@Haxurus"/>
+  <meta name="twitter:creator" content="@Haxurus"/>
+
+  <style>
+    :root {
+      --paper: #f4efe7;
+      --paper-2: #ebe3d7;
+      --ink: #26231f;
+      --muted: #6e675f;
+      --soft: #9b9186;
+      --line: rgba(38, 35, 31, .14);
+      --line-strong: rgba(38, 35, 31, .26);
+      --brown: #3b332d;
+      --gold: #b79b68;
+      --maxw: 1240px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 18%, rgba(183,155,104,.13), transparent 28%),
+        radial-gradient(circle at 84% 8%, rgba(255,255,255,.62), transparent 26%),
+        linear-gradient(180deg, var(--paper) 0%, #fbf8f2 42%, var(--paper-2) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(38,35,31,.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(38,35,31,.028) 1px, transparent 1px);
+      background-size: 84px 84px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.42), transparent 72%);
+      animation: gridMove 28s linear infinite;
+    }
+
+    @keyframes gridMove { to { background-position: 84px 84px; } }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    p { margin: 0; }
+    h1, h2, h3 { margin: 0; font-weight: 400; }
+
+    .page { position: relative; z-index: 1; width: 100%; min-height: 100vh; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(251,248,242,.82);
+      backdrop-filter: blur(18px) saturate(160%);
+      animation: navIn .75s var(--ease) both;
+    }
+
+    @keyframes navIn { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+
+    .site-nav__inner {
+      width: min(100% - 64px, var(--maxw));
+      margin: 0 auto;
+      min-height: 78px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .site-nav__brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.08rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .site-nav__brand img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; filter: saturate(.75); }
+
+    .site-nav__links {
+      justify-self: center;
+      display: flex;
+      gap: clamp(18px, 3vw, 42px);
+      align-items: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .site-nav__links::-webkit-scrollbar { display: none; }
+
+    .site-nav__links a {
+      position: relative;
+      flex: 0 0 auto;
+      padding: 8px 0;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: color .25s ease;
+    }
+
+    .site-nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: var(--ink);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .28s var(--ease);
+    }
+
+    .site-nav__links a:hover { color: var(--ink); }
+    .site-nav__links a:hover::after { transform: scaleX(1); }
+    .site-nav__cta { justify-self: end; font-size: .72rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+    .hero { width: 100%; min-height: clamp(560px, 72vh, 820px); display: grid; align-items: stretch; border-bottom: 1px solid var(--line); overflow: hidden; }
+    .hero__media { position: relative; min-height: inherit; display: grid; align-items: center; background: #d6cec2; overflow: hidden; }
+    .hero__image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .88; filter: sepia(.12) saturate(.74) contrast(.98) brightness(1.05); animation: heroImage 24s ease-in-out infinite alternate; }
+    .hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(38,35,31,.70) 0%, rgba(38,35,31,.44) 34%, rgba(38,35,31,.08) 78%); pointer-events: none; }
+    @keyframes heroImage { from { transform: scale(1.01); } to { transform: scale(1.06) translateX(1.4%); } }
+
+    .hero__content { position: relative; z-index: 2; width: min(100% - 64px, var(--maxw)); margin: 0 auto; padding: clamp(86px, 10vw, 150px) 0; color: #fffaf2; }
+    .eyebrow { display: inline-flex; margin-bottom: 28px; font-size: .72rem; font-weight: 850; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,250,242,.78); }
+    h1 { max-width: 560px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.6rem, 7.8vw, 7.8rem); line-height: .92; letter-spacing: -.055em; text-shadow: 0 18px 45px rgba(0,0,0,.25); animation: titleReveal 1s var(--ease) both; }
+    .hero__lead { max-width: 440px; margin-top: 34px; color: rgba(255,250,242,.84); font-size: 1.05rem; line-height: 1.78; animation: fadeUp .9s .16s var(--ease) both; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 44px; animation: fadeUp .9s .28s var(--ease) both; }
+
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid rgba(255,250,242,.72); padding: 13px 24px; color: #fffaf2; font-size: .75rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; transition: background .25s ease, color .25s ease, transform .25s ease; }
+    .button:hover { background: #fffaf2; color: var(--ink); transform: translateY(-3px); }
+    .button--dark { border-color: var(--ink); color: var(--ink); }
+    .button--dark:hover { background: var(--ink); color: var(--paper); }
+
+    @keyframes titleReveal { from { opacity: 0; transform: translateY(36px); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+    .section { width: min(100% - 64px, var(--maxw)); margin: 0 auto; padding: clamp(110px, 12vw, 170px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 110px; }
+    .section--split { display: grid; grid-template-columns: minmax(280px, .75fr) minmax(0, 1.25fr); gap: clamp(72px, 10vw, 140px); align-items: center; }
+    .section__label { margin-bottom: 22px; color: var(--soft); font-size: .72rem; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+    .section h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.7rem, 5.5vw, 5.6rem); line-height: .96; letter-spacing: -.055em; color: var(--ink); }
+    .section__text { max-width: 540px; margin-top: 30px; color: var(--muted); font-size: 1.02rem; line-height: 1.78; }
+
+    .portrait-card { display: grid; grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr); gap: clamp(48px, 8vw, 96px); align-items: center; }
+    .portrait-card__image, .image-strip__item, .quote-image, .gallery-tile, .user-photo { position: relative; overflow: hidden; background: #d6cec2; }
+    .portrait-card__image img, .image-strip__item img, .quote-image img, .gallery-tile img, .user-photo img { height: 100%; object-fit: cover; filter: sepia(.18) saturate(.72) contrast(.95); transform: scale(1.04); transition: transform .8s var(--ease), filter .8s ease; }
+    .portrait-card__image { aspect-ratio: 4 / 3; }
+    .portrait-card__image:hover img, .image-strip__item:hover img, .quote-image:hover img, .gallery-tile:hover img, .user-photo:hover img { transform: scale(1.095); filter: sepia(.06) saturate(.88) contrast(1); }
+    .portrait-card__content h3 { margin-top: 12px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 3.2vw, 3.2rem); line-height: 1; }
+    .portrait-card__content p { max-width: 520px; margin-top: 28px; color: var(--muted); line-height: 1.78; }
+
+    .values-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); }
+    .value-card { min-height: 240px; padding: clamp(28px, 4vw, 46px) clamp(22px, 3vw, 36px); border-left: 1px solid var(--line); color: var(--muted); transition: transform .35s var(--ease), color .35s ease; }
+    .value-card:hover { transform: translateY(-10px); color: var(--ink); }
+    .value-card__icon { display: block; margin-bottom: 44px; color: var(--gold); font-size: 2rem; line-height: 1; }
+    .value-card h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.65rem; color: var(--ink); }
+    .value-card p { margin-top: 24px; line-height: 1.7; }
+
+    .showroom { display: grid; grid-template-columns: minmax(260px, .52fr) minmax(0, 1.48fr); gap: clamp(70px, 9vw, 130px); align-items: center; }
+    .image-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+    .image-strip__item { min-height: clamp(260px, 28vw, 410px); }
+
+    .gallery-layout { display: grid; grid-template-columns: minmax(260px, .48fr) minmax(0, 1.52fr); gap: clamp(72px, 10vw, 140px); align-items: start; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 28px; }
+    .gallery-tile { min-height: 280px; }
+    .gallery-tile--large { grid-column: span 4; min-height: 520px; }
+    .gallery-tile--medium { grid-column: span 2; min-height: 520px; }
+    .gallery-tile--wide { grid-column: span 3; }
+    .gallery-caption, .user-photo__caption { position: absolute; left: 22px; right: 22px; bottom: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.62); color: #fffaf2; text-shadow: 0 8px 22px rgba(0,0,0,.38); z-index: 2; }
+    .gallery-caption strong, .user-photo__caption strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: 1.45rem; line-height: 1; }
+    .gallery-caption span, .user-photo__caption span { display: block; margin-top: 8px; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }
+    .gallery-tile::after, .user-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 44%, rgba(0,0,0,.58)); pointer-events: none; }
+
+    .user-photo-wall { display: grid; grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr); gap: clamp(70px, 9vw, 130px); align-items: center; }
+    .photo-carousel { position: relative; overflow: hidden; }
+    .photo-carousel__viewport { overflow: hidden; }
+    .photo-carousel__track { display: flex; transition: transform .85s var(--ease); will-change: transform; }
+    .photo-carousel__slide { flex: 0 0 100%; min-height: clamp(420px, 46vw, 620px); }
+    .photo-carousel__dots { display: flex; gap: 12px; margin-top: 26px; }
+    .photo-carousel__dot { width: 42px; height: 2px; border: 0; padding: 0; background: rgba(38,35,31,.22); cursor: pointer; transition: width .3s var(--ease), background .3s ease; }
+    .photo-carousel__dot.is-active { width: 72px; background: var(--ink); }
+
+    .games-board { display: grid; grid-template-columns: minmax(280px, .55fr) minmax(0, 1.45fr); gap: clamp(72px, 10vw, 140px); align-items: start; }
+    .games-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+    .game-card { min-height: 190px; padding: clamp(28px, 4vw, 42px); border-top: 1px solid var(--line-strong); color: var(--muted); transition: transform .35s var(--ease), color .35s ease, background .35s ease; }
+    .game-card:hover { transform: translateY(-8px); color: var(--ink); background: rgba(255,255,255,.32); }
+    .game-card strong { display: block; margin-bottom: 32px; color: var(--gold); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; }
+    .game-card h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.75rem; color: var(--ink); }
+    .game-card p { margin-top: 16px; line-height: 1.65; }
+
+    .process { display: grid; grid-template-columns: minmax(240px, .58fr) minmax(0, 1.42fr); gap: clamp(70px, 10vw, 130px); align-items: start; }
+    .process-list { display: grid; gap: 38px; }
+    .process-item { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 32px; padding-top: 26px; border-top: 1px solid var(--line-strong); transition: transform .35s var(--ease); }
+    .process-item:hover { transform: translateX(10px); }
+    .process-item strong { color: var(--gold); font-size: .8rem; letter-spacing: .12em; }
+    .process-item h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.35rem; }
+    .process-item p { margin-top: 12px; color: var(--muted); line-height: 1.62; }
+
+    .quote-contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .78fr); gap: clamp(72px, 10vw, 140px); align-items: stretch; }
+    .quote-image { min-height: 420px; }
+    .contact-panel { padding: clamp(44px, 5vw, 70px); border: 1px solid var(--line); background: rgba(255,255,255,.28); display: flex; flex-direction: column; justify-content: center; }
+    .contact-panel h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 4.6vw, 4.5rem); line-height: .96; letter-spacing: -.05em; }
+    .contact-panel p { margin-top: 28px; color: var(--muted); line-height: 1.72; }
+    .contact-panel .button { margin-top: 42px; width: max-content; }
+
+    .site-footer { width: min(100% - 64px, var(--maxw)); margin: 0 auto; padding: 46px 0 56px; display: flex; justify-content: space-between; gap: 28px; color: var(--soft); font-size: .82rem; }
+
+    .reveal { opacity: 0; transform: translateY(46px); filter: blur(8px); transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s ease; transition-delay: var(--delay, 0ms); }
+    .reveal.is-visible { opacity: 1; transform: none; filter: blur(0); }
+
+    @media (max-width: 980px) {
+      .site-nav__inner { width: min(100% - 32px, var(--maxw)); grid-template-columns: 1fr; gap: 18px; padding: 18px 0; }
+      .site-nav__links { justify-self: start; width: 100%; justify-content: flex-start; gap: 28px; }
+      .site-nav__cta { display: none; }
+      .hero__content, .section, .site-footer { width: min(100% - 32px, var(--maxw)); }
+      .section { padding: 96px 0; }
+      .section--split, .portrait-card, .showroom, .process, .quote-contact, .gallery-layout, .user-photo-wall, .games-board { grid-template-columns: 1fr; gap: 54px; }
+      .values-grid, .games-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .image-strip { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-tile, .gallery-tile--large, .gallery-tile--medium, .gallery-tile--wide { grid-column: auto; min-height: 340px; }
+      .site-footer { flex-direction: column; }
+    }
+
+    @media (max-width: 620px) {
+      .hero__media::after { background: linear-gradient(180deg, rgba(38,35,31,.68), rgba(38,35,31,.30)); }
+      .hero__actions { flex-direction: column; align-items: flex-start; }
+      .values-grid, .games-list { grid-template-columns: 1fr; }
+      .value-card { border-left: 0; border-top: 1px solid var(--line); }
+      .process-item { grid-template-columns: 1fr; gap: 14px; }
+      .button { width: 100%; }
+      .contact-panel .button { width: 100%; }
+      .photo-carousel__slide { min-height: 360px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="site-nav" aria-label="Navigation des Helix-Horizon-Showrooms">
+      <div class="site-nav__inner">
+        <a class="site-nav__brand" href="../"><img src="../../img/favicon.webp" alt="" aria-hidden="true"/>Haxurus Interior</a>
+        <div class="site-nav__links">
+          <a href="../" title="Zurück zur Haxurus-Startseite">← haxurus.com</a>
+          <a href="#home">Start</a>
+          <a href="#vision">Vision</a>
+          <a href="#showroom">Showroom</a>
+          <a href="#gallery">Galerie</a>
+          <a href="#photos">Fotos</a>
+          <a href="#games">Games</a>
+          <a href="#visit">Besuch</a>
+        </div>
+        <a class="site-nav__cta" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">VRChat</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="home">
+      <div class="hero__media">
+        <img class="hero__image" src="../../img/games/helixhorizon.webp" alt="" aria-hidden="true"/>
+        <div class="hero__content">
+          <span class="eyebrow">Virtueller Penthouse-Showroom</span>
+          <h1>Helix Horizon.<br/>Die Vision.</h1>
+          <p class="hero__lead">Eine luxuriöse VRChat-Residenz, gestaltet als ruhiger, cineastischer Showroom über der Stadt.</p>
+          <div class="hero__actions">
+            <a class="button" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Showroom besuchen</a>
+            <a class="button" href="https://vrchat.com/home/world/wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06/info" target="_blank" rel="noopener noreferrer">Angebot ansehen</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section section--split reveal" id="vision">
+      <div>
+        <div class="section__label">Gestaltung</div>
+        <h2>Die Residenz.</h2>
+        <p class="section__text">Eine virtuelle Dachwohnung, gedacht wie ein hochwertiges Interior-Projekt: großzügig, warm und mit Ausstrahlung.</p>
+      </div>
+      <div class="portrait-card">
+        <div class="portrait-card__image"><img src="../../img/games/helixhorizon.webp" alt="Interior-Vorschau von Helix Horizon"/></div>
+        <div class="portrait-card__content">
+          <div class="section__label">Gründer &amp; Designer</div>
+          <h3>Haxurus</h3>
+          <p>Die Welt ist als eleganter Showroom gestaltet: ein Ort zum Besuchen, Fotografieren, Entspannen und Teilen mit Gästen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="values">
+      <div class="section__label">Designwerte</div>
+      <div class="values-grid">
+        <article class="value-card reveal"><span class="value-card__icon">○</span><h3>Atmosphäre</h3><p>Weiches Licht, warme Töne und eine cineastische Skyline.</p></article>
+        <article class="value-card reveal"><span class="value-card__icon">✦</span><h3>Balance</h3><p>Elegante Räume mit Platz zum Atmen.</p></article>
+        <article class="value-card reveal"><span class="value-card__icon">◇</span><h3>Komfort</h3><p>Soziale Bereiche für längere Besuche.</p></article>
+        <article class="value-card reveal"><span class="value-card__icon">♡</span><h3>Präsenz</h3><p>Eine Residenz, die sich ruhig, hochwertig und unvergesslich anfühlt.</p></article>
+      </div>
+    </section>
+
+    <section class="section showroom reveal" id="showroom">
+      <div>
+        <div class="section__label">Unser Haus als Showroom</div>
+        <h2>Offen, ruhig, kuratiert.</h2>
+        <p class="section__text">Große Szenen, weniger Worte und mehr Abstand zwischen den einzelnen Teilen der Seite.</p>
+        <div class="hero__actions"><a class="button button--dark" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Den Showroom besuchen</a></div>
+      </div>
+      <div class="image-strip">
+        <div class="image-strip__item reveal"><img src="../../img/games/helixhorizon.webp" alt="Showcase-Bild von Helix Horizon"/></div>
+        <div class="image-strip__item reveal"><img src="../../img/games/helixhorizon.webp" alt="Showcase-Bild von Helix Horizon"/></div>
+        <div class="image-strip__item reveal"><img src="../../img/games/helixhorizon.webp" alt="Showcase-Bild von Helix Horizon"/></div>
+      </div>
+    </section>
+
+    <section class="section gallery-layout reveal" id="gallery">
+      <div>
+        <div class="section__label">Galerie</div>
+        <h2>Szenen aus dem Penthouse.</h2>
+        <p class="section__text">Eine kuratierte visuelle Tour durch die wichtigsten Bereiche, bereit für eigene Screenshots.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-tile gallery-tile--large reveal"><img src="../../img/games/helixhorizon.webp" alt="Galerie-Vorschau Hauptlounge"/><div class="gallery-caption"><strong>Hauptlounge</strong><span>Signature-Ausblick</span></div></div>
+        <div class="gallery-tile gallery-tile--medium reveal"><img src="../../img/games/helixhorizon.webp" alt="Galerie-Vorschau Wellnessbereich"/><div class="gallery-caption"><strong>Wellness</strong><span>Ruhebereich</span></div></div>
+        <div class="gallery-tile gallery-tile--wide reveal"><img src="../../img/games/helixhorizon.webp" alt="Galerie-Vorschau Medienbereich"/><div class="gallery-caption"><strong>Mediensuite</strong><span>Gemeinsame Abende</span></div></div>
+        <div class="gallery-tile gallery-tile--wide reveal"><img src="../../img/games/helixhorizon.webp" alt="Galerie-Vorschau Terrasse"/><div class="gallery-caption"><strong>Skyline</strong><span>Fotomomente</span></div></div>
+      </div>
+    </section>
+
+    <section class="section user-photo-wall reveal" id="photos">
+      <div>
+        <div class="section__label">Nutzerfotos</div>
+        <h2>Von Besuchern aufgenommen.</h2>
+        <p class="section__text">Ein eigenes automatisches Karussell für Screenshots aus Helix Horizon. Ersetze diese Platzhalter durch echte Nutzerfotos, sobald du welche gesammelt hast.</p>
+      </div>
+      <div class="photo-carousel reveal" data-photo-carousel>
+        <div class="photo-carousel__viewport">
+          <div class="photo-carousel__track" data-photo-track>
+            <article class="user-photo photo-carousel__slide"><img src="../../img/games/helixhorizon.webp" alt="Vorschau Community-Foto"/><div class="user-photo__caption"><strong>Gastfoto 01</strong><span>Community-Foto</span></div></article>
+            <article class="user-photo photo-carousel__slide"><img src="../../img/games/helixhorizon.webp" alt="Vorschau Community-Foto"/><div class="user-photo__caption"><strong>Gastfoto 02</strong><span>Community-Foto</span></div></article>
+            <article class="user-photo photo-carousel__slide"><img src="../../img/games/helixhorizon.webp" alt="Vorschau Community-Foto"/><div class="user-photo__caption"><strong>Gastfoto 03</strong><span>Community-Foto</span></div></article>
+            <article class="user-photo photo-carousel__slide"><img src="../../img/games/helixhorizon.webp" alt="Vorschau Community-Foto"/><div class="user-photo__caption"><strong>Gastfoto 04</strong><span>Community-Foto</span></div></article>
+          </div>
+        </div>
+        <div class="photo-carousel__dots" aria-label="Steuerung des Community-Foto-Karussells">
+          <button class="photo-carousel__dot is-active" type="button" data-photo-dot aria-label="Foto 1 anzeigen"></button>
+          <button class="photo-carousel__dot" type="button" data-photo-dot aria-label="Foto 2 anzeigen"></button>
+          <button class="photo-carousel__dot" type="button" data-photo-dot aria-label="Foto 3 anzeigen"></button>
+          <button class="photo-carousel__dot" type="button" data-photo-dot aria-label="Foto 4 anzeigen"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section games-board reveal" id="games">
+      <div>
+        <div class="section__label">Verfügbare Spiele</div>
+        <h2>Was es drinnen zu tun gibt.</h2>
+        <p class="section__text">Eine übersichtliche Liste der Aktivitäten, die Gäste bei ihrem Besuch finden.</p>
+      </div>
+      <div class="games-list">
+        <article class="game-card reveal"><strong>01</strong><h3>Billardtisch</h3><p>Klassische Lounge-Aktivität für entspannte Runden.</p></article>
+        <article class="game-card reveal"><strong>02</strong><h3>Tischspiele</h3><p>Kleine Aktivitäten für Gruppen und lockere Besucher.</p></article>
+        <article class="game-card reveal"><strong>03</strong><h3>Party-Impulse</h3><p>Soziale Minispiele für Gespräche und Treffen.</p></article>
+        <article class="game-card reveal"><strong>04</strong><h3>Medienabende</h3><p>Gemeinsam schauen und entspannt unterhalten werden.</p></article>
+        <article class="game-card reveal"><strong>05</strong><h3>Fotospots</h3><p>Gestaltete Bereiche für Screenshots und Avatare.</p></article>
+        <article class="game-card reveal"><strong>06</strong><h3>Entspannungszonen</h3><p>Ruhige Orte zwischen Spielen und sozialen Momenten.</p></article>
+      </div>
+    </section>
+
+    <section class="section process reveal" id="process">
+      <div>
+        <div class="section__label">Ablauf des Besuchs</div>
+        <h2>Der Besuch.</h2>
+      </div>
+      <div class="process-list">
+        <article class="process-item reveal"><strong>01</strong><div><h3>Ankommen</h3><p>Betritt das Penthouse und entdecke den Ausblick.</p></div></article>
+        <article class="process-item reveal"><strong>02</strong><div><h3>Erkunden</h3><p>Bewege dich durch Lounge-, Medien- und Social-Bereiche.</p></div></article>
+        <article class="process-item reveal"><strong>03</strong><div><h3>Relax</h3><p>Nutze die Atmosphäre für Screenshots und ruhige Momente.</p></div></article>
+        <article class="process-item reveal"><strong>04</strong><div><h3>Einladen</h3><p>Teile die Residenz mit Freunden in VRChat.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section quote-contact reveal" id="visit">
+      <div class="quote-image"><img src="../../img/games/helixhorizon.webp" alt="Detailansicht von Helix Horizon"/></div>
+      <div class="contact-panel">
+        <div class="section__label">Private Besichtigung</div>
+        <h2>Besuche Helix Horizon.</h2>
+        <p>Öffne die Weltseite oder starte direkt aus VRChat eine private Instanz.</p>
+        <a class="button button--dark" href="https://vrchat.com/home/launch?worldId=wrld_bf374d5b-f1ca-4a8e-a42b-3d373b86be06" target="_blank" rel="noopener noreferrer">Besichtigung starten</a>
+      </div>
+    </section>
+
+    <footer class="foot" id="credits" aria-label="Copyright und Credits"><div class="wrap">
+<div class="foot__mark" aria-hidden="true">HAXURUS</div>
+<div class="foot__card">
+<div>
+<p><strong>Haxurus</strong> © Copyright 2016-<span id="current-year"></span>. Alle Rechte vorbehalten.</p>
+<p>Diese Website wurde komplett mit <strong>Liebe</strong> 💚 von <strong>@Haxurus</strong> erstellt. Die Grafiken hat <strong>@Haxurus</strong> mit Hilfe von ChatGPT von OpenAI gestaltet, und die Website wurde mit Hilfe von Claude von Anthropic entwickelt.</p>
+<p>Icons von Drittanbieter-Apps und Social-Media-Plattformen bleiben Eigentum ihrer jeweiligen Inhaber und werden nur zur Kennzeichnung und Verlinkung verwendet. Es wird weder Eigentum noch eine Empfehlung beansprucht.</p>
+<p>Showroom einer virtuellen Welt. Kein echtes Immobilienangebot.</p>
+<p>Bei Problemen oder Anfragen schreib mir bitte <a href="mailto:inviati-49-armonia@icloud.com" style="color:var(--g)">per E-Mail</a>.</p>
+</div>
+<div class="foot__links"><a href="mailto:inviati-49-armonia@icloud.com">E-mail</a><a href="https://discord.com/users/378959098164674560" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://t.me/haxurus_official" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.instagram.com/haxurus.vrc" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://github.com/Haxurus" target="_blank" rel="noopener noreferrer">GitHub</a><a href="../commissions/">Aufträge</a><a href="../support/">Support</a><a href="#">Nach oben ↑</a></div>
+</div>
+<div class="foot__base"><a href="../" style="color:var(--mut)">← Zurück zu haxurus.com</a><!--lang:foot--><nav class="foot__lang" aria-label="Sprache"><a translate="no" lang="en" hreflang="en" data-lang="en" href="../../vrchat/">English</a><a translate="no" lang="it" hreflang="it" data-lang="it" href="../../it/vrchat/">Italiano</a><a translate="no" lang="es" hreflang="es" data-lang="es" href="../../es/vrchat/">Español</a><a translate="no" lang="ja" hreflang="ja" data-lang="ja" href="../../ja/vrchat/">日本語</a><a translate="no" lang="de" hreflang="de" data-lang="de" href="../../de/vrchat/" aria-current="true">Deutsch</a></nav><!--/lang:foot--><a class="keyicon" href="/wp-admin/" aria-label="WordPress-Admin-Login" title="WordPress-Admin-Login"><svg viewbox="0 0 24 24"><path d="M7.5 14a5.5 5.5 0 1 1 4.87-2.94L22 20.69V22h-1.31l-1-1H18v-1.69l-1-1H15.31l-1.44-1.44A5.47 5.47 0 0 1 7.5 14Zm0-3A2.5 2.5 0 1 0 5 8.5 2.5 2.5 0 0 0 7.5 11Z"></path></svg></a></div>
+</div></footer>
+  </div>
+
+  <script>
+    (() => {
+      const year = document.getElementById('current-year');
+      if (year) year.textContent = new Date().getFullYear();
+
+      const revealItems = [...document.querySelectorAll('.reveal')];
+      revealItems.forEach((el, index) => el.style.setProperty('--delay', `${Math.min(index * 55, 420)}ms`));
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: .16, rootMargin: '0px 0px -8% 0px' });
+        revealItems.forEach((el) => observer.observe(el));
+      } else {
+        revealItems.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      document.querySelectorAll('[data-photo-carousel]').forEach((carousel) => {
+        const track = carousel.querySelector('[data-photo-track]');
+        const slides = [...carousel.querySelectorAll('.photo-carousel__slide')];
+        const dots = [...carousel.querySelectorAll('[data-photo-dot]')];
+        if (!track || slides.length === 0) return;
+
+        let index = 0;
+        let timer;
+
+        function goTo(nextIndex) {
+          index = (nextIndex + slides.length) % slides.length;
+          track.style.transform = `translateX(-${index * 100}%)`;
+          dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === index));
+        }
+
+        function start() {
+          window.clearInterval(timer);
+          timer = window.setInterval(() => goTo(index + 1), 4300);
+        }
+
+        dots.forEach((dot, dotIndex) => {
+          dot.addEventListener('click', () => {
+            goTo(dotIndex);
+            start();
+          });
+        });
+
+        carousel.addEventListener('mouseenter', () => window.clearInterval(timer));
+        carousel.addEventListener('mouseleave', start);
+        carousel.addEventListener('focusin', () => window.clearInterval(timer));
+        carousel.addEventListener('focusout', start);
+        start();
+      });
+    })();
+  </script>
+</body>
+</html>
