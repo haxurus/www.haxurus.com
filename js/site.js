@@ -121,15 +121,18 @@
       s.el.classList.remove('is-scene');
       s.top.style.opacity = s.bot.style.opacity = '';
     };
+    // Both effects are tied to the arrival of a section's top edge, never to its own bottom: a section that is simply
+    // on screen (even a short one with the next one peeking in) stays untouched until the visitor really scrolls.
+    const arrive = (top, vh) => smooth(clamp((vh * .72 - top) / (vh * .42), 0, 1));
     scenesUpdate = () => {
       const vh = innerHeight, y = scrollY, tilt = isCalm() ? 0 : 1;
-      secs.forEach((s) => {
+      const E0 = secs.map((s) => arrive(s.y - y, vh));
+      secs.forEach((s, i) => {
         const top = s.y - y, bottom = top + s.h;
         if (bottom < -80 || top > vh) { clear(s); return; }
-        // e: 0 -> 1 while the section's top edge travels from 92% to 38% of the viewport.
-        const e = smooth(clamp((vh * .92 - top) / (vh * .54), 0, 1));
-        // x: 0 -> 1 while its bottom edge travels from 78% of the viewport to the top.
-        const x = smooth(clamp((vh * .78 - bottom) / (vh * .78), 0, 1));
+        const e = E0[i];
+        // The leaving section follows the arrival of the next one (the last one stays put).
+        const x = i + 1 < secs.length ? E0[i + 1] : 0;
         if (e >= 1 && x <= 0) { clear(s); return; }
         const E = 1 - e;
         const key = `${e.toFixed(3)}|${x.toFixed(3)}|${tilt}`;
@@ -555,7 +558,7 @@
 
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('is-paused', !e.isIntersecting)));
-      $$('.hero, .ticker, .card3d, .deck, .ladder').forEach((el) => io.observe(el));
+      $$('.hero, .ticker, .orbit, .deck, .ladder, .sp-cta').forEach((el) => io.observe(el));
     }
   };
 

@@ -34,7 +34,7 @@ PAGES = ['', 'support/', 'commissions/', 'vrchat/', 'helixhorizon/']          # 
 KEEP = [
     'Haxurus', 'HAXURUS', '@Haxurus', 'VRChat', 'Discord', 'Telegram', 'Instagram', 'GitHub', 'Spotify', 'Steam', 'Patreon',
     'ChatGPT', 'OpenAI', 'Claude', 'Anthropic', 'WordPress', 'E-mail', 'Ctrl K', 'Esc', 'Enter', 'Helix Horizon',
-    'Spirit Supporter', 'Rookie Adventurer', 'Main Character', 'Sensei', 'Final Boss',
+    'Spritz Supporter', 'Rookie Adventurer', 'Main Character', 'Sensei', 'Final Boss',
 ]
 
 INLINE = {'a', 'abbr', 'b', 'bdi', 'br', 'button', 'cite', 'code', 'em', 'i', 'img', 'kbd', 'mark', 'q', 's', 'small',

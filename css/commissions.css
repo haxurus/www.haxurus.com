@@ -1,11 +1,6 @@
 /* Commissions page. Builds on site.css (tokens, nav, footer, .price, .faq2, .pill). */
 
-/* ---------- Hero: a pinned fly-through (see commissions.js). Without JS or on small screens it is a plain, static hero. ---------- */
-.cx-hero { position: relative; }
-.cx-stage { position: relative; display: grid; align-content: center; min-height: 100svh; padding: clamp(96px, 13vh, 150px) 0 clamp(54px, 8vh, 90px); overflow: clip; isolation: isolate; }
-.cx-stage::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(2, 5, 7, .75)); }
-.cx-hero__grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: clamp(30px, 6vw, 90px); align-items: center; transform-origin: 35% 45%; }
-.cx-hero__grid > div:first-child { container-type: inline-size; min-width: 0; }
+/* ---------- Hero (commissions-specific parts; the stage and the fly-through are in fly.css) ---------- */
 .cx-title { margin: 20px 0 22px; font: 800 clamp(2.4rem, min(12.6cqi, 11.5vh), 8.4rem)/.9 var(--f-display); letter-spacing: -.07em; text-transform: uppercase; }
 .cx-title > span { display: block; overflow: hidden; padding: .04em .06em .12em 0; margin-bottom: -.12em; perspective: 700px; }
 .cx-title > span > b { display: inline-block; font: inherit; }
@@ -17,78 +12,11 @@
 .cx-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(16px, 3vh, 26px); }
 .cx-note { display: flex; gap: 14px; align-items: flex-start; margin-top: clamp(14px, 2.6vh, 24px); padding: 14px 18px; border-radius: 18px; border: 1px solid var(--line); background: rgba(57, 255, 20, .045); color: var(--mut); font-size: .88rem; line-height: 1.55; max-width: 640px; }
 .cx-note svg { flex: none; width: 20px; height: 20px; color: var(--g); margin-top: 2px; }
-.js .cx-in { opacity: 0; translate: 0 26px; transition: opacity .8s ease, translate .9s var(--ease); }
-.js.ready .cx-in { opacity: 1; translate: 0 0; transition-delay: calc(.55s + var(--d, 0) * 110ms); }
 .cx-stats { display: grid; gap: 12px; }
 .cx-stats__line { font: 700 .72rem ui-monospace, "Cascadia Code", monospace; text-transform: uppercase; letter-spacing: .14em; color: var(--dim); }
 .cx-stat { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; padding: clamp(12px, 2.2vh, 18px) 22px; border: 1px solid var(--line-2); border-radius: 22px; background: var(--glass); box-shadow: 0 24px 60px rgba(0, 0, 0, .3); }
 .cx-stat b { font: 800 clamp(2rem, min(4.4vw, 6.4vh), 3.2rem)/1 var(--f-display); letter-spacing: -.06em; background: linear-gradient(180deg, #fff 20%, var(--g)); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; min-width: 2.2ch; }
 .cx-stat span { color: var(--mut); font-size: .9rem; line-height: 1.4; }
-
-/* Background stage */
-.cx-bg { position: absolute; inset: 0; z-index: 0; overflow: clip; pointer-events: none; }
-.cx-bg > div { position: absolute; inset: 0; }
-.cx-bg__tints i { position: absolute; inset: 0; opacity: 0; background: radial-gradient(70% 60% at 50% 48%, color-mix(in srgb, var(--t) 22%, transparent), transparent 70%); }
-.cx-bg__tints i:nth-child(1) { --t: #39ff14; opacity: .7; }
-.cx-bg__tints i:nth-child(2) { --t: #00eaff; }
-.cx-bg__tints i:nth-child(3) { --t: #ffd166; }
-.cx-bg__aurora i { position: absolute; width: 62vmax; aspect-ratio: 1; border-radius: 50%; animation: cxdrift 26s ease-in-out infinite alternate; }
-.cx-bg__aurora i:nth-child(1) { left: -18vmax; top: -22vmax; background: radial-gradient(circle, rgba(57, 255, 20, .2), transparent 62%); }
-.cx-bg__aurora i:nth-child(2) { right: -22vmax; top: 4vmax; background: radial-gradient(circle, rgba(0, 234, 255, .17), transparent 62%); animation-duration: 32s; animation-delay: -9s; }
-.cx-bg__aurora i:nth-child(3) { left: 18vmax; bottom: -34vmax; background: radial-gradient(circle, rgba(139, 92, 255, .2), transparent 62%); animation-duration: 38s; animation-delay: -17s; }
-@keyframes cxdrift { to { transform: translate3d(7vmax, 5vmax, 0) scale(1.14); } }
-.cx-bg > .cx-bg__floor { inset: auto 0 0 0; height: 58%; -webkit-mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .55) 38%, #000 80%); mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .55) 38%, #000 80%); }
-.cx-bg__floor > div { position: absolute; inset: 0 -35%; transform: perspective(520px) rotateX(68deg); transform-origin: 50% 100%; overflow: hidden; }
-.cx-bg__floor i { position: absolute; left: 0; right: 0; top: -96px; bottom: 0; animation: cxfloor 1.9s linear infinite;
-  background: linear-gradient(rgba(57, 255, 20, .5) 1.5px, transparent 1.5px) 0 0 / 96px 96px, linear-gradient(90deg, rgba(57, 255, 20, .5) 1.5px, transparent 1.5px) 0 0 / 96px 96px; }
-@keyframes cxfloor { to { transform: translateY(96px); } }
-.cx-bg__rings i { position: absolute; left: 50%; top: 46%; width: min(120vh, 88vw); aspect-ratio: 1; margin: calc(min(120vh, 88vw) / -2) 0 0 calc(min(120vh, 88vw) / -2); border-radius: 50%; border: 1px solid rgba(57, 255, 20, .16); box-shadow: inset 0 0 100px rgba(57, 255, 20, .04); animation: cxping 9s ease-out infinite; }
-.cx-bg__rings i:nth-child(2) { animation-delay: -3s; border-color: rgba(0, 234, 255, .16); }
-.cx-bg__rings i:nth-child(3) { animation-delay: -6s; border-color: rgba(139, 92, 255, .18); }
-@keyframes cxping { from { transform: scale(.25); opacity: 0; } 15% { opacity: 1; } to { transform: scale(1.1); opacity: 0; } }
-.cx-bg__code span { position: absolute; bottom: -8%; font: 600 var(--fs, 14px) ui-monospace, "Cascadia Code", monospace; color: rgba(57, 255, 20, .3); white-space: nowrap; opacity: 0; animation: cxrise var(--dur, 16s) linear var(--delay, 0s) infinite; }
-.cx-bg__code span:nth-child(3n) { color: rgba(0, 234, 255, .26); }
-.cx-bg__code span:nth-child(5n) { color: rgba(139, 92, 255, .32); }
-@keyframes cxrise { 0% { transform: translate3d(0, 0, 0); opacity: 0; } 12%, 80% { opacity: 1; } 100% { transform: translate3d(0, -118vh, 0); opacity: 0; } }
-.cx-bg__beam::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(57, 255, 20, .55), rgba(0, 234, 255, .55), transparent); box-shadow: 0 0 40px 6px rgba(57, 255, 20, .25); animation: cxbeam 7s cubic-bezier(.5, 0, .5, 1) infinite; }
-@keyframes cxbeam { 0% { transform: translateY(8vh); opacity: 0; } 10%, 85% { opacity: .9; } 100% { transform: translateY(100vh); opacity: 0; } }
-
-/* Scenes (the fly-through). Static cards by default; pinned and animated by commissions.js on large screens. */
-.cx-scenes { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
-.cx-sc { --tint: var(--g); position: relative; display: grid; padding: 26px; border-radius: 26px; border: 1px solid color-mix(in srgb, var(--tint) 32%, transparent); background: linear-gradient(155deg, color-mix(in srgb, var(--tint) 10%, transparent), rgba(255, 255, 255, .02)); overflow: hidden; }
-.cx-sc__ring { display: none; }
-.cx-sc__main { display: grid; gap: 10px; position: relative; }
-.cx-sc__no { font: 700 .74rem ui-monospace, "Cascadia Code", monospace; letter-spacing: .16em; color: var(--tint); text-transform: uppercase; }
-.cx-sc__word { position: relative; isolation: isolate; font: 800 clamp(2rem, 9vw, 3.4rem)/.95 var(--f-display); letter-spacing: -.07em; text-transform: uppercase; background: linear-gradient(180deg, #fff 22%, var(--tint)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.cx-sc__body p { margin: 0 0 14px; color: rgba(238, 252, 242, .82); line-height: 1.6; }
-.cx-sc__body ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.cx-sc__body li { padding: 6px 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--tint) 45%, transparent); background: color-mix(in srgb, var(--tint) 12%, transparent); font-size: .78rem; font-weight: 700; color: #fff; }
-.cx-rail, .cx-cue { display: none; }
-
-@media (min-width: 901px) and (min-height: 641px) {
-  .cx-hero.is-pin { height: 340svh; }
-  .cx-hero.is-pin .cx-stage { position: sticky; top: 0; height: 100svh; min-height: 0; padding-block: clamp(84px, 12vh, 130px) clamp(30px, 5vh, 60px); }
-  .cx-hero.is-pin .cx-hero__grid { will-change: transform, opacity; }
-  .cx-hero.is-pin .cx-scenes { position: absolute; inset: 0; z-index: 2; display: block; width: auto; margin: 0; pointer-events: none; }
-  .cx-hero.is-pin .cx-sc { position: absolute; inset: 0; display: grid; place-items: center; padding: 0; border: 0; border-radius: 0; background: none; overflow: visible; opacity: 0; container-type: inline-size; }
-  .cx-hero.is-pin .cx-sc__ring { position: absolute; left: 50%; top: 48%; display: block; width: min(92vh, 82vw); aspect-ratio: 1; margin: calc(min(92vh, 82vw) / -2) 0 0 calc(min(92vh, 82vw) / -2); will-change: transform, opacity; }
-  .cx-hero.is-pin .cx-sc__ring i { position: absolute; inset: 0; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--tint) 55%, transparent); background: radial-gradient(circle, color-mix(in srgb, var(--tint) 14%, transparent), transparent 66%); box-shadow: 0 0 120px color-mix(in srgb, var(--tint) 22%, transparent), inset 0 0 80px color-mix(in srgb, var(--tint) 12%, transparent); }
-  .cx-hero.is-pin .cx-sc__ring i::after { content: ""; position: absolute; inset: 7%; border-radius: 50%; border: 1px dashed color-mix(in srgb, var(--tint) 50%, transparent); animation: spin 48s linear infinite; }
-  .cx-hero.is-pin .cx-sc__main { position: relative; justify-items: center; text-align: center; gap: clamp(8px, 1.6vh, 16px); width: 100%; padding-inline: 20px; }
-  .cx-hero.is-pin .cx-sc__no { will-change: transform, opacity; }
-  .cx-hero.is-pin .cx-sc__word { font-size: min(9.6cqi, 25vh); white-space: nowrap; justify-self: center; will-change: transform, opacity; padding: 0 .06em .06em 0; }
-  .cx-hero.is-pin .cx-sc__word::before { content: attr(data-t); position: absolute; left: 0; top: 0; z-index: -1; translate: .04em .045em; background: none; -webkit-text-fill-color: transparent; -webkit-text-stroke: 1.5px color-mix(in srgb, var(--tint) 70%, transparent); opacity: .7; }
-  .cx-hero.is-pin .cx-sc__body { will-change: transform, opacity; max-width: 640px; }
-  .cx-hero.is-pin .cx-sc__body p { font-size: clamp(1.05rem, min(1.7vw, 2.8vh), 1.35rem); }
-  .cx-hero.is-pin .cx-sc__body ul { justify-content: center; }
-  .cx-hero.is-pin .cx-sc__body li { padding: 8px 16px; font-size: .86rem; }
-  .cx-hero.is-pin .cx-rail { transition: opacity .3s; position: absolute; right: clamp(14px, 2.2vw, 34px); top: 50%; z-index: 3; display: grid; gap: 22px; translate: 0 -50%; font: 700 .72rem ui-monospace, "Cascadia Code", monospace; letter-spacing: .12em; color: var(--dim); }
-  .cx-hero.is-pin .cx-rail__i { position: relative; padding-right: 18px; text-align: right; transition: color .3s, opacity .3s; opacity: .6; }
-  .cx-hero.is-pin .cx-rail__i.is-on { color: #fff; opacity: 1; }
-  .cx-hero.is-pin .cx-rail__fill { position: absolute; right: 0; top: 0; bottom: 0; width: 2px; border-radius: 2px; background: rgba(255, 255, 255, .14); overflow: hidden; }
-  .cx-hero.is-pin .cx-rail__fill i { display: block; height: 100%; background: linear-gradient(var(--g), var(--c)); transform: scaleY(0); transform-origin: 50% 0; }
-  .cx-hero.is-pin .cx-cue { display: grid; }
-}
 
 /* ---------- Section heads ---------- */
 .cx-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .55fr); gap: 28px; align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
